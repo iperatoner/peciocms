@@ -1,0 +1,55 @@
+<localestring id="LABEL_LINKS_CREATE">
+    <t>Create Link</t>
+</localestring>
+
+<localestring id="LABEL_LINKS_EDIT">
+    <t>Edit Link</t>
+</localestring>
+
+<localestring id="LABEL_LINKS_CREATE_CATEGORY">
+    <t>Create Linkcategory</t>
+</localestring>
+
+<localestring id="LABEL_LINKS_EDIT_CATEGORY">
+    <t>Edit Linkcategory</t>
+</localestring>
+
+<localestring id="LABEL_LINKS_URL">
+    <t>URL</t>
+</localestring>
+
+<localestring id="LABEL_LINKS_VISIBILITY">
+    <t>Visibility</t>
+</localestring>
+
+<localestring id="LABEL_LINKS_EVERYWHERE">
+    <t>Everywhere</t>
+</localestring>
+
+<localestring id="LABEL_LINKS_ALLARTICLES">
+    <t>All articles</t>
+</localestring>
+
+<localestring id="LABEL_LINKS_BLOG">
+    <t>Blog</t>
+</localestring>
+
+<localestring id="LABEL_LINKS_SPECIFICARTICLES">
+    <t>Specific articles</t>
+</localestring>
+
+<localestring id="LABEL_LINKS_CHOOSECAT">
+    <t>Choose link category</t>
+</localestring>
+
+<localestring id="LABEL_LINKS_REALLYREMOVE">
+    <t>Do you really want to remove this link?</t>
+</localestring>
+
+<localestring id="LABEL_LINKS_REALLYREMOVE_CATEGORY">
+    <t>Do you really want to remove this category? It will also remove all containing links.</t>
+</localestring>
+
+<localestring id="LABEL_LINKS_REALLYREMOVE_SELECTED">
+    <t>Do you really want to remove the selected links?</t>
+</localestring>

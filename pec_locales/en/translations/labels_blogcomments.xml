@@ -1,0 +1,35 @@
+<localestring id="LABEL_COMMENTS_EDIT">
+    <t>Edit Comment</t>
+</localestring>
+
+<localestring id="LABEL_COMMENTS_AUTHOR">
+    <t>Author</t>
+</localestring>
+
+<localestring id="LABEL_COMMENTS_EMAIL">
+    <t>Email</t>
+</localestring>
+
+<localestring id="LABEL_COMMENTS_CONTENT">
+    <t>Content</t>
+</localestring>
+
+<localestring id="LABEL_COMMENTS_RELATES_TO_POST">
+    <t>Relates to post</t>
+</localestring>
+
+<localestring id="LABEL_COMMENTS_RELATES_TO">
+    <t>Relates to</t>
+</localestring>
+
+<localestring id="LABEL_COMMENTS_DATE">
+    <t>Date</t>
+</localestring>
+
+<localestring id="LABEL_COMMENTS_REALLYREMOVE">
+    <t>Do you really want to remove this comment?</t>
+</localestring>
+
+<localestring id="LABEL_COMMENTS_REALLYREMOVE_SELECTED">
+    <t>Do you really want to remove the selected comments?</t>
+</localestring>

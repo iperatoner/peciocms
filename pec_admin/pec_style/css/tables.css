@@ -1,0 +1,163 @@
+table.data_table {
+    font-size: 8pt;
+    
+    width: 100%;
+    table-layout: fixed;
+    
+    border: 1px solid #dfdfdf;
+    
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    
+}
+
+table.overview_table {
+    font-size: 10pt;
+    
+    width: 100%;
+    table-layout: fixed;
+    
+    background: #fcfcfc;
+    border: 1px solid #dddddd;
+    
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+}
+
+	table.overview_table tr.view_row:hover {
+		background: #f5f5f5;
+	}
+    
+        table.overview_table tr.view_row td {            
+            border-top: 1px dashed #dfdfdf;
+        }
+    
+        table.overview_table tr.view_row:first-child td {
+            border-top: none;
+        }
+
+        table.overview_table tr.view_row td.normal_column {
+            line-height: 22px;
+            
+            padding-left: 8px;
+            padding-top: 5px;
+            padding-bottom: 5px;
+            
+            text-align: left;
+            vertical-align: middle;
+        }
+        
+        table.overview_table tr.view_row td.thin_column {
+        	width: 22px;
+        }
+        
+        table.overview_table tr.view_row td.medium_column {
+        	width: 120px;
+        }
+        
+
+table.data_table *, table.data_table tr td, table.overview_table *, table.overview_table tr td {
+   word-wrap: break-word;
+}
+
+    table.data_table tr.head_row {
+        text-shadow: 1px 1px 6px #898989;
+        background: #efefef;
+        box-shadow:
+            inset 0px 17px 20px -10px #f4f4f4,
+            inset 0px -17px 20px -10px #ebebeb;
+        -moz-box-shadow:
+            inset 0px 17px 20px -10px #f4f4f4,
+            inset 0px -17px 20px -10px #ebebeb;
+        -webkit-box-shadow:
+            inset 0px 17px 20px -10px #f4f4f4,
+            inset 0px -17px 20px -10px #ebebeb;
+    }
+
+        table.data_table tr.head_row th {
+            line-height: 30px;
+            padding-left: 8px;
+            text-align: left;
+        }
+        
+            table.data_table tr.head_row th.check_column {
+                width: 9px;
+            }
+
+            table.data_table tr.head_row th.long_column {
+                width: 200px;
+            }
+
+            table.data_table tr.head_row th.medium_column {
+                width: 130px;
+            }
+
+            table.data_table tr.head_row th.lower_medium_column {
+                width: 110px;
+            }
+
+            table.data_table tr.head_row th.short_column {
+                width: 70px;
+            }
+
+            table.data_table tr.head_row th.mid_thin_column {
+                width: 50px;
+            }
+
+            table.data_table tr.head_row th.thin_column {
+                width: 40px;
+            }
+
+    table.data_table tr.data_row {
+        background: #fdfdfd;
+    }
+
+    table.data_table tr.data_row:hover {
+        background: #fafafa;
+    }
+    
+        table.data_table tr.data_row td {            
+            border-top: 1px solid #efefef;
+        }
+
+        table.data_table tr.data_row td.check_column {
+            line-height: 22px;
+            
+            padding-left: 8px;
+            padding-top: 3px;
+            padding-bottom: 1px;
+            
+            text-align: left;
+            vertical-align: top;
+        }
+
+        table.data_table tr.data_row td.normal_column {
+            line-height: 22px;
+            
+            padding-left: 8px;
+            padding-top: 2px;
+            padding-bottom: 1px;
+            
+            text-align: left;
+            vertical-align: top;
+        }
+            
+            table.data_table tr.data_row td.normal_column span.main_text {
+                font-size: 9pt !important;
+                font-weight: bold;
+            }
+        
+            table.data_table tr.data_row td div.row_actions {
+                font-size: 8pt;
+                visibility: hidden;
+            }
+        
+            table.data_table tr.data_row:hover td div.row_actions {
+                visibility: visible;
+            }
+            
+table tr td.td_middle {
+    vertical-align: middle;
+}

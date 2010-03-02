@@ -1,0 +1,53 @@
+div.blogpost {
+    padding-bottom: 15px;
+}
+
+p.ptitle, p.ptitle a {
+    font-family: "Verdana";
+    font-size: 11pt !important;
+    font-weight: bold;
+    color: #414141 !important;
+    border-bottom: 1px solid #a6a6a6;
+    padding-top: 7px;
+    padding-bottom: 2px;
+    margin-bottom: 3px;
+}
+
+div.postmeta, div.singlepostmeta, div.commentmeta {
+    color: #a6a6a6; 
+    font-size: 8pt !important;
+}
+
+div.postmeta {
+    float: left;
+}
+
+div.commentmeta {
+    padding-bottom: 6px;
+    margin-top: -2px;
+}
+
+div.postmeta a, div.singlepostmeta a {
+    color: #7588ff; 
+    font-size: 8pt !important;
+}
+
+div.postcomments_count {
+    float: right;
+}
+
+div.postcomments_count a {
+    color: #7588ff; 
+    font-size: 8pt;
+}
+
+table#otherentries {
+    width: 100%;
+}
+    
+div.blogcomment {
+    width: 400px;
+    padding: 10px;
+    margin-left: 15px;
+}
+

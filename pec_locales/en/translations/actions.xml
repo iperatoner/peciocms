@@ -1,0 +1,15 @@
+<localestring id="ACTION_EDIT">
+    <t>Edit</t>
+</localestring>
+
+<localestring id="ACTION_REMOVE">
+    <t>Remove</t>
+</localestring>
+
+<localestring id="ACTION_PUBLISH">
+    <t>Publish</t>
+</localestring>
+
+<localestring id="ACTION_UNPUBLISH">
+    <t>Unpublish</t>
+</localestring>

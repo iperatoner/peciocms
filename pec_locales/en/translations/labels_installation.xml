@@ -1,0 +1,81 @@
+<localestring id="LABEL_INSTALLATION">
+    <t>Installation</t>
+</localestring>
+
+<localestring id="LABEL_INSTALLATION_START">
+    <t>Start</t>
+</localestring>
+
+<localestring id="LABEL_INSTALLATION_DATABASE">
+    <t>Database</t>
+</localestring>
+
+<localestring id="LABEL_INSTALLATION_SITEDATA">
+    <t>Site Data</t>
+</localestring>
+
+<localestring id="LABEL_INSTALLATION_INSTALLING">
+    <t>Installing</t>
+</localestring>
+
+<localestring id="LABEL_INSTALLATION_FINISHED">
+    <t>Database</t>
+</localestring>
+
+<localestring id="LABEL_INSTALLATION_WELCOMETEXT">
+    <t>Welcome to the Installation of pecio cms {%VERSION%}!</t>
+</localestring>
+
+<localestring id="LABEL_INSTALLATION_CHOOSELANGUAGE">
+    <t>Please choose a language</t>
+</localestring>
+
+<localestring id="LABEL_INSTALLATION_TBLPREFIX">
+    <t>Table Prefix</t>
+</localestring>
+
+<localestring id="LABEL_INSTALLATION_MYSQL">
+    <t>MySQL</t>
+</localestring>
+
+<localestring id="LABEL_INSTALLATION_SQLITE">
+    <t>SQLite</t>
+</localestring>
+
+<localestring id="LABEL_INSTALLATION_DBHOST">
+    <t>Host</t>
+</localestring>
+
+<localestring id="LABEL_INSTALLATION_DBUSER">
+    <t>User</t>
+</localestring>
+
+<localestring id="LABEL_INSTALLATION_DBPW">
+    <t>Password</t>
+</localestring>
+
+<localestring id="LABEL_INSTALLATION_DBNAME">
+    <t>Database Name</t>
+</localestring>
+
+<localestring id="LABEL_INSTALLATION_DBFILE">
+    <t>Database File</t>
+</localestring>
+
+<localestring id="LABEL_INSTALLATION_FINISHTEXT">
+    <t>You have successfully installed pecio cms {%VERSION%}! You can now log in 
+    using the following login data and start adding content to your website.</t>
+</localestring>
+
+<localestring id="LABEL_INSTALLATION_UPDATEPW_TEXT">
+    <t>When updating pecio next time, you will need the update password below.</t>
+</localestring>
+
+<localestring id="LABEL_INSTALLATION_RMDIR_HINT">
+    <t>Please remember to remove the installation directory "pec_install" for security reasons.</t>
+</localestring>
+
+<localestring id="LABEL_INSTALLATION_RENAME_HTACCESS_HINT">
+    <t>If you want to use URL-Rewriting, 
+    you have to rename the file "htaccess-sample" to ".htaccess" in the root path of your pecio installation.</t>
+</localestring>

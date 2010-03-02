@@ -1,0 +1,26 @@
+.login_link_element, .login_menu_element, .login_menu_element_active {
+    color: #343434;
+    
+    padding: 5px;
+    margin-right: 3px;
+    
+    background: #f0f0f0;
+    
+    border-radius: 4px;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+}
+
+.login_link_element:hover {
+    color: #000000;
+    background: #d8d8d8;
+}
+
+.login_menu_element {
+	color: #424242;
+}
+
+.login_menu_element_active {
+	color: #000000;
+	background: #d6d6d6;
+}

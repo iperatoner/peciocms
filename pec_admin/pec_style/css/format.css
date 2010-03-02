@@ -1,0 +1,210 @@
+body {
+    font-family: "Frutiger Linotype", "Verdana", "Sans-serif";
+    font-size: 8pt;
+}
+
+a {
+    text-decoration: none !important;
+    color: #014fcc;
+}
+
+a:hover {
+    color: #d91100;
+}
+
+select {
+    padding: 2px;
+    font-family: "Frutiger Linotype", "Verdana", "Sans-serif";
+}
+
+input[type=checkbox], input[type=radio] {
+    position: relative;
+}
+
+input[type=checkbox] {
+    top: 3px;
+}    
+
+input[type=radio] {
+    top: 2px;
+}    
+
+input[type=button], input[type=submit], input[type=reset] {
+    padding: 4px;
+    
+    font-family: "Frutiger Linotype", "Verdana", "Sans-serif";
+    font-size: 8pt;
+    /*text-shadow: 1px 1px 5px #9a9a9a;*/
+    
+    background: #eaeaea;
+    border: 1px solid #f6f6f6;
+    
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    
+    box-shadow: 
+        0px 0px 3px #cacaca,
+        inset 0px -17px 20px -10px #cacaca,
+        inset 0px 17px 20px -10px #efefef;    
+    -moz-box-shadow: 
+        0px 0px 3px #cacaca,
+        inset 0px -17px 20px -10px #cacaca,
+        inset 0px 17px 20px -10px #efefef;
+    -webkit-box-shadow: 
+        0px 0px 3px #cacaca,
+        inset 0px -17px 20px -10px #cacaca,
+        inset 0px 17px 20px -10px #efefef;
+}
+
+    input[type=button]:hover, input[type=submit]:hover, input[type=reset]:hover {
+        background: #f2f2f2;
+        box-shadow: 
+            0px 0px 3px #bfbfbf,
+            inset 0px -17px 20px -10px #d0d0d0,
+            inset 0px 17px 20px -10px #f4f4f4;
+        -moz-box-shadow: 
+            0px 0px 3px #bfbfbf,
+            inset 0px -17px 20px -10px #d0d0d0,
+            inset 0px 17px 20px -10px #f4f4f4;
+        -webkit-box-shadow: 
+            0px 0px 3px #bfbfbf,
+            inset 0px -17px 20px -10px #d0d0d0,
+            inset 0px 17px 20px -10px #f4f4f4;
+    }
+
+    input[type=button]:active, input[type=submit]:active, input[type=reset]:active {
+        background: #f2f2f2;
+        box-shadow: 
+            0px 0px 3px #bfbfbf,
+            inset 0px 17px 20px -10px #d6d6d6,
+            inset 0px -17px 20px -10px #f4f4f4;
+        -moz-box-shadow: 
+            0px 0px 3px #bfbfbf,
+            inset 0px 17px 20px -10px #d6d6d6,
+            inset 0px -17px 20px -10px #f4f4f4;
+        -webkit-box-shadow: 
+            0px 0px 3px #bfbfbf,
+            inset 0px 17px 20px -10px #d6d6d6,
+            inset 0px -17px 20px -10px #f4f4f4;
+    }
+
+input[type=text], input[type=password], textarea {
+    font-family: "Frutiger Linotype", "Verdana", "Sans-serif";
+    padding: 5px;
+    
+    font-family: "Frutiger Linotype", "Verdana", "Sans-serif";
+    font-size: 8pt;
+    /*text-shadow: 1px 1px 5px #bfbfbf;*/
+    
+    background: #f9f9f9;
+    border: 1px solid #c4c4c4;
+    
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    
+    box-shadow: 0px 0px 3px #e2e2e2;
+    -moz-box-shadow: 0px 0px 3px #e2e2e2;
+    -webkit-box-shadow: 0px 0px 3px #e2e2e2;
+}
+
+    input[type=text]:hover, input[type=password]:hover, textarea:hover {        
+        background: #fafafa;
+        border: 1px solid #c4c4c4;
+        
+        border-radius: 5px;
+        -moz-border-radius: 5px;
+        -webkit-border-radius: 5px;
+        
+        box-shadow: 0px 0px 3px #dfdfdf;
+        -moz-box-shadow: 0px 0px 3px #dfdfdf;
+        -webkit-box-shadow: 0px 0px 3px #dfdfdf;
+    }
+
+    input[type=text]:focus, input[type=password]:focus, textarea:focus {        
+        background: #ffffff;
+        border: 1px solid #bebebe;
+        
+        border-radius: 5px;
+        -moz-border-radius: 5px;
+        -webkit-border-radius: 5px;
+        
+        box-shadow: 0px 0px 3px #bfbfbf;
+        -moz-box-shadow: 0px 0px 3px #bfbfbf;
+        -webkit-box-shadow: 0px 0px 3px #bfbfbf;
+    }
+    
+input.sort_input {
+    text-align: center;
+}
+
+.checkbox_data_row {
+    padding-top: 0px;
+    padding-right: 3px;
+    padding-left: 3px;
+    padding-bottom: 3px;
+    
+    border: 1px solid #f5f5f5;
+    
+    border-radius: 3px;
+    -moz-border-radius: 3px;    
+    -webkit-border-radius: 3px;    
+}
+
+.checkbox_data_row:hover {    
+    background: #ffffff;
+    border: 1px solid #dfdfdf;
+}
+
+.checkbox_data_row_actions {
+    font-size: 7pt;
+    float: right;
+    
+    margin-top: 3px;
+    
+    opacity: 0.45;
+    -moz-opacity: 0.45;
+    -webkit-opacity: 0.45;
+}
+
+.checkbox_data_row:hover .checkbox_data_row_actions {    
+    opacity: 1;
+    -moz-opacity: 1;
+    -webkit-opacity: 1;
+}
+
+.overview_comment_meta {
+	font-size: 8pt;
+	color: #757575;
+	padding-bottom: 3px;
+}
+
+.overview_comment_content {
+	font-size: 9pt;
+	color: #454545;
+	line-height: 12px;
+}
+
+h2 {
+    font-family: "Frutiger Linotype", "Verdana", "Sans-serif";
+    font-size: 12pt;
+    font-weight: bold;
+}
+
+	h2.overview_comment_heading {
+		font-size: 10pt;
+		margin-bottom: -5px;
+		color: #353535;
+		font-style: italic;
+	}
+
+h3 {
+    font-family: "Frutiger Linotype", "Verdana", "Sans-serif";
+    font-size: 10pt;
+    font-weight: bold;
+    
+    padding-bottom: 6px;
+    padding-left: 2px;
+}
+    

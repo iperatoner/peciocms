@@ -1,0 +1,39 @@
+<localestring id="LABEL_MENUPOINTS_CREATE">
+    <t>Create Menupoint</t>
+</localestring>
+
+<localestring id="LABEL_MENUPOINTS_EDIT">
+    <t>Edit Menupoint</t>
+</localestring>
+
+<localestring id="LABEL_MENUPOINTS_ROOT">
+    <t>Root</t>
+</localestring>
+
+<localestring id="LABEL_MENUPOINTS_TARGET">
+    <t>Target</t>
+</localestring>
+
+<localestring id="LABEL_MENUPOINTS_HOME">
+    <t>Home</t>
+</localestring>
+
+<localestring id="LABEL_MENUPOINTS_ARTICLE">
+    <t>Article</t>
+</localestring>
+
+<localestring id="LABEL_MENUPOINTS_BLOG">
+    <t>Blog</t>
+</localestring>
+
+<localestring id="LABEL_MENUPOINTS_URL">
+    <t>URL</t>
+</localestring>
+
+<localestring id="LABEL_MENUPOINTS_REALLYREMOVE">
+    <t>Do you really want to remove this menupoint?</t>
+</localestring>
+
+<localestring id="LABEL_MENUPOINTS_REALLYREMOVE_SELECTED">
+    <t>Do you really want to remove the selected menupoints?</t>
+</localestring>

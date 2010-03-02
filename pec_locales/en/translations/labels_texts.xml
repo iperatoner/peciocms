@@ -1,0 +1,35 @@
+<localestring id="LABEL_TEXTS_CREATE">
+    <t>Create Text</t>
+</localestring>
+
+<localestring id="LABEL_TEXTS_EDIT">
+    <t>Edit Text</t>
+</localestring>
+
+<localestring id="LABEL_TEXTS_VISIBILITY">
+    <t>Visibility</t>
+</localestring>
+
+<localestring id="LABEL_TEXTS_EVERYWHERE">
+    <t>Everywhere</t>
+</localestring>
+
+<localestring id="LABEL_TEXTS_ALLARTICLES">
+    <t>All articles</t>
+</localestring>
+
+<localestring id="LABEL_TEXTS_BLOG">
+    <t>Blog</t>
+</localestring>
+
+<localestring id="LABEL_TEXTS_SPECIFICARTICLES">
+    <t>Specific articles</t>
+</localestring>
+
+<localestring id="LABEL_TEXTS_REALLYREMOVE">
+    <t>Do you really want to remove this text?</t>
+</localestring>
+
+<localestring id="LABEL_TEXTS_REALLYREMOVE_SELECTED">
+    <t>Do you really want to remove the selected texts?</t>
+</localestring>

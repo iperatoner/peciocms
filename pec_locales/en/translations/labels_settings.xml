@@ -1,0 +1,47 @@
+<localestring id="LABEL_SETTINGS_MAINTITLE">
+    <t>Main title</t>
+</localestring>
+
+<localestring id="LABEL_SETTINGS_SUBTITLE">
+    <t>Sub title</t>
+</localestring>
+
+<localestring id="LABEL_SETTINGS_ADMINEMAIL">
+    <t>Admin Email</t>
+</localestring>
+
+<localestring id="LABEL_SETTINGS_DESCRIPTION">
+    <t>Description</t>
+</localestring>
+
+<localestring id="LABEL_SETTINGS_TAGS">
+    <t>Tags</t>
+</localestring>
+
+<localestring id="LABEL_SETTINGS_LANGUAGE">
+    <t>Language</t>
+</localestring>
+
+<localestring id="LABEL_SETTINGS_URLTYPE">
+    <t>URL Type</t>
+</localestring>
+
+<localestring id="LABEL_SETTINGS_URLTYPE_DEFAULT">
+    <t>Default (using IDs)</t>
+</localestring>
+
+<localestring id="LABEL_SETTINGS_URLTYPE_HUMAN">
+    <t>Human readable (using Slugs)</t>
+</localestring>
+
+<localestring id="LABEL_SETTINGS_URLTYPE_REWRITE">
+    <t>Rewrite (using Slugs)</t>
+</localestring>
+
+<localestring id="LABEL_SETTINGS_POSTSPERPAGE">
+    <t>Blogposts per Page</t>
+</localestring>
+
+<localestring id="LABEL_SETTINGS_BLOGONSTART">
+    <t>Blog on Start</t>
+</localestring>

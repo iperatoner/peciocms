@@ -1,0 +1,59 @@
+<localestring id="LABEL_POSTS_CREATE">
+    <t>Create Post</t>
+</localestring>
+
+<localestring id="LABEL_POSTS_EDIT">
+    <t>Edit Post</t>
+</localestring>
+
+<localestring id="LABEL_POSTS_INTRODUCTION">
+    <t>Introduction</t>
+</localestring>
+
+<localestring id="LABEL_POSTS_MAINTEXT">
+    <t>Main text</t>
+</localestring>
+
+<localestring id="LABEL_POSTS_OPTIONS">
+    <t>Options</t>
+</localestring>
+
+<localestring id="LABEL_POSTS_TAGS">
+    <t>Tags</t>
+</localestring>
+
+<localestring id="LABEL_POSTS_CATEGORIES">
+    <t>Categories</t>
+</localestring>
+
+<localestring id="LABEL_POSTS_DATE">
+    <t>Date</t>
+</localestring>
+
+<localestring id="LABEL_POSTS_AUTHOR">
+    <t>Author</t>
+</localestring>
+
+<localestring id="LABEL_POSTS_PUBLIC">
+    <t>Public</t>
+</localestring>
+
+<localestring id="LABEL_POSTS_PUBLISHED">
+    <t>Public?</t>
+</localestring>
+
+<localestring id="LABEL_POSTS_EDITCATEGORY">
+    <t>Edit the name of this category:</t>
+</localestring>
+
+<localestring id="LABEL_POSTS_CATEGORY_REALLYREMOVE">
+    <t>Do you really want to remove this category?</t>
+</localestring>
+
+<localestring id="LABEL_POSTS_REALLYREMOVE">
+    <t>Do you really want to remove this post?</t>
+</localestring>
+
+<localestring id="LABEL_POSTS_REALLYREMOVE_SELECTED">
+    <t>Do you really want to remove the selected posts?</t>
+</localestring>

@@ -1,0 +1,116 @@
+div#menu {
+    float: left;
+    width: 655px;
+}
+
+div#search {    
+    float: right;
+    width: 295px;
+    padding-top: 2px;    
+}
+
+/* menu */
+
+ul.menu0 {
+    list-style-type: none;
+    margin-top: 4px;
+    margin-left: 10px;
+}
+
+ul.menu0 li {
+    float: left;
+    padding-left: 8px;
+    padding-right: 8px;
+    padding-top: 2px;
+    padding-bottom: 10px;
+    
+    margin-right: 2px;
+    
+    -moz-border-radius-topleft: 4px;
+    -webkit-border-radius-topleft: 4px;
+    -khtml-border-radius-topleft: 4px;
+    -o-border-radius-topleft: 4px;
+    border-radius-topleft: 4px;
+
+    -moz-border-radius-topright: 4px;
+    -webkit-border-radius-topright: 4px;
+    -khtml-border-radius-topright: 4px;
+    -o-border-radius-topright: 4px;
+    border-radius-topright: 4px;
+}
+
+ul.menu0 li.active0 {
+    background: #ffffff;
+}
+
+ul.menu0 li.active0 a {
+    color: #575757;
+}
+
+ul.menu0 li a {
+    color: #787878;
+    text-decoration: none;
+    font-size: 7pt;
+}
+
+ul.menu0 li:hover a {
+    color: #141414;
+}
+
+ul.menu0 li:hover ul {
+    display: block;
+}
+
+ul.menu0 li ul {
+    position: absolute;
+    display: none;
+    list-style-type: none;
+    
+    width: 138px;
+    margin-left: -5px;
+    margin-top: 7px;
+    border: 2px solid #686868;
+    
+    background: #686868;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    -khtml-border-radius: 3px;
+    -o-border-radius: 3px;
+    border-radius: 3px;
+    opacity: 0.9;
+    -moz-opacity: 0.9;
+    filter: Alpha(opacity=90);
+}
+
+ul.menu0 li ul li {
+    clear: left;
+    width: 130px;
+    
+    padding-top: 1px;
+    padding-bottom: 2px;
+    padding-right: 2px;
+    padding-left: 4px;
+    
+    border: 1px solid #686868;
+    
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    -khtml-border-radius: 3px;
+    -o-border-radius: 3px;
+    border-radius: 3px;
+}
+
+ul.menu0 li ul li a {
+    color: #ffffff !important;
+}
+
+ul.menu0 li ul li:hover a {
+    color: #ffffff !important;
+}
+
+ul.menu0 li ul li:hover {
+    width: 130px;
+    
+    background: #878787;
+    border-color: #bfbfbf;
+}

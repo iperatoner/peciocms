@@ -1,0 +1,65 @@
+<localestring id="FIRST_ARTICLE_TITLE">
+    <t>Home</t>
+</localestring>
+
+<localestring id="FIRST_ARTICLE_CONTENT">
+    <t>This is the first article. It is assigned to the start page.</t>
+</localestring>
+
+
+<localestring id="FIRST_MENUPOINT_NAME">
+    <t>Home</t>
+</localestring>
+
+<localestring id="SECOND_MENUPOINT_NAME">
+    <t>Blog</t>
+</localestring>
+
+
+<localestring id="FIRST_TEXT_TITLE">
+    <t>Example text</t>
+</localestring>
+
+<localestring id="FIRST_TEXT_CONTENT">
+    <t>This is an example sidebar text which is visible everywhere on this site.</t>
+</localestring>
+
+
+<localestring id="FIRST_LINKCAT_NAME">
+    <t>Some links</t>
+</localestring>
+
+
+<localestring id="FIRST_BLOGCAT_NAME">
+    <t>General</t>
+</localestring>
+
+<localestring id="FIRST_BLOGTAG_NAME">
+    <t>Something</t>
+</localestring>
+
+
+<localestring id="FIRST_BLOGPOST_TITLE">
+    <t>First Blog Entry</t>
+</localestring>
+
+<localestring id="FIRST_BLOGPOST_CONTENT_CUT">
+    <t>A summary of this entry.</t>
+</localestring>
+
+<localestring id="FIRST_BLOGPOST_CONTENT">
+    <t>This is the first entry of the blog in your new website.</t>
+</localestring>
+
+
+<localestring id="FIRST_BLOGCOMMENT_TITLE">
+    <t>First Comment</t>
+</localestring>
+
+<localestring id="FIRST_BLOGCOMMENT_AUTHOR">
+    <t>Server</t>
+</localestring>
+
+<localestring id="FIRST_BLOGCOMMENT_CONTENT">
+    <t>The first comment on the first blogpost.</t>
+</localestring>

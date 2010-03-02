@@ -1,0 +1,27 @@
+<localestring id="LABEL_ARTICLES_ONSTART">
+    <t>On Start?</t>
+</localestring>
+
+<localestring id="LABEL_ARTICLES_CREATE">
+    <t>Create Article</t>
+</localestring>
+
+<localestring id="LABEL_ARTICLES_EDIT">
+    <t>Edit Article</t>
+</localestring>
+
+<localestring id="LABEL_ARTICLES_OPTIONS">
+    <t>Options</t>
+</localestring>
+
+<localestring id="LABEL_ARTICLES_DISPLAY_ONSTART">
+    <t>Display on start page</t>
+</localestring>
+
+<localestring id="LABEL_ARTICLES_REALLYREMOVE">
+    <t>Do you really want to remove this article?</t>
+</localestring>
+
+<localestring id="LABEL_ARTICLES_REALLYREMOVE_SELECTED">
+    <t>Do you really want to remove the selected articles?</t>
+</localestring>

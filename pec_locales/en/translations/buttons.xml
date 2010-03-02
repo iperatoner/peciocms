@@ -1,0 +1,103 @@
+<localestring id="BUTTON_SEND">
+	<t>Send</t>
+</localestring>
+
+<localestring id="BUTTON_LOGIN">
+	<t>Login</t>
+</localestring>
+
+<localestring id="BUTTON_UPDATE">
+	<t>Update</t>
+</localestring>
+
+<localestring id="BUTTON_SAVE">
+	<t>Save</t>
+</localestring>
+
+<localestring id="BUTTON_APPLY">
+	<t>Apply</t>
+</localestring>
+
+<localestring id="BUTTON_CANCEL">
+	<t>Cancel</t>
+</localestring>
+
+<localestring id="BUTTON_ADD">
+	<t>Add</t>
+</localestring>
+
+<localestring id="BUTTON_EDIT">
+	<t>Edit</t>
+</localestring>
+
+<localestring id="BUTTON_REMOVE">
+	<t>Remove</t>
+</localestring>
+
+<localestring id="BUTTON_SORT">
+	<t>Sort</t>
+</localestring>
+
+<localestring id="BUTTON_ACTIVATE">
+	<t>Activate</t>
+</localestring>
+
+<localestring id="BUTTON_CHANGE">
+	<t>Change</t>
+</localestring>
+
+<localestring id="BUTTON_INSTALL">
+	<t>Install</t>
+</localestring>
+
+<localestring id="BUTTON_UNINSTALL">
+	<t>Uninstall</t>
+</localestring>
+
+<localestring id="BUTTON_NEXT">
+	<t>Next</t>
+</localestring>
+
+<localestring id="BUTTON_PREV">
+	<t>Previous</t>
+</localestring>
+
+<localestring id="BUTTON_GOTO_LOGIN">
+	<t>Go to Login</t>
+</localestring>
+
+<localestring id="BUTTON_SEARCH">
+	<t>Search</t>
+</localestring>
+
+<localestring id="BUTTON_NEW_ARTICLE">
+	<t>Create new Article</t>
+</localestring>
+
+<localestring id="BUTTON_NEW_TEXT">
+	<t>Create new Text</t>
+</localestring>
+
+<localestring id="BUTTON_NEW_LINKCATEGORY">
+	<t>Create new Category</t>
+</localestring>
+
+<localestring id="BUTTON_NEW_LINK">
+	<t>Create new Link</t>
+</localestring>
+
+<localestring id="BUTTON_NEW_MENUPOINT">
+	<t>Create new Menupoint</t>
+</localestring>
+
+<localestring id="BUTTON_NEW_BLOGPOST">
+	<t>Create new Post</t>
+</localestring>
+
+<localestring id="BUTTON_NEW_USER">
+	<t>Create new User</t>
+</localestring>
+
+<localestring id="BUTTON_NEW_NOSPAM_KEYS">
+	<t>Generate new Nospam keys</t>
+</localestring>

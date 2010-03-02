@@ -1,0 +1,19 @@
+<localestring id="LABEL_LOGIN_TITLE">
+    <t>Login</t>
+</localestring>
+
+<localestring id="LABEL_LOGIN_USERNAME">
+    <t>Username</t>
+</localestring>
+
+<localestring id="LABEL_LOGIN_PASSWORD">
+    <t>Password</t>
+</localestring>
+
+<localestring id="LABEL_LOGIN_BACKTOSITE">
+    <t>Back to Homepage</t>
+</localestring>
+
+<localestring id="LABEL_LOGIN_BACKTOLOGIN">
+    <t>Back to Login</t>
+</localestring>

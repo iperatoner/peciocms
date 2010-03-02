@@ -1,0 +1,1 @@
+<span class="search_entry_highlight"><strong>{%STRING%}</strong></span>

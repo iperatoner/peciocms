@@ -1,0 +1,189 @@
+<localestring id="LABEL_GENERAL_HOME">
+    <t>Home</t>
+</localestring>
+
+<localestring id="LABEL_GENERAL_CONTENT">
+    <t>Content</t>
+</localestring>
+
+<localestring id="LABEL_GENERAL_BLOG">
+    <t>Blog</t>
+</localestring>
+
+<localestring id="LABEL_GENERAL_ADMINISTRATION">
+    <t>Administration</t>
+</localestring>
+
+<localestring id="LABEL_GENERAL_PLUGINS">
+    <t>Plugins</t>
+</localestring>
+
+<localestring id="LABEL_GENERAL_PLUGIN">
+    <t>Plugin</t>
+</localestring>
+
+<localestring id="LABEL_GENERAL_ARTICLES">
+    <t>Articles</t>
+</localestring>
+
+<localestring id="LABEL_GENERAL_ARTICLE">
+    <t>Article</t>
+</localestring>
+
+<localestring id="LABEL_GENERAL_TEXTS">
+    <t>Texts</t>
+</localestring>
+
+<localestring id="LABEL_GENERAL_TEXT">
+    <t>Text</t>
+</localestring>
+
+<localestring id="LABEL_GENERAL_LINKS">
+    <t>Links</t>
+</localestring>
+
+<localestring id="LABEL_GENERAL_LINK">
+    <t>Link</t>
+</localestring>
+
+<localestring id="LABEL_GENERAL_LINKCATEGORIES">
+    <t>Linkcategories</t>
+</localestring>
+
+<localestring id="LABEL_GENERAL_LINKCATEGORY">
+    <t>Linkcategory</t>
+</localestring>
+
+<localestring id="LABEL_GENERAL_MENUPOINTS">
+    <t>Menupoints</t>
+</localestring>
+
+<localestring id="LABEL_GENERAL_MENUPOINT">
+    <t>Menupoint</t>
+</localestring>
+
+<localestring id="LABEL_GENERAL_POSTS">
+    <t>Posts</t>
+</localestring>
+
+<localestring id="LABEL_GENERAL_POST">
+    <t>Post</t>
+</localestring>
+
+<localestring id="LABEL_GENERAL_BLOGPOSTS">
+    <t>Blogposts</t>
+</localestring>
+
+<localestring id="LABEL_GENERAL_BLOGPOST">
+    <t>Blogpost</t>
+</localestring>
+
+<localestring id="LABEL_GENERAL_TAG">
+    <t>Tag</t>
+</localestring>
+
+<localestring id="LABEL_GENERAL_BLOGTAG">
+    <t>Blogtag</t>
+</localestring>
+
+<localestring id="LABEL_GENERAL_CATEGORY">
+    <t>Category</t>
+</localestring>
+
+<localestring id="LABEL_GENERAL_BLOGCATEGORY">
+    <t>Blogcategory</t>
+</localestring>
+
+<localestring id="LABEL_GENERAL_COMMENTS">
+    <t>Comments</t>
+</localestring>
+
+<localestring id="LABEL_GENERAL_COMMENT">
+    <t>Comment</t>
+</localestring>
+
+<localestring id="LABEL_GENERAL_BLOGCOMMENTS">
+    <t>Blogcomments</t>
+</localestring>
+
+<localestring id="LABEL_GENERAL_BLOGCOMMENT">
+    <t>Blogcomment</t>
+</localestring>
+
+<localestring id="LABEL_GENERAL_USERS">
+    <t>Users</t>
+</localestring>
+
+<localestring id="LABEL_GENERAL_USER">
+    <t>User</t>
+</localestring>
+
+<localestring id="LABEL_GENERAL_TEMPLATES">
+    <t>Templates</t>
+</localestring>
+
+<localestring id="LABEL_GENERAL_TEMPLATE">
+    <t>Template</t>
+</localestring>
+
+<localestring id="LABEL_GENERAL_SETTINGS">
+    <t>Settings</t>
+</localestring>
+
+<localestring id="LABEL_GENERAL_SETTING">
+    <t>Setting</t>
+</localestring>
+
+
+
+<localestring id="LABEL_GENERAL_TITLE">
+    <t>Title</t>
+</localestring>
+
+<localestring id="LABEL_GENERAL_NAME">
+    <t>Name</t>
+</localestring>
+
+<localestring id="LABEL_GENERAL_SORT">
+    <t>Sort</t>
+</localestring>
+
+<localestring id="LABEL_GENERAL_SLUG">
+    <t>Slug</t>
+</localestring>
+
+<localestring id="LABEL_GENERAL_URL">
+    <t>URL</t>
+</localestring>
+
+<localestring id="LABEL_GENERAL_WELCOMETITLE">
+    <t>pecio cms {%VERSION%}</t>
+</localestring>
+
+<localestring id="LABEL_GENERAL_WELCOMETEXT">
+    <t>Welcome to pecio cms {%VERSION%}!</t>
+</localestring>
+
+<localestring id="LABEL_GENERAL_WELCOME">
+    <t>Welcome, {%USER%}!</t>
+</localestring>
+
+<localestring id="LABEL_GENERAL_AREADENIED_TITLE">
+    <t>Access Denied</t>
+</localestring>
+
+<localestring id="LABEL_GENERAL_AREADENIED_TEXT">
+    <t>You have not the permission to access this area.</t>
+</localestring>
+
+<localestring id="LABEL_GENERAL_READONLY">
+    <t>Read-only</t>
+</localestring>
+
+<localestring id="LABEL_GENERAL_VIEWSITE">
+    <t>View website</t>
+</localestring>
+
+<localestring id="LABEL_GENERAL_LOGOUT">
+    <t>Logout</t>
+</localestring>

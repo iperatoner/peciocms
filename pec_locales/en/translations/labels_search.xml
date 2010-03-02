@@ -1,0 +1,23 @@
+<localestring id="LABEL_SEARCH_RESULT_TITLE">
+    <t>Searchresults</t>
+</localestring>
+
+<localestring id="LABEL_SEARCH_RESULT_TEXT">
+    <t>Searchresults for "{%TERM%}"</t>
+</localestring>
+
+<localestring id="LABEL_SEARCH_IN_ARTICLES_TITLE">
+    <t>Found in Articles</t>
+</localestring>
+
+<localestring id="LABEL_SEARCH_IN_ARTICLES_NOTHINGFOUND">
+    <t>Nothing found in Articles.</t>
+</localestring>
+
+<localestring id="LABEL_SEARCH_IN_POSTS_TITLE">
+    <t>Found in Blogposts</t>
+</localestring>
+
+<localestring id="LABEL_SEARCH_IN_POSTS_NOTHINGFOUND">
+    <t>Nothing found in Blogposts</t>
+</localestring>
