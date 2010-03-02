@@ -189,14 +189,6 @@ function view_default() {
 	    			<tbody>
 	    				<tr class="view_row">
 	    					<td class="normal_column medium_column">
-	    						' . $pec_localization->get('LABEL_OVERVIEW_STATS_ONLINE') . ':
-	    					</td>
-	    					<td class="normal_column">
-	    						' . $counter_data['online'] . '
-	    					</td>
-	    				</tr>
-	    				<tr class="view_row">
-	    					<td class="normal_column medium_column">
 	    						' . $pec_localization->get('LABEL_OVERVIEW_STATS_TODAY') . ':
 	    					</td>
 	    					<td class="normal_column">

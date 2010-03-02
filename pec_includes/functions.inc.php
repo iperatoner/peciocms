@@ -143,7 +143,7 @@ function define_constants($relative_directory_level=0, $directory='') {
     define('PEC_UPDATE_FILE', pec_root_path() . 'pec_admin/pec_update/update-cms.inc.php');
     
     define('COUNTER_FILE', pec_root_path() . 'counter.txt');
-    define('COUNTER_IP_EXPIRE', 260000);
+    define('COUNTER_IP_EXPIRE', 86400);
 }
 
 /**

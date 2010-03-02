@@ -9,7 +9,7 @@
  * 
 */
 
-function count_site_visit() {
+function count_site_visit($from_admin_overview=false) {
 	if (file_exists(COUNTER_FILE)) {
 		$ignore = false;
 		$current_agent = (isset($_SERVER['HTTP_USER_AGENT'])) ? addslashes(trim($_SERVER['HTTP_USER_AGENT'])) : "no agent";
@@ -110,7 +110,9 @@ function count_site_visit() {
 				// speichern und aufräumen und anzahl der online leute bestimmten
 			 
 				$online = 1;
-			 
+			 	
+				
+				
 				// daten schreiben
 				$fp = fopen(COUNTER_FILE,"w+");
 				if ($fp) {
@@ -169,18 +171,30 @@ function get_counter_data() {
 		// day
 		$day_data = explode(":", $day_arr);
 		$day = $day_data[1];
+		if ($day_data[0] != date("z")) {
+			$day = 0;
+		}
 		
 		// week
 		$week_data = explode(":", $week_arr);
 		$week = $week_data[1];
+		if ($week_data[0] != date("W")) {
+			$week = 0;
+		}
 		
 		// month
 		$month_data = explode(":", $month_arr);
 		$month = $month_data[1];
+		if ($month_data[0] != date("n")) {
+			$month = 0;
+		}
 		
 		// year
 		$year_data = explode(":", $year_arr);
 		$year = $year_data[1];
+		if ($year_data[0] != date("Y")) {
+			$year = 0;
+		}
 		
 		$record_time = trim($record_time);
 		$online = sizeof($c_file) - 1;
