@@ -35,9 +35,24 @@ class PecLocale {
         // load all xml localestring files and append their content to one another
         $inner_xml_data = '';        
         foreach (scandir(LOCALE_PATH . $language . '/translations/') as $filename) {
+            // language file must not be a directory
         	if (!is_dir(LOCALE_PATH . $language . '/translations/' . $filename) && str_ends_with($filename, '.xml')) {
 	        	$inner_xml_data .= file_get_contents(LOCALE_PATH . $language . '/translations/' . $filename);
         	}
+        }
+
+        // load plugin xml localestring files and append their content to everything else
+        $plugins = PecPlugin::load('locale_enabled', true, true);
+        foreach ($plugins as $p) {
+            foreach (scandir($p->get_directory_path() . $p->get_property('locale_directory') . '/' . $language) as $filename) {
+                // language file must not be a directory
+                if (!is_dir($p->get_directory_path() . $p->get_property('locale_directory') . '/' . $language . '/' . $filename) && 
+                    str_ends_with($filename, '.xml')) {
+                    $inner_xml_data .= file_get_contents(
+                        $p->get_directory_path() . $p->get_property('locale_directory') . '/' . $language . '/' . $filename
+                    );
+                }
+            }
         }
         
         // load layout of the xml locale file and replace the string var with the loaded locale strings

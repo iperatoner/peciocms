@@ -34,9 +34,11 @@ class PecPlugin {
         "author", 
         "author_email", 
         "year", 
-        "license", 
+        "license",
+        "locale_enabled",
+        "locale_directory",
         "variable", 
-        "input_enabled", 
+        "input_enabled",
         "installation_required", 
         "main_file",  
         "area_file", 
@@ -111,20 +113,26 @@ class PecPlugin {
                		  PLUGIN_PATH . $this->plugin_directory_name . '/' . PLUGIN_UNINSTALLED_FILE);
     }
     
-    public static function load($by='area_name', $data='') {
+    public static function load($by='area_name', $data='', $force_array=false) {
         if ($by && $data && in_array($by, self::$by_properties)) {
-            $plugins = self::load();
-            $plugin = false;
+            $all_plugins = self::load();
+            $plugins = array();
             
-            // check which plugin shall be loaded
-            foreach ($plugins as $p) {
+            // check which plugins shall be loaded
+            foreach ($all_plugins as $p) {
                 if ($p->get_property($by) == $data) {
-                    $plugin = $p;
-                    break;
+                    $plugins[] = $p;
                 }
             }
+
+            if (count($plugins) == 1 && !$force_array) {
+                $return_data = $plugins[0];
+            }
+            else {
+                $return_data = $plugins;
+            }
             
-            return $plugin;
+            return $return_data;
         }
         else {
             $filenames = scandir(PLUGIN_PATH);
