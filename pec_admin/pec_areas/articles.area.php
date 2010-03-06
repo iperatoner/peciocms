@@ -182,6 +182,11 @@ function view_edit() {
     
     $area_data['content'] = '
         <form method="post" action="' . AREA . '&amp;view=default&amp;action=' . $action . $id_query_var . '" id="articles_edit_form" />
+
+            <h3 style="float: left; font-size: 8pt;">Permalink:</h3> <a style="float: left; margin-left: 5px; font-size: 8pt;" href="' . create_article_url($article) . '" target="_blank">' . create_article_url($article) . '</a>
+
+            <div style="clear: left; height: 10px;"></div>
+
             <h3>' . $pec_localization->get('LABEL_GENERAL_TITLE') . ':</h3>
             <input type="text" size="75" name="article_title" id="article_title" value="' . $article->get_title() . '" />
             <br /><br />

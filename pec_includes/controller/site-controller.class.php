@@ -90,6 +90,8 @@ class PecSiteController {
         $this->current_blogcategory = false;
         $this->current_blogtag = false;
         
+        $this->template_resource = new PecTemplateResource($this->settings, $this->template, $this->site_view, $this->sub_site_view);        
+
         $this->load_object();
         $this->plugins = PecPlugin::load();
         
@@ -100,8 +102,6 @@ class PecSiteController {
             $this->current_view_data, $this->articles_on_start, $this->current_article, $this->current_blogpost,
             $this->current_blogcategory, $this->current_blogtag, $this->plugins
         );
-        
-        $this->template_resource = new PecTemplateResource($this->settings, $this->template, $this->site_view, $this->sub_site_view);
         
         $this->pec_localization = $pec_localization;
     }

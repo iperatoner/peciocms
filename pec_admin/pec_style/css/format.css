@@ -58,8 +58,8 @@ input[type=button], input[type=submit], input[type=reset] {
 }
 
     input[type=button]:hover, input[type=submit]:hover, input[type=reset]:hover {
-        background: #f2f2f2;
-        box-shadow: 
+        background: #fafafa;
+/*        box-shadow: 
             0px 0px 3px #bfbfbf,
             inset 0px -17px 20px -10px #d0d0d0,
             inset 0px 17px 20px -10px #f4f4f4;
@@ -70,7 +70,7 @@ input[type=button], input[type=submit], input[type=reset] {
         -webkit-box-shadow: 
             0px 0px 3px #bfbfbf,
             inset 0px -17px 20px -10px #d0d0d0,
-            inset 0px 17px 20px -10px #f4f4f4;
+            inset 0px 17px 20px -10px #f4f4f4;*/
     }
 
     input[type=button]:active, input[type=submit]:active, input[type=reset]:active {

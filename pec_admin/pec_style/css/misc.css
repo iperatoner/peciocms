@@ -78,7 +78,7 @@ div.link_category_wrapper {
 div.link_category_head {
     padding: 15px;
     
-    background: #efefef;
+    background: #efefef url(../images/link-cat-head-bg.png) repeat-x;
     border: 1px solid #c8c8c8;
     
     border-radius: 5px;
@@ -86,15 +86,12 @@ div.link_category_head {
     -webkit-border-radius: 5px;
     
     text-shadow: 1px 1px 6px #898989;
-    box-shadow:
-        /*inset 0px 17px 40px -10px #efefef,*/
+    /*box-shadow:
         inset 0px -17px 50px -10px #c4c4c4;
     -moz-box-shadow:
-        /*inset 0px 17px 40px -10px #efefef,*/
         inset 0px -17px 50px -10px #c4c4c4;
     -webkit-box-shadow:
-        /*inset 0px 17px 40px -10px #efefef,*/
-        inset 0px -17px 50px -10px #c4c4c4;
+        inset 0px -17px 50px -10px #c4c4c4;*/
     
     margin-bottom: 10px;
 }

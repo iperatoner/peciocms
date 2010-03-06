@@ -292,6 +292,11 @@ function view_edit() {
     
     $area_data['content'] = '
         <form method="post" action="' . AREA . '&ampview=default&amp;action=' . $action . $id_query_var . '" id="posts_edit_form" />
+
+            <h3 style="float: left; font-size: 8pt;">Permalink:</h3> <a style="float: left; margin-left: 5px; font-size: 8pt;" href="' . create_blogpost_url($post) . '" target="_blank">' . create_blogpost_url($post) . '</a>
+
+            <div style="clear: left; height: 10px;"></div>
+
             <h3>' . $pec_localization->get('LABEL_GENERAL_TITLE') . ':</h3>
             <input type="text" size="75" name="post_title" id="post_title" value="' . $post->get_title() . '" />
             <br /><br />
