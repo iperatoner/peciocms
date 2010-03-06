@@ -30,20 +30,20 @@ input[type=radio] {
 }    
 
 input[type=button], input[type=submit], input[type=reset] {
-    padding: 4px;
+    padding: 3px;
     
     font-family: "Frutiger Linotype", "Verdana", "Sans-serif";
     font-size: 8pt;
     /*text-shadow: 1px 1px 5px #9a9a9a;*/
     
-    background: #eaeaea;
-    border: 1px solid #f6f6f6;
+    background: #eaeaea url(../images/button-normal.png) repeat-x;
+    border: 1px solid #bfbfbf;
     
     border-radius: 5px;
     -moz-border-radius: 5px;
     -webkit-border-radius: 5px;
     
-    box-shadow: 
+    /*box-shadow: 
         0px 0px 3px #cacaca,
         inset 0px -17px 20px -10px #cacaca,
         inset 0px 17px 20px -10px #efefef;    
@@ -54,12 +54,13 @@ input[type=button], input[type=submit], input[type=reset] {
     -webkit-box-shadow: 
         0px 0px 3px #cacaca,
         inset 0px -17px 20px -10px #cacaca,
-        inset 0px 17px 20px -10px #efefef;
+        inset 0px 17px 20px -10px #efefef;*/
 }
 
     input[type=button]:hover, input[type=submit]:hover, input[type=reset]:hover {
-        background: #fafafa;
-/*        box-shadow: 
+        background: #dfdfdf;
+
+        /*box-shadow: 
             0px 0px 3px #bfbfbf,
             inset 0px -17px 20px -10px #d0d0d0,
             inset 0px 17px 20px -10px #f4f4f4;
@@ -75,7 +76,8 @@ input[type=button], input[type=submit], input[type=reset] {
 
     input[type=button]:active, input[type=submit]:active, input[type=reset]:active {
         background: #f2f2f2;
-        box-shadow: 
+
+        /*box-shadow: 
             0px 0px 3px #bfbfbf,
             inset 0px 17px 20px -10px #d6d6d6,
             inset 0px -17px 20px -10px #f4f4f4;
@@ -86,12 +88,12 @@ input[type=button], input[type=submit], input[type=reset] {
         -webkit-box-shadow: 
             0px 0px 3px #bfbfbf,
             inset 0px 17px 20px -10px #d6d6d6,
-            inset 0px -17px 20px -10px #f4f4f4;
+            inset 0px -17px 20px -10px #f4f4f4;*/
     }
 
 input[type=text], input[type=password], textarea {
     font-family: "Frutiger Linotype", "Verdana", "Sans-serif";
-    padding: 5px;
+    padding: 3px;
     
     font-family: "Frutiger Linotype", "Verdana", "Sans-serif";
     font-size: 8pt;
@@ -104,9 +106,9 @@ input[type=text], input[type=password], textarea {
     -moz-border-radius: 5px;
     -webkit-border-radius: 5px;
     
-    box-shadow: 0px 0px 3px #e2e2e2;
+/*    box-shadow: 0px 0px 3px #e2e2e2;
     -moz-box-shadow: 0px 0px 3px #e2e2e2;
-    -webkit-box-shadow: 0px 0px 3px #e2e2e2;
+    -webkit-box-shadow: 0px 0px 3px #e2e2e2;*/
 }
 
     input[type=text]:hover, input[type=password]:hover, textarea:hover {        
