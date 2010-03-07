@@ -19,7 +19,7 @@
  * @author		Immanuel Peratoner <immanuel.peratoner@gmail.com>
  * @copyright	2009-2010 Immanuel Peratoner
  * @license		http://www.gnu.de/documents/gpl-3.0.en.html GNU GPLv3
- * @version		2.0.1
+ * @version		2.0.2
  * @link		http://pecio-cms.com
  */
 
@@ -31,10 +31,11 @@
  * @param	string 	$directory: Current relative directory path up from the root directory, e.g. "pec_admin/pec_ajax"
  */
 function define_constants($relative_directory_level=0, $directory='') {
-    define('PEC_VERSION', '2.0.1');
+    define('PEC_VERSION', '2.0.2');
     define('PEC_SESSION_NAME', 'pec_session');
     
-    define('DEFAULT_TEMPLATE_NAME', 'Nova Blue');
+    define('DEFAULT_TEMPLATE_NAME', 'Nova Blue');    
+    define('DEFAULT_LOCALE', 'en');
     
     define('MESSAGE_INFO', 1);
     define('MESSAGE_WARNING', 2);
@@ -99,6 +100,10 @@ function define_constants($relative_directory_level=0, $directory='') {
     define('TEMPLATE_PATH', pec_root_path() . 'pec_templates/');
     define('PLUGIN_PATH', pec_root_path() . 'pec_plugins/');
     define('LOCALE_PATH', pec_root_path() . 'pec_locales/');
+    
+    define('TEMPLATE_PATH_NC', pec_root_path(false) . 'pec_templates/');
+    define('PLUGIN_PATH_NC', pec_root_path(false) . 'pec_plugins/');
+    define('LOCALE_PATH_NC', pec_root_path(false) . 'pec_locales/');
     
     define('TEMPLATE_META_FILE', 'template_meta.inc.php');
     define('PLUGIN_META_FILE', 'plugin_meta.inc.php');

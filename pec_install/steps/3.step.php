@@ -6,7 +6,15 @@
 
 $url_type_select_options = '';
 foreach (array(URL_TYPE_DEFAULT, URL_TYPE_HUMAN, URL_TYPE_REWRITE) as $url_type) {
-	$url_type_select_options .= '<option value="' . $url_type . '">' . $url_type . '</option>';
+	
+    // Choosing the correct Label for the <select>-Entry
+    switch ($url_type) {
+        case URL_TYPE_DEFAULT: $url_type_label = $pec_localization->get('LABEL_SETTINGS_URLTYPE_DEFAULT'); break;
+        case URL_TYPE_HUMAN: $url_type_label = $pec_localization->get('LABEL_SETTINGS_URLTYPE_HUMAN'); break;
+        case URL_TYPE_REWRITE: $url_type_label = $pec_localization->get('LABEL_SETTINGS_URLTYPE_REWRITE'); break;
+    }
+    
+	$url_type_select_options .= '<option value="' . $url_type . '">' . $url_type_label . '</option>';
 }
 
 ?>
@@ -23,7 +31,7 @@ foreach (array(URL_TYPE_DEFAULT, URL_TYPE_HUMAN, URL_TYPE_REWRITE) as $url_type)
 	<input type="text" name="setting_admin_email" value="" style="width: 210px;" /><br /><br />
 	
 	<h3><?php echo $pec_localization->get('LABEL_SETTINGS_URLTYPE'); ?>:</h3>
-	<select name="setting_url_type" style="width: 100px;">
+	<select name="setting_url_type" style="width: 220px;">
 		<?php echo $url_type_select_options; ?>
 	</select>
 	<br /><br /><br />

@@ -1,0 +1,39 @@
+<localestring id="LABEL_MENUPOINTS_CREATE">
+    <t>neuer Menüpunkt</t>
+</localestring>
+
+<localestring id="LABEL_MENUPOINTS_EDIT">
+    <t>Menüpunkt bearbeiten</t>
+</localestring>
+
+<localestring id="LABEL_MENUPOINTS_ROOT">
+    <t>Root</t>
+</localestring>
+
+<localestring id="LABEL_MENUPOINTS_TARGET">
+    <t>Ziel</t>
+</localestring>
+
+<localestring id="LABEL_MENUPOINTS_HOME">
+    <t>Home</t>
+</localestring>
+
+<localestring id="LABEL_MENUPOINTS_ARTICLE">
+    <t>Artikel</t>
+</localestring>
+
+<localestring id="LABEL_MENUPOINTS_BLOG">
+    <t>News</t>
+</localestring>
+
+<localestring id="LABEL_MENUPOINTS_URL">
+    <t>URL</t>
+</localestring>
+
+<localestring id="LABEL_MENUPOINTS_REALLYREMOVE">
+    <t>Diesen Menüpunkt endgültig löschen?</t>
+</localestring>
+
+<localestring id="LABEL_MENUPOINTS_REALLYREMOVE_SELECTED">
+    <t>Die markierten Menüpunkte endgültig löschen?</t>
+</localestring>

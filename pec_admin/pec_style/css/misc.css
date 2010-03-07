@@ -14,9 +14,9 @@ div.message_info {
     
     border: 1px solid #ea9a5a;
     
-    border-radius: 5px;
-    -moz-border-radius: 5px;
-    -webkit-border-radius: 5px;
+    border-radius: 4px;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
 
     color: #983b22;
     cursor: pointer;
@@ -34,9 +34,9 @@ div.message_warning {
     
     border: 1px solid #f57a5f;
     
-    border-radius: 5px;
-    -moz-border-radius: 5px;
-    -webkit-border-radius: 5px;
+    border-radius: 4px;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
     
     color: #9f2412;
     cursor: pointer;
@@ -52,9 +52,9 @@ div.options_box_1 {
     background: #efefef;
     border: 1px solid #dfdfdf;    
     
-    border-radius: 5px;
-    -moz-border-radius: 5px;
-    -webkit-border-radius: 5px;
+    border-radius: 4px;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
     
     margin-bottom: 10px;
 }
@@ -64,9 +64,9 @@ div.options_box_2 {
     background: #fafafa;
     border: 1px solid #ececec;    
     
-    border-radius: 5px;
-    -moz-border-radius: 5px;
-    -webkit-border-radius: 5px;
+    border-radius: 4px;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
     
     margin-bottom: 10px;
 }
@@ -81,11 +81,11 @@ div.link_category_head {
     background: #efefef url(../images/link-cat-head-bg.png) repeat-x;
     border: 1px solid #c8c8c8;
     
-    border-radius: 5px;
-    -moz-border-radius: 5px;
-    -webkit-border-radius: 5px;
+    border-radius: 4px;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
     
-    text-shadow: 1px 1px 6px #898989;
+    text-shadow: 1px 1px 6px #898989, 0px 1px 1px #ffffff;
     /*box-shadow:
         inset 0px -17px 50px -10px #c4c4c4;
     -moz-box-shadow:
@@ -104,9 +104,9 @@ div.checkbox_data_selector {
     background: #f5f5f5;
     border: 1px solid #bfbfbf;
     
-    border-radius: 5px;
-    -moz-border-radius: 5px;
-    -webkit-border-radius: 5px;    
+    border-radius: 4px;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;    
 }
 
 div.float_left {
@@ -114,6 +114,16 @@ div.float_left {
 }
 
 div.float_right {
-    float: left;
+    float: right;
 }
-    
+
+.hidden_element {
+	height: 0px !important;
+	width: 0px !important;
+	padding: 0px !important;
+	margin: 0px;
+	border: 0px !important;
+	margin-left: -3px;
+	float: left;
+	visibility: hidden !important;
+}

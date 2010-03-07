@@ -20,13 +20,13 @@
  * @author		Immanuel Peratoner <immanuel.peratoner@gmail.com>
  * @copyright	2009-2010 Immanuel Peratoner
  * @license		http://www.gnu.de/documents/gpl-3.0.en.html GNU GPLv3
- * @version		2.0.1
+ *  * @version		2.0.2
  * @link		http://pecio-cms.com
  */
 
 class PecPlugin {
     
-    private $plugin_directory_name, $plugin_directory_path, $plugin_properties;
+    private $plugin_directory_name, $plugin_directory_path, $plugin_directory_path_c, $plugin_properties;
     
     static $by_properties = array(
         "title", 
@@ -48,18 +48,23 @@ class PecPlugin {
     
     function __construct($directory_name) {
         $this->plugin_directory_name = $directory_name;
-        $this->plugin_directory_path = PLUGIN_PATH . $directory_name . '/';
+        
+        // The canonicalized path to the plugin directory
+        $this->plugin_directory_path_c = PLUGIN_PATH . $directory_name . '/';
+        
+        // The normal path to the plugin directory
+        $this->plugin_directory_path = PLUGIN_PATH_NC . $directory_name . '/';
         
         $this->plugin_properties = $this->load_plugin_properties();
     }
     
     private function load_plugin_properties() {
-        require($this->plugin_directory_path . PLUGIN_META_FILE);      
+        require($this->plugin_directory_path_c . PLUGIN_META_FILE);      
         return $plugin_meta;
     }
     
-    public function get_directory_path() {
-        return $this->plugin_directory_path;
+    public function get_directory_path($canonicalized=true) {
+        return $canonicalized ? $this->plugin_directory_path_c : $this->plugin_directory_path;
     }
     
     public function get_directory_name() {
@@ -74,8 +79,8 @@ class PecPlugin {
     
     public function installation_required() {
     	if ($this->plugin_properties['installation_required'] && 
-    		file_exists(PLUGIN_PATH . $this->plugin_directory_name . '/' . PLUGIN_INSTALL_FILE) &&
-    		file_exists(PLUGIN_PATH . $this->plugin_directory_name . '/' . PLUGIN_UNINSTALL_FILE)) {
+    		file_exists($this->plugin_directory_path_c . PLUGIN_INSTALL_FILE) &&
+    		file_exists($this->plugin_directory_path_c . PLUGIN_UNINSTALL_FILE)) {
     		return true;
     	}
     	else {
@@ -84,33 +89,33 @@ class PecPlugin {
     }
     
     public function is_installed($status_file_exists=true) {
-    	if (!file_exists(PLUGIN_PATH . $this->plugin_directory_name . '/' . PLUGIN_INSTALLED_FILE) &&
-    		file_exists(PLUGIN_PATH . $this->plugin_directory_name . '/' . PLUGIN_UNINSTALLED_FILE)) {
+    	if (!file_exists($this->plugin_directory_path_c . PLUGIN_INSTALLED_FILE) &&
+    		file_exists($this->plugin_directory_path_c . PLUGIN_UNINSTALLED_FILE)) {
     		return false;
     	}
-    	elseif (file_exists(PLUGIN_PATH . $this->plugin_directory_name . '/' . PLUGIN_INSTALLED_FILE) &&
-    			!file_exists(PLUGIN_PATH . $this->plugin_directory_name . '/' . PLUGIN_UNINSTALLED_FILE)) {
+    	elseif (file_exists($this->plugin_directory_path_c . PLUGIN_INSTALLED_FILE) &&
+    			!file_exists($this->plugin_directory_path_c . PLUGIN_UNINSTALLED_FILE)) {
     		return true;
     	}
-    	elseif (!file_exists(PLUGIN_PATH . $this->plugin_directory_name . '/' . PLUGIN_INSTALLED_FILE) &&
-    			!file_exists(PLUGIN_PATH . $this->plugin_directory_name . '/' . PLUGIN_UNINSTALLED_FILE)) {
+    	elseif (!file_exists($this->plugin_directory_path_c . PLUGIN_INSTALLED_FILE) &&
+    			!file_exists($this->plugin_directory_path_c . PLUGIN_UNINSTALLED_FILE)) {
     		return false;
     	}
     	else {
-    		unlink(PLUGIN_PATH . $this->plugin_directory_name . '/' . PLUGIN_INSTALLED_FILE);
-    		unlink(PLUGIN_PATH . $this->plugin_directory_name . '/' . PLUGIN_UNINSTALLED_FILE);
+    		unlink($this->plugin_directory_path_c . PLUGIN_INSTALLED_FILE);
+    		unlink($this->plugin_directory_path_c . PLUGIN_UNINSTALLED_FILE);
     		return false;
     	}
     }
     
     public function set_installed() {
-    	return rename(PLUGIN_PATH . $this->plugin_directory_name . '/' . PLUGIN_UNINSTALLED_FILE,
-               		  PLUGIN_PATH . $this->plugin_directory_name . '/' . PLUGIN_INSTALLED_FILE);
+    	return rename($this->plugin_directory_path_c . PLUGIN_UNINSTALLED_FILE,
+               		  $this->plugin_directory_path_c . PLUGIN_INSTALLED_FILE);
     }
     
     public function set_uninstalled() {
-    	return rename(PLUGIN_PATH . $this->plugin_directory_name . '/' . PLUGIN_INSTALLED_FILE,
-               		  PLUGIN_PATH . $this->plugin_directory_name . '/' . PLUGIN_UNINSTALLED_FILE);
+    	return rename($this->plugin_directory_path_c . PLUGIN_INSTALLED_FILE,
+               		  $this->plugin_directory_path_c . PLUGIN_UNINSTALLED_FILE);
     }
     
     public static function load($by='area_name', $data='', $force_array=false) {

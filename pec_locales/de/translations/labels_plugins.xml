@@ -1,0 +1,19 @@
+<localestring id="LABEL_PLUGINS_AUTHOR">
+    <t>Autor</t>
+</localestring>
+
+<localestring id="LABEL_PLUGINS_YEAR">
+    <t>Jahr</t>
+</localestring>
+
+<localestring id="LABEL_PLUGINS_LICENSE">
+    <t>Lizenz</t>
+</localestring>
+
+<localestring id="LABEL_PLUGINS_ACTIONS">
+    <t>Aktionen</t>
+</localestring>
+
+<localestring id="LABEL_PLUGINS_NO_INSTALL_REQUIRED">
+    <t>keine Installation notwendig</t>
+</localestring>

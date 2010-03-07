@@ -1,0 +1,35 @@
+<localestring id="LABEL_COMMENTS_EDIT">
+    <t>Kommentar bearbeiten</t>
+</localestring>
+
+<localestring id="LABEL_COMMENTS_AUTHOR">
+    <t>Autor</t>
+</localestring>
+
+<localestring id="LABEL_COMMENTS_EMAIL">
+    <t>E-Mail</t>
+</localestring>
+
+<localestring id="LABEL_COMMENTS_CONTENT">
+    <t>Inhalt</t>
+</localestring>
+
+<localestring id="LABEL_COMMENTS_RELATES_TO_POST">
+    <t>gehört zu Beitrag</t>
+</localestring>
+
+<localestring id="LABEL_COMMENTS_RELATES_TO">
+    <t>gehört zu</t>
+</localestring>
+
+<localestring id="LABEL_COMMENTS_DATE">
+    <t>Datum</t>
+</localestring>
+
+<localestring id="LABEL_COMMENTS_REALLYREMOVE">
+    <t>Kommentar endgültig löschen?</t>
+</localestring>
+
+<localestring id="LABEL_COMMENTS_REALLYREMOVE_SELECTED">
+    <t>Die markierten Kommentare endgültig löschen?</t>
+</localestring>

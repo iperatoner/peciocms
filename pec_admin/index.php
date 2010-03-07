@@ -21,7 +21,7 @@
  * @author		Immanuel Peratoner <immanuel.peratoner@gmail.com>
  * @copyright	2009-2010 Immanuel Peratoner
  * @license		http://www.gnu.de/documents/gpl-3.0.en.html GNU GPLv3
- * @version		2.0.1
+ * @version		2.0.2
  * @link		http://pecio-cms.com
  */
 
@@ -86,6 +86,8 @@ else {
 
     <head>
         <title>pecio cms &raquo; <?php echo $title; ?></title>
+        
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         
         <link type="text/css" rel="stylesheet" href="pec_style/css/login/layout.css" />
         <link type="text/css" rel="stylesheet" href="pec_style/css/login/misc.css" />

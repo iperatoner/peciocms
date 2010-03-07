@@ -20,7 +20,7 @@
  * @author		Immanuel Peratoner <immanuel.peratoner@gmail.com>
  * @copyright	2009-2010 Immanuel Peratoner
  * @license		http://www.gnu.de/documents/gpl-3.0.en.html GNU GPLv3
- * @version		2.0.1
+ * @version		2.0.2
  * @link		http://pecio-cms.com
  */
 
@@ -183,7 +183,7 @@ function view_edit() {
     $area_data['content'] = '
         <form method="post" action="' . AREA . '&amp;view=default&amp;action=' . $action . $id_query_var . '" id="articles_edit_form" />
 
-            <h3 style="float: left; font-size: 8pt;">Permalink:</h3> <a style="float: left; margin-left: 5px; font-size: 8pt;" href="' . create_article_url($article) . '" target="_blank">' . create_article_url($article) . '</a>
+            <h3 style="float: left; font-size: 8pt;">' . $pec_localization->get('LABEL_GENERAL_PERMALINK') . ':</h3> <a style="float: left; margin-left: 5px; font-size: 8pt;" href="' . create_article_url($article) . '" target="_blank">' . create_article_url($article) . '</a>
 
             <div style="clear: left; height: 10px;"></div>
 

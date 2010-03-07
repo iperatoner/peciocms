@@ -1,0 +1,27 @@
+<localestring id="LABEL_ARTICLES_ONSTART">
+    <t>beim Start?</t>
+</localestring>
+
+<localestring id="LABEL_ARTICLES_CREATE">
+    <t>neuer Artikel</t>
+</localestring>
+
+<localestring id="LABEL_ARTICLES_EDIT">
+    <t>Artikel bearbeiten</t>
+</localestring>
+
+<localestring id="LABEL_ARTICLES_OPTIONS">
+    <t>Optionen</t>
+</localestring>
+
+<localestring id="LABEL_ARTICLES_DISPLAY_ONSTART">
+    <t>auf der Startseite zeigen</t>
+</localestring>
+
+<localestring id="LABEL_ARTICLES_REALLYREMOVE">
+    <t>Artikel endgültig löschen?</t>
+</localestring>
+
+<localestring id="LABEL_ARTICLES_REALLYREMOVE_SELECTED">
+    <t>Die markierten Artikel endgültig löschen?</t>
+</localestring>

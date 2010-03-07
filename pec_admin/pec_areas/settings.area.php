@@ -20,7 +20,7 @@
  * @author		Immanuel Peratoner <immanuel.peratoner@gmail.com>
  * @copyright	2009-2010 Immanuel Peratoner
  * @license		http://www.gnu.de/documents/gpl-3.0.en.html GNU GPLv3
- * @version		2.0.1
+ * @version		2.0.2
  * @link		http://pecio-cms.com
  */
 
@@ -86,13 +86,13 @@ function do_actions() {
             $posts_per_page = intval($_POST['setting_posts_per_page']);
             
             // check if an integer was passed for the posts per page setting
-            if ($posts_per_page && is_int($posts_per_page)) {
-                $pec_settings->set_posts_per_page($_POST['setting_posts_per_page']);
+            if ($posts_per_page) {
+                $pec_settings->set_posts_per_page($posts_per_page);
             }
             else {
                 $messages .= PecMessageHandler::get('content_integer_required', array(
                     '{%CONTENT_TYPE%}' => $pec_localization->get('LABEL_GENERAL_SETTING'),
-                    '{%NAME%}' => 'Blogposts per Page'
+                    '{%NAME%}' => $pec_localization->get('LABEL_SETTINGS_POSTSPERPAGE')
                 ));
             }
             
@@ -186,7 +186,7 @@ function view_default() {
                 <br /><br />
                 
                 <h3>' . $pec_localization->get('LABEL_SETTINGS_URLTYPE') . ':</h3>
-                <select name="setting_url_type" style="width: 120px;">' . $url_type_select_options . '</select>
+                <select name="setting_url_type" style="width: 220px;">' . $url_type_select_options . '</select>
                 <br /><br />
                 
                 <h3>' . $pec_localization->get('LABEL_SETTINGS_POSTSPERPAGE') . ':</h3>

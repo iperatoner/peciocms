@@ -56,6 +56,13 @@ div#footer {
     background: url(../images/footer.png);
     
     text-align: center;
+    
+    border-bottom-left-radius: 9px;
+    -border-bottom-right-radius: 9px;
+    -moz-border-radius-bottomleft: 9px;
+    -moz-border-radius-bottomright: 9px;
+    -webkit-border-bottom-left-radius: 9px;
+    -webkit-border-bottom-right-radius: 9px;
 }
 
 div#footer p {

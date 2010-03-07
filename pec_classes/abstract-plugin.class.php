@@ -20,21 +20,22 @@
  * @author		Immanuel Peratoner <immanuel.peratoner@gmail.com>
  * @copyright	2009-2010 Immanuel Peratoner
  * @license		http://www.gnu.de/documents/gpl-3.0.en.html GNU GPLv3
- * @version		2.0.1
+ * @version		2.0.2
  * @link		http://pecio-cms.com
  */
 
 abstract class PecAbstractPlugin {
     
-    protected $database, $settings, $session, $plugin_meta;
+    protected $database, $settings, $session, $localization, $plugin_meta;
     
     function __construct($plugin_meta, $site_view=false, $sub_site_view=false) {
     					 	
-        global $pec_database, $pec_settings, $pec_session;
+        global $pec_database, $pec_settings, $pec_session, $pec_localization;
         
         $this->database = $pec_database;
         $this->settings = $pec_settings;
         $this->session = $pec_session;
+        $this->localization = $pec_localization;
         
         $this->plugin_meta = $plugin_meta;
         

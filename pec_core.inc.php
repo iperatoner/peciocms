@@ -19,7 +19,7 @@
  * @author		Immanuel Peratoner <immanuel.peratoner@gmail.com>
  * @copyright	2009-2010 Immanuel Peratoner
  * @license		http://www.gnu.de/documents/gpl-3.0.en.html GNU GPLv3
- * @version		2.0.1
+ * @version		2.0.2
  * @link		http://pecio-cms.com
  */
 
@@ -65,12 +65,12 @@ if (!defined('INSTALLATION')) {
     
     $pec_localization = new PecLocale($pec_settings->get_locale());
     $pec_session = new PecSession();
+    
+	$pec_messages = generate_messages();
 }
 else {
     // locale we can get from installation start screen
     $pec_localization = new PecLocale('en');
 }
-
-$pec_messages = generate_messages();
 
 ?>

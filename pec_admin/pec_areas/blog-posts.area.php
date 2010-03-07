@@ -20,7 +20,7 @@
  * @author		Immanuel Peratoner <immanuel.peratoner@gmail.com>
  * @copyright	2009-2010 Immanuel Peratoner
  * @license		http://www.gnu.de/documents/gpl-3.0.en.html GNU GPLv3
- * @version		2.0.1
+ * @version		2.0.2
  * @link		http://pecio-cms.com
  */
 
@@ -38,7 +38,7 @@ $area["content"] = 'No view was executed.';
 /* a function that does actions depending on what data is in the query string */
 
 function do_actions() {
-    global $pec_session, $pec_localization;
+    global $pec_session, $pec_localization, $pec_settings;
     
     $messages = '';
     
@@ -181,7 +181,7 @@ function do_actions() {
         elseif ($_GET['action'] == 'default_view_actions') {
         
             // REMOVE MULTIPLE
-            if (isset($_POST['remove_posts'])) {
+            if (isset($_POST['remove_posts']) && !isset($_POST['submitted_posts_per_page'])) {
                 if (!empty($_POST['remove_box'])) {
                     
                     foreach ($_POST['remove_box'] as $post_id) {
@@ -201,7 +201,29 @@ function do_actions() {
                     ));
                 }
             }
-                        
+            
+            // SET POSTS_PER_PAGE
+            if (isset($_POST['set_posts_per_page']) || isset($_POST['submitted_posts_per_page'])) {
+            	if (!empty($_POST['setting_posts_per_page'])) {
+            		$posts_per_page = intval($_POST['setting_posts_per_page']);
+		            	
+		            // check if an integer was passed for the posts per page setting
+		            if ($posts_per_page) {
+		                $pec_settings->set_posts_per_page($posts_per_page);
+            			$pec_settings->save();
+		            	
+            			$messages .= PecMessageHandler::get('settings_saved', array());
+		            }
+		            else {
+		                $messages .= PecMessageHandler::get('content_integer_required', array(
+		                    '{%CONTENT_TYPE%}' => $pec_localization->get('LABEL_GENERAL_SETTING'),
+		                    '{%NAME%}' => 'Blogposts per Page'
+		                ));
+		            }
+		            
+            	}
+            }
+                    
         }
         
     }
@@ -293,7 +315,7 @@ function view_edit() {
     $area_data['content'] = '
         <form method="post" action="' . AREA . '&ampview=default&amp;action=' . $action . $id_query_var . '" id="posts_edit_form" />
 
-            <h3 style="float: left; font-size: 8pt;">Permalink:</h3> <a style="float: left; margin-left: 5px; font-size: 8pt;" href="' . create_blogpost_url($post) . '" target="_blank">' . create_blogpost_url($post) . '</a>
+            <h3 style="float: left; font-size: 8pt;">' . $pec_localization->get('LABEL_GENERAL_PERMALINK') . ':</h3> <a style="float: left; margin-left: 5px; font-size: 8pt;" href="' . create_blogpost_url($post) . '" target="_blank">' . create_blogpost_url($post) . '</a>
 
             <div style="clear: left; height: 10px;"></div>
 
@@ -349,7 +371,7 @@ function view_edit() {
 }
 
 function view_default() {
-	global $pec_localization;
+	global $pec_localization, $pec_settings;
 	
     $area_data = array();
     $area_data['title'] = $pec_localization->get('LABEL_GENERAL_BLOGPOSTS');
@@ -358,9 +380,21 @@ function view_default() {
     
     $area_data['content'] = '
         <form method="post" action="' . AREA . '&amp;view=default&amp;action=default_view_actions" id="posts_main_form"/>
-            <input type="button" value="' . $pec_localization->get('BUTTON_NEW_BLOGPOST') . '" onclick="location.href=\'' . AREA . '&amp;view=edit\'"/> 
+        
+        	<div class="float_left">
+	            <input type="button" value="' . $pec_localization->get('BUTTON_NEW_BLOGPOST') . '" onclick="location.href=\'' . AREA . '&amp;view=edit\'"/> 
+	            
+            	<input type="submit" name="submitted_posts_per_page" class="hidden_element" />
+	            <input type="submit" name="remove_posts" value="' . $pec_localization->get('BUTTON_REMOVE') . '" onclick="return confirm(\'' . $pec_localization->get('LABEL_POSTS_REALLYREMOVE_SELECTED') . '\');" />
+            </div>
             
-            <input type="submit" name="remove_posts" value="' . $pec_localization->get('BUTTON_REMOVE') . '" onclick="return confirm(\'' . $pec_localization->get('LABEL_POSTS_REALLYREMOVE_SELECTED') . '\');" /><br /><br />
+            <div class="float_right">
+           		<strong>' . $pec_localization->get('LABEL_SETTINGS_POSTSPERPAGE') . ':</strong>&nbsp;&nbsp;
+            	<input type="text" size="5" name="setting_posts_per_page" value="' . $pec_settings->get_posts_per_page() . '" />
+            	<input type="submit" name="set_posts_per_page" value="' . $pec_localization->get('BUTTON_APPLY') . '" />
+            </div>
+            
+            <br style="clear: both;" /><br />
             
             <table class="data_table" cellspacing="0">
                 <thead>

@@ -1,0 +1,7 @@
+<localestring id="LABEL_404_PAGE_TITLE">
+    <t>Die Seite wurde nicht gefunden.</t>
+</localestring>
+
+<localestring id="LABEL_404_PAGE_CONTENT">
+    <t>Der angeforderte Inhalt konnte nicht gefunden werden.</t>
+</localestring>

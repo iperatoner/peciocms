@@ -1,0 +1,55 @@
+<localestring id="LABEL_LINKS_CREATE">
+    <t>neuer Link</t>
+</localestring>
+
+<localestring id="LABEL_LINKS_EDIT">
+    <t>Link bearbeiten</t>
+</localestring>
+
+<localestring id="LABEL_LINKS_CREATE_CATEGORY">
+    <t>neue Link Kategorie</t>
+</localestring>
+
+<localestring id="LABEL_LINKS_EDIT_CATEGORY">
+    <t>Link Kategorie bearbeiten</t>
+</localestring>
+
+<localestring id="LABEL_LINKS_URL">
+    <t>URL</t>
+</localestring>
+
+<localestring id="LABEL_LINKS_VISIBILITY">
+    <t>Sichtbarkeit</t>
+</localestring>
+
+<localestring id="LABEL_LINKS_EVERYWHERE">
+    <t>überall</t>
+</localestring>
+
+<localestring id="LABEL_LINKS_ALLARTICLES">
+    <t>alle Artikel</t>
+</localestring>
+
+<localestring id="LABEL_LINKS_BLOG">
+    <t>News</t>
+</localestring>
+
+<localestring id="LABEL_LINKS_SPECIFICARTICLES">
+    <t>spezifischer Artikel</t>
+</localestring>
+
+<localestring id="LABEL_LINKS_CHOOSECAT">
+    <t>wähle Link Kategorie</t>
+</localestring>
+
+<localestring id="LABEL_LINKS_REALLYREMOVE">
+    <t>diesen Link endgültig löschen?</t>
+</localestring>
+
+<localestring id="LABEL_LINKS_REALLYREMOVE_CATEGORY">
+    <t>diese Kategorie endültig löschen? dies wird alle beinhalteten Links löschen</t>
+</localestring>
+
+<localestring id="LABEL_LINKS_REALLYREMOVE_SELECTED">
+    <t>die markierten Links endgültig löschen?</t>
+</localestring>

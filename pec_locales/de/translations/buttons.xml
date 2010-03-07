@@ -1,0 +1,103 @@
+<localestring id="BUTTON_SEND">
+	<t>senden</t>
+</localestring>
+
+<localestring id="BUTTON_LOGIN">
+	<t>Einloggen</t>
+</localestring>
+
+<localestring id="BUTTON_UPDATE">
+	<t>Update</t>
+</localestring>
+
+<localestring id="BUTTON_SAVE">
+	<t>speichern</t>
+</localestring>
+
+<localestring id="BUTTON_APPLY">
+	<t>übernehmen</t>
+</localestring>
+
+<localestring id="BUTTON_CANCEL">
+	<t>abbrechen</t>
+</localestring>
+
+<localestring id="BUTTON_ADD">
+	<t>hinzufügen</t>
+</localestring>
+
+<localestring id="BUTTON_EDIT">
+	<t>bearbeiten</t>
+</localestring>
+
+<localestring id="BUTTON_REMOVE">
+	<t>entfernen</t>
+</localestring>
+
+<localestring id="BUTTON_SORT">
+	<t>sortieren</t>
+</localestring>
+
+<localestring id="BUTTON_ACTIVATE">
+	<t>aktivieren</t>
+</localestring>
+
+<localestring id="BUTTON_CHANGE">
+	<t>wechseln</t>
+</localestring>
+
+<localestring id="BUTTON_INSTALL">
+	<t>installieren</t>
+</localestring>
+
+<localestring id="BUTTON_UNINSTALL">
+	<t>deinstallieren</t>
+</localestring>
+
+<localestring id="BUTTON_NEXT">
+	<t>weiter</t>
+</localestring>
+
+<localestring id="BUTTON_PREV">
+	<t>zurück</t>
+</localestring>
+
+<localestring id="BUTTON_GOTO_LOGIN">
+	<t>zum Login</t>
+</localestring>
+
+<localestring id="BUTTON_SEARCH">
+	<t>Suche</t>
+</localestring>
+
+<localestring id="BUTTON_NEW_ARTICLE">
+	<t>neuen Artikel erstellen</t>
+</localestring>
+
+<localestring id="BUTTON_NEW_TEXT">
+	<t>neuen Text erstellen</t>
+</localestring>
+
+<localestring id="BUTTON_NEW_LINKCATEGORY">
+	<t>neue Kategorie erstellen</t>
+</localestring>
+
+<localestring id="BUTTON_NEW_LINK">
+	<t>neuen Link erstellen</t>
+</localestring>
+
+<localestring id="BUTTON_NEW_MENUPOINT">
+	<t>neuen Menüpunkt erstellen</t>
+</localestring>
+
+<localestring id="BUTTON_NEW_BLOGPOST">
+	<t>neuen Beitrag erstellen</t>
+</localestring>
+
+<localestring id="BUTTON_NEW_USER">
+	<t>neuen Benutzer anlegen</t>
+</localestring>
+
+<localestring id="BUTTON_NEW_NOSPAM_KEYS">
+	<t>neuen Anti-Spam-Schlüssel generieren</t>
+</localestring>

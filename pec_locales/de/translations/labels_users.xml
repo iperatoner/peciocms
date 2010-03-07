@@ -1,0 +1,67 @@
+<localestring id="LABEL_USERS_CREATE">
+    <t>neuer Benutzer</t>
+</localestring>
+
+<localestring id="LABEL_USERS_EDIT">
+    <t>Benutzer bearbeiten</t>
+</localestring>
+
+<localestring id="LABEL_USERS_NAME">
+    <t>Benutzer</t>
+</localestring>
+
+<localestring id="LABEL_USERS_FORENAME">
+    <t>Vorname</t>
+</localestring>
+
+<localestring id="LABEL_USERS_SURNAME">
+    <t>Nachname</t>
+</localestring>
+
+<localestring id="LABEL_USERS_EMAIL">
+    <t>E-Mail</t>
+</localestring>
+
+<localestring id="LABEL_USERS_PASSWORD">
+    <t>Passwort</t>
+</localestring>
+
+<localestring id="LABEL_USERS_PASSWORD_REPEAT">
+    <t>Passwort validieren</t>
+</localestring>
+
+<localestring id="LABEL_USERS_PASSWORD_CHANGE_INFO">
+    <t>Passwort nur eingeben, wenn Sie es ändern wollen.</t>
+</localestring>
+
+<localestring id="LABEL_USERS_PERMISSIONS">
+    <t>Rechte</t>
+</localestring>
+
+<localestring id="LABEL_USERS_PERM_NONE">
+    <t>keine</t>
+</localestring>
+
+<localestring id="LABEL_USERS_PERM_READ">
+    <t>lesen</t>
+</localestring>
+
+<localestring id="LABEL_USERS_PERM_FULL">
+    <t>voll</t>
+</localestring>
+
+<localestring id="LABEL_USERS_ADDITIONAL_INFO">
+    <t>zusätzliche Infos</t>
+</localestring>
+
+<localestring id="LABEL_USERS_ADMIN">
+    <t>Admin?</t>
+</localestring>
+
+<localestring id="LABEL_USERS_REALLYREMOVE">
+    <t>Diesen Benutzer endgültig löschen?</t>
+</localestring>
+
+<localestring id="LABEL_USERS_REALLYREMOVE_SELECTED">
+    <t>Die markierten Benutzer endgültig löschen?</t>
+</localestring>

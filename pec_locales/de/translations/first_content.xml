@@ -1,0 +1,65 @@
+<localestring id="FIRST_ARTICLE_TITLE">
+    <t>Home</t>
+</localestring>
+
+<localestring id="FIRST_ARTICLE_CONTENT">
+    <t>Das ist der erste Artikel. Er gehört zur Startseite</t>
+</localestring>
+
+
+<localestring id="FIRST_MENUPOINT_NAME">
+    <t>Home</t>
+</localestring>
+
+<localestring id="SECOND_MENUPOINT_NAME">
+    <t>News</t>
+</localestring>
+
+
+<localestring id="FIRST_TEXT_TITLE">
+    <t>Beispieltext</t>
+</localestring>
+
+<localestring id="FIRST_TEXT_CONTENT">
+    <t>Dies ist ein Beispieltext in der Sidebar. Er wird auf allen Seiten angezeigt.</t>
+</localestring>
+
+
+<localestring id="FIRST_LINKCAT_NAME">
+    <t>links</t>
+</localestring>
+
+
+<localestring id="FIRST_BLOGCAT_NAME">
+    <t>Allgemein</t>
+</localestring>
+
+<localestring id="FIRST_BLOGTAG_NAME">
+    <t>Irgendwas</t>
+</localestring>
+
+
+<localestring id="FIRST_BLOGPOST_TITLE">
+    <t>erster Eintrag</t>
+</localestring>
+
+<localestring id="FIRST_BLOGPOST_CONTENT_CUT">
+    <t>Eine Zusammenfassung von diesem Eintrag.</t>
+</localestring>
+
+<localestring id="FIRST_BLOGPOST_CONTENT">
+    <t>Dies ist der erste Beitrag auf Ihrer Website.</t>
+</localestring>
+
+
+<localestring id="FIRST_BLOGCOMMENT_TITLE">
+    <t>erster Kommentar</t>
+</localestring>
+
+<localestring id="FIRST_BLOGCOMMENT_AUTHOR">
+    <t>Author</t>
+</localestring>
+
+<localestring id="FIRST_BLOGCOMMENT_CONTENT">
+    <t>Der erste Kommentar zum Beitrag.</t>
+</localestring>

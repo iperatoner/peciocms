@@ -1,0 +1,39 @@
+<localestring id="LABEL_OVERVIEW">
+    <t>Übersicht</t>
+</localestring>
+
+<localestring id="LABEL_OVERVIEW_LATESTCOMMENTS">
+    <t>Die neuesten Kommentare</t>
+</localestring>
+
+<localestring id="LABEL_OVERVIEW_VISITSTATS">
+    <t>Besucherstatistiken</t>
+</localestring>
+
+<localestring id="LABEL_OVERVIEW_STATS_ONLINE">
+    <t>Online</t>
+</localestring>
+
+<localestring id="LABEL_OVERVIEW_STATS_TODAY">
+    <t>Heute</t>
+</localestring>
+
+<localestring id="LABEL_OVERVIEW_STATS_WEEK">
+    <t>Diese Woche</t>
+</localestring>
+
+<localestring id="LABEL_OVERVIEW_STATS_MONTH">
+    <t>Dieser Monat</t>
+</localestring>
+
+<localestring id="LABEL_OVERVIEW_STATS_YEAR">
+    <t>Dieses Jahr</t>
+</localestring>
+
+<localestring id="LABEL_OVERVIEW_STATS_TOTAL">
+    <t>Gesamt</t>
+</localestring>
+
+<localestring id="LABEL_OVERVIEW_STATS_RECORD">
+    <t>Rekord</t>
+</localestring>

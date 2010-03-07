@@ -1,0 +1,193 @@
+<localestring id="LABEL_GENERAL_HOME">
+    <t>Home</t>
+</localestring>
+
+<localestring id="LABEL_GENERAL_CONTENT">
+    <t>Inhalt</t>
+</localestring>
+
+<localestring id="LABEL_GENERAL_BLOG">
+    <t>News</t>
+</localestring>
+
+<localestring id="LABEL_GENERAL_ADMINISTRATION">
+    <t>Administration</t>
+</localestring>
+
+<localestring id="LABEL_GENERAL_PLUGINS">
+    <t>Plugins</t>
+</localestring>
+
+<localestring id="LABEL_GENERAL_PLUGIN">
+    <t>Plugin</t>
+</localestring>
+
+<localestring id="LABEL_GENERAL_ARTICLES">
+    <t>Artikel</t>
+</localestring>
+
+<localestring id="LABEL_GENERAL_ARTICLE">
+    <t>Artikel</t>
+</localestring>
+
+<localestring id="LABEL_GENERAL_TEXTS">
+    <t>Texte</t>
+</localestring>
+
+<localestring id="LABEL_GENERAL_TEXT">
+    <t>Text</t>
+</localestring>
+
+<localestring id="LABEL_GENERAL_LINKS">
+    <t>Links</t>
+</localestring>
+
+<localestring id="LABEL_GENERAL_LINK">
+    <t>Link</t>
+</localestring>
+
+<localestring id="LABEL_GENERAL_LINKCATEGORIES">
+    <t>Link Kategorien</t>
+</localestring>
+
+<localestring id="LABEL_GENERAL_LINKCATEGORY">
+    <t>Link Kategorie</t>
+</localestring>
+
+<localestring id="LABEL_GENERAL_MENUPOINTS">
+    <t>Menüpunkte</t>
+</localestring>
+
+<localestring id="LABEL_GENERAL_MENUPOINT">
+    <t>Menüpunkt</t>
+</localestring>
+
+<localestring id="LABEL_GENERAL_POSTS">
+    <t>Beiträge</t>
+</localestring>
+
+<localestring id="LABEL_GENERAL_POST">
+    <t>Beitrag</t>
+</localestring>
+
+<localestring id="LABEL_GENERAL_BLOGPOSTS">
+    <t>News Einträge</t>
+</localestring>
+
+<localestring id="LABEL_GENERAL_BLOGPOST">
+    <t>News Eintrag</t>
+</localestring>
+
+<localestring id="LABEL_GENERAL_TAG">
+    <t>Tag</t>
+</localestring>
+
+<localestring id="LABEL_GENERAL_BLOGTAG">
+    <t>Newstag</t>
+</localestring>
+
+<localestring id="LABEL_GENERAL_CATEGORY">
+    <t>Kategorie</t>
+</localestring>
+
+<localestring id="LABEL_GENERAL_BLOGCATEGORY">
+    <t>News Kategorie</t>
+</localestring>
+
+<localestring id="LABEL_GENERAL_COMMENTS">
+    <t>Kommentare</t>
+</localestring>
+
+<localestring id="LABEL_GENERAL_COMMENT">
+    <t>Kommentar</t>
+</localestring>
+
+<localestring id="LABEL_GENERAL_BLOGCOMMENTS">
+    <t>News Kommentare</t>
+</localestring>
+
+<localestring id="LABEL_GENERAL_BLOGCOMMENT">
+    <t>News Kommentar</t>
+</localestring>
+
+<localestring id="LABEL_GENERAL_USERS">
+    <t>Benutzer</t>
+</localestring>
+
+<localestring id="LABEL_GENERAL_USER">
+    <t>Benutzer</t>
+</localestring>
+
+<localestring id="LABEL_GENERAL_TEMPLATES">
+    <t>Templates</t>
+</localestring>
+
+<localestring id="LABEL_GENERAL_TEMPLATE">
+    <t>Template</t>
+</localestring>
+
+<localestring id="LABEL_GENERAL_SETTINGS">
+    <t>Einstellungen</t>
+</localestring>
+
+<localestring id="LABEL_GENERAL_SETTING">
+    <t>Einstellung</t>
+</localestring>
+
+
+
+<localestring id="LABEL_GENERAL_TITLE">
+    <t>Titel</t>
+</localestring>
+
+<localestring id="LABEL_GENERAL_NAME">
+    <t>Name</t>
+</localestring>
+
+<localestring id="LABEL_GENERAL_SORT">
+    <t>Sortierung</t>
+</localestring>
+
+<localestring id="LABEL_GENERAL_SLUG">
+    <t>Pfad</t>
+</localestring>
+
+<localestring id="LABEL_GENERAL_URL">
+    <t>URL</t>
+</localestring>
+
+<localestring id="LABEL_GENERAL_PERMALINK">
+    <t>Permalink</t>
+</localestring>
+
+<localestring id="LABEL_GENERAL_WELCOMETITLE">
+    <t>pecio cms {%VERSION%}</t>
+</localestring>
+
+<localestring id="LABEL_GENERAL_WELCOMETEXT">
+    <t>Willkommen bei pecio cms {%VERSION%}!</t>
+</localestring>
+
+<localestring id="LABEL_GENERAL_WELCOME">
+    <t>Willkommen, {%USER%}!</t>
+</localestring>
+
+<localestring id="LABEL_GENERAL_AREADENIED_TITLE">
+    <t>Zugriff nicht gestattet</t>
+</localestring>
+
+<localestring id="LABEL_GENERAL_AREADENIED_TEXT">
+    <t>Für diesen Bereich fehlen Ihnen die nötigen Zugriffsrechte.</t>
+</localestring>
+
+<localestring id="LABEL_GENERAL_READONLY">
+    <t>nur lesen</t>
+</localestring>
+
+<localestring id="LABEL_GENERAL_VIEWSITE">
+    <t>Website zeigen</t>
+</localestring>
+
+<localestring id="LABEL_GENERAL_LOGOUT">
+    <t>abmelden</t>
+</localestring>

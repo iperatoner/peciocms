@@ -156,6 +156,10 @@
     <t>URL</t>
 </localestring>
 
+<localestring id="LABEL_GENERAL_PERMALINK">
+    <t>Permalink</t>
+</localestring>
+
 <localestring id="LABEL_GENERAL_WELCOMETITLE">
     <t>pecio cms {%VERSION%}</t>
 </localestring>

@@ -30,18 +30,18 @@ input[type=radio] {
 }    
 
 input[type=button], input[type=submit], input[type=reset] {
-    padding: 3px;
+    padding: 4px;
     
     font-family: "Frutiger Linotype", "Verdana", "Sans-serif";
     font-size: 8pt;
-    /*text-shadow: 1px 1px 5px #9a9a9a;*/
+    text-shadow: 0px 1px 1px #ffffff;
     
     background: #eaeaea url(../images/button-normal.png) repeat-x;
-    border: 1px solid #bfbfbf;
+    border: 1px solid #afafaf;
     
-    border-radius: 5px;
-    -moz-border-radius: 5px;
-    -webkit-border-radius: 5px;
+    border-radius: 4px;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
     
     /*box-shadow: 
         0px 0px 3px #cacaca,
@@ -58,7 +58,8 @@ input[type=button], input[type=submit], input[type=reset] {
 }
 
     input[type=button]:hover, input[type=submit]:hover, input[type=reset]:hover {
-        background: #dfdfdf;
+        /*background: #e3e3e3;*/
+       	border-color: #898989;
 
         /*box-shadow: 
             0px 0px 3px #bfbfbf,
@@ -75,7 +76,7 @@ input[type=button], input[type=submit], input[type=reset] {
     }
 
     input[type=button]:active, input[type=submit]:active, input[type=reset]:active {
-        background: #f2f2f2;
+        background: #f3f3f3;
 
         /*box-shadow: 
             0px 0px 3px #bfbfbf,
@@ -93,7 +94,7 @@ input[type=button], input[type=submit], input[type=reset] {
 
 input[type=text], input[type=password], textarea {
     font-family: "Frutiger Linotype", "Verdana", "Sans-serif";
-    padding: 3px;
+    padding: 5px;
     
     font-family: "Frutiger Linotype", "Verdana", "Sans-serif";
     font-size: 8pt;
@@ -102,9 +103,9 @@ input[type=text], input[type=password], textarea {
     background: #f9f9f9;
     border: 1px solid #c4c4c4;
     
-    border-radius: 5px;
-    -moz-border-radius: 5px;
-    -webkit-border-radius: 5px;
+    border-radius: 4px;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
     
 /*    box-shadow: 0px 0px 3px #e2e2e2;
     -moz-box-shadow: 0px 0px 3px #e2e2e2;
@@ -113,28 +114,21 @@ input[type=text], input[type=password], textarea {
 
     input[type=text]:hover, input[type=password]:hover, textarea:hover {        
         background: #fafafa;
-        border: 1px solid #c4c4c4;
+        border-color: #b2b2b2;
         
-        border-radius: 5px;
-        -moz-border-radius: 5px;
-        -webkit-border-radius: 5px;
-        
-        box-shadow: 0px 0px 3px #dfdfdf;
+        /*box-shadow: 0px 0px 3px #dfdfdf;
         -moz-box-shadow: 0px 0px 3px #dfdfdf;
-        -webkit-box-shadow: 0px 0px 3px #dfdfdf;
+        -webkit-box-shadow: 0px 0px 3px #dfdfdf;*/
     }
 
     input[type=text]:focus, input[type=password]:focus, textarea:focus {        
         background: #ffffff;
-        border: 1px solid #bebebe;
+        border-color: #7799FF;
+       	outline: 0;
         
-        border-radius: 5px;
-        -moz-border-radius: 5px;
-        -webkit-border-radius: 5px;
-        
-        box-shadow: 0px 0px 3px #bfbfbf;
+        /*box-shadow: 0px 0px 3px #bfbfbf;
         -moz-box-shadow: 0px 0px 3px #bfbfbf;
-        -webkit-box-shadow: 0px 0px 3px #bfbfbf;
+        -webkit-box-shadow: 0px 0px 3px #bfbfbf;*/
     }
     
 input.sort_input {

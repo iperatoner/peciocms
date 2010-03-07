@@ -1,0 +1,383 @@
+<localestring id="MSG_TITLE_CONTENT_NOT_FOUND">
+    <t>"{%NAME%}" existiert nicht</t>
+</localestring>
+
+<localestring id="MSG_TEXT_CONTENT_NOT_FOUND">
+    <t>Der {%CONTENT_TYPE%} "{%NAME%}" existert nicht.</t>
+</localestring>
+
+
+<localestring id="MSG_TITLE_CONTENT_NOT_FOUND_ID">
+    <t>{%CONTENT_TYPE%} existiert nicht</t>
+</localestring>
+<localestring id="MSG_TEXT_CONTENT_NOT_FOUND_ID">
+    <t>{%CONTENT_TYPE%} mit der ID "{%ID%}" existiert nicht.</t>
+</localestring>
+
+
+<localestring id="MSG_TITLE_CONTENT_NOT_SELECTED">
+    <t>Nichts ausgewählt</t>
+</localestring>
+<localestring id="MSG_TEXT_CONTENT_NOT_SELECTED">
+    <t>Sie haben keinen {%CONTENT_TYPE%} ausgewählt.</t>
+</localestring>
+
+
+<localestring id="MSG_TITLE_CONTENT_CREATED">
+    <t>"{%NAME%}" wurde erfolgreich erstellt</t>
+</localestring>
+<localestring id="MSG_TEXT_CONTENT_CREATED">
+    <t>Der {%CONTENT_TYPE%} "{%NAME%}" wurde erfolgreich angelegt.</t>
+</localestring>
+
+
+<localestring id="MSG_TITLE_CONTENT_EDITED">
+    <t>"{%NAME%}" wurde erfolgreich gespeichert</t>
+</localestring>
+<localestring id="MSG_TEXT_CONTENT_EDITED">
+    <t>Der {%CONTENT_TYPE%} "{%NAME%}" wurde erfolgreich bearbeitet und gespeichert.</t>
+</localestring>
+
+
+<localestring id="MSG_TITLE_CONTENT_REMOVED">
+    <t>"{%NAME%}" wurde erfolgreich gelöscht</t>
+</localestring>
+<localestring id="MSG_TEXT_CONTENT_REMOVED">
+    <t>Der {%CONTENT_TYPE%} "{%NAME%}" wurde erfolgreich gelöscht.</t>
+</localestring>
+
+
+<localestring id="MSG_TITLE_CONTENT_SORTED">
+    <t>{%CONTENT_TYPE%} wurden erfolgreich sortiert</t>
+</localestring>
+<localestring id="MSG_TEXT_CONTENT_SORTED">
+    <t>Die {%CONTENT_TYPE%} wurden erfolgreich sortiert.</t>
+</localestring>
+
+
+<localestring id="MSG_TITLE_CONTENT_PUBLISHED">
+    <t>"{%NAME%}" wurde erfolgreich veröffentlicht</t>
+</localestring>
+<localestring id="MSG_TEXT_CONTENT_PUBLISHED">
+    <t>Der {%CONTENT_TYPE%} "{%NAME%}" wurde erfolgreich veröffentlicht.</t>
+</localestring>
+
+
+<localestring id="MSG_TITLE_CONTENT_UNPUBLISHED">
+    <t>"{%NAME%}" wurde erfolgreich versteckt</t>
+</localestring>
+<localestring id="MSG_TEXT_CONTENT_UNPUBLISHED">
+    <t>Der {%CONTENT_TYPE%} "{%NAME%}" wurde erfolgreich versteckt.</t>
+</localestring>
+
+
+<localestring id="MSG_TITLE_CONTENT_REMOVED_MULTIPLE">
+    <t>Erfolgreich die ausgewählten {%CONTENT_TYPE%} entfernt</t>
+</localestring>
+<localestring id="MSG_TEXT_CONTENT_REMOVED_MULTIPLE">
+    <t>Die ausgewählten {%CONTENT_TYPE%} wurden erfolgreich entfernt.</t>
+</localestring>
+
+
+<localestring id="MSG_TITLE_CONTENT_CACHED">
+    <t>{%CONTENT_TYPE%} gespeichert</t>
+</localestring>
+<localestring id="MSG_TEXT_CONTENT_CACHED">
+    <t>Dieser {%CONTENT_TYPE%} wurde erfolgreich gespeichert.</t>
+</localestring>
+
+
+<localestring id="MSG_TITLE_CONTENT_ACTIVATED">
+    <t>"{%NAME%}" wurde erfolgreich aktiviert</t>
+</localestring>
+<localestring id="MSG_TEXT_CONTENT_ACTIVATED">
+    <t>Der {%CONTENT_TYPE%} "{%NAME%}" wurde erfolgreich aktiviert.</t>
+</localestring>
+
+
+<localestring id="MSG_TITLE_CONTENT_EXISTS">
+    <t>"{%NAME%}" existiert</t>
+</localestring>
+<localestring id="MSG_TEXT_CONTENT_EXISTS">
+    <t>Der {%CONTENT_TYPE%} "{%NAME%}" existiert bereits.</t>
+</localestring>
+
+
+<localestring id="MSG_TITLE_CONTENT_INTEGER_REQUIRED">
+    <t>Zahl benötigt</t>
+</localestring>
+<localestring id="MSG_TEXT_CONTENT_INTEGER_REQUIRED">
+    <t>Eine Zahl wird für die {%CONTENT_TYPE%} "{%NAME%}" benötigt.</t>
+</localestring>
+
+
+<localestring id="MSG_TITLE_SETTINGS_SAVED">
+    <t>Einstellungen gespeichert</t>
+</localestring>
+<localestring id="MSG_TEXT_SETTINGS_SAVED">
+    <t>Die Einstellungen wurden erfolgreich gespeichert.</t>
+</localestring>
+
+
+<localestring id="MSG_TITLE_SETTINGS_NOSPAM_KEYS_GENERATED">
+    <t>Neuer Anti-Spam Key wurde generiert</t>
+</localestring>
+<localestring id="MSG_TEXT_SETTINGS_NOSPAM_KEYS_GENERATED">
+    <t>Die neuen Anti-Spam Keys wurden erfolgreich generiert und gespeichert.</t>
+</localestring>
+
+
+<localestring id="MSG_TITLE_LOGIN_INCORRECT">
+    <t>Falscher Benutzer oder Passwort</t>
+</localestring>
+<localestring id="MSG_TEXT_LOGIN_INCORRECT">
+    <t>Sie haben einen falschen Benutzer oder ein falsches Passwort eingegeben. Bitte versuchen Sie es erneut.</t>
+</localestring>
+
+
+<localestring id="MSG_TITLE_LOGOUT_DONE">
+    <t>Logout erfolgreich</t>
+</localestring>
+<localestring id="MSG_TEXT_LOGOUT_DONE">
+    <t>Sie haben sich erfolgreich ausgeloggt.</t>
+</localestring>
+
+
+<localestring id="MSG_TITLE_USER_REMOVE_CURRENT_FAILED">
+    <t>Entfernen nicht möglich</t>
+</localestring>
+<localestring id="MSG_TEXT_USER_REMOVE_CURRENT_FAILED">
+    <t>Der Benutzer {%NAME%} kann nicht gelöscht werden, da Sie dieser Benutzer sind.</t>
+</localestring>
+
+
+<localestring id="MSG_TITLE_PASSWORD_EMPTY">
+    <t>Leeres Passwort</t>
+</localestring>
+<localestring id="MSG_TEXT_PASSWORD_EMPTY">
+    <t>Sie haben ein leeres Passwort für den Benutzer {%CONTENT_TYPE%} "{%NAME%}" eingegeben. 
+    Passwort wurde automatisch generiert {%DEFAULT_PASSWORD%}.</t>
+</localestring>
+
+
+<localestring id="MSG_TITLE_PASSWORD_REPEAT_INCORRECT">
+    <t>Password Validierung fehlerhaft</t>
+</localestring>
+<localestring id="MSG_TEXT_PASSWORD_REPEAT_INCORRECT">
+    <t>Sie haben das Passwort fehlerhaft eingegeben oder validiert. 
+    Passwort wurde automatisch generiert {%DEFAULT_PASSWORD%}.</t>
+</localestring>
+
+
+<localestring id="MSG_TITLE_PASSWORD_REPEAT_INCORRECT_SAVE">
+    <t>Password Validierung fehlerhaft</t>
+</localestring>
+<localestring id="MSG_TEXT_PASSWORD_REPEAT_INCORRECT_SAVE">
+    <t>Sie haben das Passwort fehlerhaft eingegeben oder validiert. Das Passwort wurde nicht geändert.</t>
+</localestring>
+
+
+<localestring id="MSG_TITLE_USER_EMAIL_NOT_FOUND">
+    <t>E-Mail existiert nicht</t>
+</localestring>
+<localestring id="MSG_TEXT_USER_EMAIL_NOT_FOUND">
+    <t>Ein Benutzer mit der E-Mail Adresse "{%EMAIL%}" existiert nicht.</t>
+</localestring>
+
+
+<localestring id="MSG_TITLE_USER_PW_LINK_SENT">
+    <t>E-Mail gesendet</t>
+</localestring>
+<localestring id="MSG_TEXT_USER_PW_LINK_SENT">
+    <t>Eine E-Mail mit dem Link zum ändern des Passworts wurde an die E-Mail "{%EMAIL%}" gesendet.</t>
+</localestring>
+
+
+<localestring id="MSG_TITLE_USER_PW_LINK_INCORRECT_DATA">
+    <t>Falsche Daten</t>
+</localestring>
+<localestring id="MSG_TEXT_USER_PW_LINK_INCORRECT_DATA">
+    <t>Die Daten aus dem Link sind nicht korrekt.</t>
+</localestring>
+
+
+<localestring id="MSG_TITLE_USER_PW_LINK_EXPIRED">
+    <t>Link nicht mehr gültig</t>
+</localestring>
+<localestring id="MSG_TEXT_USER_PW_LINK_EXPIRED">
+    <t>Dieser Link ist nicht mehr gültig, bitte fordern Sie einen neuen Link zum ändern des Passworts an.</t>
+</localestring>
+
+
+<localestring id="MSG_TITLE_USER_NEW_PW_REPEAT_INCORRECT">
+    <t>Password Validierung fehlerhaft</t>
+</localestring>
+<localestring id="MSG_TEXT_USER_NEW_PW_REPEAT_INCORRECT">
+    <t>Sie haben das Passwort nicht korrekt validiert.
+    Bitte versuchen Sie es nochmal.</t>
+</localestring>
+
+
+<localestring id="MSG_TITLE_USER_NEW_PW_CHANGED">
+    <t>Passwort erfolgreich geändert</t>
+</localestring>
+<localestring id="MSG_TEXT_USER_NEW_PW_CHANGED">
+    <t>Sie haben ihr Passwort erfolgreich geändert.</t>
+</localestring>
+
+
+<localestring id="MSG_TITLE_REDIRECT">
+    <t>Weiterleitung...</t>
+</localestring>
+<localestring id="MSG_TEXT_REDIRECT">
+    <t>Sie werden in {%TIME%} Sekunden weitergeleitet.</t>
+</localestring>
+
+
+<localestring id="MSG_TITLE_COMMENT_CREATED">
+    <t>Kommentar erfolgreich erstellt</t>
+</localestring>
+<localestring id="MSG_TEXT_COMMENT_CREATED">
+    <t>Ihr Kommentar wurde erfolgreich erstellt.</t>
+</localestring>
+
+
+<localestring id="MSG_TITLE_COMMENT_EMPTY_FIELDS">
+    <t>Alle Felder sind Pflichtfelder</t>
+</localestring>
+<localestring id="MSG_TEXT_COMMENT_EMPTY_FIELDS">
+    <t>Sie müssen alle Felder ausfüllen.</t>
+</localestring>
+
+
+<localestring id="MSG_TITLE_COMMENT_EMAIL_INCORRECT">
+    <t>E-Mail fehlerhaft</t>
+</localestring>
+<localestring id="MSG_TEXT_COMMENT_EMAIL_INCORRECT">
+    <t>Sie müssen eine gültige E-Mail Adresse eingeben.</t>
+</localestring>
+
+
+<localestring id="MSG_TITLE_DB_CONNECTION_FAILED">
+    <t>Verbindung zur Datenbank fehlgeschlagen</t>
+</localestring>
+<localestring id="MSG_TEXT_DB_CONNECTION_FAILED">
+    <t>Die Verbindung zur Datenbank konnte nicht hergestellt werden.
+       {%DB_LOG%}</t>
+</localestring>
+
+
+<localestring id="MSG_TITLE_INSTALLATION_ERROR">
+    <t>Es ist ein Fehler aufgetreten</t>
+</localestring>
+<localestring id="MSG_TEXT_INSTALLATION_ERROR">
+    <t>Bei der Installation der Datenbank ist ein Fehler aufgetreten.</t>
+</localestring>
+
+
+<localestring id="MSG_TITLE_INSTALLATION_SUCCESS">
+    <t>Installation erfolgreich</t>
+</localestring>
+<localestring id="MSG_TEXT_INSTALLATION_SUCCESS">
+    <t>Die Datenbank wurde erfolgreich installiet. Klicken Sie auf "weiter", um Ihre Logindaten zu erhalten.</t>
+</localestring>
+
+
+<localestring id="MSG_TITLE_INSTALL_DIRECTORY_REMOVE_REQUIRED">
+    <t>Installationsverzeichnis existiert noch</t>
+</localestring>
+<localestring id="MSG_TEXT_INSTALL_DIRECTORY_REMOVE_REQUIRED">
+    <t>Bitte entfernen Sie das Verzeichnis "pec_install" bevor Sie pecio cms nutzen.</t>
+</localestring>
+
+
+<localestring id="MSG_TITLE_AVAILABLE_CMS_FILES_TOO_OLD">
+    <t>CMS Dateien zu alt</t>
+</localestring>
+<localestring id="MSG_TEXT_AVAILABLE_CMS_FILES_TOO_OLD">
+    <t>Die installierte Version ({%VERSION_INSTALLED%}) ist neuer als die Dateien, die auf Ihrem Server sind ({%VERSION_FILES%}). 
+    Bitte laden Sie die passenden Dateien zu ihrer pecio cms Version ({%VERSION_INSTALLED%}) hoch.</t>
+</localestring>
+
+
+<localestring id="MSG_TITLE_UPDATE_PASSWORD_WRONG">
+    <t>Update Passwort falsch</t>
+</localestring>
+<localestring id="MSG_TEXT_UPDATE_PASSWORD_WRONG">
+    <t>Das Update Passwort wurde nicht korrekt eingegeben. Bitte versuchen Sie es erneut.</t>
+</localestring>
+
+
+<localestring id="MSG_TITLE_CMS_UPDATE_REQUIRED">
+    <t>Update erforderlich</t>
+</localestring>
+<localestring id="MSG_TEXT_CMS_UPDATE_REQUIRED">
+    <t>Sie sollten pecio cms updaten, da die installierte Version ({%VERSION_INSTALLED%}) älter ist, als die Dateien auf Ihrem Server ({%VERSION_FILES%}).
+    Bitte geben Sie das Passwort für das Update ein. Andernfalls könnte das System instabil werden.</t>
+</localestring>
+
+
+<localestring id="MSG_TITLE_CMS_UPDATE_SUCCESSFUL">
+    <t>Update erfolgreich</t>
+</localestring>
+<localestring id="MSG_TEXT_CMS_UPDATE_SUCCESSFUL">
+    <t>Das Update von Version {%VERSION_BEFORE%} zu {%VERSION_AFTER%} war erfolgreich.</t>
+</localestring>
+
+
+<localestring id="MSG_TITLE_CMS_UPDATE_FAILED">
+    <t>Update war nicht erfolgreich</t>
+</localestring>
+<localestring id="MSG_TEXT_CMS_UPDATE_FAILED">
+    <t>Das Update von Version {%VERSION_BEFORE%} zu {%VERSION_AFTER%} war leider nicht erfolgreich.</t>
+</localestring>
+
+
+<localestring id="MSG_TITLE_PLUGIN_INSTALLED">
+    <t>"{%NAME%}" installiert</t>
+</localestring>
+<localestring id="MSG_TEXT_PLUGIN_INSTALLED">
+    <t>Sie haben das Plugin "{%NAME%}" erfolgreich installiert.</t>
+</localestring>
+
+
+<localestring id="MSG_TITLE_PLUGIN_UNINSTALLED">
+    <t>"{%NAME%}" deinstalliert</t>
+</localestring>
+<localestring id="MSG_TEXT_PLUGIN_UNINSTALLED">
+    <t>Sie haben das Plugin "{%NAME%}" erfolgreich deinstalliert.</t>
+</localestring>
+
+
+<localestring id="MSG_TITLE_PLUGIN_INSTALL_RENAME_FAILED">
+    <t>Plugin Installation: Datei umbenennen fehlgeschlagen</t>
+</localestring>
+<localestring id="MSG_TEXT_PLUGIN_INSTALL_RENAME_FAILED">
+    <t>Die Installation des Plugins "{%NAME%}" ist fehlgeschlagen, weil einige Dateien nicht umbenannt werden konnten. 
+    Bitte überprüfen Sie die Zugriffsrechte des Verzeichnisses "pec_plugins" und des Pluginverzeichnis "{%NAME%}". Versuchen Sie es anschließend erneut.</t>
+</localestring>
+
+
+<localestring id="MSG_TITLE_PLUGIN_UNINSTALL_RENAME_FAILED">
+    <t>Plugin Deinstallation: Datei umbenennen fehlgeschlagen</t>
+</localestring>
+<localestring id="MSG_TEXT_PLUGIN_UNINSTALL_RENAME_FAILED">
+    <t>Die Deinstallation des Plugins "{%NAME%}" ist fehlgeschlagen, weil einige Dateien nicht umbenannt werden konnten. 
+    Bitte überprüfen Sie die Zugriffsrechte des Verzeichnisses "pec_plugins" und des Pluginverzeichnis "{%NAME%}". Versuchen Sie es anschließend erneut.</t>
+</localestring>
+
+
+<localestring id="MSG_TITLE_PLUGIN_IS_INSTALLED">
+    <t>Installation fehlgeschlagen</t>
+</localestring>
+<localestring id="MSG_TEXT_PLUGIN_IS_INSTALLED">
+    <t>Die Installation des Plugins "{%NAME%}" ist fehlgeschlagen. Es ist bereits installiert.</t>
+</localestring>
+
+
+<localestring id="MSG_TITLE_PLUGIN_IS_NOT_INSTALLED">
+    <t>Deinstallation fehlgeschlagen</t>
+</localestring>
+<localestring id="MSG_TEXT_PLUGIN_IS_NOT_INSTALLED">
+    <t>Die Deinstallation des Plugins "{%NAME%}" ist fehlgeschlagen. Das Plugin ist bereits deinstalliert.</t>
+</localestring>

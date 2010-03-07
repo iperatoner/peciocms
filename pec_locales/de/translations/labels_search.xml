@@ -1,0 +1,23 @@
+<localestring id="LABEL_SEARCH_RESULT_TITLE">
+    <t>Suchergebnisse</t>
+</localestring>
+
+<localestring id="LABEL_SEARCH_RESULT_TEXT">
+    <t>Suchergebnisse für "{%TERM%}"</t>
+</localestring>
+
+<localestring id="LABEL_SEARCH_IN_ARTICLES_TITLE">
+    <t>Ergebnisse in Artikeln</t>
+</localestring>
+
+<localestring id="LABEL_SEARCH_IN_ARTICLES_NOTHINGFOUND">
+    <t>Keine Ergebnisse in den Artikeln.</t>
+</localestring>
+
+<localestring id="LABEL_SEARCH_IN_POSTS_TITLE">
+    <t>Ergebnisse in den Newsbeiträgen</t>
+</localestring>
+
+<localestring id="LABEL_SEARCH_IN_POSTS_NOTHINGFOUND">
+    <t>Keine Ergebnisse in den Newsbeiträgen.</t>
+</localestring>

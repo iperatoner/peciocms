@@ -1,0 +1,59 @@
+<localestring id="LABEL_POSTS_CREATE">
+    <t>neuer Beitrag</t>
+</localestring>
+
+<localestring id="LABEL_POSTS_EDIT">
+    <t>Beitrag bearbeiten</t>
+</localestring>
+
+<localestring id="LABEL_POSTS_INTRODUCTION">
+    <t>Einleitung</t>
+</localestring>
+
+<localestring id="LABEL_POSTS_MAINTEXT">
+    <t>Haupttext</t>
+</localestring>
+
+<localestring id="LABEL_POSTS_OPTIONS">
+    <t>Optionen</t>
+</localestring>
+
+<localestring id="LABEL_POSTS_TAGS">
+    <t>Tags</t>
+</localestring>
+
+<localestring id="LABEL_POSTS_CATEGORIES">
+    <t>Kategorien</t>
+</localestring>
+
+<localestring id="LABEL_POSTS_DATE">
+    <t>Datum</t>
+</localestring>
+
+<localestring id="LABEL_POSTS_AUTHOR">
+    <t>Autor</t>
+</localestring>
+
+<localestring id="LABEL_POSTS_PUBLIC">
+    <t>öffentlich</t>
+</localestring>
+
+<localestring id="LABEL_POSTS_PUBLISHED">
+    <t>öffentlich?</t>
+</localestring>
+
+<localestring id="LABEL_POSTS_EDITCATEGORY">
+    <t>Name der Kategorie bearbeiten:</t>
+</localestring>
+
+<localestring id="LABEL_POSTS_CATEGORY_REALLYREMOVE">
+    <t>Kategorie endgültig löschen?</t>
+</localestring>
+
+<localestring id="LABEL_POSTS_REALLYREMOVE">
+    <t>Diesen Beitrag endgültig löschen?</t>
+</localestring>
+
+<localestring id="LABEL_POSTS_REALLYREMOVE_SELECTED">
+    <t>Die markierten Beiträge endgültig löschen?</t>
+</localestring>

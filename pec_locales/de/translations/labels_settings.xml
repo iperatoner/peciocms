@@ -1,0 +1,47 @@
+<localestring id="LABEL_SETTINGS_MAINTITLE">
+    <t>Hauptitel</t>
+</localestring>
+
+<localestring id="LABEL_SETTINGS_SUBTITLE">
+    <t>Untertitel</t>
+</localestring>
+
+<localestring id="LABEL_SETTINGS_ADMINEMAIL">
+    <t>Administrator E-Mail</t>
+</localestring>
+
+<localestring id="LABEL_SETTINGS_DESCRIPTION">
+    <t>Beschreibung</t>
+</localestring>
+
+<localestring id="LABEL_SETTINGS_TAGS">
+    <t>Tags</t>
+</localestring>
+
+<localestring id="LABEL_SETTINGS_LANGUAGE">
+    <t>Sprache</t>
+</localestring>
+
+<localestring id="LABEL_SETTINGS_URLTYPE">
+    <t>URL Typ</t>
+</localestring>
+
+<localestring id="LABEL_SETTINGS_URLTYPE_DEFAULT">
+    <t>Standard (mit IDs)</t>
+</localestring>
+
+<localestring id="LABEL_SETTINGS_URLTYPE_HUMAN">
+    <t>Freundlich (mit den Titeln)</t>
+</localestring>
+
+<localestring id="LABEL_SETTINGS_URLTYPE_REWRITE">
+    <t>Rewrite (Pfade mit den Titeln)</t>
+</localestring>
+
+<localestring id="LABEL_SETTINGS_POSTSPERPAGE">
+    <t>Newsbeiträge pro Seite</t>
+</localestring>
+
+<localestring id="LABEL_SETTINGS_BLOGONSTART">
+    <t>News auf der Startseite</t>
+</localestring>

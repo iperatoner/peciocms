@@ -1,0 +1,15 @@
+<localestring id="ACTION_EDIT">
+    <t>bearbeiten</t>
+</localestring>
+
+<localestring id="ACTION_REMOVE">
+    <t>entfernen</t>
+</localestring>
+
+<localestring id="ACTION_PUBLISH">
+    <t>veröffentlichen</t>
+</localestring>
+
+<localestring id="ACTION_UNPUBLISH">
+    <t>verstecken</t>
+</localestring>

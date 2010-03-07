@@ -1,0 +1,15 @@
+<localestring id="LABEL_TEMPLATES_TEMPLATENAME">
+    <t>Template</t>
+</localestring>
+
+<localestring id="LABEL_TEMPLATES_AUTHOR">
+    <t>Autor</t>
+</localestring>
+
+<localestring id="LABEL_TEMPLATES_YEAR">
+    <t>Jahr</t>
+</localestring>
+
+<localestring id="LABEL_TEMPLATES_LICENSE">
+    <t>Lizenz</t>
+</localestring>

@@ -20,7 +20,7 @@
  * @author		Immanuel Peratoner <immanuel.peratoner@gmail.com>
  * @copyright	2009-2010 Immanuel Peratoner
  * @license		http://www.gnu.de/documents/gpl-3.0.en.html GNU GPLv3
- * @version		2.0.1
+ * @version		2.0.2
  * @link		http://pecio-cms.com
  */
 
@@ -44,15 +44,24 @@ class PecLocale {
         // load plugin xml localestring files and append their content to everything else
         $plugins = PecPlugin::load('locale_enabled', true, true);
         foreach ($plugins as $p) {
-            foreach (scandir($p->get_directory_path() . $p->get_property('locale_directory') . '/' . $language) as $filename) {
-                // language file must not be a directory
-                if (!is_dir($p->get_directory_path() . $p->get_property('locale_directory') . '/' . $language . '/' . $filename) && 
-                    str_ends_with($filename, '.xml')) {
-                    $inner_xml_data .= file_get_contents(
-                        $p->get_directory_path() . $p->get_property('locale_directory') . '/' . $language . '/' . $filename
-                    );
-                }
-            }
+        	$plugin_lang_dir = $p->get_directory_path() . $p->get_property('locale_directory') . '/' . $language;
+        	
+        	// check if the locale directory exists in the plugin lang directory
+        	// if not, set to default locale directory
+        	if (!file_exists($plugin_lang_dir)) {
+        		$plugin_lang_dir = $p->get_directory_path() . $p->get_property('locale_directory') . '/' . DEFAULT_LOCALE;
+        	}
+        	
+        	// check if the (perhaps changed in the previous "if") locale directory exists
+        	if (file_exists($plugin_lang_dir)) {
+	            foreach (scandir($plugin_lang_dir) as $filename) {
+	                // language file must not be a directory
+	                if (!is_dir($plugin_lang_dir . '/' . $filename) && 
+	                    str_ends_with($filename, '.xml')) {
+	                    $inner_xml_data .= file_get_contents($plugin_lang_dir . '/' . $filename);
+	                }
+	            }
+        	}
         }
         
         // load layout of the xml locale file and replace the string var with the loaded locale strings

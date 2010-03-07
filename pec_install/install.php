@@ -14,7 +14,10 @@ if (isset($_GET['locale']) && !empty($_GET['locale']) && PecLocale::exists($_GET
 }
 else {
 	define('LOCALE_QUERY_VAR', '');
-} 
+}
+
+// Generate all messages (we're doing this now, because now the locale is set correctly)
+$pec_messages = generate_messages();
 
 $start_menupoint_class = 'login_menu_element';
 $database_menupoint_class = 'login_menu_element';
@@ -36,6 +39,8 @@ switch ($_GET['step']) {
 
     <head>
         <title>pecio cms &raquo; <?php echo $pec_localization->get('LABEL_INSTALLATION'); ?> &raquo; <?php echo $title; ?></title>
+        
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         
         <link type="text/css" rel="stylesheet" href="../pec_admin/pec_style/css/login/layout.css" />
         <link type="text/css" rel="stylesheet" href="../pec_admin/pec_style/css/login/misc.css" />
