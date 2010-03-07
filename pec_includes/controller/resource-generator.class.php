@@ -415,7 +415,7 @@ class PecResourceGenerator {
         $links_html = '';
         
         foreach ($all_visible_categories as $lc) {            
-            $links = PecSidebarLink::load('cat', $lc);
+            $links = PecSidebarLink::load('cat', $lc, 'ORDER BY link_sort ASC');
             $link_list_items = '';
             
             foreach ($links as $l) {
