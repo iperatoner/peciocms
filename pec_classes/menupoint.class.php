@@ -35,7 +35,7 @@ class PecMenuPoint {
                'name' => 'point_name',
                'slug' => 'point_slug',
                'target_type' => 'point_target_type',
-               'target_data' => 'point_targeto_data',
+               'target_data' => 'point_target_data',
                'sort' => 'point_sort'
            );
             
