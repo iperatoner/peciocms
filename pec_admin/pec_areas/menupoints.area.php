@@ -375,7 +375,7 @@ function view_default() {
     $area_data = array();
     $area_data['title'] = $pec_localization->get('LABEL_GENERAL_MENUPOINTS');
     
-    $menupoints = PecMenuPoint::load('root_id', '0', 'ORDER BY point_sort');
+    $menupoints = PecMenuPoint::load('root_id', '0',/*false, false,*/ 'ORDER BY point_sort');
     
     $area_data['content'] = '
         <form method="post" action="' . AREA . '&amp;view=default&amp;action=default_view_actions" id="menupoints_main_form"/>
@@ -385,17 +385,14 @@ function view_default() {
             <input type="submit" name="remove_menupoints" value="' . $pec_localization->get('BUTTON_REMOVE') . '" onclick="return confirm(\'' . $pec_localization->get('LABEL_MENUPOINTS_REALLYREMOVE_SELECTED') . '\');" />
             <input type="submit" name="sort_menupoints" value="' . $pec_localization->get('BUTTON_SORT') . '" /><br /><br />
             
-            <table class="data_table" cellspacing="0">
-                <thead>
-                    <tr class="head_row">
-                        <th class="check_column"><input type="checkbox" onclick="checkbox_mark_all(\'remove_box\', \'menupoints_main_form\', this);" /></th>
-                        <th class="long_column">' . $pec_localization->get('LABEL_GENERAL_NAME') . '</th>
-                        <th class="medium_column">' . $pec_localization->get('LABEL_MENUPOINTS_ROOT') . '</th>
-                        <th class="medium_column">' . $pec_localization->get('LABEL_MENUPOINTS_TARGET') . '</th>
-                        <th class="thin_column">' . $pec_localization->get('LABEL_GENERAL_SORT') . '</th>
-                    <tr>
-                </thead>
-                <tbody>
+            <table class="data_table">
+                <tr class="head row">
+                    <td class="check column"><input type="checkbox" onclick="checkbox_mark_all(\'remove_box\', \'menupoints_main_form\', this);" /></td>
+                    <td class="long column">' . $pec_localization->get('LABEL_GENERAL_NAME') . '</td>
+                    <td class="medium column">' . $pec_localization->get('LABEL_MENUPOINTS_ROOT') . '</td>
+                    <td class="medium column">' . $pec_localization->get('LABEL_MENUPOINTS_TARGET') . '</td>
+                    <td class="thin column center">' . $pec_localization->get('LABEL_GENERAL_SORT') . '</td>
+                </tr>
     ';
     
     foreach ($menupoints as $m) {
@@ -417,34 +414,37 @@ function view_default() {
         }
         
         $area_data['content'] .= '
-                    <tr class="data_row" title="#' . $m->get_id() . '">
-                        <td class="check_column"><input type="checkbox" class="remove_box" name="remove_box[]" value="' . $m->get_id() . '" /></td>
-                        <td class="normal_column">
-                            <a href="' . AREA . '&amp;view=edit&amp;id=' . $m->get_id() . '"><span class="main_text">' . $m->get_name() . '</span></a>
-                            <div class="row_actions">
-                                <a href="' . AREA . '&amp;view=edit&amp;id=' . $m->get_id() . '">' . $pec_localization->get('ACTION_EDIT') . '</a> - 
-                                <a href="javascript:ask(\'' . $pec_localization->get('LABEL_MENUPOINTS_REALLYREMOVE') . '\', \'' . AREA . '&amp;view=default&amp;action=remove&amp;id=' . $m->get_id() . '\');">
-                                    ' . $pec_localization->get('ACTION_REMOVE') . '
-                                </a>
-                            </div>
-                        </td>
-                        <td class="normal_column">' . $root_menupoint . '</td>
-                        <td class="normal_column">' . $target_type . '<br /><i>' . $target_data . '</i></td>
-                        <td class="check_column">
-                            <input type="text" size="2" name="sort_fields[]" value="' . $m->get_sort() . '" class="sort_input" />                                   
-                            <input type="hidden" name="sort_extra_data[]" value="' . $m->get_id() . '-' . $m->get_sort() . '" />
-                        </td>
-                    </tr>
+                <tr class="data row" title="#' . $m->get_id() . '">
+                    <td class="check"><input type="checkbox" class="remove_box" name="remove_box[]" value="' . $m->get_id() . '" /></td>
+                    <td class="long">
+                        <a href="' . AREA . '&amp;view=edit&amp;id=' . $m->get_id() . '"><span class="main_text">' . $m->get_name() . '</span></a>
+                        <div class="row_actions">
+                            <a href="' . AREA . '&amp;view=edit&amp;id=' . $m->get_id() . '">' . $pec_localization->get('ACTION_EDIT') . '</a> - 
+                            <a href="javascript:ask(\'' . $pec_localization->get('LABEL_MENUPOINTS_REALLYREMOVE') . '\', \'' . AREA . '&amp;view=default&amp;action=remove&amp;id=' . $m->get_id() . '\');">
+                                ' . $pec_localization->get('ACTION_REMOVE') . '
+                            </a>
+                        </div>
+                    </td>
+                    <td class="medium">' . $root_menupoint . '</td>
+                    <td class="medium">' . $target_type . '<br /><i>' . $target_data . '</i></td>
+                    <td class="thin middle center">
+                        <input type="text" size="2" name="sort_fields[]" value="' . $m->get_sort() . '" class="sort_input" />                                   
+                        <input type="hidden" name="sort_extra_data[]" value="' . $m->get_id() . '-' . $m->get_sort() . '" />
+                    </td>
+                </tr>
         ';
         
 
         // load and append submenu points
         $submenu_points = PecMenuPoint::load('root_id', $m->get_id(), 'ORDER BY point_sort', true);
-        $area_data = display_submenu_points($submenu_points, 1, $area_data);
+        
+        // only display sub menupoints if there are any
+        if (count($submenu_points) > 0) {
+        	$area_data = display_submenu_points($submenu_points, 1, $area_data);
+        }
     }
     
     $area_data['content'] .= '
-    			</tbody>
             </table>
         </form>
     ';
@@ -454,8 +454,6 @@ function view_default() {
 
 function display_submenu_points($submenu_points, $level=0, $area_data) {   
     global $pec_localization;
-
-    $area_data['content'] .= '<tr><td colspan="5"><table class="data_table" cellspacing="0" style="margin-left: 10px; border: 0px;"><tbody>';
 
     foreach ($submenu_points as $sm) {
         switch ($sm->get_target_type()) {
@@ -475,10 +473,14 @@ function display_submenu_points($submenu_points, $level=0, $area_data) {
             $root_menupoint = '-';
         }
         
+        // defining the left padding, because sub menupoints must have an indent
+        // (current_level * 10 Pixel) + 10 Pixel (thats the default padding which needs to be added)
+        $padding_left = ($level * 12) + 8;
+        
         $area_data['content'] .= '
-                    <tr class="data_row" title="#' . $sm->get_id() . '">
-                        <td class="check_column" style="margin-left: 10px;"><input type="checkbox" class="remove_box" name="remove_box[]" value="' . $sm->get_id() . '" /></td>
-                        <td class="normal_column">
+                    <tr class="data row sub-' . $level . '" title="#' . $sm->get_id() . '">
+                        <td class="check" style="padding-left: ' . $padding_left . 'px;"><input type="checkbox" class="remove_box" name="remove_box[]" value="' . $sm->get_id() . '" /></td>
+                        <td class="long" style="padding-left: ' . $padding_left . 'px;">
                             <a href="' . AREA . '&amp;view=edit&amp;id=' . $sm->get_id() . '"><span class="main_text">' . $sm->get_name() . '</span></a>
                             <div class="row_actions">
                                 <a href="' . AREA . '&amp;view=edit&amp;id=' . $sm->get_id() . '">' . $pec_localization->get('ACTION_EDIT') . '</a> - 
@@ -487,9 +489,9 @@ function display_submenu_points($submenu_points, $level=0, $area_data) {
                                 </a>
                             </div>
                         </td>
-                        <td class="normal_column">' . $root_menupoint . '</td>
-                        <td class="normal_column">' . $target_type . '<br /><i>' . $target_data . '</i></td>
-                        <td class="check_column">
+                        <td class="medium">' . $root_menupoint . '</td>
+                        <td class="medium">' . $target_type . '<br /><i>' . $target_data . '</i></td>
+                        <td class="thin middle center">
                             <input type="text" size="2" name="sort_fields[]" value="' . $sm->get_sort() . '" class="sort_input" />                                   
                             <input type="hidden" name="sort_extra_data[]" value="' . $sm->get_id() . '-' . $sm->get_sort() . '" />
                         </td>
@@ -499,10 +501,12 @@ function display_submenu_points($submenu_points, $level=0, $area_data) {
 
         // load and display submenu points
         $subsubmenu_points = PecMenuPoint::load('root_id', $sm->get_id(), 'ORDER BY point_sort', true);
-        $area_data = display_submenu_points($subsubmenu_points, $level++, $area_data);
+        
+        // only display sub menupoints if there are any
+        if (count($subsubmenu_points) > 0) {
+        	$area_data = display_submenu_points($subsubmenu_points, $level+1, $area_data);
+        }
     }
-
-    $area_data['content'] .= '</tbody></table></td></tr>';
 
     return $area_data;
 }

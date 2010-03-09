@@ -2,7 +2,6 @@ table.data_table {
     font-size: 8pt;
     
     width: 100%;
-    table-layout: fixed;
     
     border: 1px solid #dfdfdf;
     
@@ -10,7 +9,144 @@ table.data_table {
     -moz-border-radius: 4px;
     -webkit-border-radius: 4px;
     
+    display: table;
+    table-layout: fixed;
+    
+    border-spacing: 0px;
+}        
+
+table.data_table * {
+   word-wrap: break-word;
 }
+       	
+        table.data_table tr td.check {
+            width: 9px;
+        }
+
+        table.data_table tr td.long {
+            width: 200px;
+        }
+
+        table.data_table tr td.medium {
+            width: 130px;
+        }
+
+        table.data_table tr td.lower_medium {
+            width: 110px;
+        }
+
+        table.data_table tr td.short {
+            width: 70px;
+        }
+
+        table.data_table tr td.mid_thin {
+            width: 50px;
+        }
+
+        table.data_table tr td.thin {
+            width: 40px;
+        }
+
+        table.data_table tr td.middle {
+            vertical-align: middle !important;
+        }
+
+        table.data_table tr td.center {
+            text-align: center !important;
+        }
+       	
+
+    table.data_table tr.head {
+        text-shadow: 0px 1px 1px #fdfdfd, 0px 0px 7px #787878;
+        font-weight: bold;
+        
+        background: #efefef;
+        
+        box-shadow:
+            inset 0px 17px 20px -10px #f4f4f4,
+            inset 0px -17px 20px -10px #ebebeb;
+        -moz-box-shadow:
+            inset 0px 17px 20px -10px #f4f4f4,
+            inset 0px -17px 20px -10px #ebebeb;
+        -webkit-box-shadow:
+            inset 0px 17px 20px -10px #f4f4f4,
+            inset 0px -17px 20px -10px #ebebeb;
+            
+        width: 100%;
+    
+    	display: table-row;
+    }
+
+        table.data_table tr.head td {
+            line-height: 30px;
+            padding-left: 8px;
+            text-align: left;
+        }
+        
+    table.data_table tr.data {
+        background: #fdfdfd;
+        width: 100%;
+    }
+
+	    table.data_table tr.data:hover {
+	        background: #f8f8f8;
+	    }
+
+        table.data_table tr.data td.check {
+            padding-top: 3px !important;
+        }
+    
+        table.data_table tr.data td {
+            border-top: 1px solid #efefef;
+            line-height: 22px;
+            
+            padding-left: 8px;
+            padding-top: 2px;
+            padding-bottom: 1px;
+            
+            text-align: left;
+            vertical-align: top;
+        }
+            
+            table.data_table tr.data td span.main_text {
+                font-size: 9pt !important;
+                font-weight: bold;
+            }
+        
+            table.data_table tr.data td div.row_actions {
+                font-size: 8pt;
+                visibility: hidden;
+                border-top: 0px;
+            }
+        
+            table.data_table tr.data:hover td div.row_actions {
+                visibility: visible;
+            }
+    
+    table.data_table tr.sub-1 {
+    	background: #f2f5f8 !important;
+    }
+    
+	    table.data_table tr.sub-1:hover {
+	    	background: #edf1f4 !important;
+	    }
+    
+        table.data_table tr.sub-1 td {
+            border-top: 1px solid #e5e9ed !important;
+        }
+    
+    table.data_table tr.sub-2 {
+    	background: #e7ebef !important;
+    }
+    
+	    table.data_table tr.sub-2:hover {
+	    	background: #e4e8ec!important;
+	    }
+    
+        table.data_table tr.sub-2 td {
+            border-top: 1px solid #dce0e4 !important;
+        }
+
 
 table.overview_table {
     font-size: 10pt;
@@ -57,107 +193,7 @@ table.overview_table {
         	width: 120px;
         }
         
-
-table.data_table *, table.data_table tr td, table.overview_table *, table.overview_table tr td {
-   word-wrap: break-word;
-}
-
-    table.data_table tr.head_row {
-        text-shadow: 1px 1px 6px #898989;
-        background: #efefef;
-        box-shadow:
-            inset 0px 17px 20px -10px #f4f4f4,
-            inset 0px -17px 20px -10px #ebebeb;
-        -moz-box-shadow:
-            inset 0px 17px 20px -10px #f4f4f4,
-            inset 0px -17px 20px -10px #ebebeb;
-        -webkit-box-shadow:
-            inset 0px 17px 20px -10px #f4f4f4,
-            inset 0px -17px 20px -10px #ebebeb;
-    }
-
-        table.data_table tr.head_row th {
-            line-height: 30px;
-            padding-left: 8px;
-            text-align: left;
-        }
         
-            table.data_table tr.head_row th.check_column {
-                width: 9px;
-            }
-
-            table.data_table tr.head_row th.long_column {
-                width: 200px;
-            }
-
-            table.data_table tr.head_row th.medium_column {
-                width: 130px;
-            }
-
-            table.data_table tr.head_row th.lower_medium_column {
-                width: 110px;
-            }
-
-            table.data_table tr.head_row th.short_column {
-                width: 70px;
-            }
-
-            table.data_table tr.head_row th.mid_thin_column {
-                width: 50px;
-            }
-
-            table.data_table tr.head_row th.thin_column {
-                width: 40px;
-            }
-
-    table.data_table tr.data_row {
-        background: #fdfdfd;
-    }
-
-    table.data_table tr.data_row:hover {
-        background: #fafafa;
-    }
-    
-        table.data_table tr.data_row td {            
-            border-top: 1px solid #efefef;
-        }
-
-        table.data_table tr.data_row td.check_column {
-            line-height: 22px;
-            
-            padding-left: 8px;
-            padding-top: 3px;
-            padding-bottom: 1px;
-            
-            text-align: left;
-            vertical-align: top;
-        }
-
-        table.data_table tr.data_row td.normal_column {
-            line-height: 22px;
-            
-            padding-left: 8px;
-            padding-top: 2px;
-            padding-bottom: 1px;
-            
-            text-align: left;
-            vertical-align: top;
-        }
-            
-            table.data_table tr.data_row td.normal_column span.main_text {
-                font-size: 9pt !important;
-                font-weight: bold;
-            }
-        
-            table.data_table tr.data_row td div.row_actions {
-                font-size: 8pt;
-                visibility: hidden;
-            }
-        
-            table.data_table tr.data_row:hover td div.row_actions {
-                visibility: visible;
-            }
-            
 table tr td.td_middle {
     vertical-align: middle;
 }

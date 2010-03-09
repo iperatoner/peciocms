@@ -87,6 +87,10 @@ else {
         <script type="text/javascript" src="ckeditor/ckeditor.js"></script>
         <script type="text/javascript" src="ckeditor/ckfinder/ckfinder.js"></script>
         
+        <!--[if IE 7]>
+		<script src="http://ie7-js.googlecode.com/svn/version/2.1(beta2)/IE9.js"></script>
+		<![endif]-->
+        
         <?php $area->out('head_data'); ?>
     </head>
 
