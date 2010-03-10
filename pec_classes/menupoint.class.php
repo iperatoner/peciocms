@@ -189,6 +189,58 @@ class PecMenuPoint {
     public function set_sort($sort) {
         $this->point_sort = $sort;
     }
+
+    public function has_superior_menupoint_somewhere($menupoint) {
+        if ($this->point_root_id == $menupoint->get_id()) {
+            return true;
+        }
+        else {
+            // the levels of superior menupoints to check
+            $levels = 100;
+
+            // the level to start
+            $current_level = 1;
+
+            // default result
+            $result = false;
+
+            // setting the first root menupoint
+            $eval_string = '$this->get_root_menupoint()';
+
+            // check if this root menupoint actually exists. 
+            // otherwise we cant get its id because ->get_root_menupoint() returns false 
+            // if there is no root menupoint
+            if (eval('return ' . $eval_string . ';')) {
+                // go through the levels
+                for ($current_level=1; $current_level<= $levels; $current_level++) {
+                    // append a ->get_root_menupoint() to check the next root menupoint
+                    $new_eval_string = $eval_string . '->get_root_menupoint()';
+
+                    // again check if this root menupoint actually exists
+                    if (!eval('return ' . $new_eval_string . ';')) {
+                        break;
+                    }
+                    else {
+                        $eval_string = $new_eval_string;
+                        // check if the id of the root menupoint is the same 
+                        // as the id of the menupoint given to this method
+                        $result = eval('return ' . $eval_string . '->get_id() == $menupoint->get_id();');
+
+                        // if we have our root menupoint, stop the loop. if not we have to continue searching
+                        if ($result) {
+                            break;
+                        }
+                    }
+                }
+            }
+            else {
+                $result = false;
+                break;
+            }
+
+            return $result;
+        }
+    }
     
     public function save() {
         $new = false;

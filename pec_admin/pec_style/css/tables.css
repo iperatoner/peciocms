@@ -54,6 +54,10 @@ table.data_table * {
         table.data_table tr td.center {
             text-align: center !important;
         }
+
+        table.data_table tr td.right {
+            text-align: right !important;
+        }
        	
 
     table.data_table tr.head {

@@ -46,6 +46,7 @@ switch ($_GET['step']) {
         <link type="text/css" rel="stylesheet" href="../pec_admin/pec_style/css/login/misc.css" />
         <link type="text/css" rel="stylesheet" href="../pec_admin/pec_style/css/misc.css" />
         <link type="text/css" rel="stylesheet" href="../pec_admin/pec_style/css/format.css" />
+        <link type="text/css" rel="stylesheet" href="../pec_admin/pec_style/css/tables.css" />
                 
         <script type="text/javascript" src="../pec_admin/pec_style/js/mootools/mootools-core.js"></script>
         <script type="text/javascript" src="../pec_admin/pec_style/js/mootools/mootools-more.js"></script>
