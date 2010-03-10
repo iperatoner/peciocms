@@ -228,37 +228,33 @@ function view_default() {
             <input type="button" value="' . $pec_localization->get('BUTTON_NEW_ARTICLE') . '" onclick="location.href=\'' . AREA . '&amp;view=edit\'"/>
             <input type="submit" name="remove_articles" value="' . $pec_localization->get('BUTTON_REMOVE') . '" /><br /><br />
             
-            <table class="data_table" cellspacing="0">
-                <thead>
-                    <tr class="head_row">
-                        <th class="check_column"><input type="checkbox" onclick="checkbox_mark_all(\'remove_box\', \'articles_main_form\', this);" /></th>
-                        <th class="long_column">' . $pec_localization->get('LABEL_GENERAL_TITLE') . '</th>
-                        <th class="medium_column">' . $pec_localization->get('LABEL_GENERAL_SLUG') . '</th>
-                        <th class="short_column">' . $pec_localization->get('LABEL_ARTICLES_ONSTART') . '</th>
-                    <tr>
-                </thead>
-                <tbody>
+            <table class="data_table">
+                <tr class="head">
+                    <td class="check"><input type="checkbox" onclick="checkbox_mark_all(\'remove_box\', \'articles_main_form\', this);" /></td>
+                    <td class="long">' . $pec_localization->get('LABEL_GENERAL_TITLE') . '</td>
+                    <td class="medium">' . $pec_localization->get('LABEL_GENERAL_SLUG') . '</td>
+                    <td class="short">' . $pec_localization->get('LABEL_ARTICLES_ONSTART') . '</td>
+                <tr>
     ';
     
     foreach ($articles as $a) {
         $area_data['content'] .= '
-                    <tr class="data_row" title="#' . $a->get_id() . '">
-                        <td class="check_column"><input type="checkbox" class="remove_box" name="remove_box[]" value="' . $a->get_id() . '" /></td>
-                        <td class="normal_column">
-                            <a href="' . AREA . '&amp;view=edit&amp;id=' . $a->get_id() . '"><span class="main_text">' . $a->get_title() . '</span></a>
-                            <div class="row_actions">
-                                <a href="' . AREA . '&amp;view=edit&amp;id=' . $a->get_id() . '">' . $pec_localization->get('ACTION_EDIT') . '</a> - 
-                                <a href="javascript:ask(\'' . $pec_localization->get('LABEL_ARTICLES_REALLYREMOVE') . '\', \'' . AREA . '&amp;view=default&amp;action=remove&amp;id=' . $a->get_id() . '\');">' . $pec_localization->get('ACTION_REMOVE') . '</a>
-                            </div>
-                        </td>
-                        <td class="normal_column">' . $a->get_slug() . '</td>
-                        <td class="normal_column">' . $a->get_onstart(true) . '</td>
-                    </tr>
+                <tr class="data" title="#' . $a->get_id() . '">
+                    <td class="check"><input type="checkbox" class="remove_box" name="remove_box[]" value="' . $a->get_id() . '" /></td>
+                    <td class="long">
+                        <a href="' . AREA . '&amp;view=edit&amp;id=' . $a->get_id() . '"><span class="main_text">' . $a->get_title() . '</span></a>
+                        <div class="row_actions">
+                            <a href="' . AREA . '&amp;view=edit&amp;id=' . $a->get_id() . '">' . $pec_localization->get('ACTION_EDIT') . '</a> - 
+                            <a href="javascript:ask(\'' . $pec_localization->get('LABEL_ARTICLES_REALLYREMOVE') . '\', \'' . AREA . '&amp;view=default&amp;action=remove&amp;id=' . $a->get_id() . '\');">' . $pec_localization->get('ACTION_REMOVE') . '</a>
+                        </div>
+                    </td>
+                    <td class="medium">' . $a->get_slug() . '</td>
+                    <td class="short">' . $a->get_onstart(true) . '</td>
+                </tr>
         ';
     }
     
     $area_data['content'] .= '
-    			</tbody>
             </table>
         </form>
     ';

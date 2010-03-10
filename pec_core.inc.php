@@ -71,6 +71,17 @@ if (!defined('INSTALLATION')) {
 else {
     // locale we can get from installation start screen
     $pec_localization = new PecLocale('en');
+
+    // permissions the directories and files need to have (r = recursive, nr = not recursive, f = file)
+    $pec_permission_array = array(
+        './' => array('777', 'nr'),
+        'pec_admin/' => array('777', 'nr'),
+        'pec_upload/' => array('777', 'r'),
+        'pec_feed/' => array('777', 'r'),
+        'counter.txt' => array('777', 'f'),
+        'htaccess-sample' => array('777', 'f'),
+        '_pec_config.inc.php' => array('777', 'f')
+    );
 }
 
 ?>

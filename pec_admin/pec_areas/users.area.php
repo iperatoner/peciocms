@@ -541,25 +541,22 @@ function view_default() {
             <input type="button" value="' . $pec_localization->get('BUTTON_NEW_USER') . '" onclick="location.href=\'' . AREA . '&amp;view=edit\'"/>
             <input type="submit" name="remove_users" value="' . $pec_localization->get('BUTTON_REMOVE') . '" /><br /><br />
             
-            <table class="data_table" cellspacing="0">
-                <thead>
-                    <tr class="head_row">
-                        <th class="check_column"><input type="checkbox" onclick="checkbox_mark_all(\'remove_box\', \'users_main_form\', this);" /></th>
-                        <th class="long_column">' . $pec_localization->get('LABEL_USERS_NAME') . '</th>
-                        <th class="medium_column">' . $pec_localization->get('LABEL_GENERAL_SLUG') . '</th>
-                        <th class="long_column">' . $pec_localization->get('LABEL_USERS_ADDITIONAL_INFO') . '</th>
-                        <th class="short_column">' . $pec_localization->get('LABEL_USERS_ADMIN') . '</th>
-                    <tr>
-                </thead>
-                <tbody>
+            <table class="data_table">
+                <tr class="head">
+                    <td class="check"><input type="checkbox" onclick="checkbox_mark_all(\'remove_box\', \'users_main_form\', this);" /></td>
+                    <td class="long">' . $pec_localization->get('LABEL_USERS_NAME') . '</td>
+                    <td class="medium">' . $pec_localization->get('LABEL_GENERAL_SLUG') . '</td>
+                    <td class="long">' . $pec_localization->get('LABEL_USERS_ADDITIONAL_INFO') . '</td>
+                    <td class="short">' . $pec_localization->get('LABEL_USERS_ADMIN') . '</td>
+                <tr>
     ';
     
     foreach ($users as $u) {
         $superadmin_string = $u->is_superadmin() ? '&#x2713;' : '&#x2717;';
         $area_data['content'] .= '
-                    <tr class="data_row" title="#' . $u->get_id() . '">
-                        <td class="check_column"><input type="checkbox" class="remove_box" name="remove_box[]" value="' . $u->get_id() . '" /></td>
-                        <td class="normal_column">
+                    <tr class="data" title="#' . $u->get_id() . '">
+                        <td class="check"><input type="checkbox" class="remove_box" name="remove_box[]" value="' . $u->get_id() . '" /></td>
+                        <td class="long">
                             <a href="' . AREA . '&amp;view=edit&amp;id=' . $u->get_id() . '"><span class="main_text">' . $u->get_name() . '</span></a>
                             <div class="row_actions">
                                 <a href="' . AREA . '&amp;view=edit&amp;id=' . $u->get_id() . '">' . $pec_localization->get('ACTION_EDIT') . '</a> - 
@@ -568,12 +565,12 @@ function view_default() {
                                 </a>
                             </div>
                         </td>
-                        <td class="normal_column">' . $u->get_slug() . '</td>
-                        <td class="normal_column">
+                        <td class="medium">' . $u->get_slug() . '</td>
+                        <td class="long">
                             ' . $u->get_forename() . ' ' . $u->get_surname() . '<br />
                             <em>' . $u->get_email() . '</em>
                         </td>
-                        <td class="normal_column">' . $superadmin_string . '</td>
+                        <td class="short">' . $superadmin_string . '</td>
                     </tr>
         ';
     }

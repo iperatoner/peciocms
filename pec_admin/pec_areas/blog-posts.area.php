@@ -396,18 +396,15 @@ function view_default() {
             
             <br style="clear: both;" /><br />
             
-            <table class="data_table" cellspacing="0">
-                <thead>
-                    <tr class="head_row">
-                        <th class="check_column"><input type="checkbox" onclick="checkbox_mark_all(\'remove_box\', \'posts_main_form\', this);" /></th>
-                        <th class="long_column">' . $pec_localization->get('LABEL_GENERAL_TITLE') . '</th>
-                        <th class="medium_column">' . $pec_localization->get('LABEL_GENERAL_SLUG') . '</th>
-                        <th class="lower_medium_column">' . $pec_localization->get('LABEL_POSTS_DATE') . '</th>
-                        <th class="medium_column">' . $pec_localization->get('LABEL_POSTS_AUTHOR') . '</th>
-                        <th class="mid_thin_column">' . $pec_localization->get('LABEL_POSTS_PUBLISHED') . '</th>
-                    <tr>
-                </thead>
-                <tbody>
+            <table class="data_table">
+                <tr class="head">
+                    <td class="check"><input type="checkbox" onclick="checkbox_mark_all(\'remove_box\', \'posts_main_form\', this);" /></th>
+                    <td class="long">' . $pec_localization->get('LABEL_GENERAL_TITLE') . '</td>
+                    <td class="medium">' . $pec_localization->get('LABEL_GENERAL_SLUG') . '</td>
+                    <td class="lower_medium">' . $pec_localization->get('LABEL_POSTS_DATE') . '</td>
+                    <td class="medium">' . $pec_localization->get('LABEL_POSTS_AUTHOR') . '</td>
+                    <td class="mid_thin">' . $pec_localization->get('LABEL_POSTS_PUBLISHED') . '</td>
+                <tr>
     ';
     
     foreach ($posts as $p) {
@@ -417,30 +414,29 @@ function view_default() {
         
         
         $area_data['content'] .= '
-                    <tr class="data_row" title="#' . $p->get_id() . '">
-                        <td class="check_column"><input type="checkbox" class="remove_box" name="remove_box[]" value="' . $p->get_id() . '" /></td>
-                        <td class="normal_column">
-                            <a href="' . AREA . '&amp;view=edit&amp;id=' . $p->get_id() . '"><span class="main_text">' . $p->get_title() . '</span></a>
-                            <div class="row_actions">
-                                <a href="' . AREA . '&amp;view=edit&amp;id=' . $p->get_id() . '">' . $pec_localization->get('ACTION_EDIT') . '</a> - 
-                                <a href="' . AREA . '&amp;view=default&amp;action=' . $publish_action . '&amp;id=' . $p->get_id() . '">
-                                    ' . $publish_link_string . '
-                                </a> - 
-                                <a href="javascript:ask(\'' . $pec_localization->get('LABEL_POSTS_REALLYREMOVE') . '\', \'' . AREA . '&amp;view=default&amp;action=remove&amp;id=' . $p->get_id() . '\');">
-                                    ' . $pec_localization->get('ACTION_REMOVE') . '
-                                </a>
-                            </div>
-                        </td>
-                        <td class="normal_column">' . $p->get_slug() . '</td>
-                        <td class="normal_column">' . $p->get_timestamp('d.m.y - H:i') . '</td>
-                        <td class="normal_column">' . $author_name . '</td>
-                        <td class="normal_column">' . $p->get_status(true) . '</td>
-                    </tr>
+                <tr class="data" title="#' . $p->get_id() . '">
+                    <td class="check"><input type="checkbox" class="remove_box" name="remove_box[]" value="' . $p->get_id() . '" /></td>
+                    <td class="long">
+                        <a href="' . AREA . '&amp;view=edit&amp;id=' . $p->get_id() . '"><span class="main_text">' . $p->get_title() . '</span></a>
+                        <div class="row_actions">
+                            <a href="' . AREA . '&amp;view=edit&amp;id=' . $p->get_id() . '">' . $pec_localization->get('ACTION_EDIT') . '</a> - 
+                            <a href="' . AREA . '&amp;view=default&amp;action=' . $publish_action . '&amp;id=' . $p->get_id() . '">
+                                ' . $publish_link_string . '
+                            </a> - 
+                            <a href="javascript:ask(\'' . $pec_localization->get('LABEL_POSTS_REALLYREMOVE') . '\', \'' . AREA . '&amp;view=default&amp;action=remove&amp;id=' . $p->get_id() . '\');">
+                                ' . $pec_localization->get('ACTION_REMOVE') . '
+                            </a>
+                        </div>
+                    </td>
+                    <td class="medium">' . $p->get_slug() . '</td>
+                    <td class="lower_medium">' . $p->get_timestamp('d.m.y - H:i') . '</td>
+                    <td class="medium">' . $author_name . '</td>
+                    <td class="mid_thin">' . $p->get_status(true) . '</td>
+                </tr>
         ';
     }
     
     $area_data['content'] .= '
-    			</tbody>
             </table>
         </form>
     ';

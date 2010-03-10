@@ -333,16 +333,13 @@ function view_default() {
             <input type="submit" name="remove_texts" value="' . $pec_localization->get('BUTTON_REMOVE') . '" onclick="return confirm(\'' . $pec_localization->get('LABEL_TEXTS_REALLYREMOVE_SELECTED') . '\');" />
             <input type="submit" name="sort_texts" value="' . $pec_localization->get('BUTTON_SORT') . '" /><br /><br />
             
-            <table class="data_table" cellspacing="0">
-                <thead>
-                    <tr class="head_row">
-                        <th class="check_column"><input type="checkbox" onclick="checkbox_mark_all(\'remove_box\', \'texts_main_form\', this);" /></th>
-                        <th class="long_column">' . $pec_localization->get('LABEL_GENERAL_TITLE') . '</th>
-                        <th class="medium_column">' . $pec_localization->get('LABEL_TEXTS_VISIBILITY') . '</th>
-                        <th class="thin_column">' . $pec_localization->get('LABEL_GENERAL_SORT') . '</th>
-                    <tr>
-                </thead>
-                <tbody>
+            <table class="data_table">
+                <tr class="head">
+                    <td class="check"><input type="checkbox" onclick="checkbox_mark_all(\'remove_box\', \'texts_main_form\', this);" /></td>
+                    <td class="long">' . $pec_localization->get('LABEL_GENERAL_TITLE') . '</td>
+                    <td class="medium">' . $pec_localization->get('LABEL_TEXTS_VISIBILITY') . '</td>
+                    <td class="thin center">' . $pec_localization->get('LABEL_GENERAL_SORT') . '</td>
+                <tr>
     ';
     
     foreach ($texts as $t) {
@@ -354,28 +351,27 @@ function view_default() {
             default: $visibility_string = '-'; break;
         }
         $area_data['content'] .= '
-                    <tr class="data_row" title="#' . $t->get_id() . '">
-                        <td class="check_column"><input type="checkbox" class="remove_box" name="remove_box[]" value="' . $t->get_id() . '" /></td>
-                        <td class="normal_column">
-                            <a href="' . AREA . '&amp;view=edit&amp;id=' . $t->get_id() . '"><span class="main_text">' . $t->get_title() . '</span></a>
-                            <div class="row_actions">
-                                <a href="' . AREA . '&amp;view=edit&amp;id=' . $t->get_id() . '">' . $pec_localization->get('ACTION_EDIT') . '</a> - 
-                                <a href="javascript:ask(\'' . $pec_localization->get('LABEL_TEXTS_REALLYREMOVE') . '\', \'' . AREA . '&amp;view=default&amp;action=remove&amp;id=' . $t->get_id() . '\');">
-                                    ' . $pec_localization->get('ACTION_REMOVE') . '
-                                </a>
-                            </div>
-                        </td>
-                        <td class="normal_column">' . $visibility_string . '</td>
-                        <td class="check_column">
-                            <input type="text" size="2" name="sort_fields[]" value="' . $t->get_sort() . '" class="sort_input" />                                   
-                            <input type="hidden" name="sort_extra_data[]" value="' . $t->get_id() . '-' . $t->get_sort() . '" />
-                        </td>
-                    </tr>
+                <tr class="data" title="#' . $t->get_id() . '">
+                    <td class="check"><input type="checkbox" class="remove_box" name="remove_box[]" value="' . $t->get_id() . '" /></td>
+                    <td class="long">
+                        <a href="' . AREA . '&amp;view=edit&amp;id=' . $t->get_id() . '"><span class="main_text">' . $t->get_title() . '</span></a>
+                        <div class="row_actions">
+                            <a href="' . AREA . '&amp;view=edit&amp;id=' . $t->get_id() . '">' . $pec_localization->get('ACTION_EDIT') . '</a> - 
+                            <a href="javascript:ask(\'' . $pec_localization->get('LABEL_TEXTS_REALLYREMOVE') . '\', \'' . AREA . '&amp;view=default&amp;action=remove&amp;id=' . $t->get_id() . '\');">
+                                ' . $pec_localization->get('ACTION_REMOVE') . '
+                            </a>
+                        </div>
+                    </td>
+                    <td class="medium">' . $visibility_string . '</td>
+                    <td class="thin middle center">
+                        <input type="text" size="2" name="sort_fields[]" value="' . $t->get_sort() . '" class="sort_input" />                                   
+                        <input type="hidden" name="sort_extra_data[]" value="' . $t->get_id() . '-' . $t->get_sort() . '" />
+                    </td>
+                </tr>
         ';
     }
     
     $area_data['content'] .= '
-    			</tbody>
             </table>
         </form>
     ';

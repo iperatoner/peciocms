@@ -214,17 +214,14 @@ function view_default() {
         <form method="post" action="' . AREA . '&amp;view=default&amp;action=default_view_actions" id="comments_main_form" onsubmit="return confirm(\'' . $pec_localization->get('LABEL_COMMENTS_REALLYREMOVE_SELECTED') . '\');" />
             <input type="submit" name="remove_comments" value="' . $pec_localization->get('BUTTON_REMOVE') . '" /><br /><br />
             
-            <table class="data_table" cellspacing="0">
-                <thead>
-                    <tr class="head_row">
-                        <th class="check_column"><input type="checkbox" onclick="checkbox_mark_all(\'remove_box\', \'comments_main_form\', this);" /></th>
-                        <th class="long_column">' . $pec_localization->get('LABEL_GENERAL_TITLE') . '</th>
-                        <th class="medium_column">' . $pec_localization->get('LABEL_COMMENTS_AUTHOR') . '</th>
-                        <th class="medium_column">' . $pec_localization->get('LABEL_COMMENTS_DATE') . '</th>
-                        <th class="medium_column">' . $pec_localization->get('LABEL_COMMENTS_RELATES_TO') . '</th>
-                    <tr>
-                </thead>
-                <tbody>
+            <table class="data_table">
+                <tr class="head">
+                    <td class="check"><input type="checkbox" onclick="checkbox_mark_all(\'remove_box\', \'comments_main_form\', this);" /></td>
+                    <td class="long">' . $pec_localization->get('LABEL_GENERAL_TITLE') . '</td>
+                    <td class="medium">' . $pec_localization->get('LABEL_COMMENTS_AUTHOR') . '</td>
+                    <td class="medium">' . $pec_localization->get('LABEL_COMMENTS_DATE') . '</td>
+                    <td class="medium">' . $pec_localization->get('LABEL_COMMENTS_RELATES_TO') . '</td>
+                <tr>
     ';
     
     foreach ($comments as $c) {
@@ -241,24 +238,23 @@ function view_default() {
         }
         
         $area_data['content'] .= '
-                    <tr class="data_row" title="#' . $c->get_id() . '">
-                        <td class="check_column"><input type="checkbox" class="remove_box" name="remove_box[]" value="' . $c->get_id() . '" /></td>
-                        <td class="normal_column">
-                            <a href="' . AREA . '&amp;view=edit&amp;id=' . $c->get_id() . '"><span class="main_text">' . $c->get_title() . '</span></a>
-                            <div class="row_actions">
-                                <a href="' . AREA . '&amp;view=edit&amp;id=' . $c->get_id() . '">' . $pec_localization->get('ACTION_EDIT') . '</a> - 
-                                <a href="javascript:ask(\'' . $pec_localization->get('LABEL_COMMENTS_REALLYREMOVE') . '\', \'' . AREA . '&amp;view=default&amp;action=remove&amp;id=' . $c->get_id() . '\');">' . $pec_localization->get('ACTION_REMOVE') . '</a>
-                            </div>
-                        </td>
-                        <td class="normal_column">' . $c->get_author() . '<br /><em>' . $c->get_email() . '</em></td>
-                        <td class="normal_column">' . $c->get_timestamp('d.m.Y - H:i') . '</td>
-                        <td class="normal_column"><a href="' . ADMIN_MAIN_FILE . '?' . ADMIN_AREA_VAR . '=blog-posts&amp;view=edit&amp;id=' . $post_id. '">' . $post_title. '</a><br /><i>' . $post_id_string . '</i></td>
-                    </tr>
+                <tr class="data" title="#' . $c->get_id() . '">
+                    <td class="check"><input type="checkbox" class="remove_box" name="remove_box[]" value="' . $c->get_id() . '" /></td>
+                    <td class="long">
+                        <a href="' . AREA . '&amp;view=edit&amp;id=' . $c->get_id() . '"><span class="main_text">' . $c->get_title() . '</span></a>
+                        <div class="row_actions">
+                            <a href="' . AREA . '&amp;view=edit&amp;id=' . $c->get_id() . '">' . $pec_localization->get('ACTION_EDIT') . '</a> - 
+                            <a href="javascript:ask(\'' . $pec_localization->get('LABEL_COMMENTS_REALLYREMOVE') . '\', \'' . AREA . '&amp;view=default&amp;action=remove&amp;id=' . $c->get_id() . '\');">' . $pec_localization->get('ACTION_REMOVE') . '</a>
+                        </div>
+                    </td>
+                    <td class="medium">' . $c->get_author() . '<br /><em>' . $c->get_email() . '</em></td>
+                    <td class="medium">' . $c->get_timestamp('d.m.Y - H:i') . '</td>
+                    <td class="medium"><a href="' . ADMIN_MAIN_FILE . '?' . ADMIN_AREA_VAR . '=blog-posts&amp;view=edit&amp;id=' . $post_id. '">' . $post_title. '</a><br /><i>' . $post_id_string . '</i></td>
+                </tr>
         ';
     }
     
     $area_data['content'] .= '
-    			</tbody>
             </table>
         </form>
     ';

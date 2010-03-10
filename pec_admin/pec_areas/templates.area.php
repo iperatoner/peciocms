@@ -101,47 +101,43 @@ function view_default() {
         <form method="post" action="' . AREA . '&amp;view=default&amp;action=activate" id="templates_main_form" />
             <input type="submit" name="remove_articles" value="' . $pec_localization->get('BUTTON_ACTIVATE') . '" /><br /><br />
             
-            <table class="data_table" cellspacing="0">
-                <thead>
-                    <tr class="head_row">
-                        <th class="check_column"></th>
-                        <th class="long_column">' . $pec_localization->get('LABEL_TEMPLATES_TEMPLATENAME') . '</th>
-                        <th class="medium_column">' . $pec_localization->get('LABEL_TEMPLATES_AUTHOR') . '</th>
-                        <th class="short_column">' . $pec_localization->get('LABEL_TEMPLATES_YEAR') . '</th>
-                        <th class="short_column">' . $pec_localization->get('LABEL_TEMPLATES_LICENSE') . '</th>
-                    <tr>
-                </thead>
-                <tbody>
+            <table class="data_table">
+                <tr class="head">
+                    <td class="check"></th>
+                    <td class="long">' . $pec_localization->get('LABEL_TEMPLATES_TEMPLATENAME') . '</td>
+                    <td class="medium">' . $pec_localization->get('LABEL_TEMPLATES_AUTHOR') . '</td>
+                    <td class="short">' . $pec_localization->get('LABEL_TEMPLATES_YEAR') . '</td>
+                    <td class="short">' . $pec_localization->get('LABEL_TEMPLATES_LICENSE') . '</td>
+                <tr>
     ';
     
     foreach ($templates as $t) {
         $checked = $t->get_property('id') == $pec_settings->get_template_id() ? 'checked="checked"' : '';
         $area_data['content'] .= '
-                    <tr class="data_row" 
-                        title="ID: ' . $t->get_property('id') . '" 
-                        onclick="document.getElementById(\'activate_box_' . $t->get_property('id') . '\').checked = \'checked\';">
-                        
-                        <td class="check_column">
-                            <input type="radio" id="activate_box_' . $t->get_property('id') . '" 
-                                   name="activate_box" value="' . $t->get_property('id') . '" ' . $checked . ' />
-                        </td>
-                        <td class="normal_column">
-                            <span class="main_text">' . $t->get_property('title') . '</span><br />
-                            ' . $t->get_property('description') . '
-                        </td>
-                        <td class="normal_column">
-                            ' . $t->get_property('author') . '<br />
-                            <em>' . $t->get_property('author_email') . '</em>
-                        </td>
-                        <td class="normal_column">' . $t->get_property('year') . '</td>
-                        <td class="normal_column">' . $t->get_property('license') . '</td>
-                        
-                    </tr>
+                <tr class="data" 
+                    title="ID: ' . $t->get_property('id') . '" 
+                    onclick="document.getElementById(\'activate_box_' . $t->get_property('id') . '\').checked = \'checked\';">
+                    
+                    <td class="check">
+                        <input type="radio" id="activate_box_' . $t->get_property('id') . '" 
+                               name="activate_box" value="' . $t->get_property('id') . '" ' . $checked . ' />
+                    </td>
+                    <td class="long">
+                        <span class="main_text">' . $t->get_property('title') . '</span><br />
+                        ' . $t->get_property('description') . '
+                    </td>
+                    <td class="medium">
+                        ' . $t->get_property('author') . '<br />
+                        <em>' . $t->get_property('author_email') . '</em>
+                    </td>
+                    <td class="short">' . $t->get_property('year') . '</td>
+                    <td class="short">' . $t->get_property('license') . '</td>
+                    
+                </tr>
         ';
     }
     
     $area_data['content'] .= '
-    			</tbody>
             </table>
         </form>
     ';

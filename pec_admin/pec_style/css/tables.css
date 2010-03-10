@@ -140,11 +140,23 @@ table.data_table * {
     }
     
 	    table.data_table tr.sub-2:hover {
-	    	background: #e4e8ec!important;
+	    	background: #e4e8ec !important;
 	    }
     
         table.data_table tr.sub-2 td {
             border-top: 1px solid #dce0e4 !important;
+        }
+    
+    table.data_table tr.sub-3 {
+    	background: #dee2e6 !important;
+    }
+    
+	    table.data_table tr.sub-3:hover {
+	    	background: #dbdfe3 !important;
+	    }
+    
+        table.data_table tr.sub-3 td {
+            border-top: 1px solid #d3d7db !important;
         }
 
 

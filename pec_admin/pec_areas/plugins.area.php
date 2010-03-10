@@ -152,17 +152,14 @@ function view_default() {
     
     $area_data['content'] = '
         <form method="post" action="' . AREA . '&amp;view=default" id="plugins_main_form" />            
-            <table class="data_table" cellspacing="0">
-                <thead>
-                    <tr class="head_row">
-                        <th class="long_column">' . $pec_localization->get('LABEL_GENERAL_TITLE') . '</th>
-                        <th class="medium_column">' . $pec_localization->get('LABEL_PLUGINS_AUTHOR') . '</th>
-                        <th class="thin_column">' . $pec_localization->get('LABEL_PLUGINS_YEAR') . '</th>
-                        <th class="short_column">' . $pec_localization->get('LABEL_PLUGINS_LICENSE') . '</th>
-                        <th class="short_column">' . $pec_localization->get('LABEL_PLUGINS_ACTIONS') . '</th>
-                    <tr>
-                </thead>
-                <tbody>
+            <table class="data_table">
+                <tr class="head">
+                    <td class="long">' . $pec_localization->get('LABEL_GENERAL_TITLE') . '</td>
+                    <td class="medium">' . $pec_localization->get('LABEL_PLUGINS_AUTHOR') . '</td>
+                    <td class="thin">' . $pec_localization->get('LABEL_PLUGINS_YEAR') . '</td>
+                    <td class="short">' . $pec_localization->get('LABEL_PLUGINS_LICENSE') . '</td>
+                    <td class="short">' . $pec_localization->get('LABEL_PLUGINS_ACTIONS') . '</td>
+                <tr>
     ';
     
     foreach ($plugins as $p) {
@@ -180,26 +177,25 @@ function view_default() {
     	}
     	
         $area_data['content'] .= '
-                    <tr class="data_row">
-                        <td class="normal_column">
-                            <span class="main_text">' . $p->get_property('title') . '</span><br />
-                            ' . $p->get_property('description') . '
-                        </td>
-                        <td class="normal_column">
-                            ' . $p->get_property('author') . '<br />
-                            <em>' . $p->get_property('author_email') . '</em>
-                        </td>
-                        <td class="normal_column">' . $p->get_property('year') . '</td>
-                        <td class="normal_column">' . $p->get_property('license') . '</td>
-                        <td class="normal_column" style="vertical-align: middle;">
-                        	' . $actions . '
-                        </td>                        
-                    </tr>
+                <tr class="data">
+                    <td class="long">
+                        <span class="main_text">' . $p->get_property('title') . '</span><br />
+                        ' . $p->get_property('description') . '
+                    </td>
+                    <td class="medium">
+                        ' . $p->get_property('author') . '<br />
+                        <em>' . $p->get_property('author_email') . '</em>
+                    </td>
+                    <td class="thin">' . $p->get_property('year') . '</td>
+                    <td class="short">' . $p->get_property('license') . '</td>
+                    <td class="short" style="vertical-align: middle;">
+                    	' . $actions . '
+                    </td>                        
+                </tr>
         ';
     }
     
     $area_data['content'] .= '
-    			</tbody>
             </table>
         </form>
     ';

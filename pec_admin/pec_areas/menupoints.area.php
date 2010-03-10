@@ -386,7 +386,7 @@ function view_default() {
             <input type="submit" name="sort_menupoints" value="' . $pec_localization->get('BUTTON_SORT') . '" /><br /><br />
             
             <table class="data_table">
-                <tr class="head row">
+                <tr class="head">
                     <td class="check column"><input type="checkbox" onclick="checkbox_mark_all(\'remove_box\', \'menupoints_main_form\', this);" /></td>
                     <td class="long column">' . $pec_localization->get('LABEL_GENERAL_NAME') . '</td>
                     <td class="medium column">' . $pec_localization->get('LABEL_MENUPOINTS_ROOT') . '</td>
@@ -414,7 +414,7 @@ function view_default() {
         }
         
         $area_data['content'] .= '
-                <tr class="data row" title="#' . $m->get_id() . '">
+                <tr class="data" title="#' . $m->get_id() . '">
                     <td class="check"><input type="checkbox" class="remove_box" name="remove_box[]" value="' . $m->get_id() . '" /></td>
                     <td class="long">
                         <a href="' . AREA . '&amp;view=edit&amp;id=' . $m->get_id() . '"><span class="main_text">' . $m->get_name() . '</span></a>
@@ -478,7 +478,7 @@ function display_submenu_points($submenu_points, $level=0, $area_data) {
         $padding_left = ($level * 12) + 8;
         
         $area_data['content'] .= '
-                    <tr class="data row sub-' . $level . '" title="#' . $sm->get_id() . '">
+                    <tr class="data sub-' . $level . '" title="#' . $sm->get_id() . '">
                         <td class="check" style="padding-left: ' . $padding_left . 'px;"><input type="checkbox" class="remove_box" name="remove_box[]" value="' . $sm->get_id() . '" /></td>
                         <td class="long" style="padding-left: ' . $padding_left . 'px;">
                             <a href="' . AREA . '&amp;view=edit&amp;id=' . $sm->get_id() . '"><span class="main_text">' . $sm->get_name() . '</span></a>
