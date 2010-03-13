@@ -212,7 +212,7 @@ class PecMenuPoint {
             // if there is no root menupoint
             if (eval('return ' . $eval_string . ';')) {
                 // go through the levels
-                for ($current_level=1; $current_level<= $levels; $current_level++) {
+                for ($current_level=1; $current_level<=$levels; $current_level++) {
                     // append a ->get_root_menupoint() to check the next root menupoint
                     $new_eval_string = $eval_string . '->get_root_menupoint()';
 

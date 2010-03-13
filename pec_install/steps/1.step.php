@@ -17,28 +17,28 @@ foreach ($available_locales as $lcl) {
 
 ?>
 
- <?php echo str_replace('{%VERSION%}', PEC_VERSION, $pec_localization->get('LABEL_INSTALLATION_WELCOMETEXT')); ?><br /><br />
+ <?php echo str_replace('{%VERSION%}', PEC_VERSION, $pec_localization->get('LABEL_INSTALLATION_WELCOMETEXT')); ?><br /><br /><br />
 
-<h3>Please check if permissions are correct</h3>
+<h3>Please check if permissions are correct:</h3>
 <table class="data_table">
     <tr class="head">
-        <td class="lower_medium">File/Directory</td>
+        <td class="short">File/Directory</td>
         <td class="short">Required</td>
-        <td class="thin center">Current</td>
+        <td class="thin">Current</td>
     </tr>
     <tr class="data">
-        <td class="lower_medium">pec_admin/</td>
+        <td class="short">pec_admin/</td>
         <td class="short">777 &nbsp;(not recursive)</td>
-        <td class="thin center" style="color: red;">644</td>
+        <td class="thin" style="color: red;">644</td>
     </tr>
     <tr class="data">
-        <td class="lower_medium">pec_feeds/</td>
+        <td class="short">pec_feeds/</td>
         <td class="short">777 &nbsp;(recursive)</td>
-        <td class="thin center" style="color: green;">777</td>
+        <td class="thin" style="color: green;">777</td>
     </tr>
 </table>
 
-<br />
+<br /><br /><br />
 
 <form method="post" action="install.php?step=1&perform_actions<?php echo LOCALE_QUERY_VAR; ?>">
 	<h3><?php echo $pec_localization->get('LABEL_INSTALLATION_CHOOSELANGUAGE'); ?>:</h3>

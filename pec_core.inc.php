@@ -74,13 +74,13 @@ else {
 
     // permissions the directories and files need to have (r = recursive, nr = not recursive, f = file)
     $pec_permission_array = array(
-        './' => array('777', 'nr'),
-        'pec_admin/' => array('777', 'nr'),
-        'pec_upload/' => array('777', 'r'),
-        'pec_feed/' => array('777', 'r'),
-        'counter.txt' => array('777', 'f'),
-        'htaccess-sample' => array('777', 'f'),
-        '_pec_config.inc.php' => array('777', 'f')
+        './' => array('permission' => '777', 'type' => 'nr'),
+        'pec_admin/' => array('permission' => '777', 'type' => 'nr'),
+        'pec_upload/' => array('permission' => '777', 'type' => 'r'),
+        'pec_feed/' => array('permission' => '777', 'type' => 'r'),
+        'counter.txt' => array('permission' => '777', 'type' => 'f'),
+        'htaccess-sample' => array('permission' => '777', 'type' => 'f'),
+        '_pec_config.inc.php' => array('permission' => '777', 'type' => 'f')
     );
 }
 

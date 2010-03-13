@@ -254,6 +254,33 @@ function pec_redirect($target, $timeout=0, $return=false, $append_url=true) {
     }
 }
 
+
+/**
+ * Reads the permission of a given file or directory
+ * 
+ * @param	string $filename: Filename or directory name to check, e.g. "pec_uploads/"
+ * @return	string The permission of the given file/directory, e.g. "644"
+ */
+function pec_file_permission($filename) {
+    return substr(sprintf('%o', fileperms('index.lighttpd.html')), -3);
+}
+
+/**
+ * Reads the permission of the core files and directories (defined in pec_core.inc.php)
+ * 
+ * @param	string $filename: Filename or directory name to check, e.g. "pec_uploads/"
+ * @return	string The permission of the given file/directory, e.g. "644"
+ */
+function pec_read_core_permissions() {
+    global $pec_permission_array;
+    
+    $file_permissions = array();
+
+    foreach ($pec_permission_array as $file => $perm) {
+        $file_permissions[$file] = pec_file_permission($file);
+    }
+}
+
 /**
  * Slugifies a string (removing invalid characters and replacing whitespaces with dashes)
  * 
