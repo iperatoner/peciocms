@@ -167,6 +167,10 @@ else {
                                         <?php if ($pec_session->get('pec_user')->get_permission('permission_menupoints') > PERMISSION_NONE) { ?>
                                         <li onclick="location.href='<?php echo ADMIN_MAIN_FILE; ?>?<?php echo ADMIN_AREA_VAR; ?>=menupoints'"><a href="<?php echo ADMIN_MAIN_FILE; ?>?<?php echo ADMIN_AREA_VAR; ?>=menupoints"><?php $pec_localization->out('LABEL_GENERAL_MENUPOINTS'); ?></a></li>
                                         <?php } ?>
+                                        
+                                        <?php if ($pec_session->get('pec_user')->get_permission('permission_articles') > PERMISSION_READ || $pec_session->get('pec_user')->get_permission('permission_texts') > PERMISSION_READ) { ?>
+                                        <li onclick="location.href='<?php echo ADMIN_MAIN_FILE; ?>?<?php echo ADMIN_AREA_VAR; ?>=filemanager'"><a href="<?php echo ADMIN_MAIN_FILE; ?>?<?php echo ADMIN_AREA_VAR; ?>=filemanager"><?php $pec_localization->out('LABEL_GENERAL_FILEMANAGER'); ?></a></li>
+                                        <?php } ?>
                                     </ul>
                                 </div>
                                 

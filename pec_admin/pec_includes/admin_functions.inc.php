@@ -34,7 +34,7 @@ function ckeditor_replace($textarea, $additional_options='') {
            CKEDITOR.replace(\'' . $textarea . '\', {
                language: \'' . $pec_settings->get_locale() . '\', 
                filebrowserBrowseUrl : \'ckeditor/filebrowser/filemanager/index.php\',
-               filebrowserWindowWidth : \'750\',
+               filebrowserWindowWidth : \'820\',
                filebrowserWindowHeight : \'500\'
                ' . $additional_options . '
            });

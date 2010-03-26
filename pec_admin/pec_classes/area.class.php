@@ -75,8 +75,46 @@ class PecArea {
         
         require_once($this->area_path);
         
+        $or_permission_names = explode('|', $area['permission_name']);
+        $allowed = true;
+
+        foreach ($or_permission_names as $perm) {
+            // only insert the data, if the current user has the permission to access
+            if ($pec_session->get('pec_user')->get_permission($perm) < PERMISSION_READ && $this->area_name != 'filemanager') {
+                if ($allowed === false) {
+                    $allowed = false;
+                }
+                elseif ($allowed === true) {
+                    $allowed = true;
+                }
+                elseif ($allowed === null) {
+                    $allowed = false;
+                }
+            }
+            elseif ($pec_session->get('pec_user')->get_permission($perm) > PERMISSION_NONE && $this->area_name != 'filemanager') {
+                $allowed = true;
+                break;
+            }
+            elseif ($pec_session->get('pec_user')->get_permission($perm) < PERMISSION_FULL && $this->area_name == 'filemanager') {
+                if ($allowed === false) {
+                    $allowed = false;
+                }
+                elseif ($allowed === true) {
+                    $allowed = true;
+                }
+                elseif ($allowed === null) {
+                    $allowed = false;
+                }
+            }
+            elseif ($pec_session->get('pec_user')->get_permission($perm) > PERMISSION_READ && $this->area_name == 'filemanager') {
+                $allowed = true;
+                break;
+            }
+
+        }
+
         // only insert the data, if the current user has the permission to access
-        if ($pec_session->get('pec_user')->get_permission($area['permission_name']) > PERMISSION_NONE || !$check_permission) {
+        if ($allowed) {
             $this->area_data = $area;
         }
         else {

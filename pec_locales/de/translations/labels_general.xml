@@ -62,6 +62,10 @@
     <t>Menüpunkt</t>
 </localestring>
 
+<localestring id="LABEL_GENERAL_FILEMANAGER">
+    <t>Dateien verwalten</t>
+</localestring>
+
 <localestring id="LABEL_GENERAL_POSTS">
     <t>Beiträge</t>
 </localestring>

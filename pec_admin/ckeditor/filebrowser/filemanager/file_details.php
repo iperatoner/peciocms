@@ -7,7 +7,7 @@ $file_path = get_correct_path($_GET['file']);
 ?>
 <div id="optionsWrapper2">
 	<p>
- <span style="padding-left: 4px;"><b>URL:</b> <?php echo C70d7bd0f.$file_path; ?></span><br /><br />
+ <span style="padding-left: 4px;"><b>URL:</b> <a href="<?php echo C70d7bd0f.$file_path; ?>" target="_blank"><?php echo C70d7bd0f.$file_path; ?></a></span><br /><br />
  <a href="javascript:Fa6ccfa7b();">Delete</a>
  &nbsp;&nbsp;-&nbsp;&nbsp;
 <a href="javascript:Fe9b0cef7('<?php echo C70d7bd0f.$file_path; ?>');">Insert</a>

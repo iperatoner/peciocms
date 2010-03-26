@@ -62,6 +62,10 @@
     <t>Menupoint</t>
 </localestring>
 
+<localestring id="LABEL_GENERAL_FILEMANAGER">
+    <t>File Manager</t>
+</localestring>
+
 <localestring id="LABEL_GENERAL_POSTS">
     <t>Posts</t>
 </localestring>
