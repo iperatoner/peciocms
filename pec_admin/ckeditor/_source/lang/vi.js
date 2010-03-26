@@ -1,5 +1,5 @@
 ﻿/*
-Copyright (c) 2003-2009, CKSource - Frederico Knabben. All rights reserved.
+Copyright (c) 2003-2010, CKSource - Frederico Knabben. All rights reserved.
 For licensing, see LICENSE.html or http://ckeditor.com/license
 */
 
@@ -31,7 +31,11 @@ CKEDITOR.lang['vi'] =
 	 * Screenreader titles. Please note that screenreaders are not always capable
 	 * of reading non-English words. So be careful while translating it.
 	 */
-	editorTitle		: 'Trình biên tập trực quan, %1',
+	editorTitle : 'Rich text editor, %1, press ALT 0 for help.', // MISSING
+
+	// ARIA descriptions.
+	toolbar	: 'Toolbar', // MISSING
+	editor	: 'Rich Text Editor', // MISSING
 
 	// Toolbar buttons without dialogs.
 	source			: 'Mã HTML',
@@ -68,12 +72,12 @@ CKEDITOR.lang['vi'] =
 		flash			: 'Flash',
 		form			: 'Biểu mẫu',
 		checkbox		: 'Nút kiểm',
-		radio		: 'Nút chọn',
+		radio			: 'Nút chọn',
 		textField		: 'Trường văn bản',
 		textarea		: 'Vùng văn bản',
 		hiddenField		: 'Trường ẩn',
 		button			: 'Nút',
-		select	: 'Ô chọn',
+		select			: 'Ô chọn',
 		imageButton		: 'Nút hình ảnh',
 		notSet			: '<không thiết lập>',
 		id				: 'Định danh',
@@ -88,11 +92,19 @@ CKEDITOR.lang['vi'] =
 		cssStyle		: 'Mẫu',
 		ok				: 'Đồng ý',
 		cancel			: 'Bỏ qua',
+		close			: 'Close', // MISSING
+		preview			: 'Preview', // MISSING
 		generalTab		: 'Chung',
 		advancedTab		: 'Mở rộng',
-		validateNumberFailed	: 'Giá trị này không phải là số.',
+		validateNumberFailed : 'Giá trị này không phải là số.',
 		confirmNewPage	: 'Mọi thay đổi không được không được lưu lại của nội dung này sẽ bị mất. Bạn có chắc chắn muốn tải một trang mới?',
 		confirmCancel	: 'Một vài tùy chọn đã bị thay đổi. Bạn có chắc chắn muốn đóng hộp thoại?',
+		options			: 'Options', // MISSING
+		target			: 'Target', // MISSING
+		targetNew		: 'New Window (_blank)', // MISSING
+		targetTop		: 'Topmost Window (_top)', // MISSING
+		targetSelf		: 'Same Window (_self)', // MISSING
+		targetParent	: 'Parent Window (_parent)', // MISSING
 
 		// Put the voice-only part of the label in the span.
 		unavailable		: '%1<span class="cke_accessibility">, không có</span>'
@@ -116,22 +128,17 @@ CKEDITOR.lang['vi'] =
 		upload		: 'Tải lên',
 		advanced	: 'Mở rộng',
 		type		: 'Kiểu Liên kết',
+		toUrl		: 'URL', // MISSING
 		toAnchor	: 'Neo trong trang này',
 		toEmail		: 'Thư điện tử',
-		target		: 'Đích',
-		targetNotSet	: '<không thiết lập>',
-		targetFrame	: '<khung>',
-		targetPopup	: '<cửa sổ popup>',
-		targetNew	: 'Cửa sổ mới (_blank)',
-		targetTop	: 'Cửa sổ trên cùng(_top)',
-		targetSelf	: 'Cùng cửa sổ (_self)',
-		targetParent	: 'Cửa sổ cha (_parent)',
+		targetFrame		: '<khung>',
+		targetPopup		: '<cửa sổ popup>',
 		targetFrameName	: 'Tên Khung đích',
 		targetPopupName	: 'Tên Cửa sổ Popup',
 		popupFeatures	: 'Đặc điểm của Cửa sổ Popup',
 		popupResizable	: 'Có thể thay đổi kích cỡ',
 		popupStatusBar	: 'Thanh trạng thái',
-		popupLocationBar	: 'Thanh vị trí',
+		popupLocationBar: 'Thanh vị trí',
 		popupToolbar	: 'Thanh công cụ',
 		popupMenuBar	: 'Thanh Menu',
 		popupFullScreen	: 'Toàn màn hình (IE)',
@@ -143,7 +150,6 @@ CKEDITOR.lang['vi'] =
 		popupTop		: 'Vị trí Trên',
 		id				: 'Định danh',
 		langDir			: 'Đường dẫn Ngôn ngữ',
-		langDirNotSet	: '<không thiết lập>',
 		langDirLTR		: 'Trái sang Phải (LTR)',
 		langDirRTL		: 'Phải sang Trái (RTL)',
 		acccessKey		: 'Phím Hỗ trợ truy cập',
@@ -203,13 +209,13 @@ CKEDITOR.lang['vi'] =
 		columns		: 'Cột',
 		border		: 'Cỡ Đường viền',
 		align		: 'Canh lề',
-		alignNotSet	: '<Chưa thiết lập>',
 		alignLeft	: 'Trái',
 		alignCenter	: 'Giữa',
 		alignRight	: 'Phải',
 		width		: 'Rộng',
 		widthPx		: 'điểm (px)',
 		widthPc		: '%',
+		widthUnit	: 'width unit', // MISSING
 		height		: 'Cao',
 		cellSpace	: 'Khoảng cách Ô',
 		cellPad		: 'Đệm Ô',
@@ -260,7 +266,7 @@ CKEDITOR.lang['vi'] =
 			invalidHeight	: 'Chiều cao của Ô phải là một số nguyên.',
 			invalidRowSpan	: 'Số hàng kết hợp phải là một số nguyên.',
 			invalidColSpan	: 'Số cột kết hợp phải là một số nguyên.',
-			chooseColor : 'Choose' // MISSING
+			chooseColor		: 'Choose' // MISSING
 		},
 
 		row :
@@ -307,13 +313,7 @@ CKEDITOR.lang['vi'] =
 		menu		: 'Thuộc tính Biểu mẫu',
 		action		: 'Hành động',
 		method		: 'Phương thức',
-		encoding	: 'Bảng mã',
-		target		: 'Đích',
-		targetNotSet	: '<không thiết lập>',
-		targetNew	: 'Cửa sổ mới (_blank)',
-		targetTop	: 'Cửa sổ trên cùng(_top)',
-		targetSelf	: 'Cùng cửa sổ (_self)',
-		targetParent	: 'Cửa sổ cha (_parent)'
+		encoding	: 'Bảng mã'
 	},
 
 	// Select Field Dialog.
@@ -371,34 +371,31 @@ CKEDITOR.lang['vi'] =
 		title		: 'Thuộc tính Hình ảnh',
 		titleButton	: 'Thuộc tính Nút hình ảnh',
 		menu		: 'Thuộc tính Hình ảnh',
-		infoTab	: 'Thông tin Hình ảnh',
+		infoTab		: 'Thông tin Hình ảnh',
 		btnUpload	: 'Tải lên Máy chủ',
-		url		: 'URL',
-		upload	: 'Tải lên',
-		alt		: 'Chú thích Hình ảnh',
+		upload		: 'Tải lên',
+		alt			: 'Chú thích Hình ảnh',
 		width		: 'Rộng',
-		height	: 'Cao',
+		height		: 'Cao',
 		lockRatio	: 'Giữ nguyên tỷ lệ',
+		unlockRatio	: 'Unlock Ratio', // MISSING
 		resetSize	: 'Kích thước gốc',
-		border	: 'Đường viền',
-		hSpace	: 'HSpace',
-		vSpace	: 'VSpace',
+		border		: 'Đường viền',
+		hSpace		: 'HSpace',
+		vSpace		: 'VSpace',
 		align		: 'Vị trí',
 		alignLeft	: 'Trái',
-		alignAbsBottom: 'Dưới tuyệt đối',
-		alignAbsMiddle: 'Giữa tuyệt đối',
-		alignBaseline	: 'Đường cơ sở',
-		alignBottom	: 'Dưới',
-		alignMiddle	: 'Giữa',
 		alignRight	: 'Phải',
-		alignTextTop	: 'Phía trên chữ',
-		alignTop	: 'Trên',
-		preview	: 'Xem trước',
 		alertUrl	: 'Hãy đưa vào URL của hình ảnh',
-		linkTab	: 'Liên kết',
+		linkTab		: 'Liên kết',
 		button2Img	: 'Bạn có muốn chuyển nút bấm bằng hình ảnh được chọn thành hình ảnh?',
 		img2Button	: 'Bạn có muốn chuyển đổi hình ảnh được chọn thành nút bấm bằng hình ảnh?',
-		urlMissing : 'Image source URL is missing.' // MISSING
+		urlMissing	: 'Image source URL is missing.', // MISSING
+		validateWidth	: 'Width must be a whole number.', // MISSING
+		validateHeight	: 'Height must be a whole number.', // MISSING
+		validateBorder	: 'Border must be a whole number.', // MISSING
+		validateHSpace	: 'HSpace must be a whole number.', // MISSING
+		validateVSpace	: 'VSpace must be a whole number.' // MISSING
 	},
 
 	// Flash Dialog
@@ -406,51 +403,51 @@ CKEDITOR.lang['vi'] =
 	{
 		properties		: 'Thuộc tính Flash',
 		propertiesTab	: 'Thuộc tính',
-		title		: 'Thuộc tính Flash',
-		chkPlay		: 'Tự động chạy',
-		chkLoop		: 'Lặp',
-		chkMenu		: 'Cho phép bật Menu của Flash',
-		chkFull		: 'Cho phép Toàn màn hình',
- 		scale		: 'Tỷ lệ',
+		title			: 'Thuộc tính Flash',
+		chkPlay			: 'Tự động chạy',
+		chkLoop			: 'Lặp',
+		chkMenu			: 'Cho phép bật Menu của Flash',
+		chkFull			: 'Cho phép Toàn màn hình',
+ 		scale			: 'Tỷ lệ',
 		scaleAll		: 'Hiển thị tất cả',
 		scaleNoBorder	: 'Không đường viền',
 		scaleFit		: 'Vừa vặn',
 		access			: 'Truy cập Mã',
 		accessAlways	: 'Luôn luôn',
-		accessSameDomain	: 'Cùng tên miền',
-		accessNever	: 'Không bao giờ',
-		align		: 'Vị trí',
-		alignLeft	: 'Trái',
-		alignAbsBottom: 'Dưới tuyệt đối',
-		alignAbsMiddle: 'Giữa tuyệt đối',
+		accessSameDomain: 'Cùng tên miền',
+		accessNever		: 'Không bao giờ',
+		align			: 'Vị trí',
+		alignLeft		: 'Trái',
+		alignAbsBottom	: 'Dưới tuyệt đối',
+		alignAbsMiddle	: 'Giữa tuyệt đối',
 		alignBaseline	: 'Đường cơ sở',
-		alignBottom	: 'Dưới',
-		alignMiddle	: 'Giữa',
-		alignRight	: 'Phải',
+		alignBottom		: 'Dưới',
+		alignMiddle		: 'Giữa',
+		alignRight		: 'Phải',
 		alignTextTop	: 'Phía trên chữ',
-		alignTop	: 'Trên',
-		quality		: 'Chất lượng',
-		qualityBest		 : 'TỐt nhất',
-		qualityHigh		 : 'Cao',
-		qualityAutoHigh	 : 'Cao Tự động',
-		qualityMedium	 : 'Trung bình',
-		qualityAutoLow	 : 'Thấp Tự động',
-		qualityLow		 : 'Thấp',
-		windowModeWindow	 : 'Cửa sổ',
-		windowModeOpaque	 : 'Mờ đục',
-		windowModeTransparent	 : 'Trong suốt',
-		windowMode	: 'Chế độ Cửa sổ',
-		flashvars	: 'Các biến số dành cho Flash',
-		bgcolor	: 'Màu nền',
-		width	: 'Rộng',
-		height	: 'Cao',
-		hSpace	: 'HSpace',
-		vSpace	: 'VSpace',
-		validateSrc : 'Hãy đưa vào Liên kết URL',
-		validateWidth : 'Chiều rộng phải là số nguyên.',
-		validateHeight : 'Chiều cao phải là số nguyên.',
-		validateHSpace : 'HSpace phải là số nguyên.',
-		validateVSpace : 'VSpace phải là số nguyên.'
+		alignTop		: 'Trên',
+		quality			: 'Chất lượng',
+		qualityBest		: 'TỐt nhất',
+		qualityHigh		: 'Cao',
+		qualityAutoHigh	: 'Cao Tự động',
+		qualityMedium	: 'Trung bình',
+		qualityAutoLow	: 'Thấp Tự động',
+		qualityLow		: 'Thấp',
+		windowModeWindow: 'Cửa sổ',
+		windowModeOpaque: 'Mờ đục',
+		windowModeTransparent : 'Trong suốt',
+		windowMode		: 'Chế độ Cửa sổ',
+		flashvars		: 'Các biến số dành cho Flash',
+		bgcolor			: 'Màu nền',
+		width			: 'Rộng',
+		height			: 'Cao',
+		hSpace			: 'HSpace',
+		vSpace			: 'VSpace',
+		validateSrc		: 'Hãy đưa vào Liên kết URL',
+		validateWidth	: 'Chiều rộng phải là số nguyên.',
+		validateHeight	: 'Chiều cao phải là số nguyên.',
+		validateHSpace	: 'HSpace phải là số nguyên.',
+		validateVSpace	: 'VSpace phải là số nguyên.'
 	},
 
 	// Speller Pages Dialog
@@ -484,20 +481,21 @@ CKEDITOR.lang['vi'] =
 
 	elementsPath :
 	{
+		eleLabel : 'Elements path', // MISSING
 		eleTitle : '%1 thành phần'
 	},
 
-	numberedlist : 'Danh sách có thứ tự',
-	bulletedlist : 'Danh sách không thứ tự',
-	indent : 'Dịch vào trong',
-	outdent : 'Dịch ra ngoài',
+	numberedlist	: 'Danh sách có thứ tự',
+	bulletedlist	: 'Danh sách không thứ tự',
+	indent			: 'Dịch vào trong',
+	outdent			: 'Dịch ra ngoài',
 
 	justify :
 	{
-		left : 'Canh trái',
-		center : 'Canh giữa',
-		right : 'Canh phải',
-		block : 'Canh đều'
+		left	: 'Canh trái',
+		center	: 'Canh giữa',
+		right	: 'Canh phải',
+		block	: 'Canh đều'
 	},
 
 	blockquote : 'Khối Trích dẫn',
@@ -508,158 +506,171 @@ CKEDITOR.lang['vi'] =
 		cutError	: 'Các thiết lập bảo mật của trình duyệt không cho phép trình biên tập tự động thực thi lệnh cắt. Hãy sử dụng bàn phím cho lệnh này (Ctrl+X).',
 		copyError	: 'Các thiết lập bảo mật của trình duyệt không cho phép trình biên tập tự động thực thi lệnh sao chép. Hãy sử dụng bàn phím cho lệnh này (Ctrl+C).',
 		pasteMsg	: 'Hãy dán nội dung vào trong khung bên dưới, sử dụng tổ hợp phím (<STRONG>Ctrl+V</STRONG>) và nhấn vào nút <STRONG>Đồng ý</STRONG>.',
-		securityMsg	: 'Do thiết lập bảo mật của trình duyệt nên trình biên tập không thể truy cập trực tiếp vào nội dung đã sao chép. Bạn cần phải dán lại nội dung vào cửa sổ này.'
+		securityMsg	: 'Do thiết lập bảo mật của trình duyệt nên trình biên tập không thể truy cập trực tiếp vào nội dung đã sao chép. Bạn cần phải dán lại nội dung vào cửa sổ này.',
+		pasteArea	: 'Paste Area' // MISSING
 	},
 
 	pastefromword :
 	{
-		toolbar : 'Dán với định dạng Word',
-		title : 'Dán với định dạng Word',
-		advice : 'Hãy dán nội dung vào trong khung bên dưới, sử dụng tổ hợp phím (<STRONG>Ctrl+V</STRONG>) và nhấn vào nút <STRONG>Đồng ý</STRONG>.',
-		ignoreFontFace : 'Chấp nhận các định dạng phông',
-		removeStyle : 'Gỡ bỏ các định dạng Styles'
+		confirmCleanup	: 'Văn bản bạn muốn dán có kèm định dạng của Word. Bạn có muốn loại bỏ định dạng Word trước khi dán?',
+		toolbar			: 'Dán với định dạng Word',
+		title			: 'Dán với định dạng Word',
+		error			: 'It was not possible to clean up the pasted data due to an internal error' // MISSING
 	},
 
 	pasteText :
 	{
-		button : 'Dán theo định dạng văn bản thuần',
-		title : 'Dán theo định dạng văn bản thuần'
+		button	: 'Dán theo định dạng văn bản thuần',
+		title	: 'Dán theo định dạng văn bản thuần'
 	},
 
 	templates :
 	{
-		button : 'Mẫu dựng sẵn',
-		title : 'Nội dung Mẫu dựng sẵn',
-		insertOption: 'Thay thế nội dung hiện tại',
-		selectPromptMsg: 'Hãy chọn Mẫu dựng sẵn để mở trong trình biên tập<br>(nội dung hiện tại sẽ bị mất):',
-		emptyListMsg : '(Không có Mẫu dựng sẵn nào được định nghĩa)'
+		button			: 'Mẫu dựng sẵn',
+		title			: 'Nội dung Mẫu dựng sẵn',
+		insertOption	: 'Thay thế nội dung hiện tại',
+		selectPromptMsg	: 'Hãy chọn Mẫu dựng sẵn để mở trong trình biên tập<br>(nội dung hiện tại sẽ bị mất):',
+		emptyListMsg	: '(Không có Mẫu dựng sẵn nào được định nghĩa)'
 	},
 
 	showBlocks : 'Hiển thị các Khối',
 
 	stylesCombo :
 	{
-		label : 'Kiểu',
-		voiceLabel : 'Kiểu',
-		panelVoiceLabel : 'Chọn một kiểu',
-		panelTitle1 : 'Kiểu Khối',
-		panelTitle2 : 'Kiểu Trực tiếp',
-		panelTitle3 : 'Kiểu Đối tượng'
+		label		: 'Kiểu',
+		panelTitle	: 'Formatting Styles', // MISSING
+		panelTitle1	: 'Kiểu Khối',
+		panelTitle2	: 'Kiểu Trực tiếp',
+		panelTitle3	: 'Kiểu Đối tượng'
 	},
 
 	format :
 	{
-		label : 'Định dạng',
-		voiceLabel : 'Định dạng',
-		panelTitle : 'Định dạng',
-		panelVoiceLabel : 'Chọn định dạng đoạn văn bản',
+		label		: 'Định dạng',
+		panelTitle	: 'Định dạng',
 
-		tag_p : 'Normal',
-		tag_pre : 'Formatted',
-		tag_address : 'Address',
-		tag_h1 : 'Heading 1',
-		tag_h2 : 'Heading 2',
-		tag_h3 : 'Heading 3',
-		tag_h4 : 'Heading 4',
-		tag_h5 : 'Heading 5',
-		tag_h6 : 'Heading 6',
-		tag_div : 'Normal (DIV)'
+		tag_p		: 'Normal',
+		tag_pre		: 'Formatted',
+		tag_address	: 'Address',
+		tag_h1		: 'Heading 1',
+		tag_h2		: 'Heading 2',
+		tag_h3		: 'Heading 3',
+		tag_h4		: 'Heading 4',
+		tag_h5		: 'Heading 5',
+		tag_h6		: 'Heading 6',
+		tag_div		: 'Normal (DIV)'
 	},
+
+	div :
+	{
+		title				: 'Create Div Container', // MISSING
+		toolbar				: 'Create Div Container', // MISSING
+		cssClassInputLabel	: 'Stylesheet Classes', // MISSING
+		styleSelectLabel	: 'Style', // MISSING
+		IdInputLabel		: 'Id', // MISSING
+		languageCodeInputLabel	: ' Language Code', // MISSING
+		inlineStyleInputLabel	: 'Inline Style', // MISSING
+		advisoryTitleInputLabel	: 'Advisory Title', // MISSING
+		langDirLabel		: 'Language Direction', // MISSING
+		langDirLTRLabel		: 'Left to Right (LTR)', // MISSING
+		langDirRTLLabel		: 'Right to Left (RTL)', // MISSING
+		edit				: 'Edit Div', // MISSING
+		remove				: 'Remove Div' // MISSING
+  	},
 
 	font :
 	{
-		label : 'Phông',
-		voiceLabel : 'Phông',
-		panelTitle : 'Phông',
-		panelVoiceLabel : 'Chọn phông'
+		label		: 'Phông',
+		voiceLabel	: 'Phông',
+		panelTitle	: 'Phông'
 	},
 
 	fontSize :
 	{
-		label : 'Cỡ chữ',
-		voiceLabel : 'Kích cỡ phông',
-		panelTitle : 'Cỡ chữ',
-		panelVoiceLabel : 'Chọn kích cỡ phông'
+		label		: 'Cỡ chữ',
+		voiceLabel	: 'Kích cỡ phông',
+		panelTitle	: 'Cỡ chữ'
 	},
 
 	colorButton :
 	{
-		textColorTitle : 'Màu chữ',
-		bgColorTitle : 'Màu nền',
-		auto : 'Tự động',
-		more : 'Màu khác...'
+		textColorTitle	: 'Màu chữ',
+		bgColorTitle	: 'Màu nền',
+		panelTitle		: 'Colors', // MISSING
+		auto			: 'Tự động',
+		more			: 'Màu khác...'
 	},
 
 	colors :
 	{
-		'000' : 'Black',
-		'800000' : 'Maroon',
-		'8B4513' : 'Saddle Brown',
-		'2F4F4F' : 'Dark Slate Gray',
-		'008080' : 'Teal',
-		'000080' : 'Navy',
-		'4B0082' : 'Indigo',
-		'696969' : 'Dim Gray',
-		'B22222' : 'Fire Brick',
-		'A52A2A' : 'Brown',
-		'DAA520' : 'Golden Rod',
-		'006400' : 'Dark Green',
-		'40E0D0' : 'Turquoise',
-		'0000CD' : 'Medium Blue',
-		'800080' : 'Purple',
-		'808080' : 'Gray',
-		'F00' : 'Red',
-		'FF8C00' : 'Dark Orange',
-		'FFD700' : 'Gold',
-		'008000' : 'Green',
-		'0FF' : 'Cyan',
-		'00F' : 'Blue',
-		'EE82EE' : 'Violet',
-		'A9A9A9' : 'Dark Gray',
-		'FFA07A' : 'Light Salmon',
-		'FFA500' : 'Orange',
-		'FFFF00' : 'Yellow',
-		'00FF00' : 'Lime',
-		'AFEEEE' : 'Pale Turquoise',
-		'ADD8E6' : 'Light Blue',
-		'DDA0DD' : 'Plum',
-		'D3D3D3' : 'Light Grey',
-		'FFF0F5' : 'Lavender Blush',
-		'FAEBD7' : 'Antique White',
-		'FFFFE0' : 'Light Yellow',
-		'F0FFF0' : 'Honeydew',
-		'F0FFFF' : 'Azure',
-		'F0F8FF' : 'Alice Blue',
-		'E6E6FA' : 'Lavender',
-		'FFF' : 'White'
+		'000' : 'Black', // MISSING
+		'800000' : 'Maroon', // MISSING
+		'8B4513' : 'Saddle Brown', // MISSING
+		'2F4F4F' : 'Dark Slate Gray', // MISSING
+		'008080' : 'Teal', // MISSING
+		'000080' : 'Navy', // MISSING
+		'4B0082' : 'Indigo', // MISSING
+		'696969' : 'Dim Gray', // MISSING
+		'B22222' : 'Fire Brick', // MISSING
+		'A52A2A' : 'Brown', // MISSING
+		'DAA520' : 'Golden Rod', // MISSING
+		'006400' : 'Dark Green', // MISSING
+		'40E0D0' : 'Turquoise', // MISSING
+		'0000CD' : 'Medium Blue', // MISSING
+		'800080' : 'Purple', // MISSING
+		'808080' : 'Gray', // MISSING
+		'F00' : 'Red', // MISSING
+		'FF8C00' : 'Dark Orange', // MISSING
+		'FFD700' : 'Gold', // MISSING
+		'008000' : 'Green', // MISSING
+		'0FF' : 'Cyan', // MISSING
+		'00F' : 'Blue', // MISSING
+		'EE82EE' : 'Violet', // MISSING
+		'A9A9A9' : 'Dark Gray', // MISSING
+		'FFA07A' : 'Light Salmon', // MISSING
+		'FFA500' : 'Orange', // MISSING
+		'FFFF00' : 'Yellow', // MISSING
+		'00FF00' : 'Lime', // MISSING
+		'AFEEEE' : 'Pale Turquoise', // MISSING
+		'ADD8E6' : 'Light Blue', // MISSING
+		'DDA0DD' : 'Plum', // MISSING
+		'D3D3D3' : 'Light Grey', // MISSING
+		'FFF0F5' : 'Lavender Blush', // MISSING
+		'FAEBD7' : 'Antique White', // MISSING
+		'FFFFE0' : 'Light Yellow', // MISSING
+		'F0FFF0' : 'Honeydew', // MISSING
+		'F0FFFF' : 'Azure', // MISSING
+		'F0F8FF' : 'Alice Blue', // MISSING
+		'E6E6FA' : 'Lavender', // MISSING
+		'FFF' : 'White' // MISSING
 	},
 
 	scayt :
 	{
-		title : 'Kiểm tra chính tả ngay khi gõ chữ (SCAYT)',
-		enable : 'Bật SCAYT',
-		disable : 'Tắt SCAYT',
-		about : 'Thông tin về SCAYT',
-		toggle : 'Bật tắt SCAYT',
-		options : 'Tùy chọn',
-		langs : 'Ngôn ngữ',
-		moreSuggestions : 'Đề xuất thêm',
-		ignore : 'Bỏ qua',
-		ignoreAll : 'Bỏ qua Tất cả',
-		addWord : 'Thêm Từ',
-		emptyDic : 'Tên của từ điển không được để trống.',
-		optionsTab : 'Tùy chọn',
-		languagesTab : 'Ngôn ngữ',
-		dictionariesTab : 'Từ điển',
-		aboutTab : 'Thông tin'
+		title			: 'Kiểm tra chính tả ngay khi gõ chữ (SCAYT)',
+		enable			: 'Bật SCAYT',
+		disable			: 'Tắt SCAYT',
+		about			: 'Thông tin về SCAYT',
+		toggle			: 'Bật tắt SCAYT',
+		options			: 'Tùy chọn',
+		langs			: 'Ngôn ngữ',
+		moreSuggestions	: 'Đề xuất thêm',
+		ignore			: 'Bỏ qua',
+		ignoreAll		: 'Bỏ qua Tất cả',
+		addWord			: 'Thêm Từ',
+		emptyDic		: 'Tên của từ điển không được để trống.',
+		optionsTab		: 'Tùy chọn',
+		languagesTab	: 'Ngôn ngữ',
+		dictionariesTab	: 'Từ điển',
+		aboutTab		: 'Thông tin'
 	},
 
 	about :
 	{
-		title : 'Thông tin về CKEditor',
-		dlgTitle : 'Thông tin về CKEditor',
-		moreInfo : 'Vui lòng ghé thăm trang web của chúng tôi để có thông tin về giấy phép:',
-		copy : 'Bản quyền &copy; $1. Giữ toàn quyền.'
+		title		: 'Thông tin về CKEditor',
+		dlgTitle	: 'Thông tin về CKEditor',
+		moreInfo	: 'Vui lòng ghé thăm trang web của chúng tôi để có thông tin về giấy phép:',
+		copy		: 'Bản quyền &copy; $1. Giữ toàn quyền.'
 	},
 
 	maximize : 'Phóng to tối đa',
@@ -667,19 +678,22 @@ CKEDITOR.lang['vi'] =
 
 	fakeobjects :
 	{
-		anchor : 'Neo',
-		flash : 'Hoạt họa Flash',
-		div : 'Ngắt Trang',
-		unknown : 'Đối tượng không rõ ràng'
+		anchor	: 'Neo',
+		flash	: 'Hoạt họa Flash',
+		div		: 'Ngắt Trang',
+		unknown	: 'Đối tượng không rõ ràng'
 	},
 
 	resize : 'Kéo rê để thay đổi kích cỡ',
 
 	colordialog :
 	{
-		title : 'Select color', // MISSING
-		highlight : 'Highlight', // MISSING
-		selected : 'Selected', // MISSING
-		clear : 'Clear' // MISSING
-	}
+		title		: 'Select color', // MISSING
+		highlight	: 'Highlight', // MISSING
+		selected	: 'Selected', // MISSING
+		clear		: 'Clear' // MISSING
+	},
+
+	toolbarCollapse	: 'Collapse Toolbar', // MISSING
+	toolbarExpand	: 'Expand Toolbar' // MISSING
 };

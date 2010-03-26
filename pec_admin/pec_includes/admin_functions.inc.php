@@ -35,7 +35,25 @@ function ckeditor_replace($textarea, $additional_options='') {
                language: \'' . $pec_settings->get_locale() . '\', 
                filebrowserBrowseUrl : \'ckeditor/filebrowser/filemanager/index.php\',
                filebrowserWindowWidth : \'820\',
-               filebrowserWindowHeight : \'500\'
+               filebrowserWindowHeight : \'500\',
+               height : \'450px\',
+               contentsCss : \'\'
+               on :
+               {
+                   instanceReady : function( ev )
+                   {
+                       // Output paragraphs as <p>Text</p>.
+                       this.dataProcessor.writer.setRules( \'p\',
+                           {
+                               indent : true,
+                               breakBeforeOpen : true,
+                               breakAfterOpen : true,
+                               breakBeforeClose : true,
+                               breakAfterClose : true
+                           });
+                   }
+               }
+
                ' . $additional_options . '
            });
         //]]>

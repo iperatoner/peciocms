@@ -1,5 +1,5 @@
 ﻿/*
-Copyright (c) 2003-2009, CKSource - Frederico Knabben. All rights reserved.
+Copyright (c) 2003-2010, CKSource - Frederico Knabben. All rights reserved.
 For licensing, see LICENSE.html or http://ckeditor.com/license
 */
 
@@ -94,3 +94,10 @@ CKEDITOR.TRISTATE_OFF = 2;
  * @example
  */
 CKEDITOR.TRISTATE_DISABLED = 0;
+
+/**
+ * Fired when the CKEDITOR.currentInstance object reference changes. This may
+ * happen when setting the focus on different editor instances in the page.
+ * @name CKEDITOR#currentInstance
+ * @event
+ */

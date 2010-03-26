@@ -1,5 +1,5 @@
 ﻿/*
-Copyright (c) 2003-2009, CKSource - Frederico Knabben. All rights reserved.
+Copyright (c) 2003-2010, CKSource - Frederico Knabben. All rights reserved.
 For licensing, see LICENSE.html or http://ckeditor.com/license
 */
 
@@ -31,7 +31,11 @@ CKEDITOR.lang['ca'] =
 	 * Screenreader titles. Please note that screenreaders are not always capable
 	 * of reading non-English words. So be careful while translating it.
 	 */
-	editorTitle		: 'Editor de text enriquit, %1',
+	editorTitle : 'Rich text editor, %1, press ALT 0 for help.', // MISSING
+
+	// ARIA descriptions.
+	toolbar	: 'Toolbar', // MISSING
+	editor	: 'Rich Text Editor', // MISSING
 
 	// Toolbar buttons without dialogs.
 	source			: 'Codi font',
@@ -68,12 +72,12 @@ CKEDITOR.lang['ca'] =
 		flash			: 'Flash',
 		form			: 'Formulari',
 		checkbox		: 'Casella de verificació',
-		radio		: 'Botó d\'opció',
+		radio			: 'Botó d\'opció',
 		textField		: 'Camp de text',
 		textarea		: 'Àrea de text',
 		hiddenField		: 'Camp ocult',
 		button			: 'Botó',
-		select	: 'Camp de selecció',
+		select			: 'Camp de selecció',
 		imageButton		: 'Botó d\'imatge',
 		notSet			: '<no definit>',
 		id				: 'Id',
@@ -88,11 +92,19 @@ CKEDITOR.lang['ca'] =
 		cssStyle		: 'Estil',
 		ok				: 'D\'acord',
 		cancel			: 'Cancel·la',
+		close			: 'Close', // MISSING
+		preview			: 'Preview', // MISSING
 		generalTab		: 'General',
 		advancedTab		: 'Avançat',
-		validateNumberFailed	: 'Aquest valor no és un número.',
+		validateNumberFailed : 'Aquest valor no és un número.',
 		confirmNewPage	: 'Els canvis en aquest contingut que no es desin es perdran. Esteu segur que voleu carregar una pàgina nova?',
 		confirmCancel	: 'Algunes opcions s\'han canviat. Esteu segur que voleu tancar la finestra de diàleg?',
+		options			: 'Options', // MISSING
+		target			: 'Target', // MISSING
+		targetNew		: 'New Window (_blank)', // MISSING
+		targetTop		: 'Topmost Window (_top)', // MISSING
+		targetSelf		: 'Same Window (_self)', // MISSING
+		targetParent	: 'Parent Window (_parent)', // MISSING
 
 		// Put the voice-only part of the label in the span.
 		unavailable		: '%1<span class="cke_accessibility">, no disponible</span>'
@@ -116,22 +128,17 @@ CKEDITOR.lang['ca'] =
 		upload		: 'Puja',
 		advanced	: 'Avançat',
 		type		: 'Tipus d\'enllaç',
+		toUrl		: 'URL', // MISSING
 		toAnchor	: 'Àncora en aquesta pàgina',
 		toEmail		: 'Correu electrònic',
-		target		: 'Destí',
-		targetNotSet	: '<no definit>',
-		targetFrame	: '<marc>',
-		targetPopup	: '<finestra emergent>',
-		targetNew	: 'Nova finestra (_blank)',
-		targetTop	: 'Finestra Major (_top)',
-		targetSelf	: 'Mateixa finestra (_self)',
-		targetParent	: 'Finestra pare (_parent)',
+		targetFrame		: '<marc>',
+		targetPopup		: '<finestra emergent>',
 		targetFrameName	: 'Nom del marc de destí',
 		targetPopupName	: 'Nom finestra popup',
 		popupFeatures	: 'Característiques finestra popup',
 		popupResizable	: 'Redimensionable',
 		popupStatusBar	: 'Barra d\'estat',
-		popupLocationBar	: 'Barra d\'adreça',
+		popupLocationBar: 'Barra d\'adreça',
 		popupToolbar	: 'Barra d\'eines',
 		popupMenuBar	: 'Barra de menú',
 		popupFullScreen	: 'Pantalla completa (IE)',
@@ -143,7 +150,6 @@ CKEDITOR.lang['ca'] =
 		popupTop		: 'Posició dalt',
 		id				: 'Id',
 		langDir			: 'Direcció de l\'idioma',
-		langDirNotSet	: '<no definit>',
 		langDirLTR		: 'D\'esquerra a dreta (LTR)',
 		langDirRTL		: 'De dreta a esquerra (RTL)',
 		acccessKey		: 'Clau d\'accés',
@@ -203,13 +209,13 @@ CKEDITOR.lang['ca'] =
 		columns		: 'Columnes',
 		border		: 'Mida vora',
 		align		: 'Alineació',
-		alignNotSet	: '<No Definit>',
 		alignLeft	: 'Esquerra',
 		alignCenter	: 'Centre',
 		alignRight	: 'Dreta',
 		width		: 'Amplada',
 		widthPx		: 'píxels',
 		widthPc		: 'percentatge',
+		widthUnit	: 'width unit', // MISSING
 		height		: 'Alçada',
 		cellSpace	: 'Espaiat de cel·les',
 		cellPad		: 'Encoixinament de cel·les',
@@ -260,7 +266,7 @@ CKEDITOR.lang['ca'] =
 			invalidHeight	: 'L\'alçada de cel·la ha de ser un nombre.',
 			invalidRowSpan	: 'L\'expansió de files ha de ser un nombre enter.',
 			invalidColSpan	: 'L\'expansió de columnes ha de ser un nombre enter.',
-			chooseColor : 'Choose' // MISSING
+			chooseColor		: 'Choose' // MISSING
 		},
 
 		row :
@@ -307,13 +313,7 @@ CKEDITOR.lang['ca'] =
 		menu		: 'Propietats del formulari',
 		action		: 'Acció',
 		method		: 'Mètode',
-		encoding	: 'Codificació',
-		target		: 'Destí',
-		targetNotSet	: '<no definit>',
-		targetNew	: 'Nova finestra (_blank)',
-		targetTop	: 'Finestra Major (_top)',
-		targetSelf	: 'Mateixa finestra (_self)',
-		targetParent	: 'Finestra pare (_parent)'
+		encoding	: 'Codificació'
 	},
 
 	// Select Field Dialog.
@@ -371,34 +371,31 @@ CKEDITOR.lang['ca'] =
 		title		: 'Propietats de la imatge',
 		titleButton	: 'Propietats del botó d\'imatge',
 		menu		: 'Propietats de la imatge',
-		infoTab	: 'Informació de la imatge',
+		infoTab		: 'Informació de la imatge',
 		btnUpload	: 'Envia-la al servidor',
-		url		: 'URL',
-		upload	: 'Puja',
-		alt		: 'Text alternatiu',
+		upload		: 'Puja',
+		alt			: 'Text alternatiu',
 		width		: 'Amplada',
-		height	: 'Alçada',
+		height		: 'Alçada',
 		lockRatio	: 'Bloqueja les proporcions',
+		unlockRatio	: 'Unlock Ratio', // MISSING
 		resetSize	: 'Restaura la mida',
-		border	: 'Vora',
-		hSpace	: 'Espaiat horit.',
-		vSpace	: 'Espaiat vert.',
+		border		: 'Vora',
+		hSpace		: 'Espaiat horit.',
+		vSpace		: 'Espaiat vert.',
 		align		: 'Alineació',
 		alignLeft	: 'Ajusta a l\'esquerra',
-		alignAbsBottom: 'Abs Bottom',
-		alignAbsMiddle: 'Abs Middle',
-		alignBaseline	: 'Baseline',
-		alignBottom	: 'Bottom',
-		alignMiddle	: 'Middle',
 		alignRight	: 'Ajusta a la dreta',
-		alignTextTop	: 'Text Top',
-		alignTop	: 'Top',
-		preview	: 'Vista prèvia',
 		alertUrl	: 'Si us plau, escriviu la URL de la imatge',
-		linkTab	: 'Enllaç',
+		linkTab		: 'Enllaç',
 		button2Img	: 'Voleu transformar el botó d\'imatge seleccionat en una simple imatge?',
 		img2Button	: 'Voleu transformar la imatge seleccionada en un botó d\'imatge?',
-		urlMissing : 'Image source URL is missing.' // MISSING
+		urlMissing	: 'Image source URL is missing.', // MISSING
+		validateWidth	: 'Width must be a whole number.', // MISSING
+		validateHeight	: 'Height must be a whole number.', // MISSING
+		validateBorder	: 'Border must be a whole number.', // MISSING
+		validateHSpace	: 'HSpace must be a whole number.', // MISSING
+		validateVSpace	: 'VSpace must be a whole number.' // MISSING
 	},
 
 	// Flash Dialog
@@ -406,51 +403,51 @@ CKEDITOR.lang['ca'] =
 	{
 		properties		: 'Propietats del Flash',
 		propertiesTab	: 'Propietats',
-		title		: 'Propietats del Flash',
-		chkPlay		: 'Reprodució automàtica',
-		chkLoop		: 'Bucle',
-		chkMenu		: 'Habilita menú Flash',
-		chkFull		: 'Permetre la pantalla completa',
- 		scale		: 'Escala',
+		title			: 'Propietats del Flash',
+		chkPlay			: 'Reprodució automàtica',
+		chkLoop			: 'Bucle',
+		chkMenu			: 'Habilita menú Flash',
+		chkFull			: 'Permetre la pantalla completa',
+ 		scale			: 'Escala',
 		scaleAll		: 'Mostra-ho tot',
 		scaleNoBorder	: 'Sense vores',
 		scaleFit		: 'Mida exacta',
 		access			: 'Accés a scripts',
 		accessAlways	: 'Sempre',
-		accessSameDomain	: 'El mateix domini',
-		accessNever	: 'Mai',
-		align		: 'Alineació',
-		alignLeft	: 'Ajusta a l\'esquerra',
-		alignAbsBottom: 'Abs Bottom',
-		alignAbsMiddle: 'Abs Middle',
+		accessSameDomain: 'El mateix domini',
+		accessNever		: 'Mai',
+		align			: 'Alineació',
+		alignLeft		: 'Ajusta a l\'esquerra',
+		alignAbsBottom	: 'Abs Bottom',
+		alignAbsMiddle	: 'Abs Middle',
 		alignBaseline	: 'Baseline',
-		alignBottom	: 'Bottom',
-		alignMiddle	: 'Middle',
-		alignRight	: 'Ajusta a la dreta',
+		alignBottom		: 'Bottom',
+		alignMiddle		: 'Middle',
+		alignRight		: 'Ajusta a la dreta',
 		alignTextTop	: 'Text Top',
-		alignTop	: 'Top',
-		quality		: 'Qualitat',
-		qualityBest		 : 'La millor',
-		qualityHigh		 : 'Alta',
-		qualityAutoHigh	 : 'Alta automàtica',
-		qualityMedium	 : 'Mitjana',
-		qualityAutoLow	 : 'Baixa automàtica',
-		qualityLow		 : 'Baixa',
-		windowModeWindow	 : 'Finestra',
-		windowModeOpaque	 : 'Opaca',
-		windowModeTransparent	 : 'Transparent',
-		windowMode	: 'Mode de la finestra',
-		flashvars	: 'Variables de Flash',
-		bgcolor	: 'Color de Fons',
-		width	: 'Amplada',
-		height	: 'Alçada',
-		hSpace	: 'Espaiat horit.',
-		vSpace	: 'Espaiat vert.',
-		validateSrc : 'Si us plau, escrigui l\'enllaç URL',
-		validateWidth : 'L\'amplada ha de ser un nombre.',
-		validateHeight : 'L\'alçada ha de ser un nombre.',
-		validateHSpace : 'L\'espaiat horitzonatal ha de ser un nombre.',
-		validateVSpace : 'L\'espaiat vertical ha de ser un nombre.'
+		alignTop		: 'Top',
+		quality			: 'Qualitat',
+		qualityBest		: 'La millor',
+		qualityHigh		: 'Alta',
+		qualityAutoHigh	: 'Alta automàtica',
+		qualityMedium	: 'Mitjana',
+		qualityAutoLow	: 'Baixa automàtica',
+		qualityLow		: 'Baixa',
+		windowModeWindow: 'Finestra',
+		windowModeOpaque: 'Opaca',
+		windowModeTransparent : 'Transparent',
+		windowMode		: 'Mode de la finestra',
+		flashvars		: 'Variables de Flash',
+		bgcolor			: 'Color de Fons',
+		width			: 'Amplada',
+		height			: 'Alçada',
+		hSpace			: 'Espaiat horit.',
+		vSpace			: 'Espaiat vert.',
+		validateSrc		: 'Si us plau, escrigui l\'enllaç URL',
+		validateWidth	: 'L\'amplada ha de ser un nombre.',
+		validateHeight	: 'L\'alçada ha de ser un nombre.',
+		validateHSpace	: 'L\'espaiat horitzonatal ha de ser un nombre.',
+		validateVSpace	: 'L\'espaiat vertical ha de ser un nombre.'
 	},
 
 	// Speller Pages Dialog
@@ -484,20 +481,21 @@ CKEDITOR.lang['ca'] =
 
 	elementsPath :
 	{
+		eleLabel : 'Elements path', // MISSING
 		eleTitle : '%1 element'
 	},
 
-	numberedlist : 'Llista numerada',
-	bulletedlist : 'Llista de pics',
-	indent : 'Augmenta el sagnat',
-	outdent : 'Redueix el sagnat',
+	numberedlist	: 'Llista numerada',
+	bulletedlist	: 'Llista de pics',
+	indent			: 'Augmenta el sagnat',
+	outdent			: 'Redueix el sagnat',
 
 	justify :
 	{
-		left : 'Alinia a l\'esquerra',
-		center : 'Centrat',
-		right : 'Alinia a la dreta',
-		block : 'Justificat'
+		left	: 'Alinia a l\'esquerra',
+		center	: 'Centrat',
+		right	: 'Alinia a la dreta',
+		block	: 'Justificat'
 	},
 
 	blockquote : 'Bloc de cita',
@@ -508,158 +506,171 @@ CKEDITOR.lang['ca'] =
 		cutError	: 'La seguretat del vostre navegador no permet executar automàticament les operacions de retallar. Si us plau, utilitzeu el teclat (Ctrl+X).',
 		copyError	: 'La seguretat del vostre navegador no permet executar automàticament les operacions de copiar. Si us plau, utilitzeu el teclat (Ctrl+C).',
 		pasteMsg	: 'Si us plau, enganxeu dins del següent camp utilitzant el teclat (<STRONG>Ctrl+V</STRONG>) i premeu <STRONG>OK</STRONG>.',
-		securityMsg	: 'A causa de la configuració de seguretat del vostre navegador, l\'editor no pot accedir al porta-retalls directament. Enganxeu-ho un altre cop en aquesta finestra.'
+		securityMsg	: 'A causa de la configuració de seguretat del vostre navegador, l\'editor no pot accedir al porta-retalls directament. Enganxeu-ho un altre cop en aquesta finestra.',
+		pasteArea	: 'Paste Area' // MISSING
 	},
 
 	pastefromword :
 	{
-		toolbar : 'Enganxa des del Word',
-		title : 'Enganxa des del Word',
-		advice : 'Si us plau, enganxeu dins del següent camp utilitzant el teclat (<STRONG>Ctrl+V</STRONG>) i premeu <STRONG>OK</STRONG>.',
-		ignoreFontFace : 'Ignora definicions de font',
-		removeStyle : 'Elimina definicions d\'estil'
+		confirmCleanup	: 'El text que voleu enganxar sembla provenir de Word. Voleu netejar aquest text abans que sigui enganxat?',
+		toolbar			: 'Enganxa des del Word',
+		title			: 'Enganxa des del Word',
+		error			: 'It was not possible to clean up the pasted data due to an internal error' // MISSING
 	},
 
 	pasteText :
 	{
-		button : 'Enganxa com a text no formatat',
-		title : 'Enganxa com a text no formatat'
+		button	: 'Enganxa com a text no formatat',
+		title	: 'Enganxa com a text no formatat'
 	},
 
 	templates :
 	{
-		button : 'Plantilles',
-		title : 'Contingut plantilles',
-		insertOption: 'Reemplaça el contingut actual',
-		selectPromptMsg: 'Si us plau, seleccioneu la plantilla per obrir a l\'editor<br>(el contingut actual no serà enregistrat):',
-		emptyListMsg : '(No hi ha plantilles definides)'
+		button			: 'Plantilles',
+		title			: 'Contingut plantilles',
+		insertOption	: 'Reemplaça el contingut actual',
+		selectPromptMsg	: 'Si us plau, seleccioneu la plantilla per obrir a l\'editor<br>(el contingut actual no serà enregistrat):',
+		emptyListMsg	: '(No hi ha plantilles definides)'
 	},
 
 	showBlocks : 'Mostra els blocs',
 
 	stylesCombo :
 	{
-		label : 'Estil',
-		voiceLabel : 'Estils',
-		panelVoiceLabel : 'Seleccioneu un estil',
-		panelTitle1 : 'Estils de bloc',
-		panelTitle2 : 'Estils incrustats',
-		panelTitle3 : 'Estils d\'objecte'
+		label		: 'Estil',
+		panelTitle	: 'Formatting Styles', // MISSING
+		panelTitle1	: 'Estils de bloc',
+		panelTitle2	: 'Estils incrustats',
+		panelTitle3	: 'Estils d\'objecte'
 	},
 
 	format :
 	{
-		label : 'Format',
-		voiceLabel : 'Format',
-		panelTitle : 'Format',
-		panelVoiceLabel : 'Seleccioneu un format de paràgraf',
+		label		: 'Format',
+		panelTitle	: 'Format',
 
-		tag_p : 'Normal',
-		tag_pre : 'Formatejat',
-		tag_address : 'Adreça',
-		tag_h1 : 'Encapçalament 1',
-		tag_h2 : 'Encapçalament 2',
-		tag_h3 : 'Encapçalament 3',
-		tag_h4 : 'Encapçalament 4',
-		tag_h5 : 'Encapçalament 5',
-		tag_h6 : 'Encapçalament 6',
-		tag_div : 'Normal (DIV)'
+		tag_p		: 'Normal',
+		tag_pre		: 'Formatejat',
+		tag_address	: 'Adreça',
+		tag_h1		: 'Encapçalament 1',
+		tag_h2		: 'Encapçalament 2',
+		tag_h3		: 'Encapçalament 3',
+		tag_h4		: 'Encapçalament 4',
+		tag_h5		: 'Encapçalament 5',
+		tag_h6		: 'Encapçalament 6',
+		tag_div		: 'Normal (DIV)'
 	},
+
+	div :
+	{
+		title				: 'Create Div Container', // MISSING
+		toolbar				: 'Create Div Container', // MISSING
+		cssClassInputLabel	: 'Stylesheet Classes', // MISSING
+		styleSelectLabel	: 'Style', // MISSING
+		IdInputLabel		: 'Id', // MISSING
+		languageCodeInputLabel	: ' Language Code', // MISSING
+		inlineStyleInputLabel	: 'Inline Style', // MISSING
+		advisoryTitleInputLabel	: 'Advisory Title', // MISSING
+		langDirLabel		: 'Language Direction', // MISSING
+		langDirLTRLabel		: 'Left to Right (LTR)', // MISSING
+		langDirRTLLabel		: 'Right to Left (RTL)', // MISSING
+		edit				: 'Edit Div', // MISSING
+		remove				: 'Remove Div' // MISSING
+  	},
 
 	font :
 	{
-		label : 'Tipus de lletra',
-		voiceLabel : 'Tipus de lletra',
-		panelTitle : 'Tipus de lletra',
-		panelVoiceLabel : 'Seleccioneu un tipus de lletra'
+		label		: 'Tipus de lletra',
+		voiceLabel	: 'Tipus de lletra',
+		panelTitle	: 'Tipus de lletra'
 	},
 
 	fontSize :
 	{
-		label : 'Mida',
-		voiceLabel : 'Mida de la lletra',
-		panelTitle : 'Mida',
-		panelVoiceLabel : 'Seleccioneu una mida de lletra'
+		label		: 'Mida',
+		voiceLabel	: 'Mida de la lletra',
+		panelTitle	: 'Mida'
 	},
 
 	colorButton :
 	{
-		textColorTitle : 'Color de Text',
-		bgColorTitle : 'Color de Fons',
-		auto : 'Automàtic',
-		more : 'Més colors...'
+		textColorTitle	: 'Color de Text',
+		bgColorTitle	: 'Color de Fons',
+		panelTitle		: 'Colors', // MISSING
+		auto			: 'Automàtic',
+		more			: 'Més colors...'
 	},
 
 	colors :
 	{
-		'000' : 'Black',
-		'800000' : 'Maroon',
-		'8B4513' : 'Saddle Brown',
-		'2F4F4F' : 'Dark Slate Gray',
-		'008080' : 'Teal',
-		'000080' : 'Navy',
-		'4B0082' : 'Indigo',
-		'696969' : 'Dim Gray',
-		'B22222' : 'Fire Brick',
-		'A52A2A' : 'Brown',
-		'DAA520' : 'Golden Rod',
-		'006400' : 'Dark Green',
-		'40E0D0' : 'Turquoise',
-		'0000CD' : 'Medium Blue',
-		'800080' : 'Purple',
-		'808080' : 'Gray',
-		'F00' : 'Red',
-		'FF8C00' : 'Dark Orange',
-		'FFD700' : 'Gold',
-		'008000' : 'Green',
-		'0FF' : 'Cyan',
-		'00F' : 'Blue',
-		'EE82EE' : 'Violet',
-		'A9A9A9' : 'Dark Gray',
-		'FFA07A' : 'Light Salmon',
-		'FFA500' : 'Orange',
-		'FFFF00' : 'Yellow',
-		'00FF00' : 'Lime',
-		'AFEEEE' : 'Pale Turquoise',
-		'ADD8E6' : 'Light Blue',
-		'DDA0DD' : 'Plum',
-		'D3D3D3' : 'Light Grey',
-		'FFF0F5' : 'Lavender Blush',
-		'FAEBD7' : 'Antique White',
-		'FFFFE0' : 'Light Yellow',
-		'F0FFF0' : 'Honeydew',
-		'F0FFFF' : 'Azure',
-		'F0F8FF' : 'Alice Blue',
-		'E6E6FA' : 'Lavender',
-		'FFF' : 'White'
+		'000' : 'Black', // MISSING
+		'800000' : 'Maroon', // MISSING
+		'8B4513' : 'Saddle Brown', // MISSING
+		'2F4F4F' : 'Dark Slate Gray', // MISSING
+		'008080' : 'Teal', // MISSING
+		'000080' : 'Navy', // MISSING
+		'4B0082' : 'Indigo', // MISSING
+		'696969' : 'Dim Gray', // MISSING
+		'B22222' : 'Fire Brick', // MISSING
+		'A52A2A' : 'Brown', // MISSING
+		'DAA520' : 'Golden Rod', // MISSING
+		'006400' : 'Dark Green', // MISSING
+		'40E0D0' : 'Turquoise', // MISSING
+		'0000CD' : 'Medium Blue', // MISSING
+		'800080' : 'Purple', // MISSING
+		'808080' : 'Gray', // MISSING
+		'F00' : 'Red', // MISSING
+		'FF8C00' : 'Dark Orange', // MISSING
+		'FFD700' : 'Gold', // MISSING
+		'008000' : 'Green', // MISSING
+		'0FF' : 'Cyan', // MISSING
+		'00F' : 'Blue', // MISSING
+		'EE82EE' : 'Violet', // MISSING
+		'A9A9A9' : 'Dark Gray', // MISSING
+		'FFA07A' : 'Light Salmon', // MISSING
+		'FFA500' : 'Orange', // MISSING
+		'FFFF00' : 'Yellow', // MISSING
+		'00FF00' : 'Lime', // MISSING
+		'AFEEEE' : 'Pale Turquoise', // MISSING
+		'ADD8E6' : 'Light Blue', // MISSING
+		'DDA0DD' : 'Plum', // MISSING
+		'D3D3D3' : 'Light Grey', // MISSING
+		'FFF0F5' : 'Lavender Blush', // MISSING
+		'FAEBD7' : 'Antique White', // MISSING
+		'FFFFE0' : 'Light Yellow', // MISSING
+		'F0FFF0' : 'Honeydew', // MISSING
+		'F0FFFF' : 'Azure', // MISSING
+		'F0F8FF' : 'Alice Blue', // MISSING
+		'E6E6FA' : 'Lavender', // MISSING
+		'FFF' : 'White' // MISSING
 	},
 
 	scayt :
 	{
-		title : 'Spell Check As You Type',
-		enable : 'Habilitat l\'SCAYT',
-		disable : 'Deshabilita SCAYT',
-		about : 'Quant a l\'SCAYT',
-		toggle : 'Commuta l\'SCAYT',
-		options : 'Opcions',
-		langs : 'Idiomes',
-		moreSuggestions : 'Més suggerències',
-		ignore : 'Ignora',
-		ignoreAll : 'Ignora\'ls tots',
-		addWord : 'Afegeix una paraula',
-		emptyDic : 'El nom del diccionari no hauria d\'estar buit.',
-		optionsTab : 'Opcions',
-		languagesTab : 'Idiomes',
-		dictionariesTab : 'Diccionaris',
-		aboutTab : 'Quant a'
+		title			: 'Spell Check As You Type',
+		enable			: 'Habilitat l\'SCAYT',
+		disable			: 'Deshabilita SCAYT',
+		about			: 'Quant a l\'SCAYT',
+		toggle			: 'Commuta l\'SCAYT',
+		options			: 'Opcions',
+		langs			: 'Idiomes',
+		moreSuggestions	: 'Més suggerències',
+		ignore			: 'Ignora',
+		ignoreAll		: 'Ignora\'ls tots',
+		addWord			: 'Afegeix una paraula',
+		emptyDic		: 'El nom del diccionari no hauria d\'estar buit.',
+		optionsTab		: 'Opcions',
+		languagesTab	: 'Idiomes',
+		dictionariesTab	: 'Diccionaris',
+		aboutTab		: 'Quant a'
 	},
 
 	about :
 	{
-		title : 'Quan al CKEditor',
-		dlgTitle : 'Quan al CKEditor',
-		moreInfo : 'Per informació sobre llicències visiteu el web:',
-		copy : 'Copyright &copy; $1. All rights reserved.'
+		title		: 'Quan al CKEditor',
+		dlgTitle	: 'Quan al CKEditor',
+		moreInfo	: 'Per informació sobre llicències visiteu el web:',
+		copy		: 'Copyright &copy; $1. All rights reserved.'
 	},
 
 	maximize : 'Maximiza',
@@ -667,19 +678,22 @@ CKEDITOR.lang['ca'] =
 
 	fakeobjects :
 	{
-		anchor : 'Àncora',
-		flash : 'Animació Flash',
-		div : 'Salt de pàgina',
-		unknown : 'Objecte desconegut'
+		anchor	: 'Àncora',
+		flash	: 'Animació Flash',
+		div		: 'Salt de pàgina',
+		unknown	: 'Objecte desconegut'
 	},
 
 	resize : 'Arrossegueu per redimensionar',
 
 	colordialog :
 	{
-		title : 'Select color', // MISSING
-		highlight : 'Highlight', // MISSING
-		selected : 'Selected', // MISSING
-		clear : 'Clear' // MISSING
-	}
+		title		: 'Select color', // MISSING
+		highlight	: 'Highlight', // MISSING
+		selected	: 'Selected', // MISSING
+		clear		: 'Clear' // MISSING
+	},
+
+	toolbarCollapse	: 'Collapse Toolbar', // MISSING
+	toolbarExpand	: 'Expand Toolbar' // MISSING
 };

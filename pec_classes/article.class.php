@@ -84,7 +84,7 @@ class PecArticle {
     }
     
     public function get_content() {
-        return $this->article_content;
+        return $this->database->db_string_protection_decode($this->article_content);
     }
     
     public function get_onstart($human_readable=false) {
