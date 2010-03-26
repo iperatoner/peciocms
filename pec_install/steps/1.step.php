@@ -19,23 +19,37 @@ foreach ($available_locales as $lcl) {
 
  <?php echo str_replace('{%VERSION%}', PEC_VERSION, $pec_localization->get('LABEL_INSTALLATION_WELCOMETEXT')); ?><br /><br /><br />
 
-<h3>Please check if permissions are correct:</h3>
+<?php $current_core_permissions = pec_read_core_permissions(); ?>
+<h3>Please check if all permissions are correct:</h3>
 <table class="data_table">
     <tr class="head">
         <td class="short">File/Directory</td>
         <td class="short">Required</td>
         <td class="thin">Current</td>
     </tr>
-    <tr class="data">
-        <td class="short">pec_admin/</td>
-        <td class="short">777 &nbsp;(not recursive)</td>
-        <td class="thin" style="color: red;">644</td>
-    </tr>
-    <tr class="data">
-        <td class="short">pec_feeds/</td>
-        <td class="short">777 &nbsp;(recursive)</td>
-        <td class="thin" style="color: green;">777</td>
-    </tr>
+    <?php 
+    foreach ($pec_core_permissions as $core_filename => $perm) {
+    	switch ($perm['type']) {
+    		case 'r': $permission_type = 'recursive'; break;
+    		case 'nr': $permission_type = 'not recursive'; break;
+    		case 'f': $permission_type = 'file'; break;
+    	}
+    	
+    	if ($perm['permission_before_install'] == $current_core_permissions[$core_filename]) {
+    		$perm_color = 'green';
+    	}
+    	else {
+    		$perm_color = 'red';
+    	}
+    ?>
+	    <tr class="data" <?php if ($perm['display'] == 'sub') { echo 'style="background: #f6f6f6;"'; } ?>>
+	        <td class="short" <?php if ($perm['display'] == 'sub') { echo 'style="padding-left: 17px;"'; } ?>><?php echo $core_filename; ?></td>
+	        <td class="short"><?php echo $perm['permission_before_install']; ?> &nbsp;(<?php echo $permission_type; ?>)</td>
+	        <td class="thin" style="color: <?php echo $perm_color; ?>;"><?php echo $current_core_permissions[$core_filename]; ?></td>
+	    </tr>
+    <?php 
+    }
+    ?>
 </table>
 
 <br /><br /><br />

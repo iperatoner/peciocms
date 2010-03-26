@@ -73,14 +73,76 @@ else {
     $pec_localization = new PecLocale('en');
 
     // permissions the directories and files need to have (r = recursive, nr = not recursive, f = file)
-    $pec_permission_array = array(
-        './' => array('permission' => '777', 'type' => 'nr'),
-        'pec_admin/' => array('permission' => '777', 'type' => 'nr'),
-        'pec_upload/' => array('permission' => '777', 'type' => 'r'),
-        'pec_feed/' => array('permission' => '777', 'type' => 'r'),
-        'counter.txt' => array('permission' => '777', 'type' => 'f'),
-        'htaccess-sample' => array('permission' => '777', 'type' => 'f'),
-        '_pec_config.inc.php' => array('permission' => '777', 'type' => 'f')
+    $pec_core_permissions = array(
+        './' => array(
+        	'permission_before_install' => '777',
+        	'permission_after_install' => '777',
+        	'type' => 'nr',
+        	'display' => 'main'
+    	),
+    	
+        'pec_admin/' => array(
+        	'permission_before_install' => '777',
+        	'permission_after_install' => '777',
+        	'type' => 'nr',
+        	'display' => 'main'
+    	),
+    	
+        'pec_upload/' => array(
+        	'permission_before_install' => '777',
+        	'permission_after_install' => '777',
+        	'type' => 'r',
+        	'display' => 'main'
+    	),
+    	
+        'pec_feeds/' => array(
+        	'permission_before_install' => '777',
+        	'permission_after_install' => '777',
+        	'type' => 'r',
+        	'display' => 'main'
+    	),
+    	
+        'pec_feeds/blog/' => array(
+        	'permission_before_install' => '777',
+        	'permission_after_install' => '777',
+        	'type' => 'r',
+        	'display' => 'sub'
+    	),
+    	
+        'pec_feeds/categories/' => array(
+        	'permission_before_install' => '777',
+        	'permission_after_install' => '777',
+        	'type' => 'r',
+        	'display' => 'sub'
+    	),
+    	
+        'pec_feeds/tags/' => array(
+        	'permission_before_install' => '777',
+        	'permission_after_install' => '777',
+        	'type' => 'r',
+        	'display' => 'sub'
+    	),
+    	
+        'counter.txt' => array(
+        	'permission_before_install' => '777',
+        	'permission_after_install' => '777',
+        	'type' => 'f',
+        	'display' => 'main'
+    	),
+    	
+        'htaccess-sample' => array(
+        	'permission_before_install' => '777',
+        	'permission_after_install' => '644',
+        	'type' => 'f',
+        	'display' => 'main'
+    	),
+    	
+        '_pec_config.inc.php' => array(
+        	'permission_before_install' => '777',
+        	'permission_after_install' => '644',
+        	'type' => 'f',
+        	'display' => 'main'
+    	)
     );
 }
 

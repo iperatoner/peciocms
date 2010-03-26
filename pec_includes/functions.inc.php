@@ -256,29 +256,30 @@ function pec_redirect($target, $timeout=0, $return=false, $append_url=true) {
 
 
 /**
- * Reads the permission of a given file or directory
+ * Reads the permission of a given file or directory. The root path is automatically appended.
  * 
  * @param	string $filename: Filename or directory name to check, e.g. "pec_uploads/"
  * @return	string The permission of the given file/directory, e.g. "644"
  */
 function pec_file_permission($filename) {
-    return substr(sprintf('%o', fileperms('index.lighttpd.html')), -3);
+    return substr(sprintf('%o', fileperms(pec_root_path() . $filename)), -3);
 }
 
 /**
  * Reads the permission of the core files and directories (defined in pec_core.inc.php)
  * 
- * @param	string $filename: Filename or directory name to check, e.g. "pec_uploads/"
- * @return	string The permission of the given file/directory, e.g. "644"
+ * @return	array A list of the core files and their current permissions
  */
 function pec_read_core_permissions() {
-    global $pec_permission_array;
+    global $pec_core_permissions;
     
     $file_permissions = array();
 
-    foreach ($pec_permission_array as $file => $perm) {
+    foreach ($pec_core_permissions as $file => $perm) {
         $file_permissions[$file] = pec_file_permission($file);
     }
+    
+    return $file_permissions;
 }
 
 /**
