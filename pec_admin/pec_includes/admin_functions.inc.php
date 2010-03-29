@@ -37,7 +37,7 @@ function ckeditor_replace($textarea, $additional_options='') {
                filebrowserWindowWidth : \'820\',
                filebrowserWindowHeight : \'500\',
                height : \'450px\',
-               contentsCss : \'\'
+               /*contentsCss : \'\',*/
                on :
                {
                    instanceReady : function( ev )
