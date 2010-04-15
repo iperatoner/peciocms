@@ -102,26 +102,26 @@ else {
         	'display' => 'main'
     	),
     	
-        'pec_feeds/blog/' => array(
-        	'permission_before_install' => '777',
-        	'permission_after_install' => '777',
-        	'type' => 'r',
-        	'display' => 'sub'
-    	),
-    	
-        'pec_feeds/categories/' => array(
-        	'permission_before_install' => '777',
-        	'permission_after_install' => '777',
-        	'type' => 'r',
-        	'display' => 'sub'
-    	),
-    	
-        'pec_feeds/tags/' => array(
-        	'permission_before_install' => '777',
-        	'permission_after_install' => '777',
-        	'type' => 'r',
-        	'display' => 'sub'
-    	),
+	        'pec_feeds/blog/' => array(
+	        	'permission_before_install' => '777',
+	        	'permission_after_install' => '777',
+	        	'type' => 'r',
+	        	'display' => 'sub'
+	    	),
+	    	
+	        'pec_feeds/categories/' => array(
+	        	'permission_before_install' => '777',
+	        	'permission_after_install' => '777',
+	        	'type' => 'r',
+	        	'display' => 'sub'
+	    	),
+	    	
+	        'pec_feeds/tags/' => array(
+	        	'permission_before_install' => '777',
+	        	'permission_after_install' => '777',
+	        	'type' => 'r',
+	        	'display' => 'sub'
+	    	),
     	
         'counter.txt' => array(
         	'permission_before_install' => '777',

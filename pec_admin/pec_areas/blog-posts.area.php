@@ -60,6 +60,7 @@ function do_actions() {
         if ($_GET['action'] == 'create' && isset($_POST['post_title']) && 
             isset($_POST['post_content_cut']) && isset($_POST['post_content']) && 
             isset($_POST['post_tags'])) {
+            $comments_allowed = isset($_POST['post_comments_allowed']) ? true : false;
             $status = isset($_POST['post_status']) ? true : false;
              
             // converting the array of selected categories into the flat version for database
@@ -81,7 +82,7 @@ function do_actions() {
             $author_id = $pec_session->get('pec_user')->get_id();
             
             $post = new PecBlogPost(NULL_ID, $timestamp, $y, $m, $d, $author_id, 
-                                    $_POST['post_title'], $_POST['post_content_cut'], $_POST['post_content'], $tag_ids, $in_categories, $status);
+                                    $_POST['post_title'], $_POST['post_content_cut'], $_POST['post_content'], $tag_ids, $in_categories, $comments_allowed, $status);
             $post->save();
             
             $messages .= PecMessageHandler::get('content_created', array(
@@ -96,6 +97,7 @@ function do_actions() {
                 isset($_POST['post_tags'])) {
                     
             if (isset($_GET['id']) && PecBlogPost::exists('id', $_GET['id'])) {
+            	$comments_allowed = isset($_POST['post_comments_allowed']) ? true : false;
             	$status = isset($_POST['post_status']) ? true : false; 
                 
                 $tag_ids = PecBlogTag::get_ids_of_tagnames($_POST['post_tags'], true);
@@ -107,6 +109,7 @@ function do_actions() {
                 $post->set_content($_POST['post_content']);
                 $post->set_tags($tag_ids, TYPE_ARRAY);
                 $post->set_categories($_POST['post_categories'], TYPE_ARRAY);
+                $post->set_comments_allowed($comments_allowed);
                 $post->set_status($status);
                 
                 $post->save();
@@ -181,7 +184,7 @@ function do_actions() {
         elseif ($_GET['action'] == 'default_view_actions') {
         
             // REMOVE MULTIPLE
-            if (isset($_POST['remove_posts']) && !isset($_POST['submitted_posts_per_page'])) {
+            if (isset($_POST['remove_posts']) && !isset($_POST['submitted_blog_settings'])) {
                 if (!empty($_POST['remove_box'])) {
                     
                     foreach ($_POST['remove_box'] as $post_id) {
@@ -202,13 +205,15 @@ function do_actions() {
                 }
             }
             
-            // SET POSTS_PER_PAGE
-            if (isset($_POST['set_posts_per_page']) || isset($_POST['submitted_posts_per_page'])) {
+            // SET POSTS_PER_PAGE / BLOG ONSTART
+            if (isset($_POST['set_blog_settings']) || isset($_POST['submitted_blog_settings'])) {
             	if (!empty($_POST['setting_posts_per_page'])) {
+		            $blog_onstart = isset($_POST['setting_blog_onstart']) ? true : false;		            
             		$posts_per_page = intval($_POST['setting_posts_per_page']);
 		            	
 		            // check if an integer was passed for the posts per page setting
 		            if ($posts_per_page) {
+		            	$pec_settings->set_blog_onstart($blog_onstart);
 		                $pec_settings->set_posts_per_page($posts_per_page);
             			$pec_settings->save();
 		            	
@@ -258,7 +263,7 @@ function view_edit() {
     }
     else {
         // create an empty post
-        $post = new PecBlogPost(NULL_ID, 0, 0, 0, 0, 0, '', '', '', '', '', false);
+        $post = new PecBlogPost(NULL_ID, 0, 0, 0, 0, 0, '', '', '', '', '', true, false);
         $area_data['title'] .= ' &raquo; ' . $pec_localization->get('LABEL_POSTS_CREATE');
         
         $action = 'create';
@@ -266,6 +271,7 @@ function view_edit() {
     }
 
     $published_checked = $post->get_status() == true ? 'checked="checked"' : '';
+    $comments_allowed_checked = $post->get_comments_allowed() == true ? 'checked="checked"' : '';
     
     
     // create a string with comma-separated tags
@@ -333,6 +339,9 @@ function view_edit() {
                         
             <div class="options_box_1 float_left" style="margin-right: 10px; height: 220px">
                 <h3>' . $pec_localization->get('LABEL_POSTS_OPTIONS') . ':</h3>
+                <input type="checkbox" name="post_comments_allowed" id="post_comments_allowed" value="1" ' . $comments_allowed_checked . ' /> 
+                <label for="post_comments_allowed">' . $pec_localization->get('LABEL_POSTS_COMMENTSALLOWED') . '</label><br /><br />
+                
                 <input type="checkbox" name="post_status" id="post_status" value="1" ' . $published_checked . ' /> 
                 <label for="post_status">' . $pec_localization->get('LABEL_POSTS_PUBLIC') . '</label><br /><br />
                 
@@ -378,20 +387,26 @@ function view_default() {
     
     $posts = PecBlogPost::load(0, false, 'ORDER BY post_timestamp DESC');
     
+    $blog_onstart_checked = $pec_settings->get_blog_onstart() ? 'checked="checked"' : '';
+    
     $area_data['content'] = '
         <form method="post" action="' . AREA . '&amp;view=default&amp;action=default_view_actions" id="posts_main_form"/>
         
         	<div class="float_left">
 	            <input type="button" value="' . $pec_localization->get('BUTTON_NEW_BLOGPOST') . '" onclick="location.href=\'' . AREA . '&amp;view=edit\'"/> 
 	            
-            	<input type="submit" name="submitted_posts_per_page" class="hidden_element" />
+            	<input type="submit" name="submitted_blog_settings" class="hidden_element" />
 	            <input type="submit" name="remove_posts" value="' . $pec_localization->get('BUTTON_REMOVE') . '" onclick="return confirm(\'' . $pec_localization->get('LABEL_POSTS_REALLYREMOVE_SELECTED') . '\');" />
             </div>
             
             <div class="float_right">
+           		<strong>' . $pec_localization->get('LABEL_SETTINGS_BLOGONSTART') . ':</strong>&nbsp;&nbsp;
+            	<input type="checkbox" name="setting_blog_onstart" value="1" ' . $blog_onstart_checked . '/>
+            	&nbsp;&nbsp;
            		<strong>' . $pec_localization->get('LABEL_SETTINGS_POSTSPERPAGE') . ':</strong>&nbsp;&nbsp;
             	<input type="text" size="5" name="setting_posts_per_page" value="' . $pec_settings->get_posts_per_page() . '" />
-            	<input type="submit" name="set_posts_per_page" value="' . $pec_localization->get('BUTTON_APPLY') . '" />
+            	
+            	<input type="submit" name="set_blog_settings" value="' . $pec_localization->get('BUTTON_APPLY') . '" />
             </div>
             
             <br style="clear: both;" /><br />

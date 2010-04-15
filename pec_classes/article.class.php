@@ -109,7 +109,7 @@ class PecArticle {
     }
     
     public function set_onstart($onstart) {
-        $this->article_onstart = $this->database->db_string_protection($onstart);
+        $this->article_onstart = $this->database->db_string_protection($onstart, false);
     }
     
     public function make_readonly() {

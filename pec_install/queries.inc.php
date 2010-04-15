@@ -77,6 +77,7 @@ $queries['query_blogposts'] =
     post_content        TEXT,
     post_tags           TEXT,
     post_categories     TEXT,
+    post_comments_allowed  BOOLEAN,
     post_status         BOOLEAN
 )";
 
@@ -144,6 +145,7 @@ $queries['query_settings'] =
     setting_description     TEXT,
     setting_tags            VARCHAR(512),
     setting_admin_email     VARCHAR(512),
+    setting_comment_notify  BOOLEAN,
     setting_locale          VARCHAR(4),
     setting_url_type        VARCHAR(32),
     setting_posts_per_page  INT(11),

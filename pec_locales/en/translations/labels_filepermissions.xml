@@ -1,0 +1,11 @@
+<localestring id="LABEL_FILEPERMS_TYPE_RECURSIVE">
+    <t>recursive</t>
+</localestring>
+
+<localestring id="LABEL_FILEPERMS_TYPE_NOT_RECURSIVE">
+    <t>not recursive</t>
+</localestring>
+
+<localestring id="LABEL_FILEPERMS_TYPE_FILE">
+    <t>file</t>
+</localestring>

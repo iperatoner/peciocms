@@ -1,7 +1,9 @@
 <?php 
 foreach ($pecio->get('blogposts') as $bp) {
-	$comments = PecBlogComment::load('post', $bp);
-	$comment_count = count($comments);
+	if ($bp->get_comments_allowed()) {
+		$comments = PecBlogComment::load('post', $bp);
+		$comment_count = count($comments);
+	}
 ?>
 	<div class="blogpost">
 	
@@ -36,7 +38,11 @@ foreach ($pecio->get('blogposts') as $bp) {
 	    </div>
 	    
 	    <div class="postcomments_count">
+	    	<?php if ($bp->get_comments_allowed()) { ?>
 	    	<a href="<?php echo $pecio->blogpost_url($bp) . '#comments'; ?>"><?php echo $comment_count; ?> Comment(s)</a>
+	    	<?php } else { ?>
+	    	No comments
+	    	<?php } ?>
 	    </div>
 	    
 	    <div class="cleardiv"></div><br />

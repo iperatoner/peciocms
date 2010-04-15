@@ -26,6 +26,22 @@
     <t>Welcome to the Installation of pecio cms {%VERSION%}!</t>
 </localestring>
 
+<localestring id="LABEL_INSTALLATION_SETPERM_CHECK_HINT">
+    <t>Please check if all permissions are correct</t>
+</localestring>
+
+<localestring id="LABEL_INSTALLATION_PERMTABLE_FILEDIR">
+    <t>File/Directory</t>
+</localestring>
+
+<localestring id="LABEL_INSTALLATION_PERMTABLE_REQUIRED">
+    <t>Required</t>
+</localestring>
+
+<localestring id="LABEL_INSTALLATION_PERMTABLE_CURRENT">
+    <t>Current</t>
+</localestring>
+
 <localestring id="LABEL_INSTALLATION_CHOOSELANGUAGE">
     <t>Please choose a language</t>
 </localestring>
@@ -62,6 +78,10 @@
     <t>Database File</t>
 </localestring>
 
+<localestring id="LABEL_INSTALLATION_URLREWRITING_HEADING">
+    <t>URL Rewriting</t>
+</localestring>
+
 <localestring id="LABEL_INSTALLATION_FINISHTEXT">
     <t>You have successfully installed pecio cms {%VERSION%}! You can now log in 
     using the following login data and start adding content to your website.</t>
@@ -73,6 +93,10 @@
 
 <localestring id="LABEL_INSTALLATION_RMDIR_HINT">
     <t>Please remember to remove the installation directory "pec_install" for security reasons.</t>
+</localestring>
+
+<localestring id="LABEL_INSTALLATION_SETPERM_BACK_HINT">
+    <t>You should also set some file permissions back to their original values</t>
 </localestring>
 
 <localestring id="LABEL_INSTALLATION_RENAME_HTACCESS_HINT">

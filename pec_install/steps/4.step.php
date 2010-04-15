@@ -14,6 +14,13 @@ try {
 	}
 	$pec_database->db_close_handle();
 	
+	$pec_settings = new PecSetting(
+		NULL_ID, $_POST['setting_main_title'], $_POST['setting_sub_title'], '', '', 
+		$_POST['setting_admin_email'], 1, $_GET['locale'], $_POST['setting_url_type'], 8, 0, 
+		sha1('d26gR9rgrdNc921234jfi') . 'a19867770bRsf'
+	);
+	$pec_settings->save();
+	
 	
 	// ENTRIES
 	
@@ -62,7 +69,7 @@ try {
 	$first_blog_post = new PecBlogPost(
 		NULL_ID, $time, $y, $m, $d, $first_user->get_id(), $pec_localization->get('FIRST_BLOGPOST_TITLE'), 
 		$pec_localization->get('FIRST_BLOGPOST_CONTENT_CUT'), $pec_localization->get('FIRST_BLOGPOST_CONTENT'), 
-		$first_blog_tag->get_id(), $first_blog_category->get_id(), 1
+		$first_blog_tag->get_id(), $first_blog_category->get_id(), 1, 1
 	);
 	$first_blog_post->save(false);
 	
@@ -72,14 +79,6 @@ try {
 		$pec_localization->get('FIRST_BLOGCOMMENT_CONTENT'), false
 	);
 	$first_blog_comment->save();
-	
-	
-	$pec_settings = new PecSetting(
-		NULL_ID, $_POST['setting_main_title'], $_POST['setting_sub_title'], '', '', 
-		$_POST['setting_admin_email'], $_GET['locale'], $_POST['setting_url_type'], 8, 0, 
-		sha1('d26gR9rgrdNc921234jfi') . 'a19867770bRsf'
-	);
-	$pec_settings->save();
 	
 	PecMessageHandler::raise('installation_success');
 }

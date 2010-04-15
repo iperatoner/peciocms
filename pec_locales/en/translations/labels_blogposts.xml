@@ -38,6 +38,10 @@
     <t>Public</t>
 </localestring>
 
+<localestring id="LABEL_POSTS_COMMENTSALLOWED">
+    <t>Allow comments</t>
+</localestring>
+
 <localestring id="LABEL_POSTS_PUBLISHED">
     <t>Public?</t>
 </localestring>

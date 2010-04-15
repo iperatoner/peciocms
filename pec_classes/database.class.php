@@ -121,7 +121,8 @@ class PecDatabase {
         
         $this->db_connect();
         
-        if ($str !== false) {
+        
+        if ($str !== false || $strings === false) {
             if ($this->db_type === TYPE_MYSQL) {
                 $esc = htmlspecialchars(mysql_real_escape_string(stripslashes($str), $this->db_handle));
             }

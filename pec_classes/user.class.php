@@ -250,7 +250,7 @@ class PecUser {
     }
     
     public function send_password_link() {
-        global $pec_settings;        
+        global $pec_settings, $pec_localization;        
         
         $id = $this->user_id;
         $id_enc = base64_encode($id);
@@ -263,18 +263,11 @@ class PecUser {
         $params = 'uid=' . $id . '&user=' . $id_enc . '&dna=' . $dna . '&t=' . $time;
         $url = pec_root_url() . 'pec_admin/index.php?area=new-password&' . $params;
         
-        $mail_subject = 'pecio cms - Lost password';
-        $mail_content = "
-            Hi $name,
-            
-            You have requested a link for choosing a new password of your pecio account on " . pec_root_url() . ".
-            
-            Click on the following link to choose a new password. The link expires in 2 days.
-            $url
-            
-            Ciao,
-            Your server            
-        ";
+        $mail_subject = $pec_localization->get('LABEL_LOSTPASSWORD_EMAIL_TITLE');
+        $mail_content = $pec_localization->get('LABEL_LOSTPASSWORD_EMAIL_TEXT');
+        $mail_content = str_replace('{%USERNAME%}', $name, $mail_content);
+        $mail_content = str_replace('{%ROOT_URL%}', pec_root_url(), $mail_content);
+        $mail_content = str_replace('{%URL%}', $url, $mail_content);
             
         mail($this->user_email, $mail_subject, $mail_content);
     }

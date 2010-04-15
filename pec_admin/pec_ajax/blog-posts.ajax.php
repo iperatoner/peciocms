@@ -47,6 +47,7 @@ if ($pec_session->get('pec_user')->get_permission($area['permission_name']) > PE
             isset($_POST['post_content']) && isset($_POST['post_content_cut']) && 
             isset($_POST['post_status']) && isset($_POST['post_tags'])) {
                  
+            $comments_allowed = $_POST['post_comments_allowed'] == 'true' ? true : false;
             $status = $_POST['post_status'] == 'true' ? true : false; 
              
             // converting the array of selected categories into the flat version for database
@@ -68,7 +69,7 @@ if ($pec_session->get('pec_user')->get_permission($area['permission_name']) > PE
             $author_id = $pec_session->get('pec_user')->get_id();
             
             $post = new PecBlogPost(NULL_ID, $timestamp, $y, $m, $d, $author_id, 
-                                    $_POST['post_title'], $_POST['post_content_cut'], $_POST['post_content'], $tag_ids, $in_categories, $status);
+                                    $_POST['post_title'], $_POST['post_content_cut'], $_POST['post_content'], $tag_ids, $in_categories, $comments_allowed, $status);
             $post->save();
             
             $output = PecMessageHandler::get('content_created', array(
@@ -96,6 +97,7 @@ if ($pec_session->get('pec_user')->get_permission($area['permission_name']) > PE
             isset($_POST['post_status']) && isset($_POST['post_tags'])) {
                 
             if (PecBlogPost::exists('id', $_POST['post_id'])) {  
+            	$comments_allowed = $_POST['post_comments_allowed'] == 'true' ? true : false;
                 $status = $_POST['post_status'] == 'true' ? true : false; 
                             
                    $tag_ids = PecBlogTag::get_ids_of_tagnames($_POST['post_tags'], true);
@@ -107,6 +109,7 @@ if ($pec_session->get('pec_user')->get_permission($area['permission_name']) > PE
                 $post->set_content($_POST['post_content']);
                 $post->set_tags($tag_ids, TYPE_ARRAY);
                 $post->set_categories($_POST['post_categories'], TYPE_ARRAY);
+                $post->set_comments_allowed($comments_allowed);
                 $post->set_status($status);
                 
                 $post->save();

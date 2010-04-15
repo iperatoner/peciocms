@@ -1,0 +1,59 @@
+<html>
+	<head>
+		<style>
+			div {
+				padding: 5px;
+				margin: 5px;
+				border: 1px solid #aaa;
+			}
+			
+			div.check_column, div.long_column, div.medium_column, div.thin_column {
+				float: left;
+			}
+			
+			div.check_column {
+				width: 12px;
+			}
+			
+			div.thin_column {
+				width: 75px;
+			}
+			
+			div.medium_column {
+				width: 150px;
+			}
+			
+			div.long_column {
+				width: 300px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="data_table">
+			<div class="head_row">
+				<div class="check_column">ID</div>
+				<div class="long_column">Name</div>
+				<div class="medium_column">Root</div>
+				<div class="medium_column">Target</div>
+				<div class="thin_column">Sort</div>
+				<div style="clear: left; height: 0px; margin: 0px; padding: 0px; overflow: hidden; visibility: hidden; border: 0px;"></div>
+			</div>
+			<div class="data_row">
+				<div class="check_column">1</div>
+				<div class="long_column">Home</div>
+				<div class="medium_column">-</div>
+				<div class="medium_column">Home</div>
+				<div class="thin_column"><input size="4" /></div>
+				<div style="clear: left; height: 0px; margin: 0px; padding: 0px; overflow: hidden; visibility: hidden; border: 0px;"></div>
+			</div>
+			<div class="data_row">
+				<div class="check_column">2</div>
+				<div class="long_column">About</div>
+				<div class="medium_column">-</div>
+				<div class="medium_column">About</div>
+				<div class="thin_column"><input size="4" /></div>
+				<div style="clear: left; height: 0px; margin: 0px; padding: 0px; overflow: hidden; visibility: hidden; border: 0px;"></div>
+			</div>
+		</div>
+	</body>
+</html>

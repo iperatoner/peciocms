@@ -27,7 +27,7 @@
 class PecBlogPost {
     private $post_id, $post_timestamp, $post_year, $post_month, $post_day, $post_author_id, 
             $post_title, $post_slug, $post_content_cut, $post_content, $post_tags, $post_categories, 
-            $post_status, $readonly;
+            $post_comments_allowed, $post_status, $readonly;
             
     static $by_array = array(
                'id' => 'post_id',
@@ -42,6 +42,7 @@ class PecBlogPost {
                'content' => 'post_content',
                'tags' => 'post_tags',
                'categories' => 'post_categories',
+               'comments_allowed' => 'post_comments_allowed',
                'status' => 'post_status'
            );
             
@@ -52,7 +53,7 @@ class PecBlogPost {
            );
     
     function __construct($id=0, $timestamp, $year, $month, $day, $author_id, $title, $content_cut, 
-                         $content, $tags, $categories, $status, $slug=false) {
+                         $content, $tags, $categories, $comments_allowed, $status, $slug=false) {
         global $pec_database;
         $this->database = $pec_database;
         
@@ -62,7 +63,7 @@ class PecBlogPost {
             array(
                 'id' => $id, 'timestamp' => $timestamp, 'year' => $year, 'month' => $month, 'day' => $day, 
                 'author_id' => $author_id, 'title' => $title, 'tags' => $tags, 'categories' => $categories, 
-                'status' => $status
+                'comments_allowed' => $comments_allowed, 'status' => $status
             )
         );
         
@@ -78,6 +79,7 @@ class PecBlogPost {
         $this->post_content_cut = $content_cut;
         $this->post_content = $content;
         
+        $this->post_comments_allowed = $escaped_data['comments_allowed'];
         $this->post_status = $escaped_data['status'];
         
         $this->post_tags = $escaped_data['tags'];
@@ -207,6 +209,15 @@ class PecBlogPost {
             else {
             	return array();
             }
+        }
+    }
+    
+    public function get_comments_allowed($human_readable=false) {
+        if ($human_readable) {
+            return $this->post_comments_allowed == true ? '&#x2713;' : '&#x2717;';
+        }
+        else {
+            return $this->post_comments_allowed;            
         }
     }
     
@@ -342,8 +353,12 @@ class PecBlogPost {
         }
     }
     
+    public function set_comments_allowed($comments_allowed=true) {
+        $this->post_comments_allowed = $this->database->db_string_protection($comments_allowed, false);
+    }
+    
     public function set_status($status=true) {
-        $this->post_status = $this->database->db_string_protection($status);
+        $this->post_status = $this->database->db_string_protection($status, false);
     }
     
     public function from_author($author) {
@@ -383,18 +398,19 @@ class PecBlogPost {
         $new = false;
         if (self::exists('id', $this->post_id)) {
             $query = "UPDATE " . DB_PREFIX . "blogposts SET
-                        post_timestamp='"    . $this->post_timestamp . "',
-                        post_year='"         . $this->post_year . "',
-                        post_month='"        . $this->post_month . "',
-                        post_day='"          . $this->post_day . "',
-                        post_author_id='"    . $this->post_author_id . "',
-                        post_title='"        . $this->post_title . "',
-                        post_slug='"         . $this->post_slug . "',
-                        post_content_cut='"  . $this->post_content_cut . "',
-                        post_content='"      . $this->post_content . "',
-                        post_tags='"         . $this->post_tags . "',
-                        post_categories='"   . $this->post_categories . "',
-                        post_status='"       . $this->post_status . "'
+                        post_timestamp='"   	 . $this->post_timestamp . "',
+                        post_year='"         	 . $this->post_year . "',
+                        post_month='"        	 . $this->post_month . "',
+                        post_day='"          	 . $this->post_day . "',
+                        post_author_id='"    	 . $this->post_author_id . "',
+                        post_title='"        	 . $this->post_title . "',
+                        post_slug='"         	 . $this->post_slug . "',
+                        post_content_cut='"  	 . $this->post_content_cut . "',
+                        post_content='"      	 . $this->post_content . "',
+                        post_tags='"         	 . $this->post_tags . "',
+                        post_categories='"   	 . $this->post_categories . "',
+                        post_comments_allowed='" . $this->post_comments_allowed . "',
+                        post_status='"       	 . $this->post_status . "'
                       WHERE post_id='"    . $this->post_id . "'";
         }
         else {
@@ -411,6 +427,7 @@ class PecBlogPost {
                         post_content,
                         post_tags,
                         post_categories,
+                        post_comments_allowed,
                         post_status
                       ) VALUES
                       (
@@ -425,6 +442,7 @@ class PecBlogPost {
                         '" . $this->post_content . "',
                         '" . $this->post_tags . "',
                         '" . $this->post_categories . "',
+                        '" . $this->post_comments_allowed . "',
                         '" . $this->post_status . "'
                       )";
         }
@@ -432,7 +450,7 @@ class PecBlogPost {
         $this->database->db_connect();
         $this->database->db_query($query);
         if ($new) {
-            $this->post_id = $this->database->db_last_insert_id();
+            $this->post_id = $this->database->db_last_insert_id();            
         }
         $this->database->db_close_handle();
         
@@ -498,16 +516,16 @@ class PecBlogPost {
                 while ($p = $pec_database->db_fetch_array($resource)) {
                     $return_data[] = new PecBlogPost($p['post_id'], $p['post_timestamp'], $p['post_year'], $p['post_month'], 
                                                      $p['post_day'], $p['post_author_id'], $p['post_title'], $p['post_content_cut'], 
-                                                     $p['post_content'], $p['post_tags'], $p['post_categories'], $p['post_status'], 
-                                                     $p['post_slug']);
+                                                     $p['post_content'], $p['post_tags'], $p['post_categories'], $p['post_comments_allowed'],
+                                                     $p['post_status'], $p['post_slug']);
                 }
             }
             elseif ($pec_database->db_num_rows($resource) == 1) {
                 $p = $pec_database->db_fetch_array($resource);
                 $return_data = new PecBlogPost($p['post_id'], $p['post_timestamp'], $p['post_year'], $p['post_month'], 
                                                $p['post_day'], $p['post_author_id'], $p['post_title'], $p['post_content_cut'], 
-                                               $p['post_content'], $p['post_tags'], $p['post_categories'], $p['post_status'], 
-                                               $p['post_slug']);
+                                               $p['post_content'], $p['post_tags'], $p['post_categories'], $p['post_comments_allowed'],
+                                               $p['post_status'], $p['post_slug']);
             }
             
             return $return_data;            
@@ -558,8 +576,8 @@ class PecBlogPost {
             while ($p = $pec_database->db_fetch_array($resource)) {
                 $posts[] = new PecBlogPost($p['post_id'], $p['post_timestamp'], $p['post_year'], $p['post_month'], 
                                               $p['post_day'], $p['post_author_id'], $p['post_title'], $p['post_content_cut'], 
-                                              $p['post_content'], $p['post_tags'], $p['post_categories'], $p['post_status'], 
-                                              $p['post_slug']);
+                                              $p['post_content'], $p['post_tags'], $p['post_categories'], $p['post_comments_allowed'],
+                                              $p['post_status'], $p['post_slug']);
             }
             
             return $posts;

@@ -31,22 +31,22 @@ pec_set_installed_version(PEC_VERSION);
 
 <br /><br />
 
-You should also set some file permissions back to their original values:<br /><br />
+<?php $pec_localization->out('LABEL_INSTALLATION_SETPERM_BACK_HINT'); ?>:<br /><br />
 
 <?php $current_core_permissions = pec_read_core_permissions(); ?>
 <table class="data_table">
     <tr class="head">
-        <td class="short">File/Directory</td>
-        <td class="short">Required</td>
-        <td class="thin">Current</td>
+        <td class="short"><?php $pec_localization->out('LABEL_INSTALLATION_PERMTABLE_FILEDIR'); ?></td>
+        <td class="short"><?php $pec_localization->out('LABEL_INSTALLATION_PERMTABLE_REQUIRED'); ?></td>
+        <td class="thin"><?php $pec_localization->out('LABEL_INSTALLATION_PERMTABLE_CURRENT'); ?></td>
     </tr>
     <?php 
     foreach ($pec_core_permissions as $core_filename => $perm) {
     	if ($perm['permission_before_install'] != $perm['permission_after_install']) {
 	    	switch ($perm['type']) {
-	    		case 'r': $permission_type = 'recursive'; break;
-	    		case 'nr': $permission_type = 'not recursive'; break;
-	    		case 'f': $permission_type = 'file'; break;
+	    		case 'r': $permission_type = $pec_localization->get('LABEL_FILEPERMS_TYPE_RECURSIVE'); break;
+	    		case 'nr': $permission_type = $pec_localization->get('LABEL_FILEPERMS_TYPE_NOT_RECURSIVE'); break;
+	    		case 'f': $permission_type = $pec_localization->get('LABEL_FILEPERMS_TYPE_FILE'); break;
 	    	}
 	    	
 	    	if ($perm['permission_after_install'] == $current_core_permissions[$core_filename]) {
@@ -68,7 +68,7 @@ You should also set some file permissions back to their original values:<br /><b
 </table>
 
 <br /><br />
-<h3 style="margin-left: -2px;">URL Rewriting:</h3>
+<h3 style="margin-left: -2px;"><?php $pec_localization->out('LABEL_INSTALLATION_URLREWRITING_HEADING'); ?>:</h3>
 
 <?php $pec_localization->out('LABEL_INSTALLATION_RENAME_HTACCESS_HINT'); ?>
 <br /><br /><br />

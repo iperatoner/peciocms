@@ -72,6 +72,9 @@ function do_actions() {
             $pec_settings->set_tags($_POST['setting_tags']);
             $pec_settings->set_admin_email($_POST['setting_admin_email']);
             
+            $comment_notify = isset($_POST['setting_comment_notify']) ? true : false;
+            $pec_settings->set_comment_notify($comment_notify);
+            
             if (PecLocale::exists($_POST['setting_locale'])) {
             	$pec_settings->set_locale($_POST['setting_locale']);
             }
@@ -154,6 +157,7 @@ function view_default() {
         $url_type_select_options .= '<option value="' . $url_type . '" ' . $selected . '>' . $url_type_label . '</option>';
     }
     
+    $comment_notify_checked = $pec_settings->get_comment_notify() ? 'checked="checked"' : '';
     $blog_onstart_checked = $pec_settings->get_blog_onstart() ? 'checked="checked"' : '';
     
     $area_data['content'] = '
@@ -169,6 +173,10 @@ function view_default() {
                 
                 <h3>' . $pec_localization->get('LABEL_SETTINGS_ADMINEMAIL') . ':</h3>
                 <input type="text" style="width: 475px;" name="setting_admin_email" value="' . $pec_settings->get_admin_email() . '" />
+                <br /><br />
+                
+                <h3>' . $pec_localization->get('LABEL_SETTINGS_COMMENTNOTIFY') . '</h3>
+                <input type="checkbox" style="position: relative; left: 3px;" name="setting_comment_notify" value="1" ' . $comment_notify_checked . '/>
             </div>
             
             <div class="options_box_1" style="width: 500px;">

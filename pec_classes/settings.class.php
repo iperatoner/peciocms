@@ -26,13 +26,13 @@
 
 class PecSetting {
     private $setting_id, $setting_sitename_main, $setting_sitename_sub, $setting_description, 
-            $setting_tags, $setting_admin_email, $setting_locale, $setting_url_type, 
+            $setting_tags, $setting_admin_email, $setting_comment_notify, $setting_locale, $setting_url_type, 
             $setting_posts_per_page, $setting_blog_onstart, $setting_template_id, $setting_nospam_key_1, $setting_nospam_key_2, 
             $setting_nospam_key_3, $readonly;
             
     static $by_array = array();
     
-    function __construct($id=0, $sitename_main, $sitename_sub, $description, $tags, $admin_email, 
+    function __construct($id=0, $sitename_main, $sitename_sub, $description, $tags, $admin_email, $comment_notify, 
                          $locale, $url_type, $posts_per_page, $blog_onstart, $template_id, $nospam_1=false, 
                          $nospam_2=false, $nospam_3=false) {
         global $pec_database;
@@ -43,7 +43,7 @@ class PecSetting {
             false, 
             array(
                 'id' => $id, 'sitename_main' => $sitename_main, 'sitename_sub' => $sitename_sub, 
-                'tags' => $tags, 'admin_email' => $admin_email, 
+                'tags' => $tags, 'admin_email' => $admin_email, 'comment_notify' => $comment_notify, 
                 'locale' => $locale, 'url_type' => $url_type, 'posts_per_page' => $posts_per_page, 
                 'blog_onstart' => $blog_onstart, 'template_id' => $template_id
             )
@@ -55,6 +55,7 @@ class PecSetting {
         $this->setting_description = $description;
         $this->setting_tags = $escaped_data['tags'];
         $this->setting_admin_email = $escaped_data['admin_email'];
+        $this->setting_comment_notify = $escaped_data['comment_notify'];
         
         $this->setting_locale = $escaped_data['locale'];
         $this->setting_url_type = $escaped_data['url_type'];
@@ -124,6 +125,10 @@ class PecSetting {
         }
     }
     
+    public function get_comment_notify() {
+        return $this->setting_comment_notify;
+    }
+    
     public function get_locale() {
         return $this->setting_locale;
     }
@@ -176,6 +181,10 @@ class PecSetting {
     
     public function set_admin_email($admin_email) {
         $this->setting_admin_email = $admin_email;
+    }
+    
+    public function set_comment_notify($comment_notify) {
+        $this->setting_comment_notify = $comment_notify;
     }
     
     public function set_locale($locale) {
@@ -235,6 +244,7 @@ class PecSetting {
                         setting_description='"    . $this->setting_description . "',
                         setting_tags='"           . $this->setting_tags . "',
                         setting_admin_email='"    . $this->setting_admin_email . "',
+                        setting_comment_notify='" . $this->setting_comment_notify . "',
                         setting_locale='"         . $this->setting_locale . "',
                         setting_url_type='"       . $this->setting_url_type . "',
                         setting_posts_per_page='" . $this->setting_posts_per_page . "',
@@ -253,6 +263,7 @@ class PecSetting {
                         setting_description,
                         setting_tags,
                         setting_admin_email,
+                        setting_comment_notify,
                         setting_locale,
                         setting_url_type,
                         setting_posts_per_page,
@@ -268,6 +279,7 @@ class PecSetting {
                         '" . $this->setting_description . "',
                         '" . $this->setting_tags . "',
                         '" . $this->setting_admin_email . "',
+                        '" . $this->setting_comment_notify . "',
                         '" . $this->setting_locale . "',
                         '" . $this->setting_url_type . "',
                         '" . $this->setting_posts_per_page . "',
@@ -325,10 +337,10 @@ class PecSetting {
 
         $s = $pec_database->db_fetch_array($resource);
         $setting = new PecSetting($s['setting_id'], $s['setting_sitename_main'], $s['setting_sitename_sub'],
-                                  $s['setting_description'], $s['setting_tags'], $s['setting_admin_email'],
-                                  $s['setting_locale'], $s['setting_url_type'], $s['setting_posts_per_page'],
-                                  $s['setting_blog_onstart'], $s['setting_template_id'], $s['setting_nospam_key_1'], 
-                                  $s['setting_nospam_key_2'], $s['setting_nospam_key_3']);
+                                  $s['setting_description'], $s['setting_tags'], $s['setting_admin_email'], 
+                                  $s['setting_comment_notify'], $s['setting_locale'], $s['setting_url_type'], 
+                                  $s['setting_posts_per_page'], $s['setting_blog_onstart'], $s['setting_template_id'], 
+                                  $s['setting_nospam_key_1'], $s['setting_nospam_key_2'], $s['setting_nospam_key_3']);
         
         return $setting;      
     }

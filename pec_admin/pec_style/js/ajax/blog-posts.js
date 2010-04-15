@@ -7,7 +7,8 @@ function interim_save_post() {
     
     eval('var post_content = CKEDITOR.instances.' + post_editor_name + '.getData();');
     eval('var post_content_cut = CKEDITOR.instances.' + post_cut_editor_name + '.getData();');
-    
+
+    var post_comments_allowed = document.getElementById('post_comments_allowed').checked == true ? 'true' : 'false';
     var post_status = document.getElementById('post_status').checked == true ? 'true' : 'false';
     var post_tags = document.getElementById('post_tags').value;
     var post_categories = document.getElementsByName('post_categories[]');
@@ -39,6 +40,7 @@ function interim_save_post() {
         "&post_content=" + encodeURIComponent(post_content) + 
         "&post_content_cut=" + encodeURIComponent(post_content_cut) + 
         "&post_status=" + post_status +
+        "&post_comments_allowed=" + post_comments_allowed +
         "&post_tags=" + post_tags +
         post_categories_query_vars +
         "&post_id=" + post_id

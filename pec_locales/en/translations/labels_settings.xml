@@ -10,6 +10,10 @@
     <t>Admin Email</t>
 </localestring>
 
+<localestring id="LABEL_SETTINGS_COMMENTNOTIFY">
+    <t>Email on new comments?</t>
+</localestring>
+
 <localestring id="LABEL_SETTINGS_DESCRIPTION">
     <t>Description</t>
 </localestring>

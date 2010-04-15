@@ -169,9 +169,41 @@ class PecBlogComment {
         }
     }
     
+    public function notify_author_and_admin() {
+    	global $pec_localization, $pec_settings;
+    	
+    	$post = $this->get_post();
+    	
+    	$email_title = $pec_localization->get('LABEL_COMMENTS_NOTIFY_EMAIL_TITLE');
+    	$email_text = $pec_localization->get('LABEL_COMMENTS_NOTIFY_EMAIL_TEXT');
+    	
+    	$email_title = str_replace('{%POST_TITLE%}', $post->get_title(), $email_title);
+    	$email_text = str_replace('{%POST_TITLE%}', $post->get_title(), $email_text);
+    	$email_text = str_replace('{%POST_URL%}', create_blogpost_url($post), $email_text);
+    	$email_text = str_replace('{%COMMENT_AUTHOR%}', $this->get_author(), $email_text);
+    	
+    	$author = $post->get_author();
+    	
+    	# WTF? Otherwise: "Can't use method return value in write context"
+    	$author_forename = $author->get_forename();
+    	$author_name = !empty($author_forename) ? $author->get_forename() : $author->get_name();
+    	$email_text_author = str_replace('{%USERNAME%}', $author_name, $email_text);
+    	
+    	$admin_email = $pec_settings->get_admin_email();
+    	$author_email = $post->get_author()->get_email();
+        mail($author_email, $email_title, $email_text_author);
+        
+        if ($admin_email != $author_email) {
+    		$email_text_admin = str_replace('{%USERNAME%}', 'Admin', $email_text);
+        	mail($admin_email, $email_title, $email_text_admin);
+        }
+    }
+    
     public function save() {
+    	global $pec_settings;
+    	
         $new = false;
-        if (self::exists('id', $this->comment_id)) {
+        if (self::exists('id', $this->comment_id) && $this->get_post()->get_comments_allowed()) {
             $query = "UPDATE " . DB_PREFIX . "blogcomments SET
                         comment_post_id='"    . $this->comment_post_id . "',
                         comment_title='"      . $this->comment_title . "',
@@ -207,6 +239,9 @@ class PecBlogComment {
             $this->comment_id = $this->database->db_last_insert_id();
         }
         $this->database->db_close_handle();
+        if ($new && $pec_settings->get_comment_notify()) {
+            $this->notify_author_and_admin();
+        }
     }
     
     public function remove() {

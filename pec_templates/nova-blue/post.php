@@ -40,9 +40,10 @@
 </div><br />
 
 
-<?php 				
-	$comments = $pecio->get('blogcomments');
-	$comment_count = count($comments);
+<?php
+	if ($pecio->get('blogpost')->get_comments_allowed()) {
+		$comments = $pecio->get('blogcomments');
+		$comment_count = count($comments);
 ?>
 <h3>
 	<a name="comments" id="comments" href="#comments"><?php echo $comment_count; ?> comment(s)</a>
@@ -105,5 +106,6 @@
 		</table>
 	</div>
 </form>
+<?php } ?>
 
 <?php include('pec_templates/' . $pecio->get('template')->get_directory_name() . '/footer.php'); ?>
