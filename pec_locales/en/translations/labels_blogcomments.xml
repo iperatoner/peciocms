@@ -35,13 +35,13 @@
 </localestring>
 
 <localestring id="LABEL_COMMENTS_NOTIFY_EMAIL_TITLE">
-    <t>New comment on {%POST_TITLE%}</t>
+    <t>New comment on "{%POST_TITLE%}"</t>
 </localestring>
 
 <localestring id="LABEL_COMMENTS_NOTIFY_EMAIL_TEXT">
     <t>Hi {%USERNAME%},
     
-    {%COMMENT_AUTHOR%} has commented on the post {%POST_TITLE%} ({%POST_URL%}).
+    {%COMMENT_AUTHOR%} has commented on the post "{%POST_TITLE%}" ({%POST_URL%}).
     
     Ciao,
     Your server</t>

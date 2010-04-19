@@ -26,12 +26,32 @@
     <t>Willkommen bei der Installation von pecio cms {%VERSION%}!</t>
 </localestring>
 
+<localestring id="LABEL_INSTALLATION_SETPERM_CHECK_HINT">
+    <t>Bitte überprüfen Sie, ob alle Berechtigungen richtig sind</t>
+</localestring>
+
+<localestring id="LABEL_INSTALLATION_PERMTABLE_FILEDIR">
+    <t>Datei/Ordner</t>
+</localestring>
+
+<localestring id="LABEL_INSTALLATION_PERMTABLE_REQUIRED">
+    <t>Benötigt</t>
+</localestring>
+
+<localestring id="LABEL_INSTALLATION_PERMTABLE_CURRENT">
+    <t>Aktuell</t>
+</localestring>
+
+<localestring id="LABEL_INSTALLATION_SETPERM_BACK_HINT">
+    <t>Sie sollten einige Dateiberechtigungen auf ihren ursprünglichen Wert zurücksetzen</t>
+</localestring>
+
 <localestring id="LABEL_INSTALLATION_CHOOSELANGUAGE">
     <t>Bitte wählen Sie eine Sprache</t>
 </localestring>
 
 <localestring id="LABEL_INSTALLATION_TBLPREFIX">
-    <t>Tabellen Prefix</t>
+    <t>Tabellen Präfix</t>
 </localestring>
 
 <localestring id="LABEL_INSTALLATION_MYSQL">
