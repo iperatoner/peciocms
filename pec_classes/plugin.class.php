@@ -88,7 +88,7 @@ class PecPlugin {
     	}
     }
     
-    public function is_installed($status_file_exists=true) {
+    public function is_installed() {
     	if (!file_exists($this->plugin_directory_path_c . PLUGIN_INSTALLED_FILE) &&
     		file_exists($this->plugin_directory_path_c . PLUGIN_UNINSTALLED_FILE)) {
     		return false;
@@ -108,6 +108,17 @@ class PecPlugin {
     	}
     }
     
+    public function never_installed() {
+        return !file_exists($plugin->get_directory_path() . PLUGIN_INSTALLED_FILE) && 
+		       !file_exists($plugin->get_directory_path() . PLUGIN_UNINSTALLED_FILE)
+    }
+
+    public function initial_install() {
+        $plugin = $this;
+	    require($this->plugin_directory_path_c . PLUGIN_INSTALL_FILE);
+	    file_put_contents($this->plugin_directory_path_c . '/' . PLUGIN_INSTALLED_FILE, '');
+    }
+
     public function set_installed() {
     	return rename($this->plugin_directory_path_c . PLUGIN_UNINSTALLED_FILE,
                		  $this->plugin_directory_path_c . PLUGIN_INSTALLED_FILE);

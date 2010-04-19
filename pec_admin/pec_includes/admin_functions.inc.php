@@ -24,6 +24,18 @@
  * @link		http://pecio-cms.com
  */
 
+function auto_install_plugins($plugins=false) {
+    if (!$plugins) {
+        $plugins = PecPlugin::load();
+    }
+
+    foreach ($plugins as $plugin) {
+	    if ($plugin->installation_required() && $plugin->never_installed()) {
+		    $plugin->initial_install();
+	    }
+    }
+}
+
 function ckeditor_replace($textarea, $additional_options='') {
     global $pec_settings;
     $additional_options = !empty($additional_options) ? ',' . $additional_options : '';

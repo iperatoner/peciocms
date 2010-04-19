@@ -42,15 +42,7 @@ require_once('pec_classes/area.class.php');
 $plugins = PecPlugin::load();
 
 // install plugins that have never been installed yet
-foreach ($plugins as $p) {
-	if ($p->installation_required() &&
-		!file_exists(PLUGIN_PATH . $p->get_directory_name() . '/' . PLUGIN_INSTALLED_FILE) && 
-		!file_exists(PLUGIN_PATH . $p->get_directory_name() . '/' . PLUGIN_UNINSTALLED_FILE)) {
-			
-		require(PLUGIN_PATH . $p->get_directory_name() . '/' . PLUGIN_INSTALL_FILE);
-		file_put_contents(PLUGIN_PATH . $p->get_directory_name() . '/' . PLUGIN_INSTALLED_FILE, '');
-	}
-}
+auto_install_plugins($plugins);
 
 if (isset($_GET['t']) && $_GET['t'] == 'plugin' && PecPlugin::exists('area_name', $_GET[ADMIN_AREA_VAR])) {
     // load the plugin and its area file and data
