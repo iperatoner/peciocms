@@ -64,6 +64,7 @@ class PecTemplateResource {
         'plugin_head_data',
         'settings',
         'template',
+        'template_path',
         'homepage_main_title',
         'homepage_sub_title',
         'homepage_tags',
@@ -76,6 +77,7 @@ class PecTemplateResource {
         
         $this->data['settings'] = $settings;
         $this->data['template'] = $template;
+        $this->data['template_path'] = $template->get_directory_path(false);
         $this->data['site_view'] = $site_view;  
         $this->data['sub_site_view'] = $sub_site_view;    
         

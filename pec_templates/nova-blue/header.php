@@ -34,10 +34,10 @@
     
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
-    <link rel="stylesheet" type="text/css" href="<?php $pecio->out('root_path'); ?>pec_templates/<?php echo $pecio->get('template')->get_directory_name(); ?>/css/layout.css"/>
-    <link rel="stylesheet" type="text/css" href="<?php $pecio->out('root_path'); ?>pec_templates/<?php echo $pecio->get('template')->get_directory_name(); ?>/css/format.css"/>
-    <link rel="stylesheet" type="text/css" href="<?php $pecio->out('root_path'); ?>pec_templates/<?php echo $pecio->get('template')->get_directory_name(); ?>/css/menu.css"/>
-    <link rel="stylesheet" type="text/css" href="<?php $pecio->out('root_path'); ?>pec_templates/<?php echo $pecio->get('template')->get_directory_name(); ?>/css/blog.css"/>
+    <link rel="stylesheet" type="text/css" href="<?php $pecio->out('template_path'); ?>/css/layout.css"/>
+    <link rel="stylesheet" type="text/css" href="<?php $pecio->out('template_path'); ?>/css/format.css"/>
+    <link rel="stylesheet" type="text/css" href="<?php $pecio->out('template_path'); ?>/css/menu.css"/>
+    <link rel="stylesheet" type="text/css" href="<?php $pecio->out('template_path'); ?>/css/blog.css"/>
      
   </head>
 

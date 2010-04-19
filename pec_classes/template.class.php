@@ -26,7 +26,7 @@
 
 class PecTemplate {
     
-    private $template_directory_name, $template_directory_path, $template_properties;
+    private $template_directory_name, $template_directory_path, $template_directory_path_c, $template_properties;
     
     static $by_properties = array(
         "id",
@@ -40,18 +40,19 @@ class PecTemplate {
     
     function __construct($directory_name) {
         $this->template_directory_name = $directory_name;
-        $this->template_directory_path = TEMPLATE_PATH . $directory_name . '/';
+        $this->template_directory_path = TEMPLATE_PATH_NC . $directory_name . '/';
+        $this->template_directory_path_c = TEMPLATE_PATH . $directory_name . '/';
         
         $this->template_properties = $this->load_template_properties();        
     }
     
     private function load_template_properties() {
-        require($this->template_directory_path . TEMPLATE_META_FILE);
+        require($this->template_directory_path_c . TEMPLATE_META_FILE);
         return $template_meta;
     }
     
-    public function get_directory_path() {
-        return $this->template_directory_path;
+    public function get_directory_path($canonicalized=true) {
+        return $canonicalized ? $this->template_directory_path_c : $this->template_directory_path;
     }
     
     public function get_directory_name() {
