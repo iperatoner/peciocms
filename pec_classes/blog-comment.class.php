@@ -203,7 +203,7 @@ class PecBlogComment {
     	global $pec_settings;
     	
         $new = false;
-        if (self::exists('id', $this->comment_id) && $this->get_post()->get_comments_allowed()) {
+        if (self::exists('id', $this->comment_id)) {
             $query = "UPDATE " . DB_PREFIX . "blogcomments SET
                         comment_post_id='"    . $this->comment_post_id . "',
                         comment_title='"      . $this->comment_title . "',
@@ -213,7 +213,7 @@ class PecBlogComment {
                         comment_content='"    . $this->comment_content . "'
                       WHERE comment_id='"    . $this->comment_id . "'";
         }
-        else {
+        elseif ($this->get_post()->get_comments_allowed()) {
             $new = true;
             $query = "INSERT INTO " . DB_PREFIX . "blogcomments (
                         comment_post_id,

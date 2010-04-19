@@ -33,3 +33,16 @@
 <localestring id="LABEL_COMMENTS_REALLYREMOVE_SELECTED">
     <t>Die markierten Kommentare endgültig löschen?</t>
 </localestring>
+
+<localestring id="LABEL_COMMENTS_NOTIFY_EMAIL_TITLE">
+    <t>Neuer Kommentar zu "{%POST_TITLE%}"</t>
+</localestring>
+
+<localestring id="LABEL_COMMENTS_NOTIFY_EMAIL_TEXT">
+    <t>Hi {%USERNAME%},
+    
+{%COMMENT_AUTHOR%} hat auf den Post "{%POST_TITLE%}" ({%POST_URL%}) geantwortet.
+    
+Ciao,
+Dein Server</t>
+</localestring>

@@ -10,6 +10,10 @@
     <t>Administrator E-Mail</t>
 </localestring>
 
+<localestring id="LABEL_SETTINGS_COMMENTNOTIFY">
+    <t>Benachrichtigung bei neuem Kommentar?</t>
+</localestring>
+
 <localestring id="LABEL_SETTINGS_DESCRIPTION">
     <t>Beschreibung</t>
 </localestring>
