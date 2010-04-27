@@ -2,6 +2,12 @@
 session_name('pec_session');
 session_start();
 
+$CKEDITOR_FUNC_NUM = $_GET['CKEditorFuncNum'];
+$CKEDITOR_ID = $_GET['CKEditor'];
+$LANGCODE = $_GET['langCode'];
+
+define('CKEDITOR_QUERY_VARS', 'CKEditor=' . $CKEDITOR_ID . '&CKEditorFuncNum=' . $CKEDITOR_FUNC_NUM . '&langCode=' . $LANGCODE);
+
 if (!isset($_SESSION['pec_logged_in']) || !$_SESSION['pec_logged_in']) {
 	die();
 }

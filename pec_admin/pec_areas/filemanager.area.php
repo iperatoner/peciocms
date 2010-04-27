@@ -53,7 +53,7 @@ function view_default() {
 
     // Overview Start
     $area_data['content'] = '
-        <iframe width="100%" height="800" style="margin-left: -8px;" frameborder="0" src="ckeditor/filebrowser/filemanager/index.php"></iframe>
+        <iframe id="filemanager_frame" width="100%" height="800" style="margin-left: -8px;" frameborder="0" src="ckeditor/filebrowser/filemanager/index.php"></iframe>
     ';
 
     return $area_data;
