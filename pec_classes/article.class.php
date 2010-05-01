@@ -101,7 +101,7 @@ class PecArticle {
     }
     
     /**
-     * Returns title of this article.
+     * Returns the title of this article.
      * 
      * @param	boolean	$strip_protextion: Wether to remove the database string protection (e.g. mysql_escape_string) or not, default: true
      * @return	string	Title of the article
@@ -153,7 +153,7 @@ class PecArticle {
     
     
     /**
-     * Sets title for this article.
+     * Sets the title for this article.
      * 
      * @param	string	$title: The new title for this article
      */
@@ -196,7 +196,7 @@ class PecArticle {
     
     
     /**
-     * Save or Create this article
+     * Saves or creates this article
      */
     public function save() {
         $new = false;

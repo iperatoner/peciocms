@@ -24,9 +24,22 @@
  * @link		http://pecio-cms.com
  */
 
+/**
+ * The PecBlogCategory is used for creating and loading blog categories. An instance of it is one category (one row in the database) that can be saved or created using this class.
+ */
 class PecBlogCategory {
+	
+	/**
+	 * @var integer			$cat_id, ID of the blog category
+	 * @var string			$cat_name, Name of the blog category
+	 * @var string			$cat_slug, Slug (for use in URLs) of the blog category
+	 */
     private $cat_id, $cat_name, $cat_slug;
-            
+    
+	/**
+	 * @static
+	 * @var array All database columns that a blog category has. You have to use the key of one of them to load a category by a specific property.
+	 */
     static $by_array = array(
                'id' => 'cat_id',
                'name' => 'cat_name',
@@ -34,6 +47,13 @@ class PecBlogCategory {
                'post' => ''
            );
     
+    /**
+     * Creates a PecBlogCategory instance.
+     * 
+     * @param	integer		$id: ID of the blog category
+     * @param	string		$name: Name of the blog category
+     * @param	string		$slug: Slug of the blog category
+     */
     function __construct($id=0, $name, $slug=false) {
         global $pec_database;
         $this->database = $pec_database;
@@ -57,10 +77,23 @@ class PecBlogCategory {
         
     }
     
+    
+    /**
+     * Returns ID of this blog category
+     * 
+     * @return	integer	ID of the blog category
+     */
     public function get_id() {
         return $this->cat_id;
     }
     
+    
+    /**
+     * Returns the name of this blog category
+     * 
+     * @param	boolean	$strip_protextion: Wether to remove the database string protection (e.g. mysql_escape_string) or not, default: true
+     * @return	string	Name of the blog category
+     */
     public function get_name($strip_protection=true) {
         if ($strip_protection) {
             return $this->database->db_string_protection_decode($this->cat_name);
@@ -70,11 +103,22 @@ class PecBlogCategory {
         }
     }
     
+    
+    /**
+     * Returns slug of this blog category
+     * 
+     * @return	string Slug of the blog category
+     */
     public function get_slug() {
         return $this->cat_slug;
     }
     
     
+    /**
+     * Sets the name for this blog category
+     * 
+     * @param	string	$name: The new name for this blog category
+     */
     public function set_name($name) {
         if ($name != $this->cat_name) {
             $this->cat_name = $this->database->db_string_protection($name);
@@ -82,6 +126,10 @@ class PecBlogCategory {
         }
     }
     
+    
+    /**
+     * Saves the RSS feed of all blog posts that are in this category
+     */
     public function save_feed() {
     	global $pec_settings, $pec_localization;
 
@@ -104,6 +152,10 @@ class PecBlogCategory {
     	$feed->saveFeed(FEED_TYPE, CATEGORY_FEED_PATH . $this->cat_id . '.xml');
     }
     
+    
+    /**
+     * Saves or creates this blog category
+     */
     public function save() {
         $new = false;
         if (!self::exists('id', $this->cat_id)) {
@@ -132,6 +184,9 @@ class PecBlogCategory {
         $this->database->db_close_handle();
     }    
     
+    /**
+     * Removes this blog category
+     */
     public function remove() {
         $belonging_posts = PecBlogPost::load('category', $this);
         foreach ($belonging_posts as $p) {
@@ -154,6 +209,12 @@ class PecBlogCategory {
     }
     
     
+    /**
+     * Returns the ID's of the given names of blog categories
+     * 
+     * @param	array	$cat_names: The category names to "convert" into ID's
+     * @return array An array of category ID's
+     */
     public static function get_ids_of_catnames($cat_names) {
         $cat_ids = array();
         
@@ -166,6 +227,14 @@ class PecBlogCategory {
         return $cat_ids;
     }          
         
+    /**
+     * Load a specific blog category or a specific range/set of categories or all categories
+     * 
+     * @param	string	$by: The database column by that you want to load the category/set of categories. Must be a string of self::$by_array
+     * @param	mixed	$data: The data that may match the categories you want to load (e.g. if $by is 'id', $data is the ID of the category you want to load)
+     * @param	string	$query_add: Additional data for the SQL query
+     * @return	array/PecBlogCategory An array of matching categories or one PecBlogCategory instance that matched the query
+     */
     public static function load($by='id', $data=false, $query_add='') {
         global $pec_database;
         
@@ -212,7 +281,16 @@ class PecBlogCategory {
             return $cats;
         }
     }
-        
+    
+    
+    /**
+     * Check wether a specific blog category exists
+     * 
+     * @param	string	$by: The database column by that you want to check. Must be a string of self::$by_array
+     * @param	mixed	$data: The data that may match the categories you want to check (e.g. if $by is 'id', $data is the ID of the category you want to check)
+     * @param	string	$query_add: Additional data for the SQL query
+     * @return	boolean Wether the category exists or not, this may be true or false
+     */
     public static function exists($by='id', $data=false, $query_add='') {
         global $pec_database;
         
@@ -234,7 +312,15 @@ class PecBlogCategory {
         }
     }
     
+    
+    /**
+     * Slugifies the name of a category
+     * 
+     * @param	string	$name: Name that shall be slugified
+     * @return	string The slugified name
+     */
     public static function slugify($name) {
+    	// We don't need to check if this slug already exists because two categories with the same name are useless!
         return slugify($name);
     }
 }
