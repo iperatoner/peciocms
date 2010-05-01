@@ -287,7 +287,7 @@ class PecBlogComment {
         
         /* if loading all comments belonging to a given post object */
         elseif ($by && $data && array_key_exists($by, self::$by_obj_array)) {
-            $all_comments = self::load();
+            $all_comments = self::load('', false, $query_add);
             $comments_on_given_data = array();
             
             foreach ($all_comments as $comment) {

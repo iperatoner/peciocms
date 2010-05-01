@@ -42,7 +42,7 @@
 
 <?php
 	if ($pecio->get('blogpost')->get_comments_allowed()) {
-		$comments = $pecio->get('blogcomments');
+		$comments = $pecio->get_comments($pecio->get('blogpost'));
 		$comment_count = count($comments);
 ?>
 <h3>

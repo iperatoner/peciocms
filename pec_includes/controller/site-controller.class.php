@@ -231,20 +231,30 @@ class PecSiteController {
             $blogposts = PecBlogPost::load('status', 1, "ORDER BY post_timestamp DESC", $current_blog_page, true);
             $blogposts = $this->resource_generator->parse_plugins_of('blogposts', $blogposts);
             
+            // Not sure if we need that
+           	#$blogcomments = PecBlogComment::load('post', $this->current_blogpost, 'ORDER BY comment_timestamp ASC');
+            
             // all available posts are needed for older / newer posts link, not only those from the current page
             $available_blogposts = PecBlogPost::load('status', 1, false, false, true);
         	
             $this->template_resource->set('blogposts', $blogposts);
+            
+            // Not sure if we need that
+            #$this->template_resource->set('blogcomments', $blogcomments);
         }
         
         // POST
         elseif ($this->site_view == SITE_VIEW_BLOGPOST) {        	
             $this->resource_generator->process_new_comment($this->current_blogpost);
             $this->current_blogpost = $this->resource_generator->parse_plugins_of('blogpost', $this->current_blogpost);
-           	$blogcomments = PecBlogComment::load('post', $this->current_blogpost);
+            
+            // Not sure if we need that
+           	#$blogcomments = PecBlogComment::load('post', $this->current_blogpost, 'ORDER BY comment_timestamp ASC');
            	
             $this->template_resource->set('blogpost', $this->current_blogpost);
-            $this->template_resource->set('blogcomments', $blogcomments);
+            
+            // Not sure if we need that
+            #$this->template_resource->set('blogcomments', $blogcomments);
         }
         
         // CATEGORY

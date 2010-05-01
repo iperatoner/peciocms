@@ -201,6 +201,23 @@ class PecTemplateResource {
     }
     
     /**
+     * Loads all comments belonging to the given post.
+     * 
+     * @param	PecBlogPost	$post: The post to load the comments for
+     * @param	string	$order: How the comments should be sorted, e.g. "asc"
+     * @return array The proper PecBlogComment instances
+     */
+    public function get_comments($post=false, $order='ASC') {
+    	if ($post) {
+	    	$comments = PecBlogComment::load('post', $post, 'ORDER BY comment_timestamp ' . strtoupper($order));
+    		return $comments;
+    	}
+    	else {
+    		return array();
+    	}
+    }
+    
+    /**
      * Creates an instance of the given plugin class name.
      * 
      * @param	string	$class_name: The plugin's main class name

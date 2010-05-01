@@ -1,7 +1,7 @@
 <?php 
 foreach ($pecio->get('blogposts') as $bp) {
 	if ($bp->get_comments_allowed()) {
-		$comments = PecBlogComment::load('post', $bp);
+		$comments = $pecio->get_comments($bp);
 		$comment_count = count($comments);
 	}
 ?>
