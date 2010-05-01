@@ -178,5 +178,5 @@ $controller = new PecSiteController($current_target_type, $current_target_data, 
 $controller->prepare_view();
 $controller->display();
 
-echo '<!-- parsed in: ' . (microtime() - $start_time) . ' seconds -->';
+echo '<!-- generated in: ' . (microtime() - $start_time) . ' seconds -->';
 ?>

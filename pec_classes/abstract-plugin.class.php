@@ -24,10 +24,30 @@
  * @link		http://pecio-cms.com
  */
 
+/**
+ * The PecAbstractPlugin provides basic attributes for plugins and must be inherited by your plugin class.
+ */
 abstract class PecAbstractPlugin {
+        
+	/**
+	 * @var PecDatabase		$database, Pecio's database object
+	 * @var PecSettings		$settings, Pecio's settings
+	 * @var PecSession		$session, Pecio's session object
+	 * @var PecLocalization $localization, Pecio's localization object
+	 * @var PecPlugin		$plugin, Meta data of this plugin
+     * @var	string		$site_view: The current site view
+     * @var	string		$sub_site_view: The current sub site view
+	 */
+    protected $database, $settings, $session, $localization, $plugin_meta, $site_view, $sub_site_view;
     
-    protected $database, $settings, $session, $localization, $plugin_meta;
     
+    /**
+     * Creates a PecAbstractPlugin instance.
+     * 
+     * @param	PecPlugin	$plugin_meta: Meta data of this plugin
+     * @param	string		$site_view: The current site view
+     * @param	string		$sub_site_view: The current sub site view
+     */
     function __construct($plugin_meta, $site_view=false, $sub_site_view=false) {
     					 	
         global $pec_database, $pec_settings, $pec_session, $pec_localization;
@@ -43,7 +63,19 @@ abstract class PecAbstractPlugin {
         $this->sub_site_view = $sub_site_view;
     }
     
+    /**
+     * May return data to replace the plugin's variable
+     * 
+     * @param	string	$var_data: If the plugin accepts input, it will be put here
+     * @return	string Return data to replace the plugin's variable
+     */
     abstract public function run($var_data='');
+    
+    /**
+     * May return data to place into the template's <head> section
+     * 
+     * @return	string Return data to place into the <head> section
+     */
     abstract public function head_data();
         
 }

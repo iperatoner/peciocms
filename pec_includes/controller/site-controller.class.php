@@ -72,6 +72,16 @@ class PecSiteController {
         SITE_VIEW_BLOGPOST => 'post.php'
     );
     
+    
+    /**
+     * Creates a PecSiteController instance.
+     * 
+	 * @param integer 	$current_target_type, Current target that is given in the query string and used for menupoints.
+	 * @param string	$current_target_data, Target data of the current target that is given in the query string and used for menupoints.
+	 * @param string	$site_view, Current site view.
+	 * @param string	$sub_site_view, On start page may be a sub site view, e.g. blogcategory, if the blog is assigned to it.
+	 * @param string	$current_view_data, The data that belongs to the current view. It's usually given somewhere in the query string. If site_view is blogcategory, this would be the category name/id.
+     */
     function __construct($current_target_type, $current_target_data, $site_view, $sub_site_view, $current_view_data) {
         global $pec_database, $pec_settings, $pec_localization;
         $this->database = $pec_database;

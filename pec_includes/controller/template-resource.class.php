@@ -72,6 +72,14 @@ class PecTemplateResource {
         'root_path'
     );
     
+    /**
+     * Creates a PecTemplateResource instance.
+     * 
+     * @param	PecSettings	$settings: Pecio's settings
+     * @param	PecTemplate	$template: Pecio's template
+     * @param	string		$site_view: The current site view
+     * @param	string		$sub_site_view: The current sub site view
+     */
     function __construct($settings, $template, $site_view, $sub_site_view) {
         $this->data = array();
         

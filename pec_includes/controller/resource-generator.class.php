@@ -61,7 +61,22 @@ class PecResourceGenerator {
         'text',
         'texts'
     );
-            
+    
+    
+    /**
+     * Creates a PecResourceGenerator instance.
+     * 
+	 * @param	integer 		$current_target_type, Current target that is given in the query string and used for menupoints.
+	 * @param	string			$current_target_data, Target data of the current target that is given in the query string and used for menupoints.
+	 * @param	string			$site_view, Current site view.
+	 * @param	string			$sub_site_view, On start page may be a sub site view, e.g. blogcategory, if the blog is assigned to it.
+     * @param	array			$articles_on_start: PecArticle instances that are assigned to the start page
+     * @param	PecArticle		$current_article: Current article that was chosen by the current target type and data, if any
+     * @param	PecBlogPost		$current_blogpost: Current blog post that was chosen by the current target type and data, if any
+     * @param	PecBlogCategory	$current_blogcategory: Current blog category that was chosen by the current target type and data, if any
+     * @param	PecBlogTag		$current_blogtag: Current blog tag that was chosen by the current target type and data, if any
+     * @param	array			$plugins: All active plugins as PecPlugin instances (plugin metadata)
+     */
     function __construct($current_target_type, $current_target_data, 
                          $site_view, $sub_site_view, $current_view_data, $articles_on_start, 
                          $current_article, $current_blogpost, $current_blogcategory, $current_blogtag, $plugins) {
