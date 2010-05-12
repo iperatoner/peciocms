@@ -147,11 +147,11 @@ class PecBlogPost {
     }
     
     public function get_content_cut() {
-        return $this->post_content_cut;
+        return $this->database->db_string_protection_decode($this->post_content_cut);
     }
     
     public function get_content() {
-        return $this->post_content;
+        return $this->database->db_string_protection_decode($this->post_content);
     }
     
     public function get_tags($type=TYPE_ARRAY) {
