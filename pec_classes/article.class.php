@@ -160,7 +160,9 @@ class PecArticle {
     public function set_title($title) {
         if ($title != $this->article_title) {
             $this->article_title = $this->database->db_string_protection($title);
-            $this->article_slug = $this->database->db_string_protection(self::slugify($title));
+            if (slugify($title) != $this->article_slug) {
+            	$this->article_slug = $this->database->db_string_protection(self::slugify($title));
+            }
         }
     }
     

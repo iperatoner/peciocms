@@ -297,6 +297,10 @@ function slugify($str) {
     $str = trim(substr($str, 0, 50));    
     $str = preg_replace("/\s/", "-", $str);
     
+    while (strpos($str, '--')) {
+    	$str = str_replace('--', '-', $str);
+    }
+    
     if (empty($str)) {
         return 'n-a';
     }

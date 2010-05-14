@@ -263,7 +263,9 @@ class PecBlogPost {
     public function set_title($title) {
         if ($title != $this->post_title) {
             $this->post_title = $this->database->db_string_protection($title);
-            $this->post_slug = self::slugify($title);
+            if (slugify($title) != $this->post_slug) {
+            	$this->post_slug = self::slugify($title);
+            }
         }
     }
     
