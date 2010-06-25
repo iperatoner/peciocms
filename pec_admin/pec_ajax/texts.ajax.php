@@ -57,7 +57,7 @@ if ($pec_session->get('pec_user')->get_permission($area['permission_name']) > PE
                 } 
             }
             
-            $text = new PecSidebarText(NULL_ID, $_POST['text_title'], $_POST['text_content'], $_POST['text_visibility'], $on_articles);
+            $text = new PecSidebarText(NULL_ID, $_POST['text_title'], htmlentities($_POST['text_content']), $_POST['text_visibility'], $on_articles);
             $text->save();
             
             $output = PecMessageHandler::get('content_created', array(

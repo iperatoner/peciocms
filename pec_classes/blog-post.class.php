@@ -270,11 +270,11 @@ class PecBlogPost {
     }
     
     public function set_content_cut($content_cut) {
-        $this->post_content_cut = $content_cut;
+        $this->post_content_cut = htmlentities($content_cut);
     }
     
     public function set_content($content) {
-        $this->post_content = $content;
+        $this->post_content = htmlentities($content);
     }
     
     public function set_categories($categories, $type=TYPE_ARRAY) {

@@ -78,7 +78,7 @@ class PecSidebarText {
     }
     
     public function get_content() {
-        return $this->text_content;
+        return $this->database->db_string_protection_decode($this->text_content);
     }
     
     public function get_visibility() {
@@ -124,7 +124,7 @@ class PecSidebarText {
     }
     
     public function set_content($content) {
-        $this->text_content = $content;
+        $this->text_content = htmlentities($content);
     }
     
     public function set_visibility($visibility) {

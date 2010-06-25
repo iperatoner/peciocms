@@ -48,7 +48,7 @@ if ($pec_session->get('pec_user')->get_permission($area['permission_name']) > PE
             
             $onstart = $_POST['article_onstart'] == 'true' ? true : false;
             
-            $article = new PecArticle(NULL_ID, $_POST['article_title'], $_POST['article_content'], $onstart, $_POST['article_template_id']);
+            $article = new PecArticle(NULL_ID, $_POST['article_title'], htmlentities($_POST['article_content']), $onstart, $_POST['article_template_id']);
             $article->save();
             
             $output = PecMessageHandler::get('content_created', array(

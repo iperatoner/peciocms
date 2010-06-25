@@ -82,7 +82,7 @@ function do_actions() {
             $author_id = $pec_session->get('pec_user')->get_id();
             
             $post = new PecBlogPost(NULL_ID, $timestamp, $y, $m, $d, $author_id, 
-                                    $_POST['post_title'], $_POST['post_content_cut'], $_POST['post_content'], $tag_ids, $in_categories, $comments_allowed, $status);
+                                    $_POST['post_title'], htmlentities($_POST['post_content_cut']), htmlentities($_POST['post_content']), $tag_ids, $in_categories, $comments_allowed, $status);
             $post->save();
             
             $messages .= PecMessageHandler::get('content_created', array(
@@ -330,11 +330,11 @@ function view_edit() {
             <br /><br />
             
             <h3>' . $pec_localization->get('LABEL_POSTS_INTRODUCTION') . ':</h3>
-            <textarea name="post_content_cut" id="post_content_cut" rows="10">' . $post->get_content_cut() . '</textarea>
+            <textarea name="post_content_cut" id="post_content_cut" rows="10">' . htmlentities($post->get_content_cut()) . '</textarea>
             <br />
             
             <h3>' . $pec_localization->get('LABEL_POSTS_MAINTEXT') . ':</h3>
-            <textarea name="post_content" id="post_content" style="height: 600px">' . $post->get_content() . '</textarea>
+            <textarea name="post_content" id="post_content" style="height: 600px">' . htmlentities($post->get_content()) . '</textarea>
             <br /><br />
                         
             <div class="options_box_1 float_left" style="margin-right: 10px; height: 220px">

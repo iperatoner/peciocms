@@ -69,7 +69,7 @@ if ($pec_session->get('pec_user')->get_permission($area['permission_name']) > PE
             $author_id = $pec_session->get('pec_user')->get_id();
             
             $post = new PecBlogPost(NULL_ID, $timestamp, $y, $m, $d, $author_id, 
-                                    $_POST['post_title'], $_POST['post_content_cut'], $_POST['post_content'], $tag_ids, $in_categories, $comments_allowed, $status);
+                                    $_POST['post_title'], $_POST['post_content_cut'], htmlentities($_POST['post_content']), $tag_ids, $in_categories, $comments_allowed, $status);
             $post->save();
             
             $output = PecMessageHandler::get('content_created', array(

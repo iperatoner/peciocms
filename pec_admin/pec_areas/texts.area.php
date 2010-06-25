@@ -71,7 +71,7 @@ function do_actions() {
                 } 
             }
                 
-            $text = new PecSidebarText(NULL_ID, $_POST['text_title'], $_POST['text_content'], $_POST['text_visibility'], $on_articles);
+            $text = new PecSidebarText(NULL_ID, $_POST['text_title'], htmlentities($_POST['text_content']), $_POST['text_visibility'], $on_articles);
             $text->save();
             
             $messages .= PecMessageHandler::get('content_created', array(
@@ -253,7 +253,7 @@ function view_edit() {
             <input type="text" size="75" name="text_title" id="text_title" value="' . $text->get_title() . '" />
             <br /><br />
             
-            <textarea name="text_content" id="text_content">' . $text->get_content() . '</textarea>
+            <textarea name="text_content" id="text_content">' . htmlentities($text->get_content()) . '</textarea>
             <br /><br />
             
             <div class="options_box_1 float_left">

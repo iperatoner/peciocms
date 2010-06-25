@@ -208,7 +208,7 @@ class PecArticle {
      * @param	string	$content: The new content for this article
      */
     public function set_content($content) {
-        $this->article_content = $content;
+        $this->article_content = htmlentities($content);
     }
     
     

@@ -61,7 +61,7 @@ function do_actions() {
                 
             $onstart = isset($_POST['article_onstart']) ? true : false;
                 
-            $article = new PecArticle(NULL_ID, $_POST['article_title'], $_POST['article_content'], $onstart, $_POST['article_template_id']);
+            $article = new PecArticle(NULL_ID, $_POST['article_title'], htmlentities($_POST['article_content']), $onstart, $_POST['article_template_id']);
             $article->save();
             
             $messages .= PecMessageHandler::get('content_created', array(
@@ -216,7 +216,7 @@ function view_edit() {
             <input type="text" size="75" name="article_title" id="article_title" value="' . $article->get_title() . '" />
             <br /><br />
             
-            <textarea name="article_content" id="article_content">' . $article->get_content() . '</textarea>
+            <textarea name="article_content" id="article_content">' . htmlentities($article->get_content()) . '</textarea>
             <br /><br />
             
             
