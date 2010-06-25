@@ -61,7 +61,7 @@ function do_actions() {
                 
             $onstart = isset($_POST['article_onstart']) ? true : false;
                 
-            $article = new PecArticle(NULL_ID, $_POST['article_title'], $_POST['article_content'], $_POST['article_template_id'], $onstart);
+            $article = new PecArticle(NULL_ID, $_POST['article_title'], $_POST['article_content'], $onstart, $_POST['article_template_id']);
             $article->save();
             
             $messages .= PecMessageHandler::get('content_created', array(
@@ -198,9 +198,12 @@ function view_edit() {
     // if no template is selected, select the global template
     if (!$any_template_selected) {
     	$selected = 'selected="selected"';
-    	$templat_id_options = '<option value="' . GLOBAL_TEMPLATE_ID . '" ' . $selected .'>-----</option>'
-    						  . $template_id_options;
     }
+    else {
+    	$selected = '';
+    }
+    $template_id_options = '<option value="' . GLOBAL_TEMPLATE_ID . '" ' . $selected . '>-----</option>'
+    					  . $template_id_options;
     
     $area_data['content'] = '
         <form method="post" action="' . AREA . '&amp;view=default&amp;action=' . $action . $id_query_var . '" id="articles_edit_form" />
@@ -221,6 +224,7 @@ function view_edit() {
                 <h3>' . $pec_localization->get('LABEL_ARTICLES_OPTIONS') . ':</h3>
                 <input type="checkbox" name="article_onstart" id="article_onstart" value="1" ' . $onstart_checked . ' /> <label for="article_onstart">' . $pec_localization->get('LABEL_ARTICLES_DISPLAY_ONSTART') . '</label>
                 
+                <br /><br />
                 <h3>Template:</h3>
                 <select name="article_template_id" id="article_template_id">
                 	' . $template_id_options . '

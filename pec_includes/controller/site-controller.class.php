@@ -117,11 +117,14 @@ class PecSiteController {
     }
     
     /**
-	 * Loads the proper objects depending on the current site view into the class vars.
+	 * Loads the proper objects (depending on the current site view) into the correct class vars.
 	 */
     private function load_object() {
         if ($this->site_view == SITE_VIEW_HOME) {
             $this->articles_on_start = PecArticle::load('onstart', 1, '', true);
+                
+            $this->template = $this->articles_on_start[0]->get_template();
+            $this->template_resource->set('template', $this->template);
         }
         
         // loading the currently active object, depending on the active view

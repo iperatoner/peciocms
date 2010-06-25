@@ -223,9 +223,9 @@ class PecArticle {
     
     
     /**
-     * Sets wether the article is assigned to the start page or not
+     * Set a new template id
      * 
-     * @param	boolean	$onstart: Wether the article shall be assigned to the start page or not
+     * @param	string	$template_id: ID of the template to set for this article
      */
     public function set_template_id($template_id) {
         $this->article_template_id = $this->database->db_string_protection($template_id, false);
@@ -253,7 +253,7 @@ class PecArticle {
                         article_slug='"      . $this->article_slug . "',
                         article_content='"   . $this->article_content . "',
                         article_onstart='"   . $this->article_onstart . "',
-                        article_template_id'"   . $this->article_template_id . "'
+                        article_template_id='" . $this->article_template_id . "'
                       WHERE article_id='"    . $this->article_id . "'";
         }
         else {
@@ -339,13 +339,13 @@ class PecArticle {
                 
                 while ($a = $pec_database->db_fetch_array($resource)) {
                     $return_data[] = new PecArticle($a['article_id'], $a['article_title'], $a['article_content'],
-                                                 $a['article_onstart'], $a['article_slug']);
+                                                 $a['article_onstart'], $a['article_template_id'], $a['article_slug']);
                 }
             }
             elseif ($pec_database->db_num_rows($resource) == 1) {
                 $a = $pec_database->db_fetch_array($resource);
                 $return_data = new PecArticle($a['article_id'], $a['article_title'], $a['article_content'], 
-                                              $a['article_onstart'], $a['article_slug']);
+                                              $a['article_onstart'], $a['article_template_id'], $a['article_slug']);
             }
             
             return $return_data;            
@@ -363,7 +363,7 @@ class PecArticle {
             
             while ($a = $pec_database->db_fetch_array($resource)) {
                 $articles[] = new PecArticle($a['article_id'], $a['article_title'], $a['article_content'],
-                                             $a['article_onstart'], $a['article_slug']);
+                                             $a['article_onstart'], $a['article_template_id'], $a['article_slug']);
             }
             
             return $articles;
