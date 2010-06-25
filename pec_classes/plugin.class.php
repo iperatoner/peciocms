@@ -109,8 +109,8 @@ class PecPlugin {
     }
     
     public function never_installed() {
-        return !file_exists($plugin->get_directory_path() . PLUGIN_INSTALLED_FILE) && 
-		       !file_exists($plugin->get_directory_path() . PLUGIN_UNINSTALLED_FILE);
+        return !file_exists($this->get_directory_path() . PLUGIN_INSTALLED_FILE) && 
+		       !file_exists($this->get_directory_path() . PLUGIN_UNINSTALLED_FILE);
     }
 
     public function initial_install() {
