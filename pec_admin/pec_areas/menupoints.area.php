@@ -429,7 +429,7 @@ function view_default() {
     $area_data = array();
     $area_data['title'] = $pec_localization->get('LABEL_GENERAL_MENUPOINTS');
     
-    $menupoints = PecMenuPoint::load('root_id', '0',/*false, false,*/ 'ORDER BY point_sort');
+    $menupoints = PecMenuPoint::load('root_id', '0',/*false, false,*/ 'ORDER BY point_sort', true);
     
     $area_data['content'] = '
         <form method="post" action="' . AREA . '&amp;view=default&amp;action=default_view_actions" id="menupoints_main_form"/>
