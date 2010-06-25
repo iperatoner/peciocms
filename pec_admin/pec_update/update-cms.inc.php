@@ -25,9 +25,17 @@
  */
 
 function do_update($from_version) {
-	$backup_arrays = backup_database_tables();
-	update_database_tables();
-	restore_backups($backup_arrays);
+	try {
+		$backup_arrays = backup_database_tables();
+		update_database_tables();
+		restore_backups($backup_arrays);
+	}
+	catch (Exception $e) {
+		echo $e;
+		return false;
+	}
+	
+	return true;
 }
 
 function backup_database_tables() {
