@@ -252,7 +252,8 @@ class PecArticle {
                         article_title='"     . $this->article_title . "',
                         article_slug='"      . $this->article_slug . "',
                         article_content='"   . $this->article_content . "',
-                        article_onstart='"   . $this->article_onstart . "'
+                        article_onstart='"   . $this->article_onstart . "',
+                        article_template_id'"   . $this->article_template_id . "'
                       WHERE article_id='"    . $this->article_id . "'";
         }
         else {
@@ -261,13 +262,15 @@ class PecArticle {
                         article_title,
                         article_slug,
                         article_content,
-                        article_onstart
+                        article_onstart,
+                        article_template_id
                       ) VALUES
                       (
                         '" . $this->article_title . "',
                         '" . $this->article_slug . "',
                         '" . $this->article_content . "',
-                        '" . $this->article_onstart . "'
+                        '" . $this->article_onstart . "',
+                        '" . $this->article_template_id . "'
                       )";
         }
         

@@ -9,7 +9,8 @@ $queries['query_articles'] =
     article_title       VARCHAR(512),
     article_slug        VARCHAR(768),
     article_content     TEXT,
-    article_onstart     BOOLEAN
+    article_onstart     BOOLEAN,
+    article_template_id VARCHAR(512)
 )";
 
 
