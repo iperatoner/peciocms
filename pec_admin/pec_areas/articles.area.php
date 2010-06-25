@@ -225,7 +225,7 @@ function view_edit() {
                 <input type="checkbox" name="article_onstart" id="article_onstart" value="1" ' . $onstart_checked . ' /> <label for="article_onstart">' . $pec_localization->get('LABEL_ARTICLES_DISPLAY_ONSTART') . '</label>
                 
                 <br /><br />
-                <h3>Template:</h3>
+                <h3>' . $pec_localization->get('LABEL_TEMPLATES_TEMPLATENAME') . ':</h3>
                 <select name="article_template_id" id="article_template_id">
                 	' . $template_id_options . '
                 </select>
