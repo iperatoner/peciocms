@@ -1,1 +1,0 @@
-<?php echo 'Tu archivo se subio'; ?>
