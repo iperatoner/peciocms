@@ -86,7 +86,7 @@ class PecSiteController {
         global $pec_database, $pec_settings, $pec_localization;
         $this->database = $pec_database;
         $this->settings = $pec_settings;        
-        $this->template = PecTemplate::exists('id', $this->settings->get_template_id()) ? PecTemplate::load('id', $this->settings->get_template_id()) : PecTemplate::load('title', DEFAULT_TEMPLATE_NAME);
+        $this->template = $this->settings->get_template();
         
         $this->current_target_type = $current_target_type;
         $this->current_target_data = $current_target_data;
@@ -132,6 +132,9 @@ class PecSiteController {
             if (PecArticle::exists($by, $this->current_target_data)) {
                 $this->current_article = PecArticle::load($by, $this->current_target_data);
                 $this->current_target_data = $this->current_article->get_id();
+                
+            	$this->template = $this->current_article->get_template();
+            	$this->template_resource->set('template', $this->template);
             }
             else {
                 $this->site_view = SITE_VIEW_404;
@@ -370,10 +373,16 @@ class PecSiteController {
 	 * Includes the proper template file.
 	 */
     public function display() {
-        $template_path = TEMPLATE_PATH . $this->template->get_directory_name() . '/' . $this->template_file;
+    	// here we need to get the canonicalized template path, so that we can include it with `include()`
+        $template_path_c = $this->template->get_directory_path() . $this->template_file;
+        
+        // that's the "normal" path to the template directory
+        $template_path = $this->template->get_directory_path(false);
+        $this->template_resource->set('template_path', $template_path);
+        
         $pecio = $this->template_resource;
         
-        include($template_path);
+        include($template_path_c);
     }
 }
 

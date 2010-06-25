@@ -149,6 +149,12 @@ class PecSetting {
         return $this->setting_template_id;
     }
     
+	    public function get_template() {
+	        return PecTemplate::exists('id', $this->setting_template_id) 
+	        	? PecTemplate::load('id', $this->setting_template_id)
+	        	: PecTemplate::load('title', DEFAULT_TEMPLATE_NAME);
+	    }
+    
     public function get_nospam_key($number) {
         switch ($number) {
             case 1: return $this->setting_nospam_key_1; break;

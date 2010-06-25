@@ -149,6 +149,8 @@ function define_constants($relative_directory_level=0, $directory='') {
     
     define('COUNTER_FILE', pec_root_path() . 'counter.txt');
     define('COUNTER_IP_EXPIRE', 86400);
+    
+    define('GLOBAL_TEMPLATE_ID', 'USE_NORMAL_TEMPLATE_72f49da274cf1cd79d2c');
 }
 
 /**

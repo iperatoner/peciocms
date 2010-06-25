@@ -199,7 +199,6 @@ class PecTemplateResource {
         	/>';
         }
         
-        // return or echo?
         if ($return) {
             return $head_data . $this->data['plugin_head_data'];
         }

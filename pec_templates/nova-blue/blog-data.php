@@ -48,6 +48,8 @@ foreach ($pecio->get('blogposts') as $bp) {
 	    <div class="cleardiv"></div><br />
 	    
 	    <div class="postcontent">
+	    	<strong><?php echo $bp->get_content_cut(); ?></strong><br />
+	    	
 	    	<?php echo $bp->get_content(); ?>
 	    </div>
 	

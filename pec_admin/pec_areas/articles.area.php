@@ -61,7 +61,7 @@ function do_actions() {
                 
             $onstart = isset($_POST['article_onstart']) ? true : false;
                 
-            $article = new PecArticle(NULL_ID, $_POST['article_title'], $_POST['article_content'], $onstart);
+            $article = new PecArticle(NULL_ID, $_POST['article_title'], $_POST['article_content'], $_POST['article_template_id'], $onstart);
             $article->save();
             
             $messages .= PecMessageHandler::get('content_created', array(
@@ -80,6 +80,7 @@ function do_actions() {
                 $article->set_title($_POST['article_title']);
                 $article->set_content($_POST['article_content']);
                 $article->set_onstart($onstart);
+                $article->set_template_id($_POST['article_template_id']);
                 $article->save();
                 
                 $messages .= PecMessageHandler::get('content_edited', array(
@@ -180,6 +181,27 @@ function view_edit() {
     $onstart_checked = $article->get_onstart() == true ? 'checked="checked"' : '';
     
     
+    $template_id_options = '';
+    $any_template_selected = false;
+    $templates = PecTemplate::load();
+    foreach ($templates as $tpl) {
+    	if ($article->get_template_id() == $tpl->get_property('id')) {
+    		$selected = 'selected="selected"';
+    		$any_template_selected = true;
+    	}
+    	else {
+    		$selected = '';
+    	}
+    	
+    	$template_id_options .= '<option value="' . $tpl->get_property('id') . '" ' . $selected . '>' . $tpl->get_property('title') . '</option>';
+    }
+    // if no template is selected, select the global template
+    if (!$any_template_selected) {
+    	$selected = 'selected="selected"';
+    	$templat_id_options = '<option value="' . GLOBAL_TEMPLATE_ID . '" ' . $selected .'>-----</option>'
+    						  . $template_id_options;
+    }
+    
     $area_data['content'] = '
         <form method="post" action="' . AREA . '&amp;view=default&amp;action=' . $action . $id_query_var . '" id="articles_edit_form" />
 
@@ -198,6 +220,11 @@ function view_edit() {
             <div class="options_box_1 float_left">
                 <h3>' . $pec_localization->get('LABEL_ARTICLES_OPTIONS') . ':</h3>
                 <input type="checkbox" name="article_onstart" id="article_onstart" value="1" ' . $onstart_checked . ' /> <label for="article_onstart">' . $pec_localization->get('LABEL_ARTICLES_DISPLAY_ONSTART') . '</label>
+                
+                <h3>Template:</h3>
+                <select name="article_template_id" id="article_template_id">
+                	' . $template_id_options . '
+                </select>
             </div>
             <div style="clear: left;"></div>
             <br /><br />
