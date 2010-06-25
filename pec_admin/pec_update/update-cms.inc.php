@@ -86,13 +86,22 @@ function update_database_tables() {
 	)";
 	
 	$queries['create_settings_table'] =
-	"CREATE TABLE " . DB_PREFIX . "articles (
-	    article_id          INT AUTO_INCREMENT PRIMARY KEY,
-	    article_title       VARCHAR(512),
-	    article_slug        VARCHAR(768),
-	    article_content     TEXT,
-	    article_onstart     BOOLEAN,
-	    article_template_id VARCHAR(512)
+	"CREATE TABLE " . DB_PREFIX . "settings (
+	    setting_id              INT AUTO_INCREMENT PRIMARY KEY,        
+	    setting_sitename_main   VARCHAR(256),
+	    setting_sitename_sub    VARCHAR(256),
+	    setting_description     TEXT,
+	    setting_tags            VARCHAR(512),
+	    setting_admin_email     VARCHAR(512),
+	    setting_comment_notify  BOOLEAN,
+	    setting_locale          VARCHAR(4),
+	    setting_url_type        VARCHAR(32),
+	    setting_posts_per_page  INT(11),
+	    setting_blog_onstart    BOOLEAN,
+	    setting_template_id     VARCHAR(256),
+	    setting_nospam_key_1    VARCHAR(2048),
+	    setting_nospam_key_2    VARCHAR(2048),
+	    setting_nospam_key_3    VARCHAR(2048)
 	)";
 	
 	// Execute the queries
