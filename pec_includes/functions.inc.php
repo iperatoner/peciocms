@@ -31,7 +31,7 @@
  * @param	string 	$directory: Current relative directory path up from the root directory, e.g. "pec_admin/pec_ajax"
  */
 function define_constants($relative_directory_level=0, $directory='') {
-    define('PEC_VERSION', '2.0.2');
+    define('PEC_VERSION', '2.0.5');
     define('PEC_SESSION_NAME', 'pec_session');
     
     define('DEFAULT_TEMPLATE_NAME', 'Nova Blue');    
