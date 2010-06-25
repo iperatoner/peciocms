@@ -68,7 +68,7 @@ function backup_database_tables() {
     
     return array(
     	'articles' => $articles,
-    	'blogposts' => $articles,
+    	'blogposts' => $blogposts,
     	'settings' => $settings
     );
 }
