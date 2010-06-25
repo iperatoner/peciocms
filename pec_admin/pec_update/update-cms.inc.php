@@ -118,7 +118,7 @@ function restore_backups($backup_arrays) {
 			$a['article_id'], $a['article_title'], $a['article_content'],
             $a['article_onstart'], GLOBAL_TEMPLATE_ID, $a['article_slug']
         );
-        $article->save();
+        $article->save(true);
 	}
 	
 	foreach ($backup_arrays['settings'] as $s) {

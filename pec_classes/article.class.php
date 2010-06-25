@@ -245,7 +245,7 @@ class PecArticle {
     /**
      * Saves or creates this article
      */
-    public function save() {
+    public function save($insert_id=false) {
         $new = false;
         if (self::exists('id', $this->article_id)) {
             $query = "UPDATE " . DB_PREFIX . "articles SET
@@ -258,7 +258,17 @@ class PecArticle {
         }
         else {
             $new = true;
+            if ($insert_id) {
+                $id_field = 'article_id,';
+                $id_data = "'" . $this->article_id . "',";
+            }
+            else {
+                $id_field = '';
+                $id_data = '';
+            }
+            
             $query = "INSERT INTO " . DB_PREFIX . "articles (
+                        " . $id_field . "
                         article_title,
                         article_slug,
                         article_content,
@@ -266,6 +276,7 @@ class PecArticle {
                         article_template_id
                       ) VALUES
                       (
+                        " . $id_data . "
                         '" . $this->article_title . "',
                         '" . $this->article_slug . "',
                         '" . $this->article_content . "',
