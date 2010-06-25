@@ -396,7 +396,7 @@ class PecBlogPost {
         }
     }
     
-    public function save($update_feeds=true) {
+    public function save($update_feeds=true, $insert_id=false) {
         $new = false;
         if (self::exists('id', $this->post_id)) {
             $query = "UPDATE " . DB_PREFIX . "blogposts SET
@@ -417,7 +417,17 @@ class PecBlogPost {
         }
         else {
             $new = true;
+            if ($insert_id) {
+                $id_field = 'post_id,';
+                $id_data = "'" . $this->post_id . "',";
+            }
+            else {
+                $id_field = '';
+                $id_data = '';
+            }
+            
             $query = "INSERT INTO " . DB_PREFIX . "blogposts (
+                        " . $id_field . "
                         post_timestamp,
                         post_year,
                         post_month,
@@ -433,6 +443,7 @@ class PecBlogPost {
                         post_status
                       ) VALUES
                       (
+                        " . $id_data . "
                         '" . $this->post_timestamp . "',
                         '" . $this->post_year . "',
                         '" . $this->post_month . "',

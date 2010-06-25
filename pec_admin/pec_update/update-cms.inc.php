@@ -43,24 +43,32 @@ function backup_database_tables() {
 	
 	// Select all data from the tables that need to be backupped
 	$query_articles = "SELECT * FROM " . DB_PREFIX . "articles";
+	$query_blogposts = "SELECT * FROM " . DB_PREFIX . "blogposts";
 	$query_settings = "SELECT * FROM " . DB_PREFIX . "settings";
 	
 	// Execute the queries
     $pec_database->db_connect();
     $result_articles = $pec_database->db_query($query_articles);
+    $result_blogposts = $pec_database->db_query($query_blogposts);
     $result_settings = $pec_database->db_query($query_settings);
     $pec_database->db_close_handle();
     
     // Save results into arrays
     $articles = array();
+    $blogposts = array();
     $settings = array($pec_database->db_fetch_array($result_settings));
-    
+
     while ($a = $pec_database->db_fetch_array($result_articles)) {
     	$articles[] = $a;
     }
     
+    while ($bp = $pec_database->db_fetch_array($result_blogposts)) {
+    	$blogposts[] = $bp;
+    }
+    
     return array(
     	'articles' => $articles,
+    	'blogposts' => $articles,
     	'settings' => $settings
     );
 }
@@ -72,6 +80,7 @@ function update_database_tables() {
 	
 	// Remove both tables completely
 	$queries['drop_articles'] = "DROP TABLE " . DB_PREFIX . "articles";
+	$queries['drop_blogposts'] = "DROP TABLE " . DB_PREFIX . "blogposts";
 	$queries['drop_settings'] = "DROP TABLE " . DB_PREFIX . "settings";
 	
 	// Recreate the new tables
@@ -83,6 +92,24 @@ function update_database_tables() {
 	    article_content     TEXT,
 	    article_onstart     BOOLEAN,
 	    article_template_id VARCHAR(512)
+	)";
+	
+	$queries['create_blogposts_table'] =
+	"CREATE TABLE " . DB_PREFIX . "blogposts (
+	    post_id             INT AUTO_INCREMENT PRIMARY KEY,
+	    post_timestamp      VARCHAR(32),
+	    post_year           VARCHAR(4),
+	    post_month          VARCHAR(2),
+	    post_day            VARCHAR(2),
+	    post_author_id      INT,
+	    post_title          VARCHAR(256),
+	    post_slug           VARCHAR(256),
+	    post_content_cut    TEXT,
+	    post_content        TEXT,
+	    post_tags           TEXT,
+	    post_categories     TEXT,
+	    post_comments_allowed  BOOLEAN,
+	    post_status         BOOLEAN
 	)";
 	
 	$queries['create_settings_table'] =
@@ -119,6 +146,16 @@ function restore_backups($backup_arrays) {
             $a['article_onstart'], GLOBAL_TEMPLATE_ID, $a['article_slug']
         );
         $article->save(true);
+	}
+	
+	foreach ($backup_arrays['blogposts'] as $p) {
+		$post = new PecBlogPost(
+			$p['post_id'], $p['post_timestamp'], $p['post_year'], $p['post_month'], 
+            $p['post_day'], $p['post_author_id'], $p['post_title'], $p['post_content_cut'], 
+            $p['post_content'], $p['post_tags'], $p['post_categories'], true,
+            $p['post_status'], $p['post_slug']
+        );
+        $post->save(false, true);
 	}
 	
 	foreach ($backup_arrays['settings'] as $s) {
