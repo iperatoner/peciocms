@@ -34,6 +34,8 @@
 <div class="blogpost">
 
 	<div class="postcontent">
+    	<strong><?php echo $pecio->get('blogpost')->get_content_cut(); ?></strong><br /><br />
+    	
 		<?php echo $pecio->get('blogpost')->get_content(); ?>
 	</div>
 	

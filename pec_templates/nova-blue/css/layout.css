@@ -5,7 +5,7 @@
 
 body {
     background: #949494;
-    font-family: "Verdana";
+    font-family: "Verdana", "DejaVu Sans", "Lucida Sans", sans-serif;
     font-size: 9pt;
     color: #414141;
 }

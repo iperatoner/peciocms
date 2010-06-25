@@ -44,7 +44,7 @@
   <body>
     <div id="main_wrapper"> 
         
-        <div id="header"><h1><?php $pecio->out('homepage_main_title'); ?></h1></div>
+        <div id="header"><h1><a href="<?php $pecio->out('root_path'); ?>"><?php $pecio->out('homepage_main_title'); ?></a></h1></div>
         
         <div id="navi">
             <div id="menu">

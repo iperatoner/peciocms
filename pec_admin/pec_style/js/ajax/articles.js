@@ -6,6 +6,7 @@ function interim_save_article() {
     eval('var article_content = CKEDITOR.instances.' + article_editor_name + '.getData();');
     var article_onstart = document.getElementById('article_onstart').checked == true ? 'true' : 'false';
     var action = article_id == '0' ? 'create' : 'save';
+    var article_template_id = document.getElementById('article_template_id').value;
     
     
     var req = new Request.HTML({
@@ -22,6 +23,7 @@ function interim_save_article() {
         "&article_title=" + article_title + 
         "&article_content=" + encodeURIComponent(article_content) + 
         "&article_onstart=" + article_onstart + 
+        "&article_template_id=" + article_template_id + 
         "&article_id=" + article_id
     );
 }
