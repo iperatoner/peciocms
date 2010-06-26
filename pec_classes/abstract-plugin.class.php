@@ -28,25 +28,16 @@
  * The PecAbstractPlugin provides basic attributes for plugins and must be inherited by your plugin class.
  */
 abstract class PecAbstractPlugin {
-        
-	/**
-	 * @var PecDatabase		$database, Pecio's database object
-	 * @var PecSettings		$settings, Pecio's settings
-	 * @var PecSession		$session, Pecio's session object
-	 * @var PecLocalization $localization, Pecio's localization object
-	 * @var PecPlugin		$plugin, Meta data of this plugin
-     * @var	string		$site_view: The current site view
-     * @var	string		$sub_site_view: The current sub site view
-	 */
+    
     protected $database, $settings, $session, $localization, $plugin_meta, $site_view, $sub_site_view;
     
     
     /**
      * Creates a PecAbstractPlugin instance.
      * 
-     * @param	PecPlugin	$plugin_meta: Meta data of this plugin
-     * @param	string		$site_view: The current site view
-     * @param	string		$sub_site_view: The current sub site view
+     * @param	PecPlugin	$plugin_meta Meta data of this plugin
+     * @param	string		$site_view The current site view
+     * @param	string		$sub_site_view The current sub site view
      */
     function __construct($plugin_meta, $site_view=false, $sub_site_view=false) {
     					 	
@@ -66,7 +57,7 @@ abstract class PecAbstractPlugin {
     /**
      * May return data to replace the plugin's variable
      * 
-     * @param	string	$var_data: If the plugin accepts input, it will be put here
+     * @param	string	$var_data If the plugin accepts input, it will be put here
      * @return	string Return data to replace the plugin's variable
      */
     abstract public function run($var_data='');

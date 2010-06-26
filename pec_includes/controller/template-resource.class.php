@@ -75,10 +75,10 @@ class PecTemplateResource {
     /**
      * Creates a PecTemplateResource instance.
      * 
-     * @param	PecSettings	$settings: Pecio's settings
-     * @param	PecTemplate	$template: Pecio's template
-     * @param	string		$site_view: The current site view
-     * @param	string		$sub_site_view: The current sub site view
+     * @param	PecSettings	$settings Pecio's settings
+     * @param	PecTemplate	$template Pecio's template
+     * @param	string		$site_view The current site view
+     * @param	string		$sub_site_view The current sub site view
      */
     function __construct($settings, $template, $site_view, $sub_site_view) {
         $this->data = array();
@@ -121,7 +121,7 @@ class PecTemplateResource {
     /**
      * Returns the data of an array key.
      * 
-     * @param	string	$resource: The array key which's data should be returned, e.g. "sidebar_texts"
+     * @param	string	$resource The array key which's data should be returned, e.g. "sidebar_texts"
      * @return	string The proper data
      */
     public function get($resource='') {
@@ -136,7 +136,7 @@ class PecTemplateResource {
 	    /**
 	     * Prints the data of an array key.
 	     * 
-	     * @param	string	$resource: The array key which's data should be printed out, e.g. "sidebar_texts"
+	     * @param	string	$resource The array key which's data should be printed out, e.g. "sidebar_texts"
 	     */
         public function out($resource='') {
             echo $this->get($resource);
@@ -145,8 +145,8 @@ class PecTemplateResource {
     /**
      * Sets the data of an array key.
      * 
-     * @param	string	$resource: The array key which's data should be set, e.g. "sidebar_texts"
-     * @param	mixed	$value: The data that should be set to the given array key
+     * @param	string	$resource The array key which's data should be set, e.g. "sidebar_texts"
+     * @param	mixed	$value The data that should be set to the given array key
      */
     public function set($resource='', $value) {
         if (in_array($resource, self::$resources)) {
@@ -157,7 +157,7 @@ class PecTemplateResource {
     /**
      * Generates and returns/prints all the available HTML head data including plugin head data.
      * 
-     * @param	boolean	$return: Wether the head data should be returned or printed
+     * @param	boolean	$return Wether the head data should be returned or printed
      * @return string The HTML head data
      */
     public function head_data($return=false) {
@@ -210,8 +210,8 @@ class PecTemplateResource {
     /**
      * Loads all comments belonging to the given post.
      * 
-     * @param	PecBlogPost	$post: The post to load the comments for
-     * @param	string	$order: How the comments should be sorted, e.g. "asc"
+     * @param	PecBlogPost	$post The post to load the comments for
+     * @param	string	$order How the comments should be sorted, e.g. "asc"
      * @return array The proper PecBlogComment instances
      */
     public function get_comments($post=false, $order='ASC') {
@@ -227,7 +227,7 @@ class PecTemplateResource {
     /**
      * Creates an instance of the given plugin class name.
      * 
-     * @param	string	$class_name: The plugin's main class name
+     * @param	string	$class_name The plugin's main class name
      * @return object Instance of the given plugin class name. Inherits PecAbstractPlugin
      */
     public function get_plugin_object($class_name='') {
@@ -244,7 +244,7 @@ class PecTemplateResource {
     /**
      * Generates and returns/prints antispam inputs for the post comment form.
      * 
-     * @param	boolean	$return: Wether the inputs should be returned or printed
+     * @param	boolean	$return Wether the inputs should be returned or printed
      * @return string The HTML antispam inputs
      */
     public function comment_antispam_inputs($return=false) {
@@ -264,7 +264,7 @@ class PecTemplateResource {
     /**
      * Generates and returns/prints messages for the comment form, if e.g. any errors occured.
      * 
-     * @param	boolean	$return: Wether the messages should be returned or printed
+     * @param	boolean	$return Wether the messages should be returned or printed
      * @return string The HTML messages
      */
     public function comment_form_messages($return=false) {
@@ -302,7 +302,7 @@ class PecTemplateResource {
     /**
      * Returns URL of an article.
      * 
-     * @param PecArticle	$article: Article object of which the URL has to be created
+     * @param PecArticle	$article Article object of which the URL has to be created
      * @return string Article URL
      */
     public function article_url($article) {
@@ -330,7 +330,7 @@ class PecTemplateResource {
     /**
      * Returns URL of a blog post.
      * 
-     * @param PecBlogPost	$post: The blogpost object of which the URL has to be created
+     * @param PecBlogPost	$post The blogpost object of which the URL has to be created
      * @return string Blogpost URL
      */
     public function blogpost_url($post) {
@@ -340,8 +340,8 @@ class PecTemplateResource {
     /**
      * Returns URL of a blog category.
      * 
-     * @param	PecBlogCategory	$category: The blog category object of which the URL has to be created
-     * @param	boolean			$home: Wether the URL should target to the start page or to the real blog. If "not_set", it automatically looks if the current site view is home or blog.
+     * @param	PecBlogCategory	$category The blog category object of which the URL has to be created
+     * @param	boolean			$home Wether the URL should target to the start page or to the real blog. If "not_set", it automatically looks if the current site view is home or blog.
      * @return string Blog category URL
      */
     public function blogcategory_url($category, $home='not_set') {
@@ -353,8 +353,8 @@ class PecTemplateResource {
     /**
      * Returns URL of a blog tag.
      * 
-     * @param	PecBlogTag	$category: The blog tag object of which the URL has to be created
-     * @param	boolean		$home: Wether the URL should target to the start page or to the real blog. If "not_set", it automatically looks if the current site view is home or blog.
+     * @param	PecBlogTag	$category The blog tag object of which the URL has to be created
+     * @param	boolean		$home Wether the URL should target to the start page or to the real blog. If "not_set", it automatically looks if the current site view is home or blog.
      * @return string Blog tag URL
      */
     public function blogtag_url($tag, $home='not_set') {
@@ -365,10 +365,10 @@ class PecTemplateResource {
     /**
      * Returns URL of a blog archive.
      * 
-     * @param	mixed	$day: The day of the archive
-     * @param	mixed	$month: The month of the archive
-     * @param	mixed	$year: The year of the archive
-     * @param	boolean	$home: Wether the URL should target to the start page or to the real blog. If "not_set", it automatically looks if the current site view is home or blog.
+     * @param	mixed	$day The day of the archive
+     * @param	mixed	$month The month of the archive
+     * @param	mixed	$year The year of the archive
+     * @param	boolean	$home Wether the URL should target to the start page or to the real blog. If "not_set", it automatically looks if the current site view is home or blog.
      * @return string Blog archive URL
      */
     public function blogarchive_url($day, $month, $year, $home='not_set') {
@@ -380,7 +380,7 @@ class PecTemplateResource {
     /**
      * Generates form action URL for submitting a comment on a blog post.
      * 
-     * @param	PecBlogPost	$post: The blog post object for which the URL has to be created
+     * @param	PecBlogPost	$post The blog post object for which the URL has to be created
      * @return string Comment form submit URL
      */
     public function comment_submit_url($post) {

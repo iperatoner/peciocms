@@ -29,11 +29,6 @@
  */
 class PecBlogCategory {
 	
-	/**
-	 * @var integer			$cat_id, ID of the blog category
-	 * @var string			$cat_name, Name of the blog category
-	 * @var string			$cat_slug, Slug (for use in URLs) of the blog category
-	 */
     private $cat_id, $cat_name, $cat_slug;
     
 	/**
@@ -50,9 +45,9 @@ class PecBlogCategory {
     /**
      * Creates a PecBlogCategory instance.
      * 
-     * @param	integer		$id: ID of the blog category
-     * @param	string		$name: Name of the blog category
-     * @param	string		$slug: Slug of the blog category
+     * @param	integer		$id ID of the blog category
+     * @param	string		$name Name of the blog category
+     * @param	string		$slug Slug of the blog category
      */
     function __construct($id=0, $name, $slug=false) {
         global $pec_database;
@@ -91,7 +86,7 @@ class PecBlogCategory {
     /**
      * Returns the name of this blog category
      * 
-     * @param	boolean	$strip_protextion: Wether to remove the database string protection (e.g. mysql_escape_string) or not, default: true
+     * @param	boolean	$strip_protextion Wether to remove the database string protection (e.g. mysql_escape_string) or not, default: true
      * @return	string	Name of the blog category
      */
     public function get_name($strip_protection=true) {
@@ -117,7 +112,7 @@ class PecBlogCategory {
     /**
      * Sets the name for this blog category
      * 
-     * @param	string	$name: The new name for this blog category
+     * @param	string	$name The new name for this blog category
      */
     public function set_name($name) {
         if ($name != $this->cat_name) {
@@ -212,7 +207,7 @@ class PecBlogCategory {
     /**
      * Returns the ID's of the given names of blog categories
      * 
-     * @param	array	$cat_names: The category names to "convert" into ID's
+     * @param	array	$cat_names The category names to "convert" into ID's
      * @return array An array of category ID's
      */
     public static function get_ids_of_catnames($cat_names) {
@@ -230,9 +225,9 @@ class PecBlogCategory {
     /**
      * Load a specific blog category or a specific range/set of categories or all categories
      * 
-     * @param	string	$by: The database column by that you want to load the category/set of categories. Must be a string of self::$by_array
-     * @param	mixed	$data: The data that may match the categories you want to load (e.g. if $by is 'id', $data is the ID of the category you want to load)
-     * @param	string	$query_add: Additional data for the SQL query
+     * @param	string	$by The database column by that you want to load the category/set of categories. Must be a string of self::$by_array
+     * @param	mixed	$data The data that may match the categories you want to load (e.g. if $by is 'id', $data is the ID of the category you want to load)
+     * @param	string	$query_add Additional data for the SQL query
      * @return	array/PecBlogCategory An array of matching categories or one PecBlogCategory instance that matched the query
      */
     public static function load($by='id', $data=false, $query_add='') {
@@ -286,9 +281,9 @@ class PecBlogCategory {
     /**
      * Check wether a specific blog category exists
      * 
-     * @param	string	$by: The database column by that you want to check. Must be a string of self::$by_array
-     * @param	mixed	$data: The data that may match the categories you want to check (e.g. if $by is 'id', $data is the ID of the category you want to check)
-     * @param	string	$query_add: Additional data for the SQL query
+     * @param	string	$by The database column by that you want to check. Must be a string of self::$by_array
+     * @param	mixed	$data The data that may match the categories you want to check (e.g. if $by is 'id', $data is the ID of the category you want to check)
+     * @param	string	$query_add Additional data for the SQL query
      * @return	boolean Wether the category exists or not, this may be true or false
      */
     public static function exists($by='id', $data=false, $query_add='') {
@@ -316,7 +311,7 @@ class PecBlogCategory {
     /**
      * Slugifies the name of a category
      * 
-     * @param	string	$name: Name that shall be slugified
+     * @param	string	$name Name that shall be slugified
      * @return	string The slugified name
      */
     public static function slugify($name) {

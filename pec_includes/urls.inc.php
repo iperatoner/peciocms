@@ -52,7 +52,7 @@ function create_home_url() {
 /**
  * Creates the URL of an article
  * 
- * @param	PecArticle 	$article: The article object
+ * @param	PecArticle 	$article The article object
  * @return	string The URL, e.g. "http://www.example.com/index.php?target=article&id=1"
  */
 function create_article_url($article) {
@@ -100,7 +100,7 @@ function create_search_url() {
  * Creates the URL of the blog
  * 
  * @param	integer|string $page: The page of blog entries, e.g. 2
- * @param	boolean 	   $home: Wether the target should be the home-page or not
+ * @param	boolean 	   $home Wether the target should be the home-page or not
  * @return	string The URL of the blog, e.g. "http://www.example.com/index.php?target=blog"
  */
 function create_blog_url($page=false, $home=false) {
@@ -128,9 +128,9 @@ function create_blog_url($page=false, $home=false) {
 /**
  * Creates the URL of a blogpost
  * 
- * @param	PecBlogPost $post: A blog post object
- * @param	boolean 	$new_comment: Wether the link shall include a new comment variable or not
- * @param	string 		$additional_vars: Additional query vars, e.g. "foo=bar&something=2"
+ * @param	PecBlogPost $post A blog post object
+ * @param	boolean 	$new_comment Wether the link shall include a new comment variable or not
+ * @param	string 		$additional_vars Additional query vars, e.g. "foo=bar&something=2"
  * @return	string The URL of the blog post, e.g. "http://www.example.com/index.php?target=blog&post_id=1"
  */
 function create_blogpost_url($post, $new_comment=false, $additional_vars=false) {
@@ -160,9 +160,9 @@ function create_blogpost_url($post, $new_comment=false, $additional_vars=false) 
 /**
  * Creates the URL of a blog category
  * 
- * @param	PecBlogCategory $category: A blog category object
+ * @param	PecBlogCategory $category A blog category object
  * @param	integer|string  $page: The page of blog entries, e.g. 2
- * @param	boolean 		$home: Wether the target should be the home-page or not
+ * @param	boolean 		$home Wether the target should be the home-page or not
  * @return	string The URL of the blog category, e.g. "http://www.example.com/index.php?target=blog&category=4"
  */
 function create_blogcategory_url($category, $page=false, $home=false) {
@@ -190,9 +190,9 @@ function create_blogcategory_url($category, $page=false, $home=false) {
 /**
  * Creates the URL of a blog tag
  * 
- * @param	PecBlogTag	   $tag: A blog tag object
+ * @param	PecBlogTag	   $tag A blog tag object
  * @param	integer|string $page: The page of blog entries, e.g. 2
- * @param	boolean		   $home: Wether the target should be the home-page or not
+ * @param	boolean		   $home Wether the target should be the home-page or not
  * @return	string The URL of the blog tag, e.g. "http://www.example.com/index.php?target=blog&tag=6"
  */
 function create_blogtag_url($tag, $page=false, $home=false) {
@@ -220,11 +220,11 @@ function create_blogtag_url($tag, $page=false, $home=false) {
 /**
  * Creates the URL of a blog archive
  * 
- * @param	string		   $day: The day, e.g. "05"
- * @param	string		   $month: The month, e.g. "10"
- * @param	string		   $year: The year, e.g. "2010"
+ * @param	string		   $day The day, e.g. "05"
+ * @param	string		   $month The month, e.g. "10"
+ * @param	string		   $year The year, e.g. "2010"
  * @param	integer|string $page: The page of blog entries, e.g. 2
- * @param	boolean		   $home: Wether the target should be the home-page or not
+ * @param	boolean		   $home Wether the target should be the home-page or not
  * @return	string The URL of the blog archive, e.g. "http://www.example.com/index.php?target=blog&day=05&month=10&year=2010"
  */
 function create_blogarchive_url($day=false, $month=false, $year=false, $page=false, $home=false) {
@@ -264,7 +264,7 @@ function create_blogarchive_url($day=false, $month=false, $year=false, $page=fal
 /**
  * Creates the URL of a 404 page
  * 
- * @param	string $salt: Some kind of random string that is used as an article id, so that pecio will indicate it as non-existent, e.g. "0"
+ * @param	string $salt Some kind of random string that is used as an article id, so that pecio will indicate it as non-existent, e.g. "0"
  * @return	string The URL of the 404 page, e.g. "http://www.example.com/index.php?target=article&id=0"
  */
 function create_404_url($salt='0') {
@@ -297,7 +297,7 @@ function create_blog_feed_url() {
 /**
  * Creates the URL of a blog tag feed
  * 
- * @param	PecBlogTag $tag: A blog tag object
+ * @param	PecBlogTag $tag A blog tag object
  * @return	string The URL of the feed, e.g. "http://www.example.com/feed.php?tag&id=3"
  */
 function create_blogtag_feed_url($tag=false) {
@@ -312,7 +312,7 @@ function create_blogtag_feed_url($tag=false) {
 /**
  * Creates the URL of a blog category feed
  * 
- * @param	PecBlogCategory $category: A blog category object
+ * @param	PecBlogCategory $category A blog category object
  * @return	string The URL of the feed, e.g. "http://www.example.com/feed.php?category&id=3"
  */
 function create_blogcategory_feed_url($category=false) {

@@ -30,28 +30,72 @@
  */
 class PecSiteController {
     
+    private $current_target_type, $current_target_data, $site_view, $sub_site_view, $current_view_data, $settings;
+    
 	/**
-	 * @var integer 		$current_target_type, Current target that is given in the query string and used for menupoints.
-	 * @var string			$current_target_data, Target data of the current target that is given in the query string and used for menupoints.
-	 * @var string			$site_view, Current site view.
-	 * @var string			$sub_site_view, On start page may be a sub site view, e.g. blogcategory, if the blog is assigned to it.
-	 * @var string			$current_view_data, The data that belongs to the current view. It's usually given somewhere in the query string. If site_view is blogcategory, this would be the category name/id.
 	 * @var array			$articles_on_start, All the articles that are assigned to the start page. Only set if current view is the start page.
+	 */
+    private $articles_on_start;
+    
+    
+	/**
 	 * @var PecArticle		$current_article, Current article. Only set if current site view is article.
+	 */
+    private $current_article;
+    
+    
+	/**
 	 * @var PecBlogPost		$current_blogpost, Current blogpost. Only set if current site view is blogpost.
+	 */
+    private $current_blogpost;
+    
+    
+	/**
 	 * @var PecBlogCategory	$current_blogcategory, Current blogcategory. Only set if current site view is blogcategory.
+	 */
+    private $current_blogcategory;
+    
+    
+	/**
 	 * @var PecBlogTag		$current_blogtag, Current blogtag. Only set if current site view is blogtag.
+	 */
+    private $current_blogtag;
+    
+    
+	/**
 	 * @var array			$plugins, All available plugins (meta data of them).
+	 */
+    private $plugins;
+    
+    
+	/**
 	 * @var	string			$template_file, Current template file, depends on the current site view.
-	 * 
+	 */
+    private $template_file;
+    
+    
+	/**
 	 * @var PecResourceGenerator	$resource_generator, The resource generator that creates all the resources for the templates.
+	 */
+    private $resource_generator;
+    
+    
+	/**
 	 * @var PecTemplateResource		$template_resource, Template resource object which holds the generated resources.
+	 */
+    private $template_resource;
+    
+    
+	/**
 	 * @var PecDatabase				$database, Pecio's database object.
+	 */
+    private $database;
+    
+    
+	/**
 	 * @var PecSetting				$settings, Pecio's settings.
 	 */
-    private $current_target_type, $current_target_data, $site_view, $sub_site_view, $current_view_data, $articles_on_start, 
-            $current_article, $current_blogpost, $current_blogcategory, $current_blogtag, $plugins, 
-            $template_file, $resource_generator, $template_resource, $database, $settings;
+    private $settings;
     
     /**
      * @static
@@ -76,11 +120,11 @@ class PecSiteController {
     /**
      * Creates a PecSiteController instance.
      * 
-	 * @param integer 	$current_target_type, Current target that is given in the query string and used for menupoints.
-	 * @param string	$current_target_data, Target data of the current target that is given in the query string and used for menupoints.
-	 * @param string	$site_view, Current site view.
-	 * @param string	$sub_site_view, On start page may be a sub site view, e.g. blogcategory, if the blog is assigned to it.
-	 * @param string	$current_view_data, The data that belongs to the current view. It's usually given somewhere in the query string. If site_view is blogcategory, this would be the category name/id.
+	 * @param integer 	$current_target_type Current target that is given in the query string and used for menupoints.
+	 * @param string	$current_target_data Target data of the current target that is given in the query string and used for menupoints.
+	 * @param string	$site_view Current site view.
+	 * @param string	$sub_site_view On start page may be a sub site view, e.g. blogcategory, if the blog is assigned to it.
+	 * @param string	$current_view_data The data that belongs to the current view. It's usually given somewhere in the query string. If site_view is blogcategory, this would be the category name/id.
      */
     function __construct($current_target_type, $current_target_data, $site_view, $sub_site_view, $current_view_data) {
         global $pec_database, $pec_settings, $pec_localization;
@@ -94,11 +138,24 @@ class PecSiteController {
         $this->sub_site_view = $sub_site_view;
         $this->current_view_data = $current_view_data;
         
+        // TODO: replace with a `$current_objects` array
         $this->articles_on_start = false;
         $this->current_article = false;
         $this->current_blogpost = false;
         $this->current_blogcategory = false;
         $this->current_blogtag = false;
+        
+        // TODO: dont forget to think about how to document array keys. perhaps: @var array [articles_on_start=>array|false, article=>PecArticle|false] ...
+        // TODO: Make current_objects array static? No, but pre-set it with those false values so that we can document it
+        $this->current_objects = array(
+        	'article' => false,
+        	'blogpost' => false,
+        	'blogcategory' => false,
+        	'blogtag' => false,
+        	'articles-on-start' => false,
+        	'blogposts' => false,
+        	'active-menupoints' => false
+        );
         
         $this->template_resource = new PecTemplateResource($this->settings, $this->template, $this->site_view, $this->sub_site_view);        
 

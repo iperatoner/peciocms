@@ -174,6 +174,62 @@ else {
     }
 }
 
+// CREATE ALL THOSE NEW MANAGERS HERE AND PUT THEM INTO THE SITE CONTROLLER
+/*
+ * Some ideas for the new managers:
+ * 
+ * PecManager has a method `grab_objects`. PecManager also has all the current page data.
+ * so `grab_objects` would update the `current_objects` array with array_replace if we're on the correct view
+ * The PecArticleManager e.g. would update the `article`-key with a 404 Article if the current view data doesnt match any articles
+ * 
+ */
+
+
+/*
+ * Just to explain it _one_ time:
+ * 
+ * $current_target_type  <->  a target that can be used by menupoints: home|article|blog|url
+ * $current_target_data  <->  data that belongs to the target. also specified by menupoints. 
+ * 							  NOT mandatory, else "-" (e.g. if target type is "blog")
+ * 
+ * $site_view  <->  the type of page that is currently being viewed. 
+ * 					that can be different from the menupoint's target type, 
+ * 					because a menupoint can't e.g. target to a category. 
+ * 					possible values: 
+ * 					home|article|search|404|blog|blogpost|blogcategory|blogtag|blogarchive
+ * 
+ * $sub_site_view  <->  the type of the sub-page that is currently being viewed.
+ * 						this one is needed because there can be a second view
+ * 						if we're on the home page.
+ * 						Then there can be e.g. an article and a blog category.
+ * 						Same possible values as $site_view
+ * 
+ * $current_view_data  <->  data that belongs to the current view. 
+ * 							That can be a blog tag id, a search term or an 
+ * 							article id (in this case it would be the same as current_target_data, 
+ * 							because articles can be targeted by a menupoint)
+ * 
+ * 
+ * QUERY TARGETS are just target types that can be _in_ the actual URL. so possible values are: home|article|blog|search
+ * 
+ * TODO: put them together in a $current_page array from the beginning
+ * TODO: put the processing ifs, elses, elseifs etc into functions or methods
+ * TODO: perhaps create the site controller at the beginning and then something like `grab_view_data($query_target)`. this could replace all those ifs and elses
+ * 
+ */
+
+$current_page = array(
+	'target' => array(
+		'type' => $current_target_type,
+		'data' => $current_target_data
+	),
+	'view' => array(
+		'main' => $site_view,
+		'sub' => $sub_site_view,
+		'data' => $current_view_data
+	)
+);
+
 $controller = new PecSiteController($current_target_type, $current_target_data, $site_view, $sub_site_view, $current_view_data);
 $controller->prepare_view();
 $controller->display();

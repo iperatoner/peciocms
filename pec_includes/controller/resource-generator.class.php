@@ -30,24 +30,27 @@
  */
 class PecResourceGenerator {
     
+    private $current_target_type, $current_target_data,
+            $site_view, $sub_site_view, $articles_on_start, $current_article,
+            $current_blogpost, $current_blogcategory, $current_blogtag, $plugins;
+    
 	/**
-	 * @var PecSetting		$settings, Pecio's settings.
-	 * @var integer 		$current_target_type, Current target that is given in the query string and used for menupoints.
-	 * @var string			$current_target_data, Target data of the current target that is given in the query string and used for menupoints.
-	 * @var string			$site_view, Current site view.
-	 * @var string			$sub_site_view, On start page may be a sub site view, e.g. blogcategory, if the blog is assigned to it.
-	 * @var string			$current_view_data, The data that belongs to the current view. It's usually given somewhere in the query string. If site_view is blogcategory, this would be the category name/id.
-	 * @var array			$articles_on_start, All the articles that are assigned to the start page. Only set if current view is the start page.
-	 * @var PecArticle		$current_article, Current article. Only set if current site view is article.
-	 * @var PecBlogPost		$current_blogpost, Current blogpost. Only set if current site view is blogpost.
-	 * @var PecBlogCategory	$current_blogcategory, Current blogcategory. Only set if current site view is blogcategory.
-	 * @var PecBlogTag		$current_blogtag, Current blogtag. Only set if current site view is blogtag.
-	 * @var array			$active_menupoints, The menupoint objects which are targeting to the current target.
-	 * @var array			$plugins, All available plugins (meta data of them).
+	 * @var PecSetting	$settings, Pecio's settings.
 	 */
-    private $settings, $current_target_type, $current_target_data,
-            $site_view, $sub_site_view, $current_view_data, $articles_on_start, $current_article,
-            $current_blogpost, $current_blogcategory, $current_blogtag, $active_menupoints, $plugins;
+    private $settings;
+    
+    
+	/**
+	 * @var string	$current_view_data, The data that belongs to the current view. It's usually given somewhere in the query string. If site_view is blogcategory, this would be the category name/id.
+	 */
+    private $current_view_data;
+    
+    
+	/**
+	 * @var array	$active_menupoints, The menupoint objects which are targeting to the current target.
+	 */
+    private $active_menupoints;
+    
     
 	/**
 	 * @static
@@ -66,16 +69,16 @@ class PecResourceGenerator {
     /**
      * Creates a PecResourceGenerator instance.
      * 
-	 * @param	integer 		$current_target_type, Current target that is given in the query string and used for menupoints.
-	 * @param	string			$current_target_data, Target data of the current target that is given in the query string and used for menupoints.
-	 * @param	string			$site_view, Current site view.
-	 * @param	string			$sub_site_view, On start page may be a sub site view, e.g. blogcategory, if the blog is assigned to it.
-     * @param	array			$articles_on_start: PecArticle instances that are assigned to the start page
-     * @param	PecArticle		$current_article: Current article that was chosen by the current target type and data, if any
-     * @param	PecBlogPost		$current_blogpost: Current blog post that was chosen by the current target type and data, if any
-     * @param	PecBlogCategory	$current_blogcategory: Current blog category that was chosen by the current target type and data, if any
-     * @param	PecBlogTag		$current_blogtag: Current blog tag that was chosen by the current target type and data, if any
-     * @param	array			$plugins: All active plugins as PecPlugin instances (plugin metadata)
+	 * @param	integer 		$current_target_type Current target that is given in the query string and used for menupoints.
+	 * @param	string			$current_target_data Target data of the current target that is given in the query string and used for menupoints.
+	 * @param	string			$site_view Current site view.
+	 * @param	string			$sub_site_view On start page may be a sub site view, e.g. blogcategory, if the blog is assigned to it.
+     * @param	array			$articles_on_start PecArticle instances that are assigned to the start page
+     * @param	PecArticle		$current_article Current article that was chosen by the current target type and data, if any
+     * @param	PecBlogPost		$current_blogpost Current blog post that was chosen by the current target type and data, if any
+     * @param	PecBlogCategory	$current_blogcategory Current blog category that was chosen by the current target type and data, if any
+     * @param	PecBlogTag		$current_blogtag Current blog tag that was chosen by the current target type and data, if any
+     * @param	array			$plugins All active plugins as PecPlugin instances (plugin metadata)
      */
     function __construct($current_target_type, $current_target_data, 
                          $site_view, $sub_site_view, $current_view_data, $articles_on_start, 
@@ -109,9 +112,9 @@ class PecResourceGenerator {
     /**
 	 * Generates an HTML menu with the available menupoints.
 	 * 
-	 * @param	integer		$root_id: ID of the root menupoint for which the HTML menu has to be created, e.g. 0 or 1 or ...
-	 * @param	integer		$count: Current level of menupoint, e.g. 1 or 2 or ...
-	 * @param	recursive	$count: Wether the menu should be created recursiveley or not, true|false
+	 * @param	integer		$root_id ID of the root menupoint for which the HTML menu has to be created, e.g. 0 or 1 or ...
+	 * @param	integer		$count Current level of menupoint, e.g. 1 or 2 or ...
+	 * @param	recursive	$count Wether the menu should be created recursiveley or not, true|false
 	 * @return	string		The HTML menu
 	 */
     public function generate_menu($root_id=0, $count=0, $recursive=true) {
@@ -211,7 +214,7 @@ class PecResourceGenerator {
 	    /**
 		 * Generates an URL for a menupoint.
 		 * 
-		 * @param	PecMenuPoint $menupoint: Menupoint object for that the URL has to be generated
+		 * @param	PecMenuPoint $menupoint Menupoint object for that the URL has to be generated
 		 * @return	string The proper URL
 		 */
         private function generate_menupoint_url($menupoint) {
@@ -449,10 +452,11 @@ class PecResourceGenerator {
         return $links_html;
     }
     
+    
     /**
 	 * Parses the plugin vars in a given string.
 	 * 
-	 * @param	string	$content: The string (usually content) which has to be parsed
+	 * @param	string	$content The string (usually content) which has to be parsed
 	 * @return	string	Parsed string
 	 */
     public function parse_plugins($content) {
@@ -468,7 +472,8 @@ class PecResourceGenerator {
 	                    $complete_var = '{%' . $p->get_property('variable') . '-(' . $var_data . ')%}';
 	                    
 	                    if (strpos($content, $complete_var) || is_integer(strpos($content, $complete_var))) {                            
-	                        eval('$plugin_instance = new ' . $p->get_property('class_name') . '($p, $this->site_view, $this->sub_site_view);');
+	                        // TODO: create plugin instances only _one_ time and put them into an array!
+	                    	eval('$plugin_instance = new ' . $p->get_property('class_name') . '($p, $this->site_view, $this->sub_site_view);');
 	                        $replace_data = $plugin_instance->run($var_data);
 	                        $content = str_replace($complete_var, $replace_data, $content);
 	                    }
@@ -495,8 +500,8 @@ class PecResourceGenerator {
 	    /**
 		 * Parses the plugin vars in a given object.
 		 * 
-		 * @param	string	$by: The type of object which's content has to be parsed, e.g. 'blogpost' or 'article'
-		 * @param	mixed	$data: The object which's content has to be parsed, e.g. PecBlogPost or PecArticle
+		 * @param	string	$by The type of object which's content has to be parsed, e.g. 'blogpost' or 'article'
+		 * @param	mixed	$data The object which's content has to be parsed, e.g. PecBlogPost or PecArticle
 		 * @return	string	The object which's content is now parsed
 		 */
         public function parse_plugins_of($by='article', $data=false) {
@@ -564,7 +569,7 @@ class PecResourceGenerator {
     /**
 	 * Calculates the available pages of blogposts.
 	 * 
-	 * @param	array	$blogposts: Array of available blogposts
+	 * @param	array	$blogposts Array of available blogposts
 	 * @return	integer	Number of the pages of blogposts
 	 */
     public function get_available_blog_pages($blogposts=false) {
@@ -588,8 +593,8 @@ class PecResourceGenerator {
     /**
 	 * Calculates the page number of the older entries page, depending on the current blog page.
 	 * 
-	 * @param	integer	$current_blog_page: The current page of blogposts, e.g. 2
-	 * @param	integer	$available_pages: All available pages of blogposts, e.g. 5
+	 * @param	integer	$current_blog_page The current page of blogposts, e.g. 2
+	 * @param	integer	$available_pages All available pages of blogposts, e.g. 5
 	 * @return	integer	Number of the older page of blogposts
 	 */
     public function get_older_entries_page($current_blog_page=false, $available_pages=false) {
@@ -611,8 +616,8 @@ class PecResourceGenerator {
     /**
 	 * Calculates the page number of the newer entries page, depending on the current blog page.
 	 * 
-	 * @param	integer	$current_blog_page: The current page of blogposts, e.g. 2
-	 * @param	integer	$available_pages: All available pages of blogposts, e.g. 5
+	 * @param	integer	$current_blog_page The current page of blogposts, e.g. 2
+	 * @param	integer	$available_pages All available pages of blogposts, e.g. 5
 	 * @return	integer	Number of the newer page of blogposts
 	 */    
     public function get_newer_entries_page($current_blog_page=false, $available_pages=false) {
@@ -634,7 +639,7 @@ class PecResourceGenerator {
     /**
 	 * Generates the blog URL for a page of blogposts.
 	 * 
-	 * @param	integer	$page: The page of blogposts for that the url has to be created, e.g. 2
+	 * @param	integer	$page The page of blogposts for that the url has to be created, e.g. 2
 	 * @return	string	Proper URL
 	 */
     public function get_blog_page_url($page=false) {
@@ -669,7 +674,7 @@ class PecResourceGenerator {
     /**
 	 * Processes a new comment.
 	 * 
-	 * @param	PecBlogPost	$post: The blog post object for that the comment has to be created
+	 * @param	PecBlogPost	$post The blog post object for that the comment has to be created
 	 */
     public function process_new_comment($post=false) {
         	

@@ -27,8 +27,8 @@
 /**
  * Defines basic constants that are used by the CMS
  * 
- * @param	integer $relative_directory_level: Levels of directories up from the root directory, e.g. 1
- * @param	string 	$directory: Current relative directory path up from the root directory, e.g. "pec_admin/pec_ajax"
+ * @param	integer $relative_directory_level Levels of directories up from the root directory, e.g. 1
+ * @param	string 	$directory Current relative directory path up from the root directory, e.g. "pec_admin/pec_ajax"
  */
 function define_constants($relative_directory_level=0, $directory='') {
     define('PEC_VERSION', '2.0.5');
@@ -175,7 +175,7 @@ function pec_installed_version() {
 /**
  * Sets the currently installed version
  * 
- * @param	string 	$version: The version to set, e.g. "2.0"
+ * @param	string 	$version The version to set, e.g. "2.0"
  * @return	boolean Wether writing into the version file was successful or not
  */
 function pec_set_installed_version($version='') {
@@ -197,7 +197,7 @@ function pec_set_installed_version($version='') {
 /**
  * Returns the root filesystem path of the CMS installation
  * 
- * @param	boolean $canonicalized: Set to true if you want the canonicalized file system path or false if not
+ * @param	boolean $canonicalized Set to true if you want the canonicalized file system path or false if not
  * @return	string The filesystem path
  */
 function pec_root_path($canonicalized=true) {
@@ -215,7 +215,7 @@ function pec_root_path($canonicalized=true) {
 /**
  * Returns the root url of the CMS installation
  * 
- * @param	boolean $with_path: Set to true if you also want the path of the installation being appended
+ * @param	boolean $with_path Set to true if you also want the path of the installation being appended
  * @return	string The installation url
  */
 function pec_root_url($with_path=true) {
@@ -225,10 +225,10 @@ function pec_root_url($with_path=true) {
 /**
  * Redirects to a given target/url
  * 
- * @param	string 	$target: Target being redirected to. If not a relative path, $append_url has to be set to false, e.g. "pec_admin/admin.php"
- * @param	integer $timeout: If you want to have a timeout until being redirected, e.g. 3
- * @param	boolean $return: If you only want the HTML-<meta>-Refresh string being returned, then this must be true
- * @param	boolean $append_url: Must be true if $target is a relative path (up from the root)
+ * @param	string 	$target Target being redirected to. If not a relative path, $append_url has to be set to false, e.g. "pec_admin/admin.php"
+ * @param	integer $timeout If you want to have a timeout until being redirected, e.g. 3
+ * @param	boolean $return If you only want the HTML-<meta>-Refresh string being returned, then this must be true
+ * @param	boolean $append_url Must be true if $target is a relative path (up from the root)
  * @return	string If param $return is true, the HTML-<meta>-Refresh string
  */
 function pec_redirect($target, $timeout=0, $return=false, $append_url=true) {
@@ -260,7 +260,7 @@ function pec_redirect($target, $timeout=0, $return=false, $append_url=true) {
 /**
  * Reads the permission of a given file or directory. The root path is automatically appended.
  * 
- * @param	string $filename: Filename or directory name to check, e.g. "pec_uploads/"
+ * @param	string $filename Filename or directory name to check, e.g. "pec_uploads/"
  * @return	string The permission of the given file/directory, e.g. "644"
  */
 function pec_file_permission($filename) {
@@ -287,7 +287,7 @@ function pec_read_core_permissions() {
 /**
  * Slugifies a string (removing invalid characters and replacing whitespaces with dashes)
  * 
- * @param	string $str: String to be slugified, e.g. "First Post on this blog!"
+ * @param	string $str String to be slugified, e.g. "First Post on this blog!"
  * @return	string Slugified string
  */
 function slugify($str) {
@@ -313,7 +313,7 @@ function slugify($str) {
 /**
  * Converts a flat string of IDs dlimited by the MULTIPLE_ID_DILIMITER to an array of these IDs
  * 
- * @param	string $multiple_id_flat: String with the dilimited IDs, e.g. "3[%]5[%]9[%]17[%]22[%]23"
+ * @param	string $multiple_id_flat String with the dilimited IDs, e.g. "3[%]5[%]9[%]17[%]22[%]23"
  * @return	array The IDs, e.g. Array(3, 5, 9, 17, 22, 23)
  */
 function flat_to_array($multiple_id_flat) {
@@ -323,7 +323,7 @@ function flat_to_array($multiple_id_flat) {
 /**
  * Converts an array of IDs to a flat string of these IDs dlimited by the MULTIPLE_ID_DILIMITER
  * 
- * @param	array $multiple_id_array: Array holding the IDs, e.g. Array(3, 5, 9, 17, 22, 23)
+ * @param	array $multiple_id_array Array holding the IDs, e.g. Array(3, 5, 9, 17, 22, 23)
  * @return	string The IDs dilimited by the MULTIPLE_ID_DILIMITER, e.g. "3[%]5[%]9[%]17[%]22[%]23"
  */
 function array_to_flat($multiple_id_array) {
@@ -342,7 +342,7 @@ function pec_available_user_permissions() {
 /**
  * Gets the content of an intern HTML template (e.g. of the messages)
  * 
- * @param	string $filename: Filename of the template (without the path), e.g. "message-info.tpl"
+ * @param	string $filename Filename of the template (without the path), e.g. "message-info.tpl"
  * @return	string Content of the intern template file
  */
 function get_intern_template($filename) {
@@ -352,7 +352,7 @@ function get_intern_template($filename) {
 /**
  * Chooses the correct template file depending on the message importance
  * 
- * @param	integer $message_importance: Importance of the message (MESSAGE_INFO|MESSAGE_WARNING), e.g. 1
+ * @param	integer $message_importance Importance of the message (MESSAGE_INFO|MESSAGE_WARNING), e.g. 1
  * @return	string Filename of the correct template file, e.g. "message-warning.tpl"
  */
 function message_tpl_file($message_importance) {
@@ -370,7 +370,7 @@ function message_tpl_file($message_importance) {
 /**
  * Generates a randome string
  * 
- * @param	integer $len: Number of chars, e.g. 6
+ * @param	integer $len Number of chars, e.g. 6
  * @return	string Random string
  */
 function random_string($len){
@@ -389,9 +389,9 @@ function random_string($len){
 /**
  * Finds all positions of a substring in the given string
  * 
- * @param	string 	$str: String to search in, e.g. "Apples are not like bananas and bananas are not like apples."
- * @param	string 	$substr: Substring to be searched, e.g. "bananas"
- * @param	boolean $i: Wether to search case sensitive or not, (true|false)
+ * @param	string 	$str String to search in, e.g. "Apples are not like bananas and bananas are not like apples."
+ * @param	string 	$substr Substring to be searched, e.g. "bananas"
+ * @param	boolean $i Wether to search case sensitive or not, (true|false)
  * @return	array All found positions, e.g. Array(20, 32)
  */
 function str_all_pos($str, $substr, $i=false) {
@@ -416,9 +416,9 @@ function str_all_pos($str, $substr, $i=false) {
 /**
  * Greps string between two substrings in the given string
  * 
- * @param	string $start_string: Substring that is before the substring to be grepped. e.g. "{%"
- * @param	string $end_string: Substring that is after the substring to be grepped, e.g. "%}"
- * @param	string $string: String to grep in, e.g. "This is a {%nice%} string with {%another%} substring to grep."
+ * @param	string $start_string Substring that is before the substring to be grepped. e.g. "{%"
+ * @param	string $end_string Substring that is after the substring to be grepped, e.g. "%}"
+ * @param	string $string String to grep in, e.g. "This is a {%nice%} string with {%another%} substring to grep."
  * @return	array All found strings, e.g. Array("nice", "another")
  */
 function grep_data_between($start_string, $end_string, $string) {
@@ -438,8 +438,8 @@ function grep_data_between($start_string, $end_string, $string) {
 /**
  * Checks if a string ends with the given substring
  * 
- * @param	string $str: String to search in, e.g. "Here are some apples."
- * @param	string $str: Substring with which the string may end, e.g. "apples."
+ * @param	string $str String to search in, e.g. "Here are some apples."
+ * @param	string $str Substring with which the string may end, e.g. "apples."
  */
 function str_ends_with($str, $sub) {
 	return substr($str, strlen($str) - strlen($sub)) == $sub;
@@ -448,7 +448,7 @@ function str_ends_with($str, $sub) {
 /**
  * Converts HTML-Linebreaks(<br />) to new lines (\n)
  * 
- * @param	string $str: The string in that the line breaks have to be replaced, e.g. "This is<br />no banana."
+ * @param	string $str The string in that the line breaks have to be replaced, e.g. "This is<br />no banana."
  * @return	string The new string with replaced HTML-Linebreaks, e.h. "This is\n noe banana."
  */
 function br2nl($str) { 
@@ -459,7 +459,7 @@ function br2nl($str) {
 /**
  * Converts ampersands (&) to the HTML-Entity of ampersands (&amp;)
  * 
- * @param	string $str: The string in that the ampersands have to be replaced, e.g. "We are here & there."
+ * @param	string $str The string in that the ampersands have to be replaced, e.g. "We are here & there."
  * @return	string The new string with replaced ampersands, e.g. "We are here &amp; there."
  */
 function convert_ampersands_to_entities($str) {
@@ -469,7 +469,7 @@ function convert_ampersands_to_entities($str) {
 /**
  * Checks if the syntax of an email address is correct
  * 
- * @param	string $email: Email address to be checked, e.g. "fo@bar@bar.cc" OR "foo@bar.com"
+ * @param	string $email Email address to be checked, e.g. "fo@bar@bar.cc" OR "foo@bar.com"
  * @return	boolean
  */
 function email_syntax_correct($email) {
@@ -479,7 +479,7 @@ function email_syntax_correct($email) {
 /**
  * Checks if the host of an email address exists
  * 
- * @param	string $email: Email address to be checked, e.g. "someone@some-host-that-does-not-exist.net"
+ * @param	string $email Email address to be checked, e.g. "someone@some-host-that-does-not-exist.net"
  * @return	boolean
  */
 function email_host_exists($email) {
