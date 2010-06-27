@@ -32,44 +32,48 @@ class PecTemplateResource {
 	/**
 	 * @var array An array of all the data that can be used.
 	 */
-    private $data;
+    private $data = array(
+        'current_page' => array(),
     
-	/**
-	 * @static
-	 * @var array All array keys (properties) that can be set.
-	 */
-    static $resources = array(
-        'site_view',
-        'sub_site_view',
-        'article',
-        'articles',
-        'blogpost',
-        'blogposts',
-        'blogcomments',
-        'blogcategory',
-        'blogtag',
-        'blogarchive_day',
-        'blogarchive_month',
-        'blogarchive_year',
-    	'blog_older_entries_page',
-    	'blog_newer_entries_page',
-    	'blog_older_entries_url',
-    	'blog_newer_entries_url',
-        'complete_menu',
-        'root_menu',
-        'sub_menu',
-        'sidebar_texts',
-        'sidebar_links',
-        'search_form',
-        'plugin_head_data',
-        'settings',
-        'template',
-        'template_path',
-        'homepage_main_title',
-        'homepage_sub_title',
-        'homepage_tags',
-        'homepage_description',
-        'root_path'
+        'article' => false,
+        'articles' => false,
+    
+        'blogpost' => false,
+        'blogposts' => false,
+        'blogcomments' => false,
+        'blogcategory' => false,
+        'blogtag' => false,
+    
+        'blogarchive_day' => false,
+        'blogarchive_month' => false,
+        'blogarchive_year' => false,
+    
+    	'blog_older_entries_page' => false,
+    	'blog_newer_entries_page' => false,
+    	'blog_older_entries_url' => false,
+    	'blog_newer_entries_url' => false,
+    
+        'complete_menu' => false,
+        'root_menu' => false,
+        'sub_menu' => false,
+    
+        'sidebar_texts' => false,
+        'sidebar_links' => false,
+        'search_form' => false,
+    
+        'plugin_head_data' => false,
+    
+        'settings' => false,
+    
+        'template' => false,
+        'template_path' => false,
+    
+        'homepage_main_title' => false,
+        'homepage_sub_title' => false,
+        'homepage_tags' => false,
+        'homepage_description' => false,
+    
+        'root_path' => false
     );
     
     /**
@@ -77,44 +81,21 @@ class PecTemplateResource {
      * 
      * @param	PecSettings	$settings Pecio's settings
      * @param	PecTemplate	$template Pecio's template
-     * @param	string		$site_view The current site view
-     * @param	string		$sub_site_view The current sub site view
+     * @param	array		$current_page Relevant data for the current page (rather low level data)
      */
-    function __construct($settings, $template, $site_view, $sub_site_view) {
-        $this->data = array();
-        
+    function __construct($settings, $template, $current_page) {
         $this->data['settings'] = $settings;
+        
         $this->data['template'] = $template;
         $this->data['template_path'] = $template->get_directory_path(false);
-        $this->data['site_view'] = $site_view;  
-        $this->data['sub_site_view'] = $sub_site_view;    
+        
+        $this->data['current_page'] = $current_page;    
         
         $this->data['homepage_main_title'] = $settings->get_sitename_main();
         $this->data['homepage_sub_title'] = $settings->get_sitename_sub();
         $this->data['homepage_tags'] = $settings->get_tags();
         $this->data['homepage_description'] = $settings->get_description();
         
-        $this->data['article'] = false;
-        $this->data['articles'] = false;
-        $this->data['blogpost'] = false;
-        $this->data['blogposts'] = false;
-        $this->data['blogcomments'] = false;
-        $this->data['blogcategory'] = false;
-        $this->data['blogtag'] = false;
-        $this->data['blogarchive_day'] = false;
-        $this->data['blogarchive_month'] = false;
-        $this->data['blogarchive_year'] = false;
-        $this->data['blog_older_entries_page'] = false;
-        $this->data['blog_newer_entries_page'] = false;
-        $this->data['blog_older_entries_url'] = false;
-        $this->data['blog_newer_entries_url'] = false;
-        $this->data['complete_menu'] = false;
-        $this->data['root_menu'] = false;
-        $this->data['sub_menu'] = false;
-        $this->data['sidebar_texts'] = false;
-        $this->data['sidebar_links'] = false;
-        $this->data['search_form'] = false;
-        $this->data['plugin_head_data'] = false;
         $this->data['root_path'] = pec_root_path(false);
     }
     
@@ -125,7 +106,7 @@ class PecTemplateResource {
      * @return	string The proper data
      */
     public function get($resource='') {
-        if (in_array($resource, self::$resources)) {
+        if (array_key_exists($resource, $this->data)) {
             return $this->data[$resource];
         }
         else {
@@ -149,7 +130,7 @@ class PecTemplateResource {
      * @param	mixed	$value The data that should be set to the given array key
      */
     public function set($resource='', $value) {
-        if (in_array($resource, self::$resources)) {
+        if (array_key_exists($resource, $this->data)) {
             $this->data[$resource] = $value;
         }
     }

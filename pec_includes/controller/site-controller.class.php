@@ -30,40 +30,26 @@
  */
 class PecSiteController {
     
-    private $current_target_type, $current_target_data, $site_view, $sub_site_view, $current_view_data, $settings;
-    
 	/**
-	 * @var array			$articles_on_start, All the articles that are assigned to the start page. Only set if current view is the start page.
+	 * @var PecSetting $settings Pecio settings object.
 	 */
-    private $articles_on_start;
+    private $settings;
     
     
 	/**
-	 * @var PecArticle		$current_article, Current article. Only set if current site view is article.
+	 * @var PecDatabase	$database Pecio's database object.
 	 */
-    private $current_article;
+    private $database;
     
     
 	/**
-	 * @var PecBlogPost		$current_blogpost, Current blogpost. Only set if current site view is blogpost.
+	 * @var PecLocale	$localization Pecio's localization object.
 	 */
-    private $current_blogpost;
-    
-    
-	/**
-	 * @var PecBlogCategory	$current_blogcategory, Current blogcategory. Only set if current site view is blogcategory.
-	 */
-    private $current_blogcategory;
-    
+    private $localization;
+	
     
 	/**
-	 * @var PecBlogTag		$current_blogtag, Current blogtag. Only set if current site view is blogtag.
-	 */
-    private $current_blogtag;
-    
-    
-	/**
-	 * @var array			$plugins, All available plugins (meta data of them).
+	 * @var array			$plugins All available plugins (meta data of them).
 	 */
     private $plugins;
     
@@ -75,28 +61,42 @@ class PecSiteController {
     
     
 	/**
-	 * @var PecResourceGenerator	$resource_generator, The resource generator that creates all the resources for the templates.
-	 */
-    private $resource_generator;
-    
-    
-	/**
-	 * @var PecTemplateResource		$template_resource, Template resource object which holds the generated resources.
+	 * @var PecTemplateResource		$template_resource, Template resource object which holds the generated resources for templates.
 	 */
     private $template_resource;
     
     
 	/**
-	 * @var PecDatabase				$database, Pecio's database object.
-	 */
-    private $database;
+	 * @var array	$current_page Holds all the relevant data belonging to the currently being viewed page
+	 */    
+    private $current_page = array(
+		'target' => array(
+			'type' => MENUPOINT_TARGET_HOME,
+			'data' => '-'
+		),
+		'view' => array(
+			'main' => SITE_VIEW_HOME,
+			'sub' => '',
+			'data' => ''
+		)
+	);
     
-    
+	
+    // TODO: dont forget to think about how to document array keys. perhaps: @var array [articles_on_start=>array|false, article=>PecArticle|false] ...
 	/**
-	 * @var PecSetting				$settings, Pecio's settings.
+	 * @var array	$current_objects Holds objects that are set if they belong to the current view. Otherwise they are `false`.
 	 */
-    private $settings;
+    private $current_objects = array(
+	    'article' => false,
+	    'blogpost' => false,
+	    'blogcategory' => false,
+	    'blogtag' => false,
+	    'articles-on-start' => false,
+	    'blogposts' => false,
+	    'active-menupoints' => false
+	);
     
+	
     /**
      * @static
      * @var array The available views and their proper template files.
@@ -120,57 +120,29 @@ class PecSiteController {
     /**
      * Creates a PecSiteController instance.
      * 
-	 * @param integer 	$current_target_type Current target that is given in the query string and used for menupoints.
-	 * @param string	$current_target_data Target data of the current target that is given in the query string and used for menupoints.
-	 * @param string	$site_view Current site view.
-	 * @param string	$sub_site_view On start page may be a sub site view, e.g. blogcategory, if the blog is assigned to it.
-	 * @param string	$current_view_data The data that belongs to the current view. It's usually given somewhere in the query string. If site_view is blogcategory, this would be the category name/id.
+     * @param	string|boolean $query_target The target name that is provided by the query string. Or false if not provided.
      */
-    function __construct($current_target_type, $current_target_data, $site_view, $sub_site_view, $current_view_data) {
-        global $pec_database, $pec_settings, $pec_localization;
-        $this->database = $pec_database;
-        $this->settings = $pec_settings;        
-        $this->template = $this->settings->get_template();
+    function __construct($query_target) {
+    	global $pec_database, $pec_settings, $pec_localization;
         
-        $this->current_target_type = $current_target_type;
-        $this->current_target_data = $current_target_data;
-        $this->site_view = $site_view;
-        $this->sub_site_view = $sub_site_view;
-        $this->current_view_data = $current_view_data;
-        
-        // TODO: replace with a `$current_objects` array
-        $this->articles_on_start = false;
-        $this->current_article = false;
-        $this->current_blogpost = false;
-        $this->current_blogcategory = false;
-        $this->current_blogtag = false;
-        
-        // TODO: dont forget to think about how to document array keys. perhaps: @var array [articles_on_start=>array|false, article=>PecArticle|false] ...
-        // TODO: Make current_objects array static? No, but pre-set it with those false values so that we can document it
-        $this->current_objects = array(
-        	'article' => false,
-        	'blogpost' => false,
-        	'blogcategory' => false,
-        	'blogtag' => false,
-        	'articles-on-start' => false,
-        	'blogposts' => false,
-        	'active-menupoints' => false
-        );
-        
-        $this->template_resource = new PecTemplateResource($this->settings, $this->template, $this->site_view, $this->sub_site_view);        
+    	// basic pecio objects
+    	$this->database = $pec_database;
+        $this->settings = $pec_settings;
+        $this->localization = $pec_localization;
 
+        // fill the `$current_page`-array with great data about our current view :)
+        // TODO: This static method still needs to get defined!
+        $this->current_page = self::grab_view_data($query_target);
+        
+        // TODO: As already mentioned somewhere else, objects should be loaded from the proper PecManagers.
+        // With a method like `grab_objects`. See index.php for more details
         $this->load_object();
         $this->plugins = PecPlugin::load();
         
-        $this->template_file = self::$view_templates[$this->site_view];
+        $this->template = $this->settings->get_template();
+        $this->template_file = self::$view_templates[ $this->current_page['view']['main'] ];
         
-        $this->resource_generator = new PecResourceGenerator(
-        	$this->current_target_type, $this->current_target_data, $this->site_view, $this->sub_site_view, 
-            $this->current_view_data, $this->articles_on_start, $this->current_article, $this->current_blogpost,
-            $this->current_blogcategory, $this->current_blogtag, $this->plugins
-        );
-        
-        $this->pec_localization = $pec_localization;
+        $this->template_resource = new PecTemplateResource($this->settings, $this->template, $this->current_page);  
     }
     
     /**
