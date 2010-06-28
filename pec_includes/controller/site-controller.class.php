@@ -83,7 +83,9 @@ class PecSiteController {
     
 	
     // TODO: dont forget to think about how to document array keys. perhaps: @var array [articles_on_start=>array|false, article=>PecArticle|false] ...
+    // TODO: perhaps completely replace this array with TemplateResource
 	/**
+	 * @deprecated deprecated in favour of TemplateResource
 	 * @var array	$current_objects Holds objects that are set if they belong to the current view. Otherwise they are `false`.
 	 */
     private $current_objects = array(
@@ -91,9 +93,9 @@ class PecSiteController {
 	    'blogpost' => false,
 	    'blogcategory' => false,
 	    'blogtag' => false,
-	    'articles-on-start' => false,
+	    'articles_on_start' => false,
 	    'blogposts' => false,
-	    'active-menupoints' => false
+	    'active_menupoints' => false
 	);
     
 	
@@ -131,8 +133,7 @@ class PecSiteController {
         $this->localization = $pec_localization;
 
         // fill the `$current_page`-array with great data about our current view :)
-        // TODO: This static method still needs to get defined!
-        $this->current_page = self::grab_view_data($query_target);
+        $this->current_page = $this->grab_view_data($query_target);
         
         // TODO: As already mentioned somewhere else, objects should be loaded from the proper PecManagers.
         // With a method like `grab_objects`. See index.php for more details
@@ -144,6 +145,88 @@ class PecSiteController {
         
         $this->template_resource = new PecTemplateResource($this->settings, $this->template, $this->current_page);  
     }
+    
+    	
+	/**
+	 * Fills the prepopulated `$this->current_page`-array with data that belongs to the current view.
+	 * 
+	 * @param	string|boolean  $query_target Target that was given by the query string. If not, that's false.
+	 */
+    private static function grab_view_data($query_target) {
+    	// Just doing that, because `$this->current_page` is a quite long var-name :D
+    	$cp = $this->current_page;
+    	
+		switch ($query_target) {
+			
+			case QUERY_TARGET_ARTICLE:
+		        $cp['target']['type'] = MENUPOINT_TARGET_ARTICLE;
+		        $cp['target']['data'] = $_GET['id'];
+		           
+		        $cp['view']['main'] = $cp['view']['sub'] = SITE_VIEW_ARTICLE;
+		        $cp['view']['data'] = $_GET['id'];
+				break;
+		    
+			case QUERY_TARGET_SEARCH:
+		        $cp['target']['type'] = MENUPOINT_TARGET_ARTICLE;
+		          
+		        $cp['view']['main'] = $cp['view']['sub'] = SITE_VIEW_SEARCH;
+		        $cp['view']['data'] = $_GET['term'];
+		    	break;
+		    
+			case QUERY_TARGET_BLOG:
+		        $cp['target']['type'] = MENUPOINT_TARGET_BLOG;
+		        
+		        if (isset($_GET['post_id'])) {
+		            $cp['view']['main'] = $cp['view']['sub'] = SITE_VIEW_BLOGPOST;
+		            $cp['view']['data'] = $_GET['post_id'];
+		        }
+		        elseif (isset($_GET['category'])) {
+		            $cp['view']['main'] = $cp['view']['sub'] = SITE_VIEW_BLOGCATEGORY;          
+		            $cp['view']['data'] = $_GET['category'];
+		        }
+		        elseif (isset($_GET['tag'])) {
+		            $cp['view']['main'] = $cp['view']['sub'] = SITE_VIEW_BLOGTAG;            
+		            $cp['view']['data'] = $_GET['tag'];
+		        }
+		        elseif (isset($_GET['day']) || isset($_GET['month']) || isset($_GET['year'])) {
+		            $cp['view']['main'] = $cp['view']['sub'] = SITE_VIEW_BLOGARCHIVE;
+		            # HINT: We dont put the archive data into view-data because that is better done in the blog controller later
+		        }
+		        else {
+		            $cp['view']['main'] = $cp['view']['sub'] = SITE_VIEW_BLOG;
+		            # HINT: We dont put the blog page into view-data because ['view']['data'] is reserved for category/tag/post-IDs etc.
+		        }
+		    	break;
+		    
+		    // HOME
+			default:
+		        $cp['target']['type'] = MENUPOINT_TARGET_HOME;
+		        
+		        $cp['view']['main'] = SITE_VIEW_HOME;
+		        $cp['view']['sub'] = SITE_VIEW_HOME;
+		        
+		        if ($this->settings->get_blog_onstart()) {
+		            if (isset($_GET['category'])) {
+		                $cp['view']['sub'] = SITE_VIEW_BLOGCATEGORY;
+		                $cp['view']['data'] = $_GET['category'];
+		            }
+		            elseif (isset($_GET['tag'])) {
+		                $cp['view']['sub'] = SITE_VIEW_BLOGTAG;
+		                $cp['view']['data'] = $_GET['tag'];
+		            }
+		            elseif (isset($_GET['day']) || isset($_GET['month']) || isset($_GET['year'])) {
+		                $cp['view']['sub'] = SITE_VIEW_BLOGARCHIVE;
+		            }
+		            else {
+		                $cp['view']['sub'] = SITE_VIEW_BLOG;
+		            }
+		        }
+		    	break;
+		}
+		
+		return $cp;
+    }
+    
     
     /**
 	 * Loads the proper objects (depending on the current site view) into the correct class vars.

@@ -53,6 +53,7 @@ class PecTemplateResource {
     	'blog_older_entries_url' => false,
     	'blog_newer_entries_url' => false,
     
+    	'active_menupoints' => false,
         'complete_menu' => false,
         'root_menu' => false,
         'sub_menu' => false,
@@ -61,6 +62,8 @@ class PecTemplateResource {
         'sidebar_links' => false,
         'search_form' => false,
     
+    	'plugin_meta_instances' => false,
+    	'plugin_instances' => false,
         'plugin_head_data' => false,
     
         'settings' => false,
@@ -74,6 +77,15 @@ class PecTemplateResource {
         'homepage_description' => false,
     
         'root_path' => false
+    );
+    
+    
+	/**
+	 * @var array Contains a bunch of properties that can not be modified.
+	 */
+    static $locked_properties = array(
+    	'root_path',
+    	'template_path'
     );
     
     /**
@@ -130,7 +142,8 @@ class PecTemplateResource {
      * @param	mixed	$value The data that should be set to the given array key
      */
     public function set($resource='', $value) {
-        if (array_key_exists($resource, $this->data)) {
+        if (array_key_exists($resource, $this->data) && 
+        	!in_array($resource, self::$locked_properties)) {
             $this->data[$resource] = $value;
         }
     }
