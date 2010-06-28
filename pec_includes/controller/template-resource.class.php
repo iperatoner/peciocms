@@ -16,7 +16,7 @@
  * If not, see <http://www.gnu.org/licenses/>.
  * 
  * @package		peciocms
- * @subpackage	pec_includes.controller
+ * @subpackage	pec_includes.controlle
  * @author		Immanuel Peratoner <immanuel.peratoner@gmail.com>
  * @copyright	2009-2010 Immanuel Peratoner
  * @license		http://www.gnu.de/documents/gpl-3.0.en.html GNU GPLv3
@@ -27,7 +27,7 @@
 /**
  * The PecTemplateResource holds the data that can be used in a template.
  */
-class PecTemplateResource {
+class PecTemplateResource extends PecAbstractResource {
     
 	/**
 	 * @var array An array of all the data that can be used.
@@ -83,9 +83,12 @@ class PecTemplateResource {
 	/**
 	 * @var array Contains a bunch of properties that can not be modified.
 	 */
-    static $locked_properties = array(
+    private static $locked_properties = array(
+    	'settings',
+    	'template',
+    	'template_path',
     	'root_path',
-    	'template_path'
+    	'current_page'
     );
     
     /**
@@ -110,43 +113,7 @@ class PecTemplateResource {
         
         $this->data['root_path'] = pec_root_path(false);
     }
-    
-    /**
-     * Returns the data of an array key.
-     * 
-     * @param	string	$resource The array key which's data should be returned, e.g. "sidebar_texts"
-     * @return	string The proper data
-     */
-    public function get($resource='') {
-        if (array_key_exists($resource, $this->data)) {
-            return $this->data[$resource];
-        }
-        else {
-            return '';
-        }
-    }
-    
-	    /**
-	     * Prints the data of an array key.
-	     * 
-	     * @param	string	$resource The array key which's data should be printed out, e.g. "sidebar_texts"
-	     */
-        public function out($resource='') {
-            echo $this->get($resource);
-        }
-    
-    /**
-     * Sets the data of an array key.
-     * 
-     * @param	string	$resource The array key which's data should be set, e.g. "sidebar_texts"
-     * @param	mixed	$value The data that should be set to the given array key
-     */
-    public function set($resource='', $value) {
-        if (array_key_exists($resource, $this->data) && 
-        	!in_array($resource, self::$locked_properties)) {
-            $this->data[$resource] = $value;
-        }
-    }
+
     
     /**
      * Generates and returns/prints all the available HTML head data including plugin head data.

@@ -1,7 +1,7 @@
 <?php
 
 /**
- * pec_classes/abstract-plugin.class.php - Abstract Plugin Class
+ * pec_classes/abstract/abstract-plugin.class.php - Abstract Plugin Class
  * 
  * Defines the class from which plugin will inherit.
  * 
@@ -16,7 +16,7 @@
  * If not, see <http://www.gnu.org/licenses/>.
  * 
  * @package		peciocms
- * @subpackage	pec_classes
+ * @subpackage	pec_classes.abstract
  * @author		Immanuel Peratoner <immanuel.peratoner@gmail.com>
  * @copyright	2009-2010 Immanuel Peratoner
  * @license		http://www.gnu.de/documents/gpl-3.0.en.html GNU GPLv3

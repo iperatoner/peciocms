@@ -1,9 +1,9 @@
 <?php
 
 /**
- * pec_includes/controller/managers/abstract-manager.class.php - Containing an abstract manager class
+ * pec_classes/abstract/abstract-handler.class.php - Containing an abstract handler class
  * 
- * Contains the PecAbstractManager which is the base class for creating/modifying the current view's available objects
+ * Contains the PecAbstractHandler which is the base class for creating/modifying the current view's available objects
  * 
  * LICENSE: This program is free software: you can redistribute it and/or modify it 
  * under the terms of the GNU General Public License as published by the 
@@ -16,7 +16,7 @@
  * If not, see <http://www.gnu.org/licenses/>.
  * 
  * @package		peciocms
- * @subpackage	pec_includes.controller.managers
+ * @subpackage	pec_classes.abstract
  * @author		Immanuel Peratoner <immanuel.peratoner@gmail.com>
  * @copyright	2009-2010 Immanuel Peratoner
  * @license		http://www.gnu.de/documents/gpl-3.0.en.html GNU GPLv3
@@ -25,10 +25,10 @@
  */
 
 /**
- * PecAbstractManager is the base class for all managers 
+ * PecAbstractHandler is the base class for all handlers 
  * that create and/or modify data for/of the current view.
  */
-class PecAbstractManager {
+class PecAbstractHandler {
     
 	/**
 	 * @var PecSetting $settings Pecio settings object.
@@ -55,7 +55,7 @@ class PecAbstractManager {
 
 	
     /**
-     * Creates a PecAbstractManager instance.
+     * Creates a PecAbstractHandler instance.
      */
     function __construct() {
     	global $pec_settings, $pec_database, $pec_localization;
@@ -67,7 +67,7 @@ class PecAbstractManager {
 
     
     /**
-     * Sets the current page data array for this manager. This can't be done in the `__construct` method, because managers are built before the `$current_page`-array is available.
+     * Sets the current page data array for this handler. This can't be done in the `__construct` method, because handlers are built before the `$current_page`-array is available.
      * 
      * @param	array	$current_page Holds all the relevant data belonging to the currently being viewed page
      */
@@ -81,7 +81,7 @@ class PecAbstractManager {
     /**
      * May update the PecTemplateResource with new data (e.g. the current article etc.)
      * 
-     * @param	PecTemplateResource	$template_resource Holds a lot of data (e.g. objects, articles, etc.) related to the current view
+     * @param	PecTemplateResource $template_resource Holds a lot of data (e.g. objects, articles, etc.) related to the current view
      * @return	array The updated PecTemplateResource
      */
     public function update_template_resource($template_resource) {

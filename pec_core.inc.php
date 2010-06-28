@@ -52,7 +52,7 @@ require_once(RELATIVE_BACK . 'pec_classes/user.class.php');
 
 require_once(RELATIVE_BACK . 'pec_classes/template.class.php');
 
-require_once(RELATIVE_BACK . 'pec_classes/abstract-plugin.class.php');
+require_once(RELATIVE_BACK . 'pec_classes/abstract/abstract-plugin.class.php');
 require_once(RELATIVE_BACK . 'pec_classes/plugin.class.php');
 
 require_once(RELATIVE_BACK . 'pec_includes/urls.inc.php');

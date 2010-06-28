@@ -56,6 +56,11 @@ $query_target = isset($_GET['target']) && !empty($_GET['target'])
 	: false;
 
 $controller = new PecSiteController($query_target);
+
+// TODO: We still need to create those handlers :D
+$controller->add_handler($handler_1);
+$controller->apply_handlers();
+
 $controller->prepare_view();
 $controller->display();
 
@@ -76,11 +81,7 @@ $controller->display();
  * 
  * THOUGHTS:
  * 
- * - Maybe dont give Managers the TemplateResource but another Resource object?
- * --> e.g. because of duplicate stuff like 'sitename_main' which is also in 'settings'
- * --> Data of the "other" Resource object could be easily merged into the TemplateResource by the SiteController
- * --> + implement base class `PecSiteResource` which provides basic functionalities for resource objects
- * - plugins should be able to hook their own managers into the controller. so they might be executed inside the update-method of the PluginManager
+ * TODO: - plugins should be able to hook their own managers into the controller. so they might be executed inside the update-method of the PluginManager
  * 
  */
 

@@ -61,13 +61,14 @@ class PecSiteController {
     
     
 	/**
-	 * @var PecTemplateResource		$template_resource, Template resource object which holds the generated resources for templates.
+	 * @var PecTemplateResource		$template_resource, Template resource object which holds easy to access data/objects related to the current view for templates.
 	 */
     private $template_resource;
     
     
+    // TODO: dont forget to think about how to document array keys. perhaps: @var array [articles_on_start=>array|false, article=>PecArticle|false] ...    
 	/**
-	 * @var array	$current_page Holds all the relevant data belonging to the currently being viewed page
+	 * @var array	$current_page Holds all the relevant low level data, e.g. target-/view-type, belonging to the currently being viewed page.
 	 */    
     private $current_page = array(
 		'target' => array(
@@ -79,23 +80,6 @@ class PecSiteController {
 			'sub' => '',
 			'data' => ''
 		)
-	);
-    
-	
-    // TODO: dont forget to think about how to document array keys. perhaps: @var array [articles_on_start=>array|false, article=>PecArticle|false] ...
-    // TODO: perhaps completely replace this array with TemplateResource
-	/**
-	 * @deprecated deprecated in favour of TemplateResource
-	 * @var array	$current_objects Holds objects that are set if they belong to the current view. Otherwise they are `false`.
-	 */
-    private $current_objects = array(
-	    'article' => false,
-	    'blogpost' => false,
-	    'blogcategory' => false,
-	    'blogtag' => false,
-	    'articles_on_start' => false,
-	    'blogposts' => false,
-	    'active_menupoints' => false
 	);
     
 	
@@ -135,17 +119,12 @@ class PecSiteController {
         // fill the `$current_page`-array with great data about our current view :)
         $this->current_page = $this->grab_view_data($query_target);
         
-        // TODO: As already mentioned somewhere else, objects should be loaded from the proper PecManagers.
-        // With a method like `grab_objects`. See index.php for more details
-        $this->load_object();
-        $this->plugins = PecPlugin::load();
-        
         $this->template = $this->settings->get_template();
         $this->template_file = self::$view_templates[ $this->current_page['view']['main'] ];
         
-        $this->template_resource = new PecTemplateResource($this->settings, $this->template, $this->current_page);  
+        $this->template_resource = new PecTemplateResource($this->settings, $this->template, $this->current_page);
     }
-    
+
     	
 	/**
 	 * Fills the prepopulated `$this->current_page`-array with data that belongs to the current view.
@@ -225,6 +204,27 @@ class PecSiteController {
 		}
 		
 		return $cp;
+    }
+    
+    
+	/**
+	 * Adds a handler that shall be applied to the template resource.
+	 * 
+	 * @param	mixed  $handler The handler object that should be applied
+	 */
+    public function add_handler($handler) {
+    	$handler->set_current_page($this->current_page);
+    	$this->handlers[] = $handler;
+    }
+    
+    
+	/**
+	 * Apply all available handlers to the template resource.
+	 */
+    public function apply_handlers() {
+    	foreach ($this->handlers as $handler) {
+    		$this->template_resource = $handler->update_template_resource($this->template_resource);
+    	}
     }
     
     
