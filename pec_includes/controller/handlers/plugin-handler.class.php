@@ -253,10 +253,21 @@ class PecPluginHandler extends PecAbstractHandler {
         			
 		            // INPUT ENABLED
 		            if ($p->get_property('input_enabled')) {
-		                $var_datas = grep_data_between('{%' . $p->get_property('variable') . '-(', ')%}', $string);
+		            	$var = $p->get_property('variable');
+		            	
+		                $matches = plugin_vars_match_all($var, $string);
 		                
-		                foreach ($var_datas as $var_data) {
-		                    $complete_var = '{%' . $p->get_property('variable') . '-(' . $var_data . ')%}';
+		            	// old style (deprecated)
+		                #$matches = grep_data_between('{%' . $var . '-(', ')%}', $string);
+		                
+		                foreach ($matches as $match) {
+		                	$complete_var =& $match[0];
+		                	$var_data =& $match[1];
+		                	
+		                	// old style (deprecated)
+		                	#$complete_var = '{%' . $var . '-(' . $match . ')%}';
+		                	#$var_data =& $match;
+		                	
 		                    $pos = strpos($string, $complete_var);
 		                    
 		                    if ($pos || is_integer($pos)) {

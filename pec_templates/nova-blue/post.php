@@ -1,4 +1,4 @@
-<?php include('pec_templates/' . $pecio->get('template')->get_directory_name() . '/header.php'); ?>
+<?php include $pecio->get('template_path_c') . 'header.php'; ?>
 
 <h2>
 	<a href="<?php echo $pecio->blogpost_url($pecio->get('blogpost')); ?>"><?php echo $pecio->get('blogpost')->get_title(); ?></a>
@@ -110,4 +110,4 @@
 </form>
 <?php } ?>
 
-<?php include('pec_templates/' . $pecio->get('template')->get_directory_name() . '/footer.php'); ?>
+<?php include $pecio->get('template_path_c') . 'footer.php'; ?>

@@ -505,8 +505,9 @@ class PecBlogPost {
         global $pec_database, $pec_settings;
         
         if ($post_page) {
-            $start_post_row_number = ($pec_settings->get_posts_per_page() * $post_page) - $pec_settings->get_posts_per_page();
-            $limit = " LIMIT " . $start_post_row_number . "," . $pec_settings->get_posts_per_page();
+        	$ppp = $pec_settings->get_posts_per_page();
+            $start_post_row_number = ($ppp * $post_page) - $ppp;
+            $limit = " LIMIT " . $start_post_row_number . "," . $ppp;
         }
         else {
             $limit = "";

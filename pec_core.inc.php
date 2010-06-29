@@ -23,41 +23,45 @@
  * @link		http://pecio-cms.com
  */
 
-require_once(RELATIVE_BACK . '_pec_config.inc.php');
-require_once(RELATIVE_BACK . 'pec_classes/database.class.php');
+// Before installation the config file does not exist
+if (file_exists(RELATIVE_BACK . CONFIG_DIR . CONFIG_FILE)) {
+	require_once RELATIVE_BACK . CONFIG_DIR . CONFIG_FILE;
+}
 
-require_once(RELATIVE_BACK . 'pec_classes/session.class.php');
+require_once RELATIVE_BACK . 'pec_classes/database.class.php';
 
-require_once(RELATIVE_BACK . 'pec_classes/settings.class.php');
+require_once RELATIVE_BACK . 'pec_classes/session.class.php';
 
-require_once(RELATIVE_BACK . 'pec_classes/locale.class.php');
+require_once RELATIVE_BACK . 'pec_classes/settings.class.php';
 
-require_once(RELATIVE_BACK . 'pec_classes/message-handler.class.php');
-require_once(RELATIVE_BACK . 'pec_includes/messages.inc.php');
+require_once RELATIVE_BACK . 'pec_classes/locale.class.php';
 
-require_once(RELATIVE_BACK . 'pec_classes/article.class.php');
+require_once RELATIVE_BACK . 'pec_classes/message-handler.class.php';
+require_once RELATIVE_BACK . 'pec_includes/messages.inc.php';
 
-require_once(RELATIVE_BACK . 'pec_classes/blog-post.class.php');
-require_once(RELATIVE_BACK . 'pec_classes/blog-comment.class.php');
-require_once(RELATIVE_BACK . 'pec_classes/blog-category.class.php');
-require_once(RELATIVE_BACK . 'pec_classes/blog-tag.class.php');
+require_once RELATIVE_BACK . 'pec_classes/article.class.php';
 
-require_once(RELATIVE_BACK . 'pec_classes/menupoint.class.php');
+require_once RELATIVE_BACK . 'pec_classes/blog-post.class.php';
+require_once RELATIVE_BACK . 'pec_classes/blog-comment.class.php';
+require_once RELATIVE_BACK . 'pec_classes/blog-category.class.php';
+require_once RELATIVE_BACK . 'pec_classes/blog-tag.class.php';
 
-require_once(RELATIVE_BACK . 'pec_classes/sidebartext.class.php');
-require_once(RELATIVE_BACK . 'pec_classes/sidebarlink.class.php');
-require_once(RELATIVE_BACK . 'pec_classes/sidebarlink-category.class.php');
+require_once RELATIVE_BACK . 'pec_classes/menupoint.class.php';
 
-require_once(RELATIVE_BACK . 'pec_classes/user.class.php');
+require_once RELATIVE_BACK . 'pec_classes/sidebartext.class.php';
+require_once RELATIVE_BACK . 'pec_classes/sidebarlink.class.php';
+require_once RELATIVE_BACK . 'pec_classes/sidebarlink-category.class.php';
 
-require_once(RELATIVE_BACK . 'pec_classes/template.class.php');
+require_once RELATIVE_BACK . 'pec_classes/user.class.php';
 
-require_once(RELATIVE_BACK . 'pec_classes/abstract/abstract-plugin.class.php');
-require_once(RELATIVE_BACK . 'pec_classes/plugin.class.php');
+require_once RELATIVE_BACK . 'pec_classes/template.class.php';
 
-require_once(RELATIVE_BACK . 'pec_includes/urls.inc.php');
-require_once(RELATIVE_BACK . 'pec_includes/counter.inc.php');
-require_once(RELATIVE_BACK . 'pec_includes/feed-creator/feedcreator.class.php');
+require_once RELATIVE_BACK . 'pec_classes/abstract/abstract-plugin.class.php';
+require_once RELATIVE_BACK . 'pec_classes/plugin.class.php';
+
+require_once RELATIVE_BACK . 'pec_includes/urls.inc.php';
+require_once RELATIVE_BACK . 'pec_includes/counter.inc.php';
+require_once RELATIVE_BACK . 'pec_includes/feed-creator/feedcreator.class.php';
 
 if (!defined('INSTALLATION')) {
 	$pec_database = new PecDatabase(DB_HOST, DB_USER, DB_PW, DB_NAME, DB_TYPE);
@@ -74,14 +78,7 @@ else {
 
     // permissions the directories and files need to have (r = recursive, nr = not recursive, f = file)
     $pec_core_permissions = array(
-        './' => array(
-        	'permission_before_install' => '777',
-        	'permission_after_install' => '777',
-        	'type' => 'nr',
-        	'display' => 'main'
-    	),
-    	
-        'pec_admin/' => array(
+        'pec_config/' => array(
         	'permission_before_install' => '777',
         	'permission_after_install' => '777',
         	'type' => 'nr',
@@ -122,27 +119,6 @@ else {
 	        	'type' => 'r',
 	        	'display' => 'sub'
 	    	),
-    	
-        'counter.txt' => array(
-        	'permission_before_install' => '777',
-        	'permission_after_install' => '777',
-        	'type' => 'f',
-        	'display' => 'main'
-    	),
-    	
-        'htaccess-sample' => array(
-        	'permission_before_install' => '777',
-        	'permission_after_install' => '644',
-        	'type' => 'f',
-        	'display' => 'main'
-    	),
-    	
-        '_pec_config.inc.php' => array(
-        	'permission_before_install' => '777',
-        	'permission_after_install' => '644',
-        	'type' => 'f',
-        	'display' => 'main'
-    	)
     );
 }
 

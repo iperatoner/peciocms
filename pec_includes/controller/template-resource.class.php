@@ -36,12 +36,12 @@ class PecTemplateResource extends PecAbstractResource {
         'current_page' => array(),
     
         'article' => false,
-        'articles' => false,
+        'articles' => array(),
     
         'blogpost' => false,
-        'blogposts' => false,
-    	'all_available_blogposts' => false,
-        'blogcomments' => false,
+        'blogposts' => array(),
+    	'all_available_blogposts' => array(),
+        'blogcomments' => array(),
         'blogcategory' => false,
         'blogtag' => false,
     
@@ -55,27 +55,28 @@ class PecTemplateResource extends PecAbstractResource {
     	'blog_older_entries_url' => false,
     	'blog_newer_entries_url' => false,
     
-    	'active_menupoints' => false,
+    	'active_menupoints' => array(),
         'complete_menu' => false,
         'root_menu' => false,
         'sub_menu' => false,
     
-        'sidebar_text_objects' => false,
-        'sidebar_linkcategory_objects' => false,
+        'sidebar_text_objects' => array(),
+        'sidebar_linkcategory_objects' => array(),
     
         'sidebar_texts' => false,
         'sidebar_links' => false,
 
     	'search_form' => false,
     
-    	'plugin_meta_instances' => false,
-    	'plugin_instances' => false,
+    	'plugin_meta_instances' => array(),
+    	'plugin_instances' => array(),
         'plugin_head_data' => false,
     
         'settings' => false,
 
         'template' => false,
         'template_path' => false,
+        'template_path_c' => false,
     
         'homepage_main_title' => false,
         'homepage_sub_title' => false,
@@ -114,8 +115,11 @@ class PecTemplateResource extends PecAbstractResource {
         $this->data['homepage_description'] = $settings->get_description();
         
         $this->data['root_path'] = pec_root_path(false);
+        
+        // For the lazy ones we create two references on the main and the sub view
+        $this->view_main =& $this->data['current_page']['view']['main'];
+        $this->view_sub =& $this->data['current_page']['view']['sub'];
     }
-
     
     /**
      * Generates and returns/prints all the available HTML head data including plugin head data.

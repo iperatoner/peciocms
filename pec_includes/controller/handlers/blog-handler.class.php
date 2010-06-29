@@ -103,7 +103,7 @@ class PecBlogHandler extends PecAbstractHandler {
             	);
             	
 	            // all available posts are needed for older / newer posts link, not only those from the current page
-	            $all_blogposts = PecBlogPost::load('category', $this->blogcategory, "WHERE post_status='1'", false, true);
+	            $all_blogposts_count = count(PecBlogPost::load('category', $this->blogcategory, "WHERE post_status='1'", false, true));
 	            
             	$template_resource->set('blogcategory', $this->blogcategory);
             }
@@ -126,9 +126,9 @@ class PecBlogHandler extends PecAbstractHandler {
                 );
             	
 	            // all available posts are needed for older / newer posts link, not only those from the current page
-	            $all_blogposts = PecBlogPost::load('tag', $this->blogtag, "WHERE post_status='1'", false, true);
+	            $all_blogposts_count = count(PecBlogPost::load('tag', $this->blogtag, "WHERE post_status='1'", false, true));
             
-                $template_resource->set('blogtag', $blogtag);
+                $template_resource->set('blogtag', $this->blogtag);
             }
             else {
                 $this->is_404 = true;
@@ -148,7 +148,15 @@ class PecBlogHandler extends PecAbstractHandler {
             );
             
             // all available posts are needed for older / newer posts link, not only those from the current page
-            $all_blogposts = PecBlogPost::load(0, false, $this->archive_data['where_condition'] . " AND post_status='1'", false, true);
+            // since we don't need to check for objects like categories/tags here, we can use a direct query for this
+            $this->database->db_connect();
+            $all_blogposts_count = $this->database->db_query(
+            	"SELECT COUNT(*) as total FROM " . DB_PREFIX . 
+            	"blogposts " . $this->archive_data['where_condition'] . " AND post_status='1'"
+            );
+            $all_blogposts_count = $this->database->db_fetch_array($all_blogposts_count);
+            $this->database->db_close_handle();
+            $all_blogposts_count = $all_blogposts_count['total'];
             
             $template_resource->set('blogarchive_day', $this->archive_data['day']);
             $template_resource->set('blogarchive_month', $this->archive_data['month']);
@@ -156,7 +164,6 @@ class PecBlogHandler extends PecAbstractHandler {
         }
         elseif ($view_main === SITE_VIEW_BLOG || 
         		$view_sub === SITE_VIEW_BLOG) {
-
             $blogposts = PecBlogPost::load(
             	'status', 
             	1,
@@ -166,7 +173,14 @@ class PecBlogHandler extends PecAbstractHandler {
             );
             
             // all available posts are needed for older / newer posts link, not only those from the current page
-            $all_blogposts = PecBlogPost::load('status', 1, false, false, true);
+            // since we don't need to check for objects like categories/tags here, we can use a direct query for this
+            $this->database->db_connect();
+            $all_blogposts_count = $this->database->db_query(
+            	"SELECT COUNT(*) as total FROM " . DB_PREFIX . "blogposts WHERE post_status='1'"
+            );
+            $all_blogposts_count = $this->database->db_fetch_array($all_blogposts_count);
+            $this->database->db_close_handle();
+            $all_blogposts_count = $all_blogposts_count['total'];
         }
         
         
@@ -176,7 +190,7 @@ class PecBlogHandler extends PecAbstractHandler {
         	$view_sub === SITE_VIEW_BLOGTAG || 
         	$view_sub === SITE_VIEW_BLOGARCHIVE) {
         		
-        	$available_blog_pages = $this->get_available_blog_pages($all_blogposts);
+        	$available_blog_pages = $this->get_available_blog_pages($all_blogposts_count);
         	
         	$older_entries_page = $this->get_older_entries_page($current_blog_page, $available_blog_pages);
         	$newer_entries_page = $this->get_newer_entries_page($current_blog_page, $available_blog_pages);
@@ -261,20 +275,12 @@ class PecBlogHandler extends PecAbstractHandler {
     /**
 	 * Calculates the available blog pages
 	 * 
-	 * @param	array	$blogposts Array of available blogposts
+	 * @param	integer	$all_blogposts_count Number of available blog posts
 	 * @return	integer	Number of blog pages
 	 */
-    public function get_available_blog_pages($all_blogposts) {
-    	if ($all_blogposts) {
-    		$post_count = count($all_blogposts);
-    		$available_pages =  $post_count / $this->settings->get_posts_per_page();
-    		if ($post_count % $this->settings->get_posts_per_page() != 0) {
-    			$available_pages = (int)$available_pages + 1;
-    		}
-    		else {
-    			$available_pages = (int)$available_pages;
-    		}
-    		
+    public function get_available_blog_pages($all_blogposts_count) {
+    	if ($all_blogposts_count) {
+    		$available_pages = ceil($all_blogposts_count / $this->settings->get_posts_per_page());
     		return $available_pages;
     	}
     	else {
@@ -406,10 +412,12 @@ class PecBlogHandler extends PecAbstractHandler {
                     
                     // ALRIGHT
                     else {
-                        $comment = new PecBlogComment(NULL_ID, $post->get_id(), $_POST['comment_title'], $_POST['comment_author'], 
-                                                      $_POST['comment_email'], time(), $_POST['comment_content'], false);
-                          $comment->save();
-                        //pec_redirect(create_blogpost_url($post, false, 'message=comment_created#messages'), 0, false, false);
+                        $comment = new PecBlogComment(
+                        	NULL_ID, $post->get_id(), $_POST['comment_title'], $_POST['comment_author'], 
+                            $_POST['comment_email'], time(), $_POST['comment_content'], false
+                        );
+                        $comment->save();
+                        pec_redirect(create_blogpost_url($post, false, 'message=comment_created#messages'), 0, false, false);
                     }
                 }
             }

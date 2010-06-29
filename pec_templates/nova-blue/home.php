@@ -1,4 +1,4 @@
-<?php include('pec_templates/' . $pecio->get('template')->get_directory_name() . '/header.php'); ?>
+<?php include $pecio->get('template_path_c') . 'header.php'; ?>
 
 <?php 
 foreach ($pecio->get('articles') as $a) { 
@@ -7,8 +7,8 @@ foreach ($pecio->get('articles') as $a) {
 }
 
 if ($pecio->get('blogposts')) {
-    include('pec_templates/' . $pecio->get('template')->get_directory_name() . '/blog-data.php');
+    include $pecio->get('template_path_c') . 'blog-data.php';
 }
 ?>
 
-<?php include('pec_templates/' .$pecio->get('template')->get_directory_name() . '/footer.php'); ?>
+<?php include $pecio->get('template_path_c') . 'footer.php'; ?>

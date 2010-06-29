@@ -144,10 +144,13 @@ function define_constants($relative_directory_level=0, $directory='') {
     
     define('MAIN_FEED_FILE', 'feed.xml');
     
-    define('PEC_VERSION_FILE', pec_root_path() . 'pec_admin/version.txt');
+    define('CONFIG_DIR', 'pec_config/');
+    define('CONFIG_FILE', 'config.inc.php');
+    
+    define('PEC_VERSION_FILE', pec_root_path() . CONFIG_DIR . 'version.txt');
     define('PEC_UPDATE_FILE', pec_root_path() . 'pec_admin/pec_update/update-cms.inc.php');
     
-    define('COUNTER_FILE', pec_root_path() . 'counter.txt');
+    define('COUNTER_FILE', pec_root_path() . CONFIG_DIR . 'counter.txt');
     define('COUNTER_IP_EXPIRE', 86400);
     
     define('GLOBAL_TEMPLATE_ID', 'USE_NORMAL_TEMPLATE_72f49da274cf1cd79d2c');
@@ -416,13 +419,15 @@ function str_all_pos($str, $substr, $i=false) {
 /**
  * Greps string between two substrings in the given string
  * 
+ * @deprecated deprecated since we now use regex' for plugin parsing
+ * 
  * @param	string $start_string Substring that is before the substring to be grepped. e.g. "{%"
  * @param	string $end_string Substring that is after the substring to be grepped, e.g. "%}"
  * @param	string $string String to grep in, e.g. "This is a {%nice%} string with {%another%} substring to grep."
  * @return	array All found strings, e.g. Array("nice", "another")
  */
 function grep_data_between($start_string, $end_string, $string) {
-    $datas = array();
+    $matches = array();
     $start_string_char_count = strlen($start_string);
     $positions = str_all_pos($string, $start_string);
     foreach ($positions as $pos) {
@@ -430,10 +435,29 @@ function grep_data_between($start_string, $end_string, $string) {
         $data_start = substr($string, $data_start_pos);
         $data_end_pos = strpos($data_start, $end_string);
         $data = substr($data_start, 0, $data_end_pos);
-        $datas[] = $data;
+        $matches[] = $data;
     }
-    return $datas;
+    return $matches;
 }
+
+
+/**
+ * Uses a regular expression to find plugin variable matches in a string
+ * 
+ * @param	string $var Plugin variable to search for
+ * @param	string $str Substring to search in
+ * @return  array All found matches
+ */
+function plugin_vars_match_all($var, $str) {
+	preg_match_all(
+		'/\{%' . $var . '\-\(([a-zA-Z0-9_,#\?=\[\]\-!&;:\<\>\040]*)\)%\}/',
+		$str,
+		$matches,
+		PREG_SET_ORDER
+	);
+	return $matches;
+}
+
 
 /**
  * Checks if a string ends with the given substring

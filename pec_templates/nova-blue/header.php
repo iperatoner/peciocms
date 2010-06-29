@@ -6,25 +6,25 @@
     <title>
     	<?php $pecio->out('homepage_main_title'); ?> &raquo; 
     	<?php 
-    		if ($pecio->get('site_view') == SITE_VIEW_ARTICLE) {
+    		if ($pecio->view_main == SITE_VIEW_ARTICLE) {
     			echo $pecio->get('article')->get_title();
     		}
-    		elseif ($pecio->get('site_view') == SITE_VIEW_BLOG) {
+    		elseif ($pecio->view_main == SITE_VIEW_BLOG) {
     			echo 'Blog';
     		}
-    		elseif ($pecio->get('site_view') == SITE_VIEW_BLOGPOST) {
+    		elseif ($pecio->view_main == SITE_VIEW_BLOGPOST) {
     			echo $pecio->get('blogpost')->get_title();
     		}
-    		elseif ($pecio->get('site_view') == SITE_VIEW_BLOGCATEGORY) {
+    		elseif ($pecio->view_main == SITE_VIEW_BLOGCATEGORY) {
     			echo 'Category: ' . $pecio->get('blogcategory')->get_name();
     		}
-    		elseif ($pecio->get('site_view') == SITE_VIEW_BLOGTAG) {
+    		elseif ($pecio->view_main == SITE_VIEW_BLOGTAG) {
     			echo 'Tag: ' . $pecio->get('blogtag')->get_name();
     		}
-    		elseif ($pecio->get('site_view') == SITE_VIEW_BLOGARCHIVE) {
+    		elseif ($pecio->view_main == SITE_VIEW_BLOGARCHIVE) {
 			    echo 'Blog Archive';
     		}
-    		elseif ($pecio->get('site_view') == SITE_VIEW_HOME) {
+    		elseif ($pecio->view_main == SITE_VIEW_HOME) {
     			echo 'Home';
     		}
     	?>
@@ -34,10 +34,10 @@
     
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
-    <link rel="stylesheet" type="text/css" href="<?php $pecio->out('template_path'); ?>/css/layout.css"/>
-    <link rel="stylesheet" type="text/css" href="<?php $pecio->out('template_path'); ?>/css/format.css"/>
-    <link rel="stylesheet" type="text/css" href="<?php $pecio->out('template_path'); ?>/css/menu.css"/>
-    <link rel="stylesheet" type="text/css" href="<?php $pecio->out('template_path'); ?>/css/blog.css"/>
+    <link rel="stylesheet" type="text/css" href="<?php $pecio->out('template_path'); ?>css/layout.css"/>
+    <link rel="stylesheet" type="text/css" href="<?php $pecio->out('template_path'); ?>css/format.css"/>
+    <link rel="stylesheet" type="text/css" href="<?php $pecio->out('template_path'); ?>css/menu.css"/>
+    <link rel="stylesheet" type="text/css" href="<?php $pecio->out('template_path'); ?>css/blog.css"/>
      
   </head>
 

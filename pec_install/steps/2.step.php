@@ -11,7 +11,7 @@ if (isset($_GET['perform_actions']) && empty($_GET['perform_actions'])) {
 		$db_host = $db_type == TYPE_MYSQL ? $_POST['db_host'] : '';
 		$db_user = $db_type == TYPE_MYSQL ? $_POST['db_user'] : '';
 		$db_pw 	 = $db_type == TYPE_MYSQL ? $_POST['db_pw'] : '';
-		$db_name = $db_type == TYPE_MYSQL ? $_POST['db_name'] : $_POST['db_file'];
+		$db_name = $db_type == TYPE_MYSQL ? $_POST['db_name'] : CONFIG_DIR . $_POST['db_file'];
 		
 		$update_password = random_string(5);
 		
@@ -31,7 +31,7 @@ define('CMS_UPDATE_PASSWORD', '$update_password');
 ?>";
 		
 		try {
-			file_put_contents('../_pec_config.inc.php', $config_data);
+			file_put_contents('../' . CONFIG_DIR . CONFIG_FILE, $config_data);
 		}
 		catch (Exception $e) {
 			die('<strong>Error:</strong> ' . $e->getMessage()); 

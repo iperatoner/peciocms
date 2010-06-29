@@ -50,11 +50,17 @@ class PecArticleHandler extends PecAbstractHandler {
     		
     		case SITE_VIEW_HOME:
 	            $articles_on_start = PecArticle::load('onstart', 1, '', true);
-	                
-	            $template = $articles_on_start[0]->get_template();
 	            
-	            $template_resource->set('template', $template);
-            	$template_resource->set('articles', $articles_on_start);
+	            if (count($articles_on_start) > 0) {
+	            	$template = $articles_on_start[0]->get_template();
+	            	
+		            $template_resource->set('template', $template);
+	            	$template_resource->set('articles', $articles_on_start);
+	            }
+	            else {
+	            	$template_resource->set('articles', array());
+	            }
+	            
 	            break;
     		
 	        

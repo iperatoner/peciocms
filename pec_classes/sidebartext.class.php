@@ -168,9 +168,8 @@ class PecSidebarText {
         if (in_array($article->get_id(), $this->text_onarticles_array)) {
             return true;
         }
-        else {
-            return false;
-        }
+    	
+    	return false;
     }
     
     public function save() {
@@ -252,7 +251,7 @@ class PecSidebarText {
         }
         
         /* if loading all texts visible on a given article object */
-        elseif (array_key_exists($by, self::$by_obj_array)) {
+        elseif ($by && $data && array_key_exists($by, self::$by_obj_array)) {
             $all_texts = self::load();
             $texts_on_given_data = array();
             

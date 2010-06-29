@@ -18,7 +18,7 @@ foreach ($pecio->get('blogposts') as $bp) {
 				$start = true;
 				foreach ($bp->get_categories(TYPE_OBJ_ARRAY) as $c) {
 					if (!$start) {
-						echo ', ';	
+						echo ', ';
 					}
 					$start = false;
 					echo '<a href="' . $pecio->blogcategory_url($c) . '">' . $c->get_name() . '</a>';	

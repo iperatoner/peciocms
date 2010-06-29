@@ -1,8 +1,12 @@
 <?php
 
-$htaccess = file_get_contents('../htaccess-sample');
+// Creating htaccess-sample file
+$htaccess = require 'htaccess.inc.php';
 $htaccess = str_replace('{%PECIO_PATH%}', pec_root_path(false), $htaccess);
-file_put_contents('../htaccess-sample', $htaccess);
+file_put_contents('../' . CONFIG_DIR . 'htaccess-sample', $htaccess);
+
+// Creating file for the visitor counter
+file_put_contents(COUNTER_FILE, '');
 
 pec_set_installed_version(PEC_VERSION);
 

@@ -27,14 +27,14 @@
 $start_time = microtime(true);
 
 /* core includes, creating core objects */
-require_once('pec_includes/functions.inc.php');
-require_once('common.inc.php');
+require_once 'pec_includes/functions.inc.php';
+require_once 'common.inc.php';
 
 if (!file_exists(PEC_VERSION_FILE)){
 	pec_redirect('pec_install/install.php');
 }
 
-require_once('pec_core.inc.php');
+require_once 'pec_core.inc.php';
 /* core include end */
 
 
@@ -42,26 +42,25 @@ if (file_exists('pec_install')) {
 	die(PecMessageHandler::get('install_directory_remove_required'));
 }
 
-require_once('pec_classes/search.class.php');
+require_once 'pec_classes/search.class.php';
 
-require_once('pec_includes/controller/site-controller.class.php');
+require_once 'pec_includes/controller/site-controller.class.php';
 
-require_once('pec_classes/abstract/abstract-resource.class.php');
-require_once('pec_includes/controller/template-resource.class.php');
+require_once 'pec_classes/abstract/abstract-resource.class.php';
+require_once 'pec_includes/controller/template-resource.class.php';
 
-require_once('pec_classes/abstract/abstract-handler.class.php');
-require_once('pec_includes/controller/handlers/article-handler.class.php');
-require_once('pec_includes/controller/handlers/blog-handler.class.php');
-require_once('pec_includes/controller/handlers/sidebar-handler.class.php');
-require_once('pec_includes/controller/handlers/menu-handler.class.php');
-require_once('pec_includes/controller/handlers/plugin-handler.class.php');
+require_once 'pec_classes/abstract/abstract-handler.class.php';
+require_once 'pec_includes/controller/handlers/article-handler.class.php';
+require_once 'pec_includes/controller/handlers/sidebar-handler.class.php';
+require_once 'pec_includes/controller/handlers/menu-handler.class.php';
+require_once 'pec_includes/controller/handlers/plugin-handler.class.php';
 
 // increase the visitor counter
 count_site_visit();
 
 $query_target = isset($_GET['target']) && !empty($_GET['target']) 
 	? $_GET['target']
-	: false;
+	: QUERY_TARGET_HOME;
 
 $controller = new PecSiteController(&$query_target);
 
@@ -71,8 +70,10 @@ $controller->add_handler(&$article_handler);
 
 if ($query_target && (
         $query_target === QUERY_TARGET_BLOG || 
-        $query_target === QUERY_TARGET_HOME
+        ($query_target === QUERY_TARGET_HOME && $pec_settings->get_blog_onstart())
     )) {
+    	
+	require_once 'pec_includes/controller/handlers/blog-handler.class.php';
     
     $blog_handler = new PecBlogHandler();
     $controller->add_handler(&$blog_handler);

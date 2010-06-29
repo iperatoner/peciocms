@@ -1,4 +1,7 @@
-RewriteEngine On
+<?php
+
+return
+'RewriteEngine On
 
 # Home
 RewriteRule ^home\/?$																{%PECIO_PATH%}index.php?target=home [L]
@@ -75,5 +78,6 @@ RewriteRule ^(blog|home)/archive/y-([\d]{4})/d-([\d]{2})\/?$								{%PECIO_PATH
 RewriteRule ^(blog|home)/archive/d-([\d]{2})\/?$											{%PECIO_PATH%}index.php?target=$1&day=$2 [L]
 RewriteRule ^(blog|home)/archive/m-([\d]{2})\/?$											{%PECIO_PATH%}index.php?target=$1&month=$2 [L]
 RewriteRule ^(blog|home)/archive/y-([\d]{4})\/?$											{%PECIO_PATH%}index.php?target=$1&year=$2 [L]
+';
 
-
+?>

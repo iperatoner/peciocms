@@ -215,32 +215,34 @@ class PecSidebarHandler extends PecAbstractHandler {
 	 * @return	array		Sidebar objects that are assigned to the given articles
 	 */
     public function load_sidebar_objects_for_articles($articles, $object_loader_code) {
-    	// replacing {%VAR%} with the article-variable name we will use inside the foreach-loop
-    	$object_loader_code = str_replace('{%VAR%}', '$a', $object_loader_code);
-
     	// objects that are on the given articles
     	$objects = array();
-    	
-        // object ids that are already added to the array (because some objects might be assigned to multiple articles)
-    	$objects_already_in_array = array();
-    	#var_dump($articles);
-        foreach ($articles as $a) {
-            eval('$objects_for_article = ' . $object_loader_code);
-            
-            // removing duplicates from this array (of this article)
-            foreach ($objects_for_article as $key => $o) {
-            	
-            	// if this object was already added by another article, remove it
-                if (in_array($o->get_id(), $objects_already_in_array)) {
-                    unset($objects_for_article[$key]);
-                }
-                else {
-                    $objects_already_in_array[] = $o->get_id();
-                }
-            }
-                
-            $objects = array_merge($objects, $objects_for_article);
-        }
+
+    	if (count($articles) > 0) {
+	    	// replacing {%VAR%} with the article-variable name we will use inside the foreach-loop
+	    	$object_loader_code = str_replace('{%VAR%}', '$a', $object_loader_code);
+	    	
+	        // object ids that are already added to the array (because some objects might be assigned to multiple articles)
+	    	$objects_already_in_array = array();
+	    	
+	    	foreach ($articles as $a) {
+	            eval('$objects_for_article = ' . $object_loader_code);
+	            
+	            // removing duplicates from this array (of this article)
+	            foreach ($objects_for_article as $key => $o) {
+	            	
+	            	// if this object was already added by another article, remove it
+	                if (in_array($o->get_id(), $objects_already_in_array)) {
+	                    unset($objects_for_article[$key]);
+	                }
+	                else {
+	                    $objects_already_in_array[] = $o->get_id();
+	                }
+	            }
+	                
+	            $objects = array_merge($objects, $objects_for_article);
+	        }
+		}
         
         return $objects;
     }

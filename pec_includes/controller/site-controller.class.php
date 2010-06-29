@@ -265,14 +265,16 @@ class PecSiteController {
         }
         
     	// here we need to get the canonicalized template path, so that we can include it with `include()`
-        $template_path_c = $this->template_resource->get('template')->get_directory_path() . $this->template_file;
+        $template_path_c = $this->template_resource->get('template')->get_directory_path();
         
         // that's the "normal" path to the template directory
         $template_path = $this->template_resource->get('template')->get_directory_path(false);
+        
         $this->template_resource->set('template_path', $template_path);
+        $this->template_resource->set('template_path_c', $template_path_c);
         
         $pecio = $this->template_resource;
-        pec_display($pecio, $template_path_c);
+        pec_display($pecio, $template_path_c . $this->template_file);
     }
 }
 
