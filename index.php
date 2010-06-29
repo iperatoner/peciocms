@@ -43,10 +43,15 @@ if (file_exists('pec_install')) {
 }
 
 require_once('pec_classes/search.class.php');
-require_once('pec_includes/frontend.inc.php');
 require_once('pec_includes/controller/site-controller.class.php');
-require_once('pec_includes/controller/resource-generator.class.php');
 require_once('pec_includes/controller/template-resource.class.php');
+
+require_once('pec_classes/abstract/abstract-handler.class.php');
+require_once('pec_includes/controller/handlers/article-handler.class.php');
+require_once('pec_includes/controller/handlers/blog-handler.class.php');
+require_once('pec_includes/controller/handlers/sidebar-handler.class.php');
+require_once('pec_includes/controller/handlers/menu-handler.class.php');
+require_once('pec_includes/controller/handlers/plugin-handler.class.php');
 
 // increase the visitor counter
 count_site_visit();
@@ -57,33 +62,22 @@ $query_target = isset($_GET['target']) && !empty($_GET['target'])
 
 $controller = new PecSiteController($query_target);
 
-// TODO: We still need to create those handlers :D
-$controller->add_handler($handler_1);
+$article_handler = new PecArticleHandler();
+$blog_handler = new PecBlogHandler();
+$sidebar_handler = new PecSidebarHandler();
+$menu_handler = new PecMenuHandler();
+$plugin_handler = new PecPluginHandler();
+
+$controller->add_handler(&$article_handler);
+$controller->add_handler(&$blog_handler);
+$controller->add_handler(&$sidebar_handler);
+$controller->add_handler(&$menu_handler);
+$controller->add_handler(&$plugin_handler);
+
 $controller->apply_handlers();
 
-$controller->prepare_view();
 $controller->display();
 
-
-// CREATE ALL THOSE NEW MANAGERS HERE AND PUT THEM INTO THE SITE CONTROLLER
-/*
- * Some ideas for the new managers:
- * 
- * PecManager has a method `grab_objects`. PecManager also has all the current page data.
- * so `grab_objects` would update the `current_objects` array with array_merge if we're on the correct view
- * The PecArticleManager e.g. would update the `article`-key with a 404 Article if the current view data doesnt match any articles
- * 
- * FLEXIBILITY!
- * 
- * Give the `PecSiteController` a method like `add_object_manager` whith that you can add all kinds of managers that should be used by the SiteController.
- * The SiteController then calls `grab_objects` on all those managers (foreach loop or so).
- * 
- * 
- * THOUGHTS:
- * 
- * TODO: - plugins should be able to hook their own managers into the controller. so they might be executed inside the update-method of the PluginManager
- * 
- */
 
 
 /*

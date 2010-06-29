@@ -42,7 +42,7 @@ class PecSidebarText {
     
     function __construct($id=0, $title, $content, $visibility, $onarticles, $sort=1) {
         global $pec_database;
-        $this->database = $pec_database;
+        $this->database =& $pec_database;
         
         /* escaping input data */
         $escaped_data = $this->database->db_string_protection(

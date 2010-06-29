@@ -46,7 +46,7 @@ class PecMenuPoint {
     
     function __construct($id=0, $superroot_id, $root_id, $name, $target_type, $target_data, $sort=1, $slug=false) {
         global $pec_database;
-        $this->database = $pec_database;
+        $this->database =& $pec_database;
         
         /* escaping input data */
         $escaped_data = $this->database->db_string_protection(

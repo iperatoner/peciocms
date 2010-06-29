@@ -26,7 +26,7 @@
 
 class PecDatabase {
 
-    private $db_host, $db_user, $db_pw, $db_name, $db_handle, $db_typ, $cached_queries;
+    private $db_host, $db_user, $db_pw, $db_name, $db_handle, $db_type, $cached_queries;
 
     function __construct($host, $user, $pw, $name, $type=TYPE_MYSQL, $connect=false) {
         $this->db_type = $type;
@@ -37,7 +37,7 @@ class PecDatabase {
             $this->db_pw   = $pw;
             $this->db_name = $name;
         }
-        elseif ($type == TYPE_SQLITE) {
+        elseif ($type === TYPE_SQLITE) {
             $this->db_host = '';
             $this->db_user = '';
             $this->db_pw   = '';
@@ -56,7 +56,7 @@ class PecDatabase {
     }
     
     public function db_check_connection() {
-        if ($this->db_type == TYPE_MYSQL) {
+        if ($this->db_type === TYPE_MYSQL) {
             try {
             	mysql_connect($this->db_host, $this->db_user, $this->db_pw);
             }
@@ -73,22 +73,22 @@ class PecDatabase {
             
             return true;
         }
-        elseif ($this->db_type == TYPE_SQLITE) {
+        elseif ($this->db_type === TYPE_SQLITE) {
             try {
             	sqlite_open($this->db_name);
             }
             catch (Exception $e) {
             	return false;
-            }       	
+            }
             return true;       
         }
     }
 
     public function db_connect() {
-        if ($this->db_type == TYPE_MYSQL) {
+        if ($this->db_type === TYPE_MYSQL) {
             $this->db_handle = mysql_connect($this->db_host, $this->db_user, $this->db_pw);
         }
-        elseif ($this->db_type == TYPE_SQLITE) {
+        elseif ($this->db_type === TYPE_SQLITE) {
             $this->db_handle = sqlite_open($this->db_name);            
         }
         
@@ -129,7 +129,7 @@ class PecDatabase {
             elseif ($this->db_type === TYPE_SQLITE) {
                 $esc = htmlspecialchars(sqlite_escape_string(stripslashes($str)));            
             }
-            $return_data = $esc;
+            $return_data =& $esc;
         }
         else {
             $escaped_strings = array();
@@ -142,7 +142,7 @@ class PecDatabase {
                     $escaped_strings[$key] = htmlspecialchars(sqlite_escape_string(stripslashes($str)));            
                 }
             }
-            $return_data = $escaped_strings;
+            $return_data =& $escaped_strings;
         }
         
         $this->db_close_handle();
@@ -166,7 +166,7 @@ class PecDatabase {
         		/*$this->cached_queries[$query] = $resource;
         	}*/
         }
-        elseif ($this->db_type == TYPE_SQLITE) {
+        elseif ($this->db_type === TYPE_SQLITE) {
             // replace INT with INTEGER if using sqlite
             if (strpos($query, 'INT')) {
                 $query = str_replace(' INT ', ' INTEGER ', $query);
@@ -205,7 +205,7 @@ class PecDatabase {
 
     public function db_fetch_array($resource) {
         if ($this->db_type === TYPE_MYSQL) {
-            return mysql_fetch_array($resource);
+            return mysql_fetch_assoc($resource);
         }
         elseif ($this->db_type === TYPE_SQLITE) {
             return sqlite_fetch_array($resource);

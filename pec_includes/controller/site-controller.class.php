@@ -46,22 +46,16 @@ class PecSiteController {
 	 * @var PecLocale	$localization Pecio's localization object.
 	 */
     private $localization;
-	
-    
-	/**
-	 * @var array			$plugins All available plugins (meta data of them).
-	 */
-    private $plugins;
     
     
 	/**
-	 * @var	string			$template_file, Current template file, depends on the current site view.
+	 * @var	string			$template_file Current template file, depends on the current site view.
 	 */
     private $template_file;
     
     
 	/**
-	 * @var PecTemplateResource		$template_resource, Template resource object which holds easy to access data/objects related to the current view for templates.
+	 * @var PecTemplateResource		$template_resource Template resource object which holds easy to access data/objects related to the current view for templates.
 	 */
     private $template_resource;
     
@@ -112,17 +106,16 @@ class PecSiteController {
     	global $pec_database, $pec_settings, $pec_localization;
         
     	// basic pecio objects
-    	$this->database = $pec_database;
-        $this->settings = $pec_settings;
-        $this->localization = $pec_localization;
+    	$this->database =& $pec_database;
+        $this->settings =& $pec_settings;
+        $this->localization =& $pec_localization;
 
         // fill the `$current_page`-array with great data about our current view :)
         $this->current_page = $this->grab_view_data($query_target);
         
-        $this->template = $this->settings->get_template();
         $this->template_file = self::$view_templates[ $this->current_page['view']['main'] ];
         
-        $this->template_resource = new PecTemplateResource($this->settings, $this->template, $this->current_page);
+        $this->template_resource = new PecTemplateResource($this->settings, $this->current_page);
     }
 
     	
@@ -223,281 +216,65 @@ class PecSiteController {
 	 */
     public function apply_handlers() {
     	foreach ($this->handlers as $handler) {
-    		$this->template_resource = $handler->update_template_resource($this->template_resource);
+    		$this->template_resource = $handler->apply($this->template_resource);
+    		if ($handler->check_404()) {
+    			$this->set_404();
+    		}
+    	}
+    }
+    
+    
+	/**
+	 * Sets current low level view data to 404 and applies a 404 article to the template resource
+	 */
+    public function set_404() {
+    	// change site views
+    	$this->current_page['view']['main'] = SITE_VIEW_404;
+    	$this->current_page['view']['sub'] = SITE_VIEW_404;
+    	
+    	// change view template
+        $this->template_file = self::$view_templates[ $this->current_page['view']['main'] ];
+        
+        // create 404 article
+        $article = new PecArticle(NULL_ID, $this->localization->get('LABEL_404_PAGE_TITLE'), $this->localization->get('LABEL_404_PAGE_CONTENT'), 0);
+        
+        // update the template resource
+    	$this->template_resource->set('current_page', $this->current_page);
+    	$this->template_resource->set('article', $article);
+    	
+    	// ah, and don't forget to mass update the all handler's current_page var
+    	$this->mass_update_current_page();
+    }
+    
+    
+	/**
+	 * Update all current_page arrays that are in the handlers
+	 */
+    public function mass_update_current_page() {
+    	foreach ($this->handlers as $handler) {
+    		$handler->set_current_page($this->current_page);
     	}
     }
     
     
     /**
-	 * Loads the proper objects (depending on the current site view) into the correct class vars.
-	 */
-    private function load_object() {
-        if ($this->site_view == SITE_VIEW_HOME) {
-            $this->articles_on_start = PecArticle::load('onstart', 1, '', true);
-                
-            $this->template = $this->articles_on_start[0]->get_template();
-            $this->template_resource->set('template', $this->template);
-        }
-        
-        // loading the currently active object, depending on the active view
-        if ($this->site_view == SITE_VIEW_ARTICLE) {
-            $by = $this->settings->get_load_by();
-            
-            // check if it exists
-            if (PecArticle::exists($by, $this->current_target_data)) {
-                $this->current_article = PecArticle::load($by, $this->current_target_data);
-                $this->current_target_data = $this->current_article->get_id();
-                
-            	$this->template = $this->current_article->get_template();
-            	$this->template_resource->set('template', $this->template);
-            }
-            else {
-                $this->site_view = SITE_VIEW_404;
-                $this->sub_site_view = SITE_VIEW_404;
-                $this->template_resource->set('site_view', SITE_VIEW_404);
-                $this->template_resource->set('sub_site_view', SITE_VIEW_404);
-            }
-        }
-        elseif ($this->site_view == SITE_VIEW_BLOGPOST) {
-            $by = $this->settings->get_load_by();
-            
-            // check if it exists
-            if (PecBlogPost::exists($by, $this->current_view_data)) {
-                $this->current_blogpost = PecBlogPost::load($by, $this->current_view_data);
-                $this->current_view_data = $this->current_blogpost->get_id();
-            }
-            else {
-                $this->site_view = SITE_VIEW_404;
-                $this->sub_site_view = SITE_VIEW_404;
-                $this->template_resource->set('site_view', SITE_VIEW_404);
-                $this->template_resource->set('sub_site_view', SITE_VIEW_404);
-            }
-        }
-        elseif ($this->site_view == SITE_VIEW_BLOGCATEGORY || $this->sub_site_view == SITE_VIEW_BLOGCATEGORY) {
-            $by = $this->settings->get_load_by();
-            
-            // check if it exists
-            if (PecBlogCategory::exists($by, $this->current_view_data)) {
-                $this->current_blogcategory = PecBlogCategory::load($by, $this->current_view_data);
-                $this->current_view_data = $this->current_blogcategory->get_id();
-            }
-            else {
-                $this->site_view = SITE_VIEW_404;
-                $this->sub_site_view = SITE_VIEW_404;
-                $this->template_resource->set('site_view', SITE_VIEW_404);
-                $this->template_resource->set('sub_site_view', SITE_VIEW_404);
-            }
-        }
-        elseif ($this->site_view == SITE_VIEW_BLOGTAG || $this->sub_site_view == SITE_VIEW_BLOGTAG) {
-            $by = $this->settings->get_load_by();
-            
-            // check if it exists
-            if (PecBlogTag::exists($by, $this->current_view_data)) {
-                $this->current_blogtag = PecBlogTag::load($by, $this->current_view_data);
-                $this->current_view_data = $this->current_blogtag->get_id();
-            }
-            else {
-                $this->site_view = SITE_VIEW_404;
-                $this->sub_site_view = SITE_VIEW_404;
-                $this->template_resource->set('site_view', SITE_VIEW_404);
-                $this->template_resource->set('sub_site_view', SITE_VIEW_404);
-            }
-        }
-    }
-    
-    /**
-	 * Prepares the template data for the current view by creating the menus, 
-	 * sidebar texts and additional objects depending on the current site view and 
-	 * puts them into the template resource object.
-	 */
-    public function prepare_view() {
-        $plugin_head_data = $this->resource_generator->get_plugin_head_data();
-        
-        $complete_menu = $this->resource_generator->generate_menu();
-        $root_menu = $this->resource_generator->generate_menu(0, 0, false);
-        $sub_menu = $this->resource_generator->generate_current_submenus();
-        
-        $sidebar_texts = $this->resource_generator->parse_plugins($this->resource_generator->generate_texts());
-        $sidebar_links = $this->resource_generator->generate_links();
-        
-        $search_form = PecSearch::get_search_form();
-        
-        $this->template_resource->set('plugin_head_data', $plugin_head_data);
-        $this->template_resource->set('complete_menu', $complete_menu);
-        $this->template_resource->set('root_menu', $root_menu);
-        $this->template_resource->set('sub_menu', $sub_menu);
-        $this->template_resource->set('sidebar_texts', $sidebar_texts);
-        $this->template_resource->set('sidebar_links', $sidebar_links);
-        $this->template_resource->set('search_form', $search_form);
-        
-        // used to load the posts for the current page of the blog
-        $current_blog_page = isset($_GET['p']) && !empty($_GET['p']) ? (int)$_GET['p'] : 1;
-        
-        // HOME
-        if ($this->site_view == SITE_VIEW_HOME) {
-            $this->articles_on_start = $this->resource_generator->parse_plugins_of('articles', $this->articles_on_start);
-            $this->template_resource->set('articles', $this->articles_on_start);
-        }        
-        
-        // ARTICLE
-        if ($this->site_view == SITE_VIEW_ARTICLE) {
-            $this->current_article = $this->resource_generator->parse_plugins_of('article', $this->current_article);
-            $this->template_resource->set('article', $this->current_article);
-        }
-        
-        // SEARCH
-        elseif ($this->site_view == SITE_VIEW_SEARCH) {
-            $search = new PecSearch($this->current_view_data);
-            $search->do_search();
-            $article = $search->get();    
-            
-            $this->template_resource->set('article', $article);
-        }
-        
-        // BLOG
-        elseif ($this->site_view == SITE_VIEW_BLOG || $this->sub_site_view == SITE_VIEW_BLOG) {
-            $blogposts = PecBlogPost::load('status', 1, "ORDER BY post_timestamp DESC", $current_blog_page, true);
-            $blogposts = $this->resource_generator->parse_plugins_of('blogposts', $blogposts);
-            
-            // Not sure if we need that
-           	#$blogcomments = PecBlogComment::load('post', $this->current_blogpost, 'ORDER BY comment_timestamp ASC');
-            
-            // all available posts are needed for older / newer posts link, not only those from the current page
-            $available_blogposts = PecBlogPost::load('status', 1, false, false, true);
-        	
-            $this->template_resource->set('blogposts', $blogposts);
-            
-            // Not sure if we need that
-            #$this->template_resource->set('blogcomments', $blogcomments);
-        }
-        
-        // POST
-        elseif ($this->site_view == SITE_VIEW_BLOGPOST) {        	
-            $this->resource_generator->process_new_comment($this->current_blogpost);
-            $this->current_blogpost = $this->resource_generator->parse_plugins_of('blogpost', $this->current_blogpost);
-            
-            // Not sure if we need that
-           	#$blogcomments = PecBlogComment::load('post', $this->current_blogpost, 'ORDER BY comment_timestamp ASC');
-           	
-            $this->template_resource->set('blogpost', $this->current_blogpost);
-            
-            // Not sure if we need that
-            #$this->template_resource->set('blogcomments', $blogcomments);
-        }
-        
-        // CATEGORY
-        elseif ($this->site_view == SITE_VIEW_BLOGCATEGORY || $this->sub_site_view == SITE_VIEW_BLOGCATEGORY) {
-            $blogposts = PecBlogPost::load('category', $this->current_blogcategory, "WHERE post_status='1' ORDER BY post_timestamp DESC", $current_blog_page, true);
-            $blogposts = $this->resource_generator->parse_plugins_of('blogposts', $blogposts);
-            
-            // all available posts are needed for older / newer posts link, not only those from the current page
-            $available_blogposts = PecBlogPost::load('category', $this->current_blogcategory, "WHERE post_status='1'", false, true);
-        	
-            $this->template_resource->set('blogposts', $blogposts);
-            $this->template_resource->set('blogcategory', $this->current_blogcategory);
-        }
-        
-        // TAG
-        elseif ($this->site_view == SITE_VIEW_BLOGTAG || $this->sub_site_view == SITE_VIEW_BLOGTAG) {
-            $blogposts = PecBlogPost::load('tag', $this->current_blogtag, "WHERE post_status='1' ORDER BY post_timestamp DESC", $current_blog_page, true);
-            $blogposts = $this->resource_generator->parse_plugins_of('blogposts', $blogposts);
-            
-            // all available posts are needed for older / newer posts link, not only those from the current page
-            $available_blogposts = PecBlogPost::load('tag', $this->current_blogtag, "WHERE post_status='1'", false, true);
-            
-            $this->template_resource->set('blogposts', $blogposts);
-            $this->template_resource->set('blogtag', $this->current_blogtag);
-        }
-        
-        // ARCHIVE
-        elseif ($this->site_view == SITE_VIEW_BLOGARCHIVE || $this->sub_site_view == SITE_VIEW_BLOGARCHIVE) {
-            // default, human and rewrite all have the same query structure for archives
-            $where_condition = "WHERE ";
-            
-            // needed to check if there is the first condition after this WHERE keyword
-            $some_condition = false;
-            
-            $day = false; $month = false; $year = false;
-            
-            // generate the where condition wether day, month or year is given
-            if (isset($_GET['day']) && !empty($_GET['day'])) {
-            	$day = $this->database->db_string_protection($_GET['day']);
-                $where_condition .= "post_day='" . $day . "'";
-                $some_condition = true;
-            }
-            if (isset($_GET['month']) && !empty($_GET['month'])) {
-                if ($some_condition) {
-                    $where_condition .= " AND ";
-                }
-                else {                        
-                    $some_condition = true;    
-                }
-            	$month = $this->database->db_string_protection($_GET['month']);
-                $where_condition .= "post_month='" . $month . "'";                
-            }
-            if (isset($_GET['year']) && !empty($_GET['year'])) {
-                if ($some_condition) {
-                    $where_condition .= " AND ";
-                }
-                else {                        
-                    $some_condition = true;    
-                }
-            	$year = $this->database->db_string_protection($_GET['year']);
-                $where_condition .= "post_year='" . $year . "'";                
-            }
-            
-            $blogposts = PecBlogPost::load(0, false, $where_condition . " AND post_status='1' ORDER BY post_timestamp DESC", $current_blog_page, true);
-            $blogposts = $this->resource_generator->parse_plugins_of('blogposts', $blogposts);
-            
-            // all available posts are needed for older / newer posts link, not only those from the current page
-            $available_blogposts = PecBlogPost::load(0, false, $where_condition . " AND post_status='1'", false, true);
-        	
-            $this->template_resource->set('blogarchive_day', $day);
-            $this->template_resource->set('blogarchive_month', $month);
-            $this->template_resource->set('blogarchive_year', $year);
-            
-            $this->template_resource->set('blogposts', $blogposts);
-        }
-        
-        // 404
-        elseif ($this->site_view == SITE_VIEW_404) {
-            $article = new PecArticle(NULL_ID, $this->pec_localization->get('LABEL_404_PAGE_TITLE'), $this->pec_localization->get('LABEL_404_PAGE_CONTENT'), 0);
-            $this->template_resource->set('article', $article);
-        }
-        
-        // OLDER / NEWER POSTS LINK
-        if ($this->sub_site_view == SITE_VIEW_BLOG || $this->sub_site_view == SITE_VIEW_BLOGCATEGORY || 
-        	$this->sub_site_view == SITE_VIEW_BLOGTAG || $this->sub_site_view == SITE_VIEW_BLOGARCHIVE) {
-        		
-        	$available_blog_pages = $this->resource_generator->get_available_blog_pages($available_blogposts);
-        	
-        	$older_entries_page = $this->resource_generator->get_older_entries_page($current_blog_page, $available_blog_pages);
-        	$newer_entries_page = $this->resource_generator->get_newer_entries_page($current_blog_page, $available_blog_pages);
-        	
-        	$older_entries_url = $this->resource_generator->get_blog_page_url($older_entries_page);
-        	$newer_entries_url = $this->resource_generator->get_blog_page_url($newer_entries_page);
-        	
-        	$this->template_resource->set('blog_older_entries_page', $older_entries_page);
-        	$this->template_resource->set('blog_newer_entries_page', $newer_entries_page);
-        	$this->template_resource->set('blog_older_entries_url', $older_entries_url);
-        	$this->template_resource->set('blog_newer_entries_url', $newer_entries_url);
-        }
-    }
-    
-    /**
 	 * Includes the proper template file.
 	 */
     public function display() {
+        
+        function pec_display($pecio, $template_path_c) {
+        	include($template_path_c);
+        }
+        
     	// here we need to get the canonicalized template path, so that we can include it with `include()`
-        $template_path_c = $this->template->get_directory_path() . $this->template_file;
+        $template_path_c = $this->template_resource->get('template')->get_directory_path() . $this->template_file;
         
         // that's the "normal" path to the template directory
-        $template_path = $this->template->get_directory_path(false);
+        $template_path = $this->template_resource->get('template')->get_directory_path(false);
         $this->template_resource->set('template_path', $template_path);
         
         $pecio = $this->template_resource;
-        
-        include($template_path_c);
+        pec_display($pecio, $template_path_c);
     }
 }
 

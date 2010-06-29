@@ -44,7 +44,7 @@ class PecBlogComment {
     
     function __construct($id=0, $post_id, $title, $author, $email, $timestamp, $content, $from_database=true) {
         global $pec_database;
-        $this->database = $pec_database;
+        $this->database =& $pec_database;
         
         /* escaping input data */
         $escaped_data = $this->database->db_string_protection(
@@ -290,7 +290,9 @@ class PecBlogComment {
             $all_comments = self::load('', false, $query_add);
             $comments_on_given_data = array();
             
-            foreach ($all_comments as $comment) {
+            $all_comments_num = count($all_comments);
+            for ($i=0; $i<$all_comments_num; ++$i) {
+            	$comment =& $all_comments[$i];
                 if ($by == 'post') {
                     if ($comment->belongs_to_post($data)) {
                         $comments_on_given_data[] = $comment;

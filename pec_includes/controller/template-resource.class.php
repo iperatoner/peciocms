@@ -40,6 +40,7 @@ class PecTemplateResource extends PecAbstractResource {
     
         'blogpost' => false,
         'blogposts' => false,
+    	'all_available_blogposts' => false,
         'blogcomments' => false,
         'blogcategory' => false,
         'blogtag' => false,
@@ -48,6 +49,7 @@ class PecTemplateResource extends PecAbstractResource {
         'blogarchive_month' => false,
         'blogarchive_year' => false,
     
+    	'available_blog_pages' => false,
     	'blog_older_entries_page' => false,
     	'blog_newer_entries_page' => false,
     	'blog_older_entries_url' => false,
@@ -58,16 +60,20 @@ class PecTemplateResource extends PecAbstractResource {
         'root_menu' => false,
         'sub_menu' => false,
     
+        'sidebar_text_objects' => false,
+        'sidebar_linkcategory_objects' => false,
+    
         'sidebar_texts' => false,
         'sidebar_links' => false,
-        'search_form' => false,
+
+    	'search_form' => false,
     
     	'plugin_meta_instances' => false,
     	'plugin_instances' => false,
         'plugin_head_data' => false,
     
         'settings' => false,
-    
+
         'template' => false,
         'template_path' => false,
     
@@ -85,24 +91,20 @@ class PecTemplateResource extends PecAbstractResource {
 	 */
     private static $locked_properties = array(
     	'settings',
-    	'template',
-    	'template_path',
-    	'root_path',
-    	'current_page'
+    	'root_path'
     );
     
     /**
      * Creates a PecTemplateResource instance.
      * 
      * @param	PecSettings	$settings Pecio's settings
-     * @param	PecTemplate	$template Pecio's template
      * @param	array		$current_page Relevant data for the current page (rather low level data)
      */
-    function __construct($settings, $template, $current_page) {
+    function __construct($settings, $current_page) {
         $this->data['settings'] = $settings;
         
-        $this->data['template'] = $template;
-        $this->data['template_path'] = $template->get_directory_path(false);
+        $this->data['template'] = $settings->get_template();
+        $this->data['template_path'] = $this->data['template']->get_directory_path(false);
         
         $this->data['current_page'] = $current_page;    
         
@@ -131,19 +133,21 @@ class PecTemplateResource extends PecAbstractResource {
             <meta name="keywords" content="' . $this->data['settings']->get_tags() . '" />
             <meta name="generator" content="pecio cms ' . PEC_VERSION . '" />
             
-            <script type="text/javascript" src="' . pec_root_path(false) . 'pec_admin/pec_style/js/mootools/mootools-core.js"></script>
-            <script type="text/javascript" src="' . pec_root_path(false) . 'pec_admin/pec_style/js/mootools/mootools-more.js"></script>
-            <script type="text/javascript" src="' . pec_root_path(false) . 'pec_admin/pec_style/js/main-animations.js"></script>
+            <script type="text/javascript" src="' . $this->get('root_path') . 'pec_admin/pec_style/js/mootools/mootools-core.js"></script>
+            <script type="text/javascript" src="' . $this->get('root_path') . 'pec_admin/pec_style/js/mootools/mootools-more.js"></script>
+            <script type="text/javascript" src="' . $this->get('root_path') . 'pec_admin/pec_style/js/main-animations.js"></script>
             
             <link rel="stylesheet" type="text/css" href="' . pec_root_path(false) . 'pec_admin/pec_style/css/misc.css" />
             
         ';
         
+        $sub_view =& $this->data['current_page']['view']['sub'];
+        
         // feeds
-        if ($this->data['sub_site_view'] == SITE_VIEW_BLOG || $this->data['sub_site_view'] == SITE_VIEW_ARCHIVE) {
+        if ($sub_view === SITE_VIEW_BLOG || $sub_view === SITE_VIEW_ARCHIVE) {
         	$head_data .= '<link rel="alternate" type="application/rss+xml"  href="' . create_blog_feed_url() . '" title="Blog Feed" />';
         }
-        elseif ($this->data['sub_site_view'] == SITE_VIEW_BLOGCATEGORY && $this->data['blogcategory']) {
+        elseif ($sub_view === SITE_VIEW_BLOGCATEGORY && $this->data['blogcategory']) {
         	$head_data .= '<link 
         		rel="alternate" 
         		type="application/rss+xml"
@@ -151,7 +155,7 @@ class PecTemplateResource extends PecAbstractResource {
         		title="' . $pec_localization->get('LABEL_GENERAL_CATEGORY') . ' ' . $this->data['blogcategory']->get_name() . ' Feed" 
         	/>';
         }
-        elseif ($this->data['sub_site_view'] == SITE_VIEW_BLOGTAG && $this->data['blogtag']) {
+        elseif ($sub_view === SITE_VIEW_BLOGTAG && $this->data['blogtag']) {
         	$head_data .= '<link 
         		rel="alternate" 
         		type="application/rss+xml"
@@ -194,7 +198,7 @@ class PecTemplateResource extends PecAbstractResource {
     public function get_plugin_object($class_name='') {
     	$plugin = PecPlugin::load('class_name', $class_name);
     	if ($plugin) {                
-    		eval('$plugin_instance = new ' . $plugin->get_property('class_name') . '($plugin, $this->data["site_view"], $this->data["sub_site_view"]);');
+    		$plugin_instance = $this->data['plugin_instances'][$class_name];
     	}
     	else {
     		$plugin_instance = false;
@@ -307,7 +311,7 @@ class PecTemplateResource extends PecAbstractResource {
      */
     public function blogcategory_url($category, $home='not_set') {
     	// if the home-var is not set, we will automatically decide depending on the Site View
-    	$home = $home == 'not_set' ? $this->data['site_view'] == SITE_VIEW_HOME : $home;
+    	$home = $home == 'not_set' ? $this->data['current_page']['view']['main'] == SITE_VIEW_HOME : $home;
         return create_blogcategory_url($category, false, $home);
     }
     
@@ -319,7 +323,7 @@ class PecTemplateResource extends PecAbstractResource {
      * @return string Blog tag URL
      */
     public function blogtag_url($tag, $home='not_set') {
-    	$home = $home == 'not_set' ? $this->data['site_view'] == SITE_VIEW_HOME : $home;
+    	$home = $home == 'not_set' ? $this->data['current_page']['view']['main'] == SITE_VIEW_HOME : $home;
         return create_blogtag_url($tag, false, $home);
     }
     
@@ -333,7 +337,7 @@ class PecTemplateResource extends PecAbstractResource {
      * @return string Blog archive URL
      */
     public function blogarchive_url($day, $month, $year, $home='not_set') {
-    	$home = $home == 'not_set' ? $this->data['site_view'] == SITE_VIEW_HOME : $home;
+    	$home = $home == 'not_set' ? $this->data['current_page']['view']['main'] == SITE_VIEW_HOME : $home;
         return create_blogarchive_url($day, $month, $year, false, $home);
     }
     

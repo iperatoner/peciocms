@@ -36,13 +36,13 @@ function create_home_url() {
     
     $url_type = $pec_settings->get_url_type();
     
-    if ($url_type == URL_TYPE_DEFAULT) {
+    if ($url_type === URL_TYPE_DEFAULT) {
         $url = pec_root_url() . 'index.php?target=' . QUERY_TARGET_HOME;
     }
-    elseif ($url_type == URL_TYPE_HUMAN) {
+    elseif ($url_type === URL_TYPE_HUMAN) {
         $url = pec_root_url() . 'index.php?target=' . QUERY_TARGET_HOME;
     }
-    elseif ($url_type == URL_TYPE_REWRITE) {
+    elseif ($url_type === URL_TYPE_REWRITE) {
         $url = pec_root_url() . QUERY_TARGET_HOME;
     }
     
@@ -60,13 +60,13 @@ function create_article_url($article) {
     
     $url_type = $pec_settings->get_url_type();
     
-    if ($url_type == URL_TYPE_DEFAULT) {
+    if ($url_type === URL_TYPE_DEFAULT) {
         $url = pec_root_url() . 'index.php?target=' . QUERY_TARGET_ARTICLE . '&id=' . $article->get_id();
     }
-    elseif ($url_type == URL_TYPE_HUMAN) {
+    elseif ($url_type === URL_TYPE_HUMAN) {
         $url = pec_root_url() . 'index.php?target=' . QUERY_TARGET_ARTICLE . '&id=' . $article->get_slug();
     }
-    elseif ($url_type == URL_TYPE_REWRITE) {
+    elseif ($url_type === URL_TYPE_REWRITE) {
         $url = pec_root_url() . QUERY_TARGET_ARTICLE . '/' . $article->get_slug();
     }
     
@@ -83,13 +83,13 @@ function create_search_url() {
     
     $url_type = $pec_settings->get_url_type();
     
-    if ($url_type == URL_TYPE_DEFAULT) {
+    if ($url_type === URL_TYPE_DEFAULT) {
         $url = pec_root_url() . 'index.php';
     }
-    elseif ($url_type == URL_TYPE_HUMAN) {
+    elseif ($url_type === URL_TYPE_HUMAN) {
         $url = pec_root_url() . 'index.php';
     }
-    elseif ($url_type == URL_TYPE_REWRITE) {
+    elseif ($url_type === URL_TYPE_REWRITE) {
         $url = pec_root_url() . QUERY_TARGET_SEARCH . '/';
     }
     
@@ -109,15 +109,15 @@ function create_blog_url($page=false, $home=false) {
     $url_type = $pec_settings->get_url_type();
     $query_target = $home ? QUERY_TARGET_HOME : QUERY_TARGET_BLOG;
     
-    if ($url_type == URL_TYPE_DEFAULT) {
+    if ($url_type === URL_TYPE_DEFAULT) {
         $url = pec_root_url() . 'index.php?target=' . $query_target;
         $url .= $page !== false ? '&p=' . $page : ''; 
     }
-    elseif ($url_type == URL_TYPE_HUMAN) {
+    elseif ($url_type === URL_TYPE_HUMAN) {
         $url = pec_root_url() . 'index.php?target=' . $query_target;
         $url .= $page !== false ? '&p=' . $page : ''; 
     }
-    elseif ($url_type == URL_TYPE_REWRITE) {
+    elseif ($url_type === URL_TYPE_REWRITE) {
         $url = pec_root_url() . $query_target;
         $url .= $page !== false ? '/p/' . $page : ''; 
     }
@@ -138,17 +138,17 @@ function create_blogpost_url($post, $new_comment=false, $additional_vars=false) 
     
     $url_type = $pec_settings->get_url_type();
     
-    if ($url_type == URL_TYPE_DEFAULT) {
+    if ($url_type === URL_TYPE_DEFAULT) {
         $url = pec_root_url() . 'index.php?target=' . QUERY_TARGET_BLOG . '&post_id=' . $post->get_id();
         $url .= $new_comment ? '&action=new-comment' : '';
         $url .= $additional_vars ? '&' . $additional_vars : '';
     }
-    elseif ($url_type == URL_TYPE_HUMAN) {
+    elseif ($url_type === URL_TYPE_HUMAN) {
         $url = pec_root_url() . 'index.php?target=' . QUERY_TARGET_BLOG . '&post_id=' . $post->get_slug();
         $url .= $new_comment ? '&action=new-comment' : '';
         $url .= $additional_vars ? '&' . $additional_vars : '';
     }
-    elseif ($url_type == URL_TYPE_REWRITE) {
+    elseif ($url_type === URL_TYPE_REWRITE) {
         $url = pec_root_url() . QUERY_TARGET_BLOG . '/post/' . $post->get_slug();
         $url .= $new_comment ? '/new-comment' : '';
         $url .= $additional_vars ? '/?' . $additional_vars : '';
@@ -171,15 +171,15 @@ function create_blogcategory_url($category, $page=false, $home=false) {
     $url_type = $pec_settings->get_url_type();
     $query_target = $home ? QUERY_TARGET_HOME : QUERY_TARGET_BLOG;
     
-    if ($url_type == URL_TYPE_DEFAULT) {
+    if ($url_type === URL_TYPE_DEFAULT) {
         $url = pec_root_url() . 'index.php?target=' . $query_target . '&category=' . $category->get_id();
         $url .= $page !== false ? '&p=' . $page : ''; 
     }
-    elseif ($url_type == URL_TYPE_HUMAN) {
+    elseif ($url_type === URL_TYPE_HUMAN) {
         $url = pec_root_url() . 'index.php?target=' . $query_target . '&category=' . $category->get_slug();
         $url .= $page !== false ? '&p=' . $page : ''; 
     }
-    elseif ($url_type == URL_TYPE_REWRITE) {
+    elseif ($url_type === URL_TYPE_REWRITE) {
         $url = pec_root_url() . $query_target . '/category/' . $category->get_slug();
         $url .= $page !== false ? '/p/' . $page : ''; 
     }
@@ -201,15 +201,15 @@ function create_blogtag_url($tag, $page=false, $home=false) {
     $url_type = $pec_settings->get_url_type();
     $query_target = $home ? QUERY_TARGET_HOME : QUERY_TARGET_BLOG;
     
-    if ($url_type == URL_TYPE_DEFAULT) {
+    if ($url_type === URL_TYPE_DEFAULT) {
         $url = pec_root_url() . 'index.php?target=' . $query_target . '&tag=' . $tag->get_id();
         $url .= $page !== false ? '&p=' . $page : ''; 
     }
-    elseif ($url_type == URL_TYPE_HUMAN) {
+    elseif ($url_type === URL_TYPE_HUMAN) {
         $url = pec_root_url() . 'index.php?target=' . $query_target . '&tag=' . $tag->get_slug();
         $url .= $page !== false ? '&p=' . $page : ''; 
     }
-    elseif ($url_type == URL_TYPE_REWRITE) {
+    elseif ($url_type === URL_TYPE_REWRITE) {
         $url = pec_root_url() . $query_target . '/tag/' . $tag->get_slug();
         $url .= $page !== false ? '/p/' . $page : ''; 
     }
@@ -233,7 +233,7 @@ function create_blogarchive_url($day=false, $month=false, $year=false, $page=fal
     $url_type = $pec_settings->get_url_type();
     $query_target = $home ? QUERY_TARGET_HOME : QUERY_TARGET_BLOG;
     
-    if ($url_type == URL_TYPE_DEFAULT) {
+    if ($url_type === URL_TYPE_DEFAULT) {
         $day     = $day      ? '&day='      . $day   : '';
         $month     = $month ? '&month=' . $month : '';
         $year     = $year  ? '&year='  . $year  : '';
@@ -241,7 +241,7 @@ function create_blogarchive_url($day=false, $month=false, $year=false, $page=fal
         $url = pec_root_url() . 'index.php?target=' . $query_target . $day . $month . $year;
         $url .= $page !== false ? '&p=' . $page : ''; 
     }
-    elseif ($url_type == URL_TYPE_HUMAN) {
+    elseif ($url_type === URL_TYPE_HUMAN) {
         $day     = $day      ? '&day='   .   $day   : '';
         $month     = $month ? '&month=' . $month : '';
         $year     = $year  ? '&year='  .  $year  : '';
@@ -249,7 +249,7 @@ function create_blogarchive_url($day=false, $month=false, $year=false, $page=fal
         $url = pec_root_url() . 'index.php?target=' . $query_target . $day . $month . $year;
         $url .= $page !== false ? '&p=' . $page : ''; 
     }
-    elseif ($url_type == URL_TYPE_REWRITE) {
+    elseif ($url_type === URL_TYPE_REWRITE) {
         $day     = $day      ? 'd-' . $day   . '/' : '';
         $month     = $month ? 'm-' . $month . '/' : '';
         $year     = $year  ? 'y-' . $year  . '/' : '';
@@ -272,13 +272,13 @@ function create_404_url($salt='0') {
     
     $url_type = $pec_settings->get_url_type();
     
-    if ($url_type == URL_TYPE_DEFAULT) {
+    if ($url_type === URL_TYPE_DEFAULT) {
         $url = pec_root_url() . 'index.php?target=' . QUERY_TARGET_ARTICLE . '&id=' . $salt;
     }
-    elseif ($url_type == URL_TYPE_HUMAN) {
+    elseif ($url_type === URL_TYPE_HUMAN) {
         $url = pec_root_url() . 'index.php?target=' . QUERY_TARGET_ARTICLE . '&id=' . random_string(9);
     }
-    elseif ($url_type == URL_TYPE_REWRITE) {
+    elseif ($url_type === URL_TYPE_REWRITE) {
         $url = pec_root_url() . QUERY_TARGET_ARTICLE . '/' . random_string(9);
     }
     

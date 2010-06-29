@@ -29,30 +29,86 @@
  */
 abstract class PecAbstractPlugin {
     
-    protected $database, $settings, $session, $localization, $plugin_meta, $site_view, $sub_site_view;
+	/**
+	 * @var PecSetting $settings Pecio settings object.
+	 */
+    protected $settings;
+    
+    
+	/**
+	 * @var PecSetting $settings Pecio settings object.
+	 */
+    protected $settings;
+    
+    
+	/**
+	 * @var PecSession	$session Pecio's session object.
+	 */
+    protected $session;
+    
+    
+	/**
+	 * @var PecLocale	$localization Pecio's localization object.
+	 */
+    protected $localization;
+    
+    
+	/**
+	 * @var array	$current_page Holds all the relevant data belonging to the currently being viewed page
+	 */
+	protected $current_page;
+	
+    
+	/**
+	 * @var PecPlugin	$plugin_meta This plugin's meta data object
+	 */
+    protected  $plugin_meta;
     
     
     /**
      * Creates a PecAbstractPlugin instance.
-     * 
-     * @param	PecPlugin	$plugin_meta Meta data of this plugin
-     * @param	string		$site_view The current site view
-     * @param	string		$sub_site_view The current sub site view
      */
-    function __construct($plugin_meta, $site_view=false, $sub_site_view=false) {
-    					 	
+    function __construct() {
         global $pec_database, $pec_settings, $pec_session, $pec_localization;
         
-        $this->database = $pec_database;
-        $this->settings = $pec_settings;
-        $this->session = $pec_session;
-        $this->localization = $pec_localization;
-        
-        $this->plugin_meta = $plugin_meta;
-        
-        $this->site_view = $site_view;
-        $this->sub_site_view = $sub_site_view;
+        $this->database =& $pec_database;
+        $this->settings =& $pec_settings;
+        $this->session =& $pec_session;
+        $this->localization =& $pec_localization;
     }
+
+    
+    /**
+     * Sets the meta data object for this plugin.
+     * 
+     * @param	PecPlugin	$plugin_meta Meta data object of this plugin
+     */
+    final public function set_plugin_meta($plugin_meta) {
+    	$this->plugin_meta = $plugin_meta;
+    }
+
+    
+    /**
+     * Returns the meta data object of this plugin.
+     * 
+     * @return	PecPlugin	Meta data object of this plugin
+     */
+    final public function get_plugin_meta() {
+    	return $this->plugin_meta;
+    }
+
+    
+    /**
+     * Sets the current page data array for this plugin.
+     * 
+     * @param	array	$current_page Holds all the relevant data belonging to the currently being viewed page
+     */
+    final public function set_current_page($current_page) {
+    	if (is_array($current_page)) {
+    		$this->current_page = $current_page;
+    	}
+    }
+    
     
     /**
      * May return data to replace the plugin's variable
@@ -61,6 +117,7 @@ abstract class PecAbstractPlugin {
      * @return	string Return data to replace the plugin's variable
      */
     abstract public function run($var_data='');
+    
     
     /**
      * May return data to place into the template's <head> section

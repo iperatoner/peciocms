@@ -31,7 +31,7 @@ class PecSearch {
     
     function __construct($search_term) {
     	global $pec_localization;
-        $this->pec_localization = $pec_localization;
+        $this->pec_localization =& $pec_localization;
     	
         $this->search_term = $search_term;
         

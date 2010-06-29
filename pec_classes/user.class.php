@@ -69,7 +69,7 @@ class PecUser {
                          $permission_blogcomments, $permission_users, $permission_plugins, 
                          $permission_templates, $permission_settings, $slug=false, $plain=true) {
         global $pec_database;
-        $this->database = $pec_database;
+        $this->database =& $pec_database;
         
         /* escaping input data */
         $escaped_data = $this->database->db_string_protection(

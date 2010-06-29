@@ -33,13 +33,13 @@ class PecAbstractResource {
     /**
 	 * @var array An array of all the data that is in the resource
 	 */
-    private $data = array();
+    protected $data = array();
     
     
 	/**
 	 * @var array Contains properties that can not be modified.
 	 */
-    private static $locked_properties = array();
+    protected static $locked_properties = array();
 	
     
     /**

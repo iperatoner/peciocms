@@ -55,7 +55,7 @@ class PecBlogPost {
     function __construct($id=0, $timestamp, $year, $month, $day, $author_id, $title, $content_cut, 
                          $content, $tags, $categories, $comments_allowed, $status, $slug=false) {
         global $pec_database;
-        $this->database = $pec_database;
+        $this->database =& $pec_database;
         
         /* escaping input data */
         $escaped_data = $this->database->db_string_protection(
@@ -278,11 +278,11 @@ class PecBlogPost {
     }
     
     public function set_categories($categories, $type=TYPE_ARRAY) {
-        if ($type == TYPE_FLAT) {
+        if ($type === TYPE_FLAT) {
             $this->post_categories = $categories;
             $this->post_categories_array = flat_to_array($categories);
         }
-        elseif ($type == TYPE_ARRAY) {
+        elseif ($type === TYPE_ARRAY) {
             if (!empty($categories)) {
                 $this->post_categories_array = $categories;
                 $this->post_categories = array_to_flat($categories);
@@ -292,7 +292,7 @@ class PecBlogPost {
                 $this->post_categories = array_to_flat($this->post_categories_array);
             }
         }
-        elseif ($type == TYPE_OBJ_ARRAY) {
+        elseif ($type === TYPE_OBJ_ARRAY) {
             $this->post_categories_array = array();
             foreach ($categories as $c) {
                 $this->post_categories_array[] = $c->get_id();
@@ -302,15 +302,15 @@ class PecBlogPost {
     }
     
     public function set_tags($tags, $type=TYPE_ARRAY) {
-        if ($type == TYPE_FLAT) {
+        if ($type === TYPE_FLAT) {
             $this->post_tags = $tags;
             $this->post_tags_array = flat_to_array($tags);
         }
-        elseif ($type == TYPE_ARRAY) {
+        elseif ($type === TYPE_ARRAY) {
             $this->post_tags_array = $tags;
             $this->post_tags = array_to_flat($tags);
         }
-        elseif ($type == TYPE_OBJ_ARRAY) {
+        elseif ($type === TYPE_OBJ_ARRAY) {
             $this->post_tags_array = array();
             foreach ($tags as $t) {
                 $this->post_tags_array[] = $t->get_id();
@@ -364,7 +364,7 @@ class PecBlogPost {
     }
     
     public function from_author($author) {
-        if ($author->get_id() == $this->post_author_id) {
+        if ($author->get_id() === $this->post_author_id) {
             return true;
         }
         else {
@@ -554,10 +554,13 @@ class PecBlogPost {
                 $count_added_posts = 0;
             }
             
-            foreach ($all_posts as $post) {
-                if ($by == 'tag' && $post->has_tag($data) || 
-                    $by == 'category' && $post->in_category($data) ||
-                    $by == 'author' && $post->from_author($data)) {
+            $all_posts_num = count($all_posts);
+            for ($i=0; $i<$all_posts_num; ++$i) {
+            	$post =& $all_posts[$i];
+            	
+                if ($by === 'tag' && $post->has_tag($data) || 
+                    $by === 'category' && $post->in_category($data) ||
+                    $by === 'author' && $post->from_author($data)) {
                         
                     if ($post_page) {
                         if ($current_post_number > $start_post_row_number && 
@@ -637,14 +640,16 @@ class PecBlogPost {
     		$home = $pec_settings->get_blog_onstart();
     		$items = array();
     		
-    		foreach ($posts as $p) {
+    		$post_num = count($posts);
+    		for ($i=0; $i<$post_num; ++$i) {
+    			$p_ref =& $posts[$i];
     			$item = new FeedItem();
-				$item->title = $p->get_title();
-				$item->link = create_blogpost_url($p);
-				$item->description = $p->get_content_cut() . $p->get_content();
+				$item->title = $p_ref->get_title();
+				$item->link = create_blogpost_url($p_ref);
+				$item->description = $p_ref->get_content_cut() . $p_ref->get_content();
 				$item->source = convert_ampersands_to_entities(create_blog_url(false, $home));
-				$item->author = $p->get_author()->get_email();
-				$item->date = $p->get_timestamp();
+				$item->author = $p_ref->get_author()->get_email();
+				$item->date = $p_ref->get_timestamp();
 				$items[] = $item;
     		}
     		
@@ -672,8 +677,9 @@ class PecBlogPost {
 	
     	$feed_items = self::generate_feed_items($posts);
     	
-    	foreach ($feed_items as $item) {
-    		$feed->addItem($item);
+    	$feed_item_num = count($feed_items);
+    	for ($i=0; $i<$feed_item_num; ++$i) {
+    		$feed->addItem($feed_items[$i]);
     	}
     	
     	$feed->saveFeed(FEED_TYPE, MAIN_FEED_PATH . MAIN_FEED_FILE);

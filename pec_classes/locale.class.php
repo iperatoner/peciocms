@@ -34,7 +34,8 @@ class PecLocale {
         
         // load all xml localestring files and append their content to one another
         $inner_xml_data = '';
-        foreach (scandir(LOCALE_PATH . $language . '/translations/') as $filename) {
+        $filenames = scandir(LOCALE_PATH . $language . '/translations/');
+        foreach ($filenames as $filename) {
             // language file must not be a directory
         	if (!is_dir(LOCALE_PATH . $language . '/translations/' . $filename) && str_ends_with($filename, '.xml')) {
 	        	$inner_xml_data .= file_get_contents(LOCALE_PATH . $language . '/translations/' . $filename);

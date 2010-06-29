@@ -58,7 +58,7 @@ class PecArticle {
      */
     function __construct($id=0, $title, $content, $onstart, $template_id=GLOBAL_TEMPLATE_ID, $slug=false) {
         global $pec_database;
-        $this->database = $pec_database;
+        $this->database =& $pec_database;
         
         /* escaping input data */
         $escaped_data = $this->database->db_string_protection(

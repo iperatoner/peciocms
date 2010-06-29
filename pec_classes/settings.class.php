@@ -36,7 +36,7 @@ class PecSetting {
                          $locale, $url_type, $posts_per_page, $blog_onstart, $template_id, $nospam_1=false, 
                          $nospam_2=false, $nospam_3=false) {
         global $pec_database;
-        $this->database = $pec_database;
+        $this->database =& $pec_database;
         
         /* escaping input data */
         $escaped_data = $this->database->db_string_protection(
@@ -165,7 +165,12 @@ class PecSetting {
     }
     
     public function get_load_by() {
-        return $this->setting_url_type == URL_TYPE_HUMAN || $this->setting_url_type == URL_TYPE_REWRITE ? 'slug' : 'id';
+    	if ($this->setting_url_type === URL_TYPE_HUMAN || $this->setting_url_type === URL_TYPE_REWRITE) {
+    		return 'slug';
+    	}
+    	else {
+    		return 'id';
+    	}
     }
 
         

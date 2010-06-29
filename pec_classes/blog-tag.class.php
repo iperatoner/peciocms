@@ -36,7 +36,7 @@ class PecBlogTag {
     
     function __construct($id=0, $name, $slug=false) {
         global $pec_database;
-        $this->database = $pec_database;
+        $this->database =& $pec_database;
         
         /* escaping input data */
         $escaped_data = $this->database->db_string_protection(
@@ -162,7 +162,10 @@ class PecBlogTag {
 
     public static function remove_deprecated_tags() {
     	$tags = self::load();
-    	foreach ($tags as $t) {
+    	
+    	$tag_num = count($tags);
+    	for ($i=0; $i<$tag_num; ++$i) {
+    		$t = $tags[$i];
     		if (count(PecBlogPost::load('tag', $t)) < 1) {
     			$t->remove();
     		}

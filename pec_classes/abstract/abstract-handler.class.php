@@ -33,25 +33,31 @@ class PecAbstractHandler {
 	/**
 	 * @var PecSetting $settings Pecio settings object.
 	 */
-    private $settings;
+    protected $settings;
     
     
 	/**
 	 * @var PecDatabase	$database Pecio's database object.
 	 */
-    private $database;
+    protected $database;
     
     
 	/**
 	 * @var PecLocale	$localization Pecio's localization object.
 	 */
-    private $localization;
+    protected $localization;
     
     
 	/**
 	 * @var array	$current_page Holds all the relevant data belonging to the currently being viewed page
 	 */
-	private $current_page;
+	protected $current_page;
+    
+    
+	/**
+	 * @var boolean	$is_404 Wether something does not exist and is worth to raise a 404 or not
+	 */
+	protected $is_404 = false;
 
 	
     /**
@@ -60,9 +66,9 @@ class PecAbstractHandler {
     function __construct() {
     	global $pec_settings, $pec_database, $pec_localization;
     	
-    	$this->settings = $pec_settings;
-    	$this->database = $pec_database;
-    	$this->localization = $pec_localization;
+    	$this->settings =& $pec_settings;
+    	$this->database =& $pec_database;
+    	$this->localization =& $pec_localization;
     }
 
     
@@ -84,8 +90,21 @@ class PecAbstractHandler {
      * @param	PecTemplateResource $template_resource Holds a lot of data (e.g. objects, articles, etc.) related to the current view
      * @return	array The updated PecTemplateResource
      */
-    public function update_template_resource($template_resource) {
+    public function apply($template_resource) {
     	return $template_resource;
+    }
+    
+    
+    /**
+     * Checks if the handler raised a 404 error, e.g. if a blogpost does not exist
+     */
+    public function check_404() {
+    	if ($this->is_404) {
+    		return true;
+    	}
+    	else {
+    		return false;
+    	}
     }
 }
 

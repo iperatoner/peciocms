@@ -442,7 +442,7 @@ function grep_data_between($start_string, $end_string, $string) {
  * @param	string $str Substring with which the string may end, e.g. "apples."
  */
 function str_ends_with($str, $sub) {
-	return substr($str, strlen($str) - strlen($sub)) == $sub;
+	return substr($str, strlen($str) - strlen($sub)) === $sub;
 }
 
 /**
