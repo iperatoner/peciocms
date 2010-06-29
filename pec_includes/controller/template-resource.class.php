@@ -32,7 +32,7 @@ class PecTemplateResource extends PecAbstractResource {
 	/**
 	 * @var array An array of all the data that can be used.
 	 */
-    private $data = array(
+    protected $data = array(
         'current_page' => array(),
     
         'article' => false,
@@ -89,7 +89,7 @@ class PecTemplateResource extends PecAbstractResource {
 	/**
 	 * @var array Contains a bunch of properties that can not be modified.
 	 */
-    private static $locked_properties = array(
+    protected static $locked_properties = array(
     	'settings',
     	'root_path'
     );

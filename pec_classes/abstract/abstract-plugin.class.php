@@ -30,15 +30,15 @@
 abstract class PecAbstractPlugin {
     
 	/**
-	 * @var PecSetting $settings Pecio settings object.
+	 * @var PecSetting $settings Pecio's settings object.
 	 */
     protected $settings;
     
     
 	/**
-	 * @var PecSetting $settings Pecio settings object.
+	 * @var PecDatabase $database Pecio's database object.
 	 */
-    protected $settings;
+    protected $database;
     
     
 	/**

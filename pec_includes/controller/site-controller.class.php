@@ -111,11 +111,11 @@ class PecSiteController {
         $this->localization =& $pec_localization;
 
         // fill the `$current_page`-array with great data about our current view :)
-        $this->current_page = $this->grab_view_data($query_target);
+        $this->grab_view_data($query_target);
         
         $this->template_file = self::$view_templates[ $this->current_page['view']['main'] ];
         
-        $this->template_resource = new PecTemplateResource($this->settings, $this->current_page);
+        $this->template_resource = new PecTemplateResource($this->settings, &$this->current_page);
     }
 
     	
@@ -124,9 +124,9 @@ class PecSiteController {
 	 * 
 	 * @param	string|boolean  $query_target Target that was given by the query string. If not, that's false.
 	 */
-    private static function grab_view_data($query_target) {
+    private function grab_view_data($query_target) {
     	// Just doing that, because `$this->current_page` is a quite long var-name :D
-    	$cp = $this->current_page;
+    	$cp =& $this->current_page;
     	
 		switch ($query_target) {
 			
@@ -195,8 +195,6 @@ class PecSiteController {
 		        }
 		    	break;
 		}
-		
-		return $cp;
     }
     
     
@@ -216,7 +214,7 @@ class PecSiteController {
 	 */
     public function apply_handlers() {
     	foreach ($this->handlers as $handler) {
-    		$this->template_resource = $handler->apply($this->template_resource);
+    		$handler->apply(&$this->template_resource);
     		if ($handler->check_404()) {
     			$this->set_404();
     		}
@@ -243,7 +241,7 @@ class PecSiteController {
     	$this->template_resource->set('article', $article);
     	
     	// ah, and don't forget to mass update the all handler's current_page var
-    	$this->mass_update_current_page();
+    	//$this->mass_update_current_page();
     }
     
     

@@ -90,8 +90,8 @@ class PecAbstractHandler {
      * @param	PecTemplateResource $template_resource Holds a lot of data (e.g. objects, articles, etc.) related to the current view
      * @return	array The updated PecTemplateResource
      */
-    public function apply($template_resource) {
-    	return $template_resource;
+    public function apply(&$template_resource) {
+    	#return $template_resource;
     }
     
     

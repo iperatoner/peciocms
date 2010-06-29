@@ -83,8 +83,8 @@ class PecPluginHandler extends PecAbstractHandler {
 		$sidebar_text_objects = $template_resource->get('sidebar_text_objects');
 		$sidebar_linkcategory_objects = $template_resource->get('sidebar_linkcategory_objects');
 		
-		$sidebar_texts = $template_resource->get('sidebar_text_objects');
-		$sidebar_links = $template_resource->get('sidebar_linkcategory_objects');
+		$sidebar_texts = $template_resource->get('sidebar_texts');
+		$sidebar_links = $template_resource->get('sidebar_links');
 		
 		// SINGLE ARTICLE
 		if ($article) {
@@ -166,9 +166,9 @@ class PecPluginHandler extends PecAbstractHandler {
 		if ($sidebar_linkcategory_objects && is_array($sidebar_linkcategory_objects)) {
 			$linkcat_num = count($sidebar_linkcategory_objects);
 			for ($i=0; $i<$linkcat_num; ++$i) {
-				$content = $sidebar_text_objects[$i]->get_content();
-				$content = $this->parse_plugins($content);
-				$sidebar_linkcategory_objects[$i]->set_content($content);
+				$title = $sidebar_linkcategory_objects[$i]->get_title();
+				$title = $this->parse_plugins($title);
+				$sidebar_linkcategory_objects[$i]->set_title($title);
 			}
 			$template_resource->set('sidebar_linkcategory_objects', $sidebar_linkcategory_objects);
 		}
@@ -198,7 +198,7 @@ class PecPluginHandler extends PecAbstractHandler {
 		 * 
 		 */
 		
-    	return $template_resource;
+    	#return $template_resource;
     }
     
     
@@ -249,7 +249,7 @@ class PecPluginHandler extends PecAbstractHandler {
 		        // INPUT ENABLED
 		        if ($p->get_property('input_enabled')) {
 		            $var_datas = grep_data_between('{%' . $p->get_property('variable') . '-(', ')%}', $string);
-		                
+		            
 		            foreach ($var_datas as $var_data) {
 		                $complete_var = '{%' . $p->get_property('variable') . '-(' . $var_data . ')%}';
 		                $pos = strpos($string, $complete_var);

@@ -54,7 +54,7 @@ class PecArticleHandler extends PecAbstractHandler {
 	            $template = $articles_on_start[0]->get_template();
 	            
 	            $template_resource->set('template', $template);
-            	$template_resource->set('articles_on_start', $articles_on_start);
+            	$template_resource->set('articles', $articles_on_start);
 	            break;
     		
 	        
@@ -86,7 +86,7 @@ class PecArticleHandler extends PecAbstractHandler {
 	            
     	}
     	
-    	return $template_resource;
+    	#return $template_resource;
     }
 }
 

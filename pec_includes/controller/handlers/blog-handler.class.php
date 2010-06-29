@@ -72,7 +72,10 @@ class PecBlogHandler extends PecAbstractHandler {
         
         $by = $this->settings->get_load_by();
     	
-        if ($this->current_page['view']['main'] === SITE_VIEW_BLOGPOST) {
+        $view_main =& $this->current_page['view']['main'];
+        $view_sub =& $this->current_page['view']['sub'];
+        
+        if ($view_main === SITE_VIEW_BLOGPOST) {
             
             if (PecBlogPost::exists($by, $this->current_page['view']['data'])) {
                 $blogpost = PecBlogPost::load($by, $this->current_page['view']['data']);
@@ -85,8 +88,8 @@ class PecBlogHandler extends PecAbstractHandler {
                 $this->is_404 = true;
             }
         }
-        elseif ($this->current_page['view']['main'] === SITE_VIEW_BLOGCATEGORY || 
-        		$this->current_page['view']['sub'] === SITE_VIEW_BLOGCATEGORY) {
+        elseif ($view_main === SITE_VIEW_BLOGCATEGORY || 
+        		$view_sub === SITE_VIEW_BLOGCATEGORY) {
             
             if (PecBlogCategory::exists($by, $this->current_page['view']['data'])) {
                 $this->blogcategory = PecBlogCategory::load($by, $this->current_page['view']['data']);
@@ -108,10 +111,10 @@ class PecBlogHandler extends PecAbstractHandler {
                 $this->is_404 = true;
             }
         }
-        elseif ($this->current_page['view']['main'] === SITE_VIEW_BLOGTAG || 
-        		$this->current_page['view']['sub'] === SITE_VIEW_BLOGTAG) {
+        elseif ($view_main === SITE_VIEW_BLOGTAG || 
+        		$view_sub === SITE_VIEW_BLOGTAG) {
             
-            if (PecBlogTag::exists($by, $this->$this->current_page['view']['data'])) {
+            if (PecBlogTag::exists($by, $this->current_page['view']['data'])) {
                 $this->blogtag = PecBlogTag::load($by, $this->current_page['view']['data']);
             	
                 $blogposts = PecBlogPost::load(
@@ -131,28 +134,28 @@ class PecBlogHandler extends PecAbstractHandler {
                 $this->is_404 = true;
             }
         }
-        elseif ($this->current_page['view']['main'] === SITE_VIEW_BLOGARCHIVE || 
-        		$this->current_page['view']['sub'] === SITE_VIEW_BLOGARCHIVE) {
+        elseif ($view_main === SITE_VIEW_BLOGARCHIVE || 
+        		$view_sub === SITE_VIEW_BLOGARCHIVE) {
             
             $this->archive_data = $this->generate_archive_data();
             
             $blogposts = PecBlogPost::load(
             	0,
             	false, 
-            	$archive_data['where_condition'] . " AND post_status='1' ORDER BY post_timestamp DESC", 
+            	$this->archive_data['where_condition'] . " AND post_status='1' ORDER BY post_timestamp DESC", 
             	$current_blog_page,
             	true
             );
             
             // all available posts are needed for older / newer posts link, not only those from the current page
-            $all_blogposts = PecBlogPost::load(0, false, $archive_data['where_condition'] . " AND post_status='1'", false, true);
+            $all_blogposts = PecBlogPost::load(0, false, $this->archive_data['where_condition'] . " AND post_status='1'", false, true);
             
-            $template_resource->set('blogarchive_day', $archive_data['day']);
-            $template_resource->set('blogarchive_month', $archive_data['month']);
-            $template_resource->set('blogarchive_year', $archive_data['year']);
+            $template_resource->set('blogarchive_day', $this->archive_data['day']);
+            $template_resource->set('blogarchive_month', $this->archive_data['month']);
+            $template_resource->set('blogarchive_year', $this->archive_data['year']);
         }
-        elseif ($this->current_page['view']['main'] === SITE_VIEW_BLOG || 
-        		$this->current_page['view']['sub'] === SITE_VIEW_BLOG) {
+        elseif ($view_main === SITE_VIEW_BLOG || 
+        		$view_sub === SITE_VIEW_BLOG) {
 
             $blogposts = PecBlogPost::load(
             	'status', 
@@ -168,10 +171,10 @@ class PecBlogHandler extends PecAbstractHandler {
         
         
         // Generic data that is generated all the same for category/tag/archive/default view of the blog
-        if ($this->current_page['view']['sub'] === SITE_VIEW_BLOG ||
-        	$this->current_page['view']['sub'] === SITE_VIEW_BLOGCATEGORY || 
-        	$this->current_page['view']['sub'] === SITE_VIEW_BLOGTAG || 
-        	$this->current_page['view']['sub'] === SITE_VIEW_BLOGARCHIVE) {
+        if ($view_sub === SITE_VIEW_BLOG ||
+        	$view_sub === SITE_VIEW_BLOGCATEGORY || 
+        	$view_sub === SITE_VIEW_BLOGTAG || 
+        	$view_sub === SITE_VIEW_BLOGARCHIVE) {
         		
         	$available_blog_pages = $this->get_available_blog_pages($all_blogposts);
         	
@@ -195,7 +198,7 @@ class PecBlogHandler extends PecAbstractHandler {
         	$template_resource->set('all_available_blogposts', $all_blogposts);
         }
         
-    	return $template_resource;
+    	#return $template_resource;
     }
     
     
@@ -406,7 +409,7 @@ class PecBlogHandler extends PecAbstractHandler {
                         $comment = new PecBlogComment(NULL_ID, $post->get_id(), $_POST['comment_title'], $_POST['comment_author'], 
                                                       $_POST['comment_email'], time(), $_POST['comment_content'], false);
                           $comment->save();
-                        pec_redirect(create_blogpost_url($post, false, 'message=comment_created#messages'), 0, false, false);
+                        //pec_redirect(create_blogpost_url($post, false, 'message=comment_created#messages'), 0, false, false);
                     }
                 }
             }

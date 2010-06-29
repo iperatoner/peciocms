@@ -45,12 +45,12 @@ class PecSidebarHandler extends PecAbstractHandler {
      * @return	array The updated PecTemplateResource
      */
     public function apply($template_resource) {
-    	$current_article = $template_resource->get('current_article');
+    	$current_article = $template_resource->get('article');
     	$articles_on_start = $template_resource->get('articles');
     	
     	// Generate sidebar objects
     	$texts = $this->generate_texts($current_article, $articles_on_start);
-    	$link_categories = $this->generate_texts($current_article, $articles_on_start);
+    	$link_categories = $this->generate_link_categories($current_article, $articles_on_start);
     	
     	// Generate HTML strings from those objects
     	$texts_html = $this->generate_texts_html($texts);
@@ -68,7 +68,7 @@ class PecSidebarHandler extends PecAbstractHandler {
     	
     	$template_resource->set('search_form', $search_form);
     	
-    	return $template_resource;
+    	#return $template_resource;
     }
     
         
@@ -167,7 +167,7 @@ class PecSidebarHandler extends PecAbstractHandler {
             
             // only load link-categories of specific article, if that is one
             if ($view_main == SITE_VIEW_ARTICLE) {
-                $linkcategory_arrays[] = PecSidebarLinkCat::load('article', $this->current_article, '', true);
+                $linkcategory_arrays[] = PecSidebarLinkCat::load('article', $current_article, '', true);
             }
         }
         
@@ -181,7 +181,7 @@ class PecSidebarHandler extends PecAbstractHandler {
             
             // categories that are on articles which are assgined to the start page
             $linkcategory_loader_code = 'PecSidebarLinkCat::load("article", {%VAR%}, "", true);';
-            $linkcategories_on_start_articles = $this->load_sidebar_objects_for_articles($this->articles_on_start, $linkcategory_loader_code);
+            $linkcategories_on_start_articles = $this->load_sidebar_objects_for_articles($articles_on_start, $linkcategory_loader_code);
             
             $linkcategory_arrays[] = $linkcategories_on_start_articles;
         }
@@ -223,10 +223,10 @@ class PecSidebarHandler extends PecAbstractHandler {
     	
         // object ids that are already added to the array (because some objects might be assigned to multiple articles)
     	$objects_already_in_array = array();
-    	
+    	#var_dump($articles);
         foreach ($articles as $a) {
-            $objects_for_article = eval($object_loader_code);
-                
+            eval('$objects_for_article = ' . $object_loader_code);
+            
             // removing duplicates from this array (of this article)
             foreach ($objects_for_article as $key => $o) {
             	
@@ -315,7 +315,7 @@ class PecSidebarHandler extends PecAbstractHandler {
         // the html result of all links 
         $links_html = '';
         
-        foreach ($link_categories as $lc) {            
+        foreach ($link_categories as $lc) {
             $links = PecSidebarLink::load('cat', $lc, 'ORDER BY link_sort ASC');
             $link_list_items = '';
             

@@ -114,6 +114,8 @@ class PecPlugin {
     }
 
     public function initial_install() {
+    	global $pec_database, $pec_settings, $pec_localization, $pec_session;
+    	
         $plugin = $this;
 	    require($this->plugin_directory_path_c . PLUGIN_INSTALL_FILE);
 	    file_put_contents($this->plugin_directory_path_c . '/' . PLUGIN_INSTALLED_FILE, '');

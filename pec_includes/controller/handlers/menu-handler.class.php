@@ -34,6 +34,11 @@ class PecMenuHandler extends PecAbstractHandler {
 	 * @var array	$active_menupoints The menupoint objects which are targeting to the current target.
 	 */
 	private $active_menupoints = array();
+	
+	private $menu_item_html_cache = array();
+	
+	private $blog_on_start = false;
+	private $current_target_type, $current_target_data, $view_main;
 
 	
     /**
@@ -60,6 +65,12 @@ class PecMenuHandler extends PecAbstractHandler {
             true
         );
         
+        // doing some references due to performance issues
+        $this->blog_on_start = $this->settings->get_blog_onstart();
+        $this->current_target_type =& $this->current_page['target']['type'];
+        $this->current_target_data =& $this->current_page['target']['data'];
+        $this->view_main =& $this->current_page['view']['main'];
+        
     	$complete_menu = $this->generate_menu();
     	$folding_menu = $this->generate_menu(0, 0, false, true);
         $root_menu = $this->generate_menu(0, 0, false);
@@ -72,7 +83,7 @@ class PecMenuHandler extends PecAbstractHandler {
         
         $template_resource->set('active_menupoints', $this->active_menupoints);
         
-    	return $template_resource;
+    	#return $template_resource;
     }
     
     
@@ -98,9 +109,11 @@ class PecMenuHandler extends PecAbstractHandler {
             $wrapper_template = get_intern_template(MENUWRAPPER_TPL_FILE);
             
             // loading template file of menu item
-            $item_template = get_intern_template(MENUITEM_TPL_FILE);            
+            $item_template = get_intern_template(MENUITEM_TPL_FILE);
             
-            foreach ($menupoints as $mp) {
+            $mp_count = count($menupoints);
+            for ($i=0; $i<$mp_count; ++$i) {
+            	$mp =& $menupoints[$i];
             	$is_active = false;
             	
                 // if the target type of the menupoint is the same as the current target
@@ -109,12 +122,12 @@ class PecMenuHandler extends PecAbstractHandler {
                 // OR if the menupoint is targeting to home and 
                 // we are viewing a blog post and the blog is assigned to the start page
                 if (
-                	($mp->get_target_type() == $this->current_page['target']['type'] && 
-                     $mp->get_target_data() == $this->current_page['target']['data']) || 
+                	($mp->get_target_type() == $this->current_target_type && 
+                     $mp->get_target_data() == $this->current_target_data) || 
                      
                     ($mp->get_target_type() == MENUPOINT_TARGET_HOME &&
-                     $this->current_page['view']['main'] == SITE_VIEW_BLOGPOST &&
-                     $this->settings->get_blog_onstart())
+                     $this->view_main == SITE_VIEW_BLOGPOST &&
+                     $this->blog_on_start)
                    ) {
                     $li_class = 'active' . $count;
             		$is_active = true;
@@ -124,7 +137,8 @@ class PecMenuHandler extends PecAbstractHandler {
                     // as root/superroot
                     $sub_menupoint_active = false;
                     foreach ($this->active_menupoints as $active_mp) {
-                        if ($active_mp->get_superroot_id() == $mp->get_id() || $active_mp->get_root_id() == $mp->get_id()) {
+                        if ($active_mp->get_superroot_id() == $mp->get_id() || 
+                        	$active_mp->get_root_id() == $mp->get_id()) {
                             $sub_menupoint_active = true; break;
                         }
                     }
@@ -139,7 +153,7 @@ class PecMenuHandler extends PecAbstractHandler {
                     }
                 }
                 
-                $url = $this->get_menupoint_url($mp);
+                $url = $this->get_menupoint_url(&$mp);
                 
                 $item = str_replace('{%CLASS%}', $li_class, $item_template);
                 $item = str_replace('{%URL%}', $url, $item);
@@ -149,7 +163,7 @@ class PecMenuHandler extends PecAbstractHandler {
                 // EITHER if we want a complete recursive menu 
                 // OR if we want a folding menu and the current menupoint is active
                 if ($recursive || ($folding && $is_active)) {
-                    $submenu = $this->generate_menu($mp->get_id(), $count+1, $recursive, $folding);
+                    $submenu = $this->generate_menu($mp->get_id(), $count+1, &$recursive, &$folding);
                     $item = str_replace('{%SUBMENU%}', $submenu, $item);
                 }
                 else {
@@ -202,7 +216,7 @@ class PecMenuHandler extends PecAbstractHandler {
 		 * @param	PecMenuPoint $menupoint Menupoint object for that the URL has to be generated
 		 * @return	string The proper URL
 		 */
-        private function generate_menupoint_url($menupoint) {
+        private function get_menupoint_url($menupoint) {
             switch ($menupoint->get_target_type()) {
                 case MENUPOINT_TARGET_HOME:
                     $url = create_home_url();

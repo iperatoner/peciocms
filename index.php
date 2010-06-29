@@ -24,7 +24,7 @@
  * @link		http://pecio-cms.com
  */
 
-$start_time = microtime();
+$start_time = microtime(true);
 
 /* core includes, creating core objects */
 require_once('pec_includes/functions.inc.php');
@@ -43,7 +43,10 @@ if (file_exists('pec_install')) {
 }
 
 require_once('pec_classes/search.class.php');
+
 require_once('pec_includes/controller/site-controller.class.php');
+
+require_once('pec_classes/abstract/abstract-resource.class.php');
 require_once('pec_includes/controller/template-resource.class.php');
 
 require_once('pec_classes/abstract/abstract-handler.class.php');
@@ -60,7 +63,7 @@ $query_target = isset($_GET['target']) && !empty($_GET['target'])
 	? $_GET['target']
 	: false;
 
-$controller = new PecSiteController($query_target);
+$controller = new PecSiteController(&$query_target);
 
 $article_handler = new PecArticleHandler();
 $blog_handler = new PecBlogHandler();
@@ -109,5 +112,5 @@ $controller->display();
  * 
  */
 
-echo '<!-- generated in: ' . (microtime() - $start_time) . ' seconds -->';
+echo '<!-- generated in: ' . (microtime(true) - $start_time) . ' seconds -->';
 ?>
