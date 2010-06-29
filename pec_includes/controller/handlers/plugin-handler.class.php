@@ -233,50 +233,56 @@ class PecPluginHandler extends PecAbstractHandler {
 	 * @return	string	Parsed string
 	 */
     public function parse_plugins($string) {
-    	foreach ($this->plugin_instances as $plugin_instance) {
-            if ($this->first_parse) {
-    			$this->head_data .= $plugin_instance->head_data();
-            }
-            
-    		$p = $plugin_instance->get_plugin_meta();
-    		
-    		// Just doing a pre-check if this variable actually occurs in the string. 
-    		// If not, we're skipping this plugin right here (potentially better performance)
-    		$varpos = strpos($string, $p->get_property('variable'));
-    		
-    		if ($varpos || is_integer($varpos)) {
-    			
-		        // INPUT ENABLED
-		        if ($p->get_property('input_enabled')) {
-		            $var_datas = grep_data_between('{%' . $p->get_property('variable') . '-(', ')%}', $string);
-		            
-		            foreach ($var_datas as $var_data) {
-		                $complete_var = '{%' . $p->get_property('variable') . '-(' . $var_data . ')%}';
+    
+        // Only continue if actually _any_ var exists in this string
+        $varpos = strpos($string, '{%');
+        
+        if ($varpos || is_integer($varpos)) {
+        	foreach ($this->plugin_instances as $plugin_instance) {
+                if ($this->first_parse) {
+        			$this->head_data .= $plugin_instance->head_data();
+                }
+                
+        		$p = $plugin_instance->get_plugin_meta();
+        		
+        		// Just doing a pre-check if this variable actually occurs in the string. 
+        		// If not, we're skipping this plugin right here (potentially better performance)
+        		$varpos = strpos($string, $p->get_property('variable'));
+        		
+        		if ($varpos || is_integer($varpos)) {
+        			
+		            // INPUT ENABLED
+		            if ($p->get_property('input_enabled')) {
+		                $var_datas = grep_data_between('{%' . $p->get_property('variable') . '-(', ')%}', $string);
+		                
+		                foreach ($var_datas as $var_data) {
+		                    $complete_var = '{%' . $p->get_property('variable') . '-(' . $var_data . ')%}';
+		                    $pos = strpos($string, $complete_var);
+		                    
+		                    if ($pos || is_integer($pos)) {
+		                        $replace_data = $plugin_instance->run($var_data);
+		                        $string = str_replace($complete_var, $replace_data, $string);
+		                    }
+		                }
+		            }
+		                
+		            // NO INPUT
+		            else {
+		                $complete_var = '{%' . $p->get_property('variable') . '%}';
 		                $pos = strpos($string, $complete_var);
 		                
 		                if ($pos || is_integer($pos)) {
-		                    $replace_data = $plugin_instance->run($var_data);
+		                    $replace_data = $plugin_instance->run();
 		                    $string = str_replace($complete_var, $replace_data, $string);
 		                }
 		            }
-		        }
 		            
-		        // NO INPUT
-		        else {
-		            $complete_var = '{%' . $p->get_property('variable') . '%}';
-		            $pos = strpos($string, $complete_var);
-		            
-		            if ($pos || is_integer($pos)) {
-		                $replace_data = $plugin_instance->run();
-		                $string = str_replace($complete_var, $replace_data, $string);
-		            }
-		        }
-		        
-    		}
-    	}
-    
-    	if ($this->first_parse) {
-    		$this->first_parse = false;
+        		}
+        	}
+        
+        	if ($this->first_parse) {
+        		$this->first_parse = false;
+        	}
     	}
     	
         return $string;

@@ -65,20 +65,32 @@ $query_target = isset($_GET['target']) && !empty($_GET['target'])
 
 $controller = new PecSiteController(&$query_target);
 
+// Create and add basic handlers
 $article_handler = new PecArticleHandler();
-$blog_handler = new PecBlogHandler();
-$sidebar_handler = new PecSidebarHandler();
-$menu_handler = new PecMenuHandler();
-$plugin_handler = new PecPluginHandler();
-
 $controller->add_handler(&$article_handler);
-$controller->add_handler(&$blog_handler);
+
+if ($query_target && (
+        $query_target === QUERY_TARGET_BLOG || 
+        $query_target === QUERY_TARGET_HOME
+    )) {
+    
+    $blog_handler = new PecBlogHandler();
+    $controller->add_handler(&$blog_handler);
+}
+
+$sidebar_handler = new PecSidebarHandler();
 $controller->add_handler(&$sidebar_handler);
+
+$menu_handler = new PecMenuHandler();
 $controller->add_handler(&$menu_handler);
+
+$plugin_handler = new PecPluginHandler();
 $controller->add_handler(&$plugin_handler);
 
+// Apply all added handlers
 $controller->apply_handlers();
 
+// Display the page
 $controller->display();
 
 

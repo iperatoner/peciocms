@@ -138,13 +138,6 @@ class PecSiteController {
 		        $cp['view']['data'] = $_GET['id'];
 				break;
 		    
-			case QUERY_TARGET_SEARCH:
-		        $cp['target']['type'] = MENUPOINT_TARGET_ARTICLE;
-		          
-		        $cp['view']['main'] = $cp['view']['sub'] = SITE_VIEW_SEARCH;
-		        $cp['view']['data'] = $_GET['term'];
-		    	break;
-		    
 			case QUERY_TARGET_BLOG:
 		        $cp['target']['type'] = MENUPOINT_TARGET_BLOG;
 		        
@@ -168,6 +161,13 @@ class PecSiteController {
 		            $cp['view']['main'] = $cp['view']['sub'] = SITE_VIEW_BLOG;
 		            # HINT: We dont put the blog page into view-data because ['view']['data'] is reserved for category/tag/post-IDs etc.
 		        }
+		    	break;
+		    
+			case QUERY_TARGET_SEARCH:
+		        $cp['target']['type'] = MENUPOINT_TARGET_ARTICLE;
+		          
+		        $cp['view']['main'] = $cp['view']['sub'] = SITE_VIEW_SEARCH;
+		        $cp['view']['data'] = $_GET['term'];
 		    	break;
 		    
 		    // HOME
@@ -199,7 +199,7 @@ class PecSiteController {
     
     
 	/**
-	 * Adds a handler that shall be applied to the template resource.
+	 * Adds a handler that will be applied to the template resource.
 	 * 
 	 * @param	mixed  $handler The handler object that should be applied
 	 */
@@ -241,7 +241,7 @@ class PecSiteController {
     	$this->template_resource->set('article', $article);
     	
     	// ah, and don't forget to mass update the all handler's current_page var
-    	//$this->mass_update_current_page();
+    	$this->mass_update_current_page();
     }
     
     
