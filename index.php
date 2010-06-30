@@ -125,5 +125,5 @@ $controller->display();
  * 
  */
 
-echo '<!-- generated in: ' . (microtime(true) - $start_time) . ' seconds -->';
+echo '<!-- generated in: ' . (microtime(true) - $start_time) . ' seconds with a memory peak of ' . memory_get_peak_usage() . ' Bytes, current memory usage is ' . memory_get_usage() . ' Bytes -->';
 ?>
