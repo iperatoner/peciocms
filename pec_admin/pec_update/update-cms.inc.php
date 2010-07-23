@@ -51,7 +51,6 @@ function backup_database_tables() {
     $result_articles = $pec_database->db_query($query_articles);
     $result_blogposts = $pec_database->db_query($query_blogposts);
     $result_settings = $pec_database->db_query($query_settings);
-    $pec_database->db_close_handle();
     
     // Save results into arrays
     $articles = array();
@@ -65,6 +64,8 @@ function backup_database_tables() {
     while ($bp = $pec_database->db_fetch_array($result_blogposts)) {
     	$blogposts[] = $bp;
     }
+    
+    $pec_database->db_close_handle();
     
     return array(
     	'articles' => $articles,

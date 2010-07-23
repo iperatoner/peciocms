@@ -240,7 +240,6 @@ class PecBlogCategory {
             
             $pec_database->db_connect();
             $resource = $pec_database->db_query($query);
-            $pec_database->db_close_handle();
             
             $return_data = null;
             
@@ -255,6 +254,7 @@ class PecBlogCategory {
                 $cat = $pec_database->db_fetch_array($resource);
                 $return_data = new PecBlogCategory($cat['cat_id'], $cat['cat_name'], $cat['cat_slug']);
             }
+            $pec_database->db_close_handle();
             
             return $return_data;            
         }
@@ -265,13 +265,13 @@ class PecBlogCategory {
             
             $pec_database->db_connect();
             $resource = $pec_database->db_query($query);
-            $pec_database->db_close_handle();
             
             $cats = array();
             
             while ($cat = $pec_database->db_fetch_array($resource)) {
                 $cats[] = new PecBlogCategory($cat['cat_id'], $cat['cat_name'], $cat['cat_slug']);
             }
+            $pec_database->db_close_handle();
             
             return $cats;
         }
@@ -295,10 +295,10 @@ class PecBlogCategory {
             
             $pec_database->db_connect();
             $resource = $pec_database->db_query($query);
-            $pec_database->db_close_handle();
             
             /* if there are more than 0 rows, the cat exists, else not */
             $exists = $pec_database->db_num_rows($resource) > 0 ? true : false;
+            $pec_database->db_close_handle();
             
             return $exists;            
         }        

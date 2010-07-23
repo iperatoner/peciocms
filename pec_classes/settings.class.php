@@ -342,7 +342,6 @@ class PecSetting {
             
         $pec_database->db_connect();
         $resource = $pec_database->db_query($query);
-        $pec_database->db_close_handle();
             
         $return_data = null;
 
@@ -352,6 +351,7 @@ class PecSetting {
                                   $s['setting_comment_notify'], $s['setting_locale'], $s['setting_url_type'], 
                                   $s['setting_posts_per_page'], $s['setting_blog_onstart'], $s['setting_template_id'], 
                                   $s['setting_nospam_key_1'], $s['setting_nospam_key_2'], $s['setting_nospam_key_3']);
+        $pec_database->db_close_handle();
         
         return $setting;      
     }
@@ -363,10 +363,10 @@ class PecSetting {
             
         $pec_database->db_connect();
         $resource = $pec_database->db_query($query);
-        $pec_database->db_close_handle();
                 
         /* if there are more than 0 rows, the settings exists, else not */
         $return_data = $pec_database->db_num_rows($resource) > 0 ? true : false;
+        $pec_database->db_close_handle();
             
         return $return_data; 
     }

@@ -229,7 +229,6 @@ class PecSidebarText {
             
             $pec_database->db_connect();
             $resource = $pec_database->db_query($query);
-            $pec_database->db_close_handle();
             
             $return_data = null;
             
@@ -246,6 +245,7 @@ class PecSidebarText {
                 $return_data = new PecSidebarText($t['text_id'], $t['text_title'], $t['text_content'], 
                                                   $t['text_visibility'], $t['text_onarticles'], $t['text_sort']);
             }
+            $pec_database->db_close_handle();
             
             return $return_data;            
         }
@@ -272,7 +272,6 @@ class PecSidebarText {
             
             $pec_database->db_connect();
             $resource = $pec_database->db_query($query);
-            $pec_database->db_close_handle();
             
             $texts = array();
             
@@ -280,6 +279,7 @@ class PecSidebarText {
                 $texts[] = new PecSidebarText($t['text_id'], $t['text_title'], $t['text_content'],
                                               $t['text_visibility'], $t['text_onarticles'], $t['text_sort']);
             }
+            $pec_database->db_close_handle();
             
             return $texts;
         }
@@ -293,10 +293,10 @@ class PecSidebarText {
             
             $pec_database->db_connect();
             $resource = $pec_database->db_query($query);
-            $pec_database->db_close_handle();
             
             /* if there are more than 0 rows, the text exists, else not */
             $return_data = $pec_database->db_num_rows($resource) > 0 ? true : false;
+            $pec_database->db_close_handle();
             
             return $return_data;            
         }        

@@ -332,7 +332,6 @@ class PecArticle {
             
             $pec_database->db_connect();
             $resource = $pec_database->db_query($query);
-            $pec_database->db_close_handle();
             
             $return_data = null;
             
@@ -350,6 +349,8 @@ class PecArticle {
                                               $a['article_onstart'], $a['article_template_id'], $a['article_slug']);
             }
             
+            $pec_database->db_close_handle();
+            
             return $return_data;            
         }
         
@@ -359,7 +360,6 @@ class PecArticle {
             
             $pec_database->db_connect();
             $resource = $pec_database->db_query($query);
-            $pec_database->db_close_handle();
             
             $articles = array();
             
@@ -367,6 +367,8 @@ class PecArticle {
                 $articles[] = new PecArticle($a['article_id'], $a['article_title'], $a['article_content'],
                                              $a['article_onstart'], $a['article_template_id'], $a['article_slug']);
             }
+            
+            $pec_database->db_close_handle();
             
             return $articles;
         }
@@ -390,10 +392,10 @@ class PecArticle {
             
             $pec_database->db_connect();
             $resource = $pec_database->db_query($query);
-            $pec_database->db_close_handle();
                 
             /* if there are more than 0 rows, the article exists, else not */
             $return_data = $pec_database->db_num_rows($resource) > 0 ? true : false;
+            $pec_database->db_close_handle();
             
             return $return_data;            
         }        

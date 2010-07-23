@@ -264,7 +264,6 @@ class PecBlogComment {
             
             $pec_database->db_connect();
             $resource = $pec_database->db_query($query);
-            $pec_database->db_close_handle();
             
             $return_data = null;
             
@@ -281,6 +280,7 @@ class PecBlogComment {
                 $return_data = new PecBlogComment($c['comment_id'], $c['comment_post_id'], $c['comment_title'], $c['comment_author'], 
                                                   $c['comment_email'], $c['comment_timestamp'], $c['comment_content']);
             }
+            $pec_database->db_close_handle();
             
             return $return_data;            
         }
@@ -309,7 +309,6 @@ class PecBlogComment {
             
             $pec_database->db_connect();
             $resource = $pec_database->db_query($query);
-            $pec_database->db_close_handle();
             
             $comments = array();
             
@@ -317,6 +316,7 @@ class PecBlogComment {
                 $comments[] = new PecBlogComment($c['comment_id'], $c['comment_post_id'], $c['comment_title'], $c['comment_author'], 
                                               $c['comment_email'], $c['comment_timestamp'], $c['comment_content']);
             }
+            $pec_database->db_close_handle();
             
             return $comments;
         }
@@ -330,10 +330,10 @@ class PecBlogComment {
             
             $pec_database->db_connect();
             $resource = $pec_database->db_query($query);
-            $pec_database->db_close_handle();
             
             /* if there are more than 0 rows, the comment exists, else not */
             $return_data = $pec_database->db_num_rows($resource) > 0 ? true : false;
+            $pec_database->db_close_handle();
             
             return $return_data;            
         }        

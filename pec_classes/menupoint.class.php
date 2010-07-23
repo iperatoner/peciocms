@@ -305,7 +305,6 @@ class PecMenuPoint {
             
             $pec_database->db_connect();
             $resource = $pec_database->db_query($query);
-            $pec_database->db_close_handle();
             
             $return_data = null;
             
@@ -324,6 +323,7 @@ class PecMenuPoint {
                                                 $m['point_target_type'], $m['point_target_data'], 
                                                 $m['point_sort'], $m['point_slug']);
             }
+            $pec_database->db_close_handle();
             
             return $return_data;            
         }
@@ -350,7 +350,6 @@ class PecMenuPoint {
             
             $pec_database->db_connect();
             $resource = $pec_database->db_query($query);
-            $pec_database->db_close_handle();
             
             $menupoints = array();
             
@@ -359,6 +358,7 @@ class PecMenuPoint {
                                                $m['point_target_type'], $m['point_target_data'], 
                                                $m['point_sort'], $m['point_slug']);
             }
+            $pec_database->db_close_handle();
             
             return $menupoints;
         }
@@ -372,10 +372,10 @@ class PecMenuPoint {
             
             $pec_database->db_connect();
             $resource = $pec_database->db_query($query);
-            $pec_database->db_close_handle();
                 
             /* if there are more than 0 rows, the menupoint exists, else not */
             $return_data = $pec_database->db_num_rows($resource) > 0 ? true : false;
+            $pec_database->db_close_handle();
             
             return $return_data;            
         }        

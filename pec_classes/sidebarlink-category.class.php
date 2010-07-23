@@ -217,7 +217,6 @@ class PecSidebarLinkCat {
             
             $pec_database->db_connect();
             $resource = $pec_database->db_query($query);
-            $pec_database->db_close_handle();
             
             $return_data = null;
             
@@ -232,6 +231,7 @@ class PecSidebarLinkCat {
                 $c = $pec_database->db_fetch_array($resource);
                 $return_data = new PecSidebarLinkCat($c['cat_id'], $c['cat_title'], $c['cat_visibility'], $c['cat_onarticles'], $c['cat_sort']);
             }
+            $pec_database->db_close_handle();
             
             return $return_data;            
         }
@@ -258,13 +258,13 @@ class PecSidebarLinkCat {
             
             $pec_database->db_connect();
             $resource = $pec_database->db_query($query);
-            $pec_database->db_close_handle();
             
             $cats = array();
             
             while ($c = $pec_database->db_fetch_array($resource)) {
                 $cats[] = new PecSidebarLinkCat($c['cat_id'], $c['cat_title'], $c['cat_visibility'], $c['cat_onarticles'], $c['cat_sort']);
             }
+            $pec_database->db_close_handle();
             
             return $cats;
         }
@@ -278,10 +278,10 @@ class PecSidebarLinkCat {
             
             $pec_database->db_connect();
             $resource = $pec_database->db_query($query);
-            $pec_database->db_close_handle();
             
             /* if there are more than 0 rows, the category exists, else not */
             $return_data = $pec_database->db_num_rows($resource) > 0 ? true : false;
+            $pec_database->db_close_handle();
             
             return $return_data;            
         }        

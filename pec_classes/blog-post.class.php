@@ -520,7 +520,6 @@ class PecBlogPost {
                         
             $pec_database->db_connect();
             $resource = $pec_database->db_query($query);
-            $pec_database->db_close_handle();
             
             $return_data = null;
             
@@ -541,6 +540,7 @@ class PecBlogPost {
                                                $p['post_content'], $p['post_tags'], $p['post_categories'], $p['post_comments_allowed'],
                                                $p['post_status'], $p['post_slug']);
             }
+            $pec_database->db_close_handle();
             
             return $return_data;            
         }
@@ -586,7 +586,6 @@ class PecBlogPost {
             
             $pec_database->db_connect();
             $resource = $pec_database->db_query($query);
-            $pec_database->db_close_handle();
             
             $posts = array();
             
@@ -596,6 +595,7 @@ class PecBlogPost {
                                               $p['post_content'], $p['post_tags'], $p['post_categories'], $p['post_comments_allowed'],
                                               $p['post_status'], $p['post_slug']);
             }
+            $pec_database->db_close_handle();
             
             return $posts;
         }
@@ -610,10 +610,10 @@ class PecBlogPost {
             
             $pec_database->db_connect();
             $resource = $pec_database->db_query($query);
-            $pec_database->db_close_handle();
             
             /* if there are more than 0 rows, the post exists, else not */
             $return_data = $pec_database->db_num_rows($resource) > 0 ? true : false;
+            $pec_database->db_close_handle();
             
             return $return_data;            
         }        

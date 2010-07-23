@@ -164,7 +164,6 @@ class PecSidebarLink {
             
             $pec_database->db_connect();
             $resource = $pec_database->db_query($query);
-            $pec_database->db_close_handle();
             
             $return_data = null;
             
@@ -179,6 +178,7 @@ class PecSidebarLink {
                 $link = $pec_database->db_fetch_array($resource);
                 $return_data = new PecSidebarLink($link['link_id'], $link['link_cat_id'], $link['link_name'], $link['link_url'], $link['link_sort']);
             }
+            $pec_database->db_close_handle();
             
             return $return_data;            
         }
@@ -204,13 +204,13 @@ class PecSidebarLink {
             
             $pec_database->db_connect();
             $resource = $pec_database->db_query($query);
-            $pec_database->db_close_handle();
             
             $links = array();
             
             while ($link = $pec_database->db_fetch_array($resource)) {
                 $links[] = new PecSidebarLink($link['link_id'], $link['link_cat_id'], $link['link_name'], $link['link_url'], $link['link_sort']);
             }
+            $pec_database->db_close_handle();
             
             return $links;
         }
@@ -224,10 +224,10 @@ class PecSidebarLink {
             
             $pec_database->db_connect();
             $resource = $pec_database->db_query($query);
-            $pec_database->db_close_handle();
             
             /* if there are more than 0 rows, the link exists, else not */
             $return_data = $pec_database->db_num_rows($resource) > 0 ? true : false;
+            $pec_database->db_close_handle();
             
             return $return_data;            
         }        
