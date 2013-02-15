@@ -103,7 +103,7 @@ class PecPluginHandler extends PecAbstractHandler {
 				$content = $this->parse_plugins($content);
 				$articles[$i]->set_content($content);
 			}
-			$template_resource->set('article', $articles);
+			$template_resource->set('articles', $articles);
 		}
 		
 		// SINGLE BLOGPOST
